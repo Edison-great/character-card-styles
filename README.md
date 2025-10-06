@@ -1,8 +1,8 @@
-/* Custom Haunted Theme by Edison-great */
-
+<!--00-->
+<style>
+/* Custom Haunted Theme by Edison */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,400;1,400;1,600&display=swap');
 
-/* Reset & Base */
 * {
   margin: 0;
   padding: 0;
@@ -17,7 +17,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Animated background */
 body::before {
   content: '';
   position: fixed;
@@ -37,7 +36,6 @@ body::before {
   50% { opacity: 0.6; }
 }
 
-/* Floating particles effect */
 body::after {
   content: '';
   position: fixed;
@@ -61,14 +59,12 @@ body::after {
   100% { transform: translateY(-100px); }
 }
 
-/* Main Container */
 .card-wrapper {
   max-width: 800px;
   margin: 80px auto;
   padding: 0 30px;
 }
 
-/* Character Name Section */
 .name-section {
   text-align: center;
   margin-bottom: 60px;
@@ -116,7 +112,6 @@ body::after {
   font-weight: 400;
 }
 
-/* Background Image Section */
 .background-section {
   width: 100%;
   height: 500px;
@@ -130,40 +125,19 @@ body::after {
     inset 0 0 100px rgba(139, 71, 137, 0.1);
 }
 
-.bg-placeholder {
+.bg-image {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(75, 35, 100, 0.3), rgba(30, 15, 45, 0.5)),
-              /* REPLACE THIS URL WITH YOUR IMAGE */
-              url('https://archive.org/download/in-wall/customized-charsnapai%20%2815%29.png') center/cover no-repeat;
+  object-fit: cover;
   position: relative;
 }
 
-.bg-placeholder::before {
-  content: 'https://archive.org/download/in-wall/customized-charsnapai%20%2815%29.png';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Courier Prime', monospace;
-  font-size: 1.2em;
-  color: #9d5fb8;
-  text-align: center;
-  padding: 30px;
-  border: 2px dashed #8b4789;
-  background: rgba(13, 5, 24, 0.9);
-  border-radius: 10px;
-  letter-spacing: 2px;
-}
-
-.bg-placeholder::after {
-  content: '';
+.bg-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom, transparent 0%, rgba(13, 5, 24, 0.7) 100%);
 }
 
-/* Story Section */
 .story-section {
   margin: 70px 0;
   padding: 60px 50px;
@@ -196,24 +170,22 @@ body::after {
   background: linear-gradient(90deg, transparent, #9d5fb8, transparent);
 }
 
-.story-placeholder {
+.story-text {
   font-family: 'Courier Prime', monospace;
   font-size: 1.15em;
   line-height: 2;
   color: #d4c5e8;
   text-align: left;
-  min-height: 300px;
   letter-spacing: 0.5px;
   font-weight: 400;
 }
 
-.story-placeholder::first-line {
+.story-text::first-line {
   font-size: 1.3em;
   color: #9d5fb8;
   font-weight: 700;
 }
 
-/* Author Note Section */
 .author-section {
   margin: 70px 0;
   padding: 50px;
@@ -262,7 +234,6 @@ body::after {
   font-weight: 600;
 }
 
-/* Chub.AI Button Styling */
 button,
 .btn,
 input[type="submit"],
@@ -292,7 +263,6 @@ input[type="button"]:hover,
   transform: translateY(-2px) !important;
 }
 
-/* Input Fields */
 input[type="text"],
 input[type="email"],
 textarea,
@@ -314,7 +284,6 @@ select:focus {
   outline: none !important;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 14px;
 }
@@ -332,7 +301,6 @@ select:focus {
   background: linear-gradient(180deg, #9d5fb8, #8b4789);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .character-name {
     font-size: 3.5em;
@@ -357,3 +325,36 @@ select:focus {
     margin: 40px auto;
   }
 }
+</style>
+
+<div class="card-wrapper">
+  
+  <!-- Name Section -->
+  <div class="name-section">
+    <h1 class="character-name">Maya Solis</h1>
+    <p class="character-subtitle">19 Year Old Futanari</p>
+  </div>
+  
+  <!-- Background Image -->
+  <div class="background-section">
+    <img src="https://archive.org/download/in-wall/customized-charsnapai%20%2815%29.png" alt="Maya" class="bg-image">
+    <div class="bg-overlay"></div>
+  </div>
+  
+  <!-- Story Section -->
+  <div class="story-section">
+    <div class="story-text">
+On Halloween night, Maya and her friends explored a rumored abandoned haunted house. They laughed, took pictures, and left with the thrill of having braved it. Later that night, their group chat lit up — one friend had lost her necklace, a precious heirloom from her mother. Since Maya lived closest, she offered to go back and retrieve it. Her friends protested; it was too late, too eerie. But she insisted — it could be gone by morning. The house was colder when she returned. As soon as she stepped inside, the doors slammed shut behind her. Wind howled through the halls, carrying voices that screamed, "You dare return?" Her light flickered — and then she was still. The house had her.
+    </div>
+  </div>
+  
+  <!-- Author Note -->
+  <div class="author-section">
+    <h2 class="author-title">Author's Note</h2>
+    <p class="author-note">
+I love you guys
+    </p>
+  </div>
+  
+</div>
+<!--00-->
