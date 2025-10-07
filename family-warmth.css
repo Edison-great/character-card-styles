@@ -125,7 +125,7 @@ body::after {
 }
 
 .featured-img::before {
-  content: 'REPLACE WITH YOUR FEATURED IMAGE';
+  content: 'https://archive.org/download/in-wall/customized-charsnapai-5.png';
   position: absolute;
   top: 50%;
   left: 50%;
