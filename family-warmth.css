@@ -115,7 +115,7 @@ body::after {
 .description-text {
   font-family: 'Poppins', sans-serif;
   font-size: 1.4em;
-  color: #6d4c41;
+  color: #000000;
   text-align: center;
   font-weight: 600;
   font-style: italic;
@@ -141,7 +141,7 @@ body::after {
 }
 
 .featured-img::before {
-  content: 'REPLACE WITH YOUR FEATURED IMAGE';
+  content: 'INCESR IS WINCEST';
   position: absolute;
   top: 50%;
   left: 50%;
