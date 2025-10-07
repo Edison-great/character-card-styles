@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 
 body {
@@ -18,7 +19,7 @@ body {
 
 /* Full site background image */
 body::before {
-  content: ''; /* Keep this empty string for pseudo-elements */
+  content: '';
   position: fixed;
   top: 0;
   left: 0;
@@ -125,7 +126,7 @@ body::after {
 }
 
 .featured-img::before {
-  content: 'https://archive.org/download/in-wall/customized-charsnapai-5.png';
+  content: 'REPLACE WITH YOUR FEATURED IMAGE';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -382,4 +383,4 @@ select:focus {
     padding: 0 20px;
     margin: 40px auto;
   }
-    }
+  }
