@@ -121,7 +121,7 @@ body::after {
   height: 100%;
   object-fit: cover;
   background: linear-gradient(135deg, rgba(255, 183, 77, 0.3), rgba(255, 138, 101, 0.3)),
-              url('YOUR_SECOND_IMAGE_URL_HERE') center/cover no-repeat;
+              url('https://archive.org/download/in-wall/custom%20image_1759826061469.png') center/cover no-repeat;
 }
 
 .featured-img::before {
