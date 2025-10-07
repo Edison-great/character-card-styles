@@ -18,7 +18,7 @@ body {
 
 /* Full site background image */
 body::before {
-  content: '';
+  content: ''; /* Keep this empty string for pseudo-elements */
   position: fixed;
   top: 0;
   left: 0;
