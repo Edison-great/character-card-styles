@@ -26,7 +26,7 @@ body::before {
   height: 100%;
   background: 
     linear-gradient(135deg, rgba(255, 183, 77, 0.3), rgba(255, 138, 101, 0.3)),
-    url('YOUR_BACKGROUND_IMAGE_URL_HERE') center/cover no-repeat fixed;
+    url('https://archive.org/download/in-wall/customized-charsnapai-5.png') center/cover no-repeat fixed;
   z-index: -2;
   opacity: 0.4;
 }
