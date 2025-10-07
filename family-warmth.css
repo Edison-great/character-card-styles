@@ -9,15 +9,30 @@
 }
 
 body {
+  background: #fef5e7; /* Keep your default body background for content within the description box */
   color: #5d4037;
   font-family: 'Quicksand', sans-serif;
   line-height: 1.8;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */ /* You might remove this if it causes issues with the main site scroll */
   position: relative;
 }
 
-/* Full site background image */
-body::before {
+/* --- MODIFIED FULL SITE BACKGROUND --- */
+/* Target html and body for robust full-page background */
+html, body {
+  background-color: #fef5e7; /* Your default background color as a base */
+  background-image: 
+    linear-gradient(135deg, rgba(255, 183, 77, 0.3), rgba(255, 138, 101, 0.3)),
+    url('https://archive.org/download/in-wall/customized-charsnapai-5.png');
+  background-size: cover; /* Cover the entire viewport */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Don't repeat the image */
+  background-attachment: fixed; /* Keep it fixed when scrolling */
+  /* Remove opacity from here and apply it to an overlay if needed, or adjust gradient opacity */
+}
+
+/* Remove your body::before, as the html/body background will handle it */
+/* body::before {
   content: '';
   position: fixed;
   top: 0;
@@ -28,10 +43,11 @@ body::before {
     linear-gradient(135deg, rgba(255, 183, 77, 0.3), rgba(255, 138, 101, 0.3)),
     url('https://archive.org/download/in-wall/customized-charsnapai-5.png') center/cover no-repeat fixed;
   z-index: -2;
-  opacity: 0.7;
-}
+  opacity: 0.4;
+} */
 
-/* Warm overlay effect */
+
+/* Warm overlay effect - keep this as it's separate */
 body::after {
   content: '';
   position: fixed;
@@ -42,7 +58,7 @@ body::after {
   background: radial-gradient(circle at 30% 40%, rgba(255, 167, 38, 0.15), transparent 60%),
               radial-gradient(circle at 70% 60%, rgba(255, 138, 101, 0.15), transparent 60%);
   animation: warmGlow 8s ease-in-out infinite;
-  z-index: -1;
+  z-index: -1; /* Keep this z-index to be above the html/body background but below content */
 }
 
 @keyframes warmGlow {
@@ -122,6 +138,22 @@ body::after {
   object-fit: cover;
   background: linear-gradient(135deg, rgba(255, 183, 77, 0.3), rgba(255, 138, 101, 0.3)),
               url('https://archive.org/download/in-wall/custom%20image_1759826061469.png') center/cover no-repeat;
+}
+
+.featured-img::before {
+  content: 'REPLACE WITH YOUR FEATURED IMAGE';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2em;
+  color: #ff6f00;
+  text-align: center;
+  padding: 25px;
+  border: 2px dashed #ff8a65;
+  background: rgba(254, 245, 231, 0.95);
+  border-radius: 10px;
 }
 
 /* Scenarios Section */
