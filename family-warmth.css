@@ -137,11 +137,12 @@ body::after {
   height: 100%;
   object-fit: cover;
   background: linear-gradient(135deg, rgba(255, 183, 77, 0.3), rgba(255, 138, 101, 0.3)),
-              url('https://archive.org/download/in-wall/custom%20image_1759826061469.png') center/cover no-repeat;
+              url('https://archive.org/download/custom-image-1759801622172/customized-charsnapai-4_1.png') center/cover no-repeat;
 }
 
 .featured-img::before {
-  content: 'INCEST IS WINCEST';
+  content: 'INCEST IS WINCEST
+    picture gallery in last scenario';
   position: absolute;
   top: 50%;
   left: 50%;
