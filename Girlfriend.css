@@ -1,161 +1,200 @@
-/* Tomboy Girlfriend Theme by Edison */
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Lato:wght@400;700&family=Bangers&display=swap');
+/*
+=================================================================
+  Tomboy Girlfriend Theme by Edison (Edison-great)
+  File: Girlfriend.css
+=================================================================
+*/
 
-/* FORCE TRANSPARENT CHUB.AI CONTAINERS */
-.character-page,
-.character-container,
-.character-content,
-.profile-container,
-.profile-wrapper,
-div[class*="character"],
-div[class*="profile"] {
-  background: transparent !important;
-  background-color: transparent !important;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@400;700&family=Permanent+Marker&display=swap');
+
+/* Define Root Variables for Easy Customization */
+:root {
+  --main-dark-bg: #1a1a2e; /* Deep Indigo/Charcoal */
+  --accent-color: #ff4d6d; /* Vibrant Pinkish Red */
+  --text-ink: #e0e0e0; /* Light Grey for main text */
+  --text-muted: #b0b0d0; /* Muted Purple-Grey for secondary text */
+  --panel-bg: #282a4a; /* Slightly lighter dark indigo for panels */
+  --header-panel-bg: linear-gradient(135deg, rgba(40, 42, 74, 0.9), rgba(50, 52, 90, 0.9));
+  --description-bg: rgba(40, 42, 74, 0.95);
+  
+  /* Fonts */
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-body: 'Roboto Condensed', sans-serif;
+  --font-flavor: 'Permanent Marker', cursive; /* For special text like author notes, char names */
 }
 
-/* General Styles */
+/* Global Reset & Box Sizing */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Base Body Styles */
 body {
-  background-color: #f0f0f0;
-  color: #333;
-  font-family: 'Lato', sans-serif;
-  line-height: 1.6;
+  background: var(--main-dark-bg); /* Default fallback for content area */
+  color: var(--text-ink);
+  font-family: var(--font-body);
+  line-height: 1.8;
   overflow-x: hidden;
   position: relative;
 }
 
-/* --- FULL SITE BACKGROUND --- */
-html, body {
-  background-color: #2c3e50;
+/* === FULL SITE BACKGROUND - MODIFIED TO MATCH BUNNY'S STRATEGY === */
+html,
+body,
+.ant-layout,
+.ant-layout-content {
+  background-color: var(--main-dark-bg) !important; /* Ensure base color is dark */
   background-image: 
-    linear-gradient(135deg, rgba(52, 73, 94, 0.7), rgba(44, 62, 80, 0.7)),
-    url('https://archive.org/download/shion-1/shion%20%2810%29.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+    linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(40, 42, 74, 0.7)), /* Dark overlay */
+    url('https://archive.org/download/shion-1/shion%20%2810%29.jpg') !important; /* Replace with your desired full site background */
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important; /* Stays fixed during scroll */
+  min-height: 100vh; /* Ensure it covers the full viewport height */
 }
 
-/* Content Wrapper */
-.tomboy-wrapper {
-  max-width: 960px;
+/* === TOP BANNER IMAGE (HERO SHOT) - ADAPTED FROM BUNNY'S body::before === */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: min(45vh, 520px); /* Adjust height as desired for your banner */
+  background: 
+    linear-gradient(180deg, rgba(26, 26, 46, 0) 0%, rgba(26, 26, 46, 0.7) 60%, var(--main-dark-bg) 100%), 
+    url('YOUR_HERO_BANNER_URL') center center/cover no-repeat; /* Your Tomboy character's hero shot */
+  pointer-events: none;
+  z-index: 0; /* Keep this low so content is on top */
+  animation: pan-background 60s ease-in-out infinite; /* Optional subtle animation */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+  will-change: transform;
+  -webkit-mask-image: linear-gradient(to bottom, black 98%, transparent 100%); /* Fades bottom edge */
+  mask-image: linear-gradient(to bottom, black 98%, transparent 100%);
+}
+
+/* Overlay effect - similar to your original, now for subtle glow */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 40%, rgba(255, 77, 109, 0.1), transparent 60%),
+              radial-gradient(circle at 70% 60%, rgba(255, 138, 101, 0.1), transparent 60%);
+  animation: warmGlow 8s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none; /* Allows clicks to pass through */
+}
+
+@keyframes warmGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+/* Main Content Wrapper */
+.family-wrapper { /* Renamed from your previous .family-wrapper to .tomboy-wrapper for clarity */
+  max-width: 900px;
   margin: 60px auto;
   padding: 0 30px;
-  position: relative;
-  z-index: 10;
+  position: relative; /* Ensure wrapper elements are above backgrounds */
+  z-index: 1; /* Place content above body::before and ::after */
 }
 
-/* --- CHARACTER HEADER --- */
-.tomboy-header {
+/* Character Names Section */
+.family-header { /* Retained for now, but consider renaming to .char-header or .intro-header */
   text-align: center;
   margin-bottom: 50px;
-  background: linear-gradient(135deg, rgba(236, 240, 241, 0.95), rgba(189, 195, 199, 0.95));
+  background: var(--header-panel-bg);
   padding: 50px 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 2px solid rgba(127, 140, 141, 0.5);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  border: 3px solid rgba(255, 77, 109, 0.3); /* Accent border */
 }
 
 .main-title {
-  font-family: 'Bangers', cursive;
-  font-size: 5em;
+  font-family: var(--font-heading);
+  font-size: 4.5em; /* clamp(3em, 8vw, 4.5em); for responsiveness */
   font-weight: 700;
-  color: #e74c3c;
-  margin-bottom: 10px;
-  text-shadow: 0 4px 10px rgba(192, 57, 43, 0.4);
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+  text-shadow: 0 0 15px rgba(255, 77, 109, 0.6); /* Glowing text shadow */
+  letter-spacing: 2px;
 }
 
 .character-names {
-  font-family: 'Chakra Petch', sans-serif;
-  font-size: 1.8em;
-  color: #34495e;
-  margin-top: 15px;
+  font-family: var(--font-flavor); /* Playful font for names */
+  font-size: 2em;
+  color: var(--text-ink);
+  margin-top: 20px;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.4;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
-/* --- DESCRIPTION SECTION --- */
+/* Description Section */
 .description-section {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 40px;
-  border-radius: 10px;
+  background: var(--description-bg);
+  padding: 45px;
+  border-radius: 15px;
   margin: 40px 0;
-  border-left: 4px solid #3498db;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-left: 5px solid var(--accent-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .description-text {
-  font-family: 'Lato', sans-serif;
-  font-size: 1.3em;
-  color: #555;
+  font-family: var(--font-body);
+  font-size: 1.4em;
+  color: var(--text-ink);
   text-align: center;
-  font-weight: 400;
-  font-style: normal;
+  font-weight: 400; /* Regular weight for readability */
+  font-style: italic;
 }
 
-/* --- FEATURED IMAGE --- */
+/* Second Image Above Scenarios (Featured Item) */
 .featured-image {
   width: 100%;
-  height: 450px;
+  height: 400px; /* Adjust as needed */
   margin: 50px 0;
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-  border: 3px solid #3498db;
-  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  border: 4px solid rgba(255, 77, 109, 0.4);
 }
 
-.featured-img {
+.featured-img { /* This div acts as the image container */
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background: url('YOUR_FEATURED_IMAGE_URL') center/cover no-repeat;
+  background: 
+    linear-gradient(135deg, rgba(26, 26, 46, 0.3), rgba(255, 77, 109, 0.3)), /* Subtle accent tint */
+    url('YOUR_FEATURED_ITEM_URL') center/cover no-repeat; /* Your featured item image */
 }
 
-.featured-img::before {
-  content: 'YOUR TOMBOY GF FEATURED IMAGE HERE';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Chakra Petch', sans-serif;
-  font-size: 1.2em;
-  color: #e74c3c;
-  text-align: center;
-  padding: 20px;
-  border: 2px dashed #e74c3c;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 8px;
-  pointer-events: none;
-}
-
-/* --- SCENARIOS SECTION --- */
+/* Scenarios Section */
 .scenarios-section {
   margin: 60px 0;
 }
 
 .scenarios-title {
-  font-family: 'Bangers', cursive;
-  font-size: 3.5em;
-  color: #e74c3c;
+  font-family: var(--font-heading);
+  font-size: 3em;
+  color: var(--accent-color);
   text-align: center;
   margin-bottom: 40px;
   font-weight: 700;
-  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(255, 77, 109, 0.4);
 }
 
+/* Scenario Table */
 .scenario-table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0 20px;
+  border-spacing: 0 25px;
 }
 
 .scenario-row {
@@ -164,144 +203,161 @@ html, body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid transparent;
 }
 
 .scenario-row:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-  border-color: #3498db;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
-.scenario-row.path-skatepark {
-  background-image: linear-gradient(135deg, rgba(52, 152, 219, 0.75), rgba(46, 204, 113, 0.75)),
-                    url('YOUR_SKATEPARK_IMAGE_URL');
+/* Scenario Row backgrounds - REPLACE THESE URLs */
+.scenario-row.path-1 { /* Renamed from .kitchen */
+  background-image: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(255, 77, 109, 0.5)),
+                    url('YOUR_SCENARIO_1_URL'); /* Hangout/Creative Corner */
 }
 
-.scenario-row.path-gaming-den {
-  background-image: linear-gradient(135deg, rgba(155, 89, 182, 0.75), rgba(52, 152, 219, 0.75)),
-                    url('YOUR_GAMING_IMAGE_URL');
+.scenario-row.path-2 { /* Renamed from .living-room */
+  background-image: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(100, 100, 150, 0.5)),
+                    url('YOUR_SCENARIO_2_URL'); /* Gaming/Chill Zone */
 }
 
-.scenario-row.path-workshop {
-  background-image: linear-gradient(135deg, rgba(230, 126, 34, 0.75), rgba(241, 196, 15, 0.75)),
-                    url('YOUR_WORKSHOP_IMAGE_URL');
+.scenario-row.path-3 { /* Renamed from .bedroom */
+  background-image: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(70, 180, 100, 0.5)),
+                    url('YOUR_SCENARIO_3_URL'); /* Outdoor Adventure */
 }
 
-.scenario-row.path-urban-exploration {
-  background-image: linear-gradient(135deg, rgba(44, 62, 80, 0.75), rgba(127, 140, 141, 0.75)),
-                    url('YOUR_URBAN_EXPLORATION_IMAGE_URL');
+.scenario-row.path-4 { /* Renamed from .dining-room */
+  background-image: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(200, 100, 70, 0.5)),
+                    url('YOUR_SCENARIO_4_URL'); /* Music/Expression Spot */
 }
 
-.scenario-row.path-chill-at-home {
-  background-image: linear-gradient(135deg, rgba(39, 174, 96, 0.75), rgba(22, 160, 133, 0.75)),
-                    url('YOUR_CHILL_AT_HOME_IMAGE_URL');
+.scenario-row.path-5 { /* New Path */
+  background-image: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(150, 150, 70, 0.5)),
+                    url('YOUR_SCENARIO_5_URL'); /* Study/Work Nook */
 }
 
-.scenario-row.path-forest-hike {
-  background-image: linear-gradient(135deg, rgba(243, 156, 18, 0.75), rgba(211, 84, 0, 0.75)),
-                    url('YOUR_FOREST_HIKE_IMAGE_URL');
+.scenario-row.path-6 { /* New Path */
+  background-image: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(100, 170, 200, 0.5)),
+                    url('YOUR_SCENARIO_6_URL'); /* Comfort/Relaxation */
 }
+
 
 .scenario-content {
   display: grid;
-  grid-template-columns: 70px 1fr 2fr;
-  gap: 15px;
+  grid-template-columns: 80px 1fr 2fr;
+  gap: 20px;
   align-items: center;
   height: 100%;
-  padding: 25px;
+  padding: 30px;
+  color: var(--text-ink); /* Ensure white text on dark backgrounds */
 }
 
 .scenario-number {
-  font-family: 'Bangers', cursive;
-  font-size: 3em;
+  font-family: var(--font-heading);
+  font-size: 3.5em;
   font-weight: 700;
-  color: #fff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  color: var(--accent-color); /* Number in accent color */
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
 }
 
 .scenario-title {
-  font-family: 'Chakra Petch', sans-serif;
-  font-size: 1.6em;
+  font-family: var(--font-body);
+  font-size: 1.8em;
   font-weight: 700;
-  color: #fff;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
-  text-transform: uppercase;
+  color: var(--text-ink);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .scenario-description {
-  font-family: 'Lato', sans-serif;
-  font-size: 1em;
-  color: #f0f0f0;
-  line-height: 1.5;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  font-family: var(--font-body);
+  font-size: 1.1em;
+  color: var(--text-muted); /* Slightly muted for description */
+  line-height: 1.6;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 }
 
-/* --- AUTHOR NOTE SECTION --- */
+/* Author Note Section */
 .author-section {
-  margin: 70px 0;
+  margin: 70px 0 100px 0; /* Added more bottom margin for chibi */
   padding: 50px;
-  background: linear-gradient(135deg, rgba(189, 195, 199, 0.95), rgba(149, 165, 166, 0.95));
-  border-radius: 15px;
+  background: var(--header-panel-bg);
+  border-radius: 20px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  border: 2px solid rgba(52, 152, 219, 0.5);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  border: 3px solid rgba(255, 77, 109, 0.3);
   position: relative;
 }
 
 .author-section::before {
-  content: '★';
+  content: '⚡'; /* Changed heart to lightning bolt for tomboy vibe */
   position: absolute;
   top: -20px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 2.5em;
-  color: #e74c3c;
+  color: var(--accent-color);
 }
 
 .author-title {
-  font-family: 'Bangers', cursive;
-  font-size: 2.8em;
-  color: #34495e;
+  font-family: var(--font-heading);
+  font-size: 2.5em;
+  color: var(--accent-color);
   margin-bottom: 20px;
   font-weight: 700;
   letter-spacing: 2px;
-  text-transform: uppercase;
 }
 
 .author-note {
-  font-family: 'Chakra Petch', sans-serif;
-  font-size: 1.8em;
-  color: #2c3e50;
-  font-weight: 600;
-  line-height: 1.4;
-  font-style: italic;
+  font-family: var(--font-flavor); /* Playful font for note */
+  font-size: 2em;
+  color: var(--text-ink); /* Changed to text-ink for better contrast */
+  font-weight: 700;
+  line-height: 1.5;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
-/* --- BUTTON STYLING --- */
+/* === CHIBI COMPANION (HTML REQUIRED) === */
+/* You need to add this to your HTML: <img src="YOUR_CHIBI_IMAGE_URL" class="chibi-companion" alt="Tomboy Chibi"> */
+.chibi-companion {
+  position: fixed;
+  bottom: 20px; /* Distance from bottom */
+  right: 20px; /* Distance from right */
+  width: 120px; /* Size of the chibi. Adjust as needed (e.g., 80px-150px) */
+  height: auto; /* Maintain aspect ratio */
+  z-index: 9999; /* Make sure it's on top of everything else */
+  pointer-events: none; /* Allows clicks to pass through to elements beneath */
+  animation: floatEffect 3s ease-in-out infinite alternate; /* Subtle floating animation */
+}
+
+@keyframes floatEffect {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-8px); } /* Moves slightly up and down */
+}
+
+/* Button Styling (Adapted for theme) */
 button,
 .btn,
 input[type="submit"],
 input[type="button"],
 .button {
-  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%) !important;
-  border: 2px solid #2980b9 !important;
-  color: #fff !important;
-  font-family: 'Chakra Petch', sans-serif !important;
-  font-size: 1.1em !important;
-  font-weight: 600 !important;
-  padding: 12px 30px !important;
-  border-radius: 8px !important;
+  background: linear-gradient(135deg, var(--accent-color) 0%, darken(var(--accent-color), 10%) 100%) !important;
+  border: 2px solid var(--accent-color) !important;
+  color: var(--main-dark-bg) !important; /* Dark text on accent button */
+  font-family: var(--font-body) !important;
+  font-size: 1em !important;
+  font-weight: 700 !important;
+  padding: 14px 35px !important;
+  border-radius: 50px !important;
   cursor: pointer !important;
   transition: all 0.3s ease !important;
   text-transform: uppercase !important;
   letter-spacing: 1px !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4) !important;
 }
 
 button:hover,
@@ -309,90 +365,66 @@ button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover,
 .button:hover {
-  background: linear-gradient(135deg, #2980b9 0%, #3498db 100%) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
-  transform: translateY(-1px) !important;
+  background: linear-gradient(135deg, darken(var(--accent-color), 10%) 0%, var(--accent-color) 100%) !important;
+  box-shadow: 0 8px 30px rgba(255, 77, 109, 0.6) !important;
+  transform: translateY(-2px) !important;
 }
 
-/* --- INPUT FIELDS --- */
+/* Input Fields (Adapted for theme) */
 input[type="text"],
 input[type="email"],
 textarea,
 select {
-  background: rgba(255, 255, 255, 0.8) !important;
-  border: 2px solid #bdc3c7 !important;
-  color: #333 !important;
-  font-family: 'Lato', sans-serif !important;
-  padding: 10px !important;
-  border-radius: 6px !important;
+  background: var(--panel-bg) !important;
+  border: 2px solid rgba(255, 77, 109, 0.5) !important; /* Accent border */
+  color: var(--text-ink) !important;
+  font-family: var(--font-body) !important;
+  padding: 12px !important;
+  border-radius: 10px !important;
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus,
 textarea:focus,
 select:focus {
-  border-color: #3498db !important;
-  box-shadow: 0 0 10px rgba(52, 152, 219, 0.3) !important;
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 15px rgba(255, 77, 109, 0.4) !important;
   outline: none !important;
 }
 
-/* --- SCROLLBAR --- */
+/* Scrollbar (Adapted for theme) */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 14px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f0f0f0;
+  background: var(--main-dark-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #3498db, #2980b9);
-  border-radius: 8px;
-  border: 2px solid #f0f0f0;
+  background: linear-gradient(180deg, var(--accent-color), darken(var(--accent-color), 15%));
+  border-radius: 10px;
+  border: 2px solid var(--main-dark-bg);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #2980b9, #3498db);
+  background: linear-gradient(180deg, darken(var(--accent-color), 15%), var(--accent-color));
 }
 
-/* --- CHIBI IMAGE --- */
-body::before { 
-  content: '';
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 160px;
-  height: 160px;
-  background: url('https://archive.org/download/shion-1/shion%20%289%29.png') center/contain no-repeat;
-  z-index: 1000;
-  pointer-events: none;
-  filter: drop-shadow(0 5px 12px rgba(0,0,0,0.4));
-  animation: chibiBounce 4s ease-in-out infinite alternate;
-}
-
-@keyframes chibiBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-/* --- RESPONSIVE --- */
+/* Responsive */
 @media (max-width: 768px) {
   .main-title {
-    font-size: 3em;
+    font-size: 2.5em;
   }
   
   .character-names {
-    font-size: 1.3em;
-  }
-  
-  .scenarios-title {
-    font-size: 2.5em;
+    font-size: 1.5em;
   }
   
   .scenario-content {
     grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 15px;
+    gap: 15px;
+    padding: 20px;
   }
   
   .scenario-number {
@@ -400,39 +432,180 @@ body::before {
   }
   
   .scenario-title {
-    font-size: 1.2em;
-  }
-  
-  .scenario-description {
-    font-size: 0.9em;
+    font-size: 1.3em;
   }
   
   .scenario-row {
     height: auto;
-    min-height: 150px;
+    min-height: 200px;
   }
   
   .featured-image {
-    height: 300px;
+    height: 250px;
   }
   
-  .tomboy-wrapper {
-    padding: 0 15px;
-    margin: 30px auto;
+  .family-wrapper { /* .tomboy-wrapper */
+    padding: 0 20px;
+    margin: 40px auto;
   }
 
-  .author-title {
-    font-size: 2em;
-  }
-
-  .author-note {
-    font-size: 1.5em;
-  }
-
-  body::before {
-    width: 120px;
-    height: 120px;
+  .chibi-companion {
+    width: 90px; /* Smaller chibi on mobile */
     bottom: 15px;
     right: 15px;
   }
+}
+
+/* Chub.ai Overrides (Copied from Bunny's CSS, essential!) */
+h3.ant-typography,
+h5.ant-typography,
+div.msg-mkdn-container:not(:has(.bb-sec)),
+h4.ant-typography.mt-8,
+h4.ant-typography.mt-8+div {
+  display: none !important;
+}
+.ant-layout-footer {
+  display: none !important;
+}
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag {
+  background: rgba(255, 255, 255, .5) !important;
+  color: #000 !important;
+  border: none !important;
+  padding: .15em .55em !important;
+  font-size: 1rem !important;
+  font-family: var(--font-flavor);
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  opacity: 1 !important;
+  transition: background .2s, color .2s;
+  border-radius: 4px !important;
+}
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover {
+  background: #000 !important;
+  color: #fff !important;
+}
+.ant-space.ant-space-horizontal.ant-space-align-center {
+  max-height: none !important;
+  overflow: visible !important;
+  flex-wrap: wrap !important;
+}
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item {
+  transition: transform .2s ease-in-out;
+}
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:nth-child(4n+1) {
+  transform: rotate(-2.5deg);
+}
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:nth-child(4n+2) {
+  transform: rotate(1.8deg);
+}
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:nth-child(4n+3) {
+  transform: rotate(3deg);
+}
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:nth-child(4n+4) {
+  transform: rotate(-1.5deg);
+}
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:hover {
+  transform: rotate(0deg) scale(1.1);
+  z-index: 10;
+}
+.ant-ribbon.ant-ribbon-placement-end,
+.no-vertical-anything *,
+div#chara-list {
+  display: none !important;
+}
+.ant-layout-header,
+.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child.no-padding.ml-0.pl-0.mr-2,
+.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-dark {
+  background-color: rgb(0, 0, 0, 0) !important;
+}
+
+button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
+  position: fixed !important;
+  right: 24px !important;
+  bottom: 24px !important;
+  z-index: 2147483647 !important;
+}
+@media(max-width:785px) {
+  button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
+    right: 16px !important;
+    bottom: 16px !important;
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+  }
+}
+button.ant-btn {
+  position: relative;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: .5em;
+  white-space: nowrap;
+  font-weight: 700 !important;
+  font-family: var(--font-body); /* Changed to body font */
+  font-size: 18px !important;
+  height: 48px !important;
+  min-width: 64px !important;
+  padding: .5em 1.4em !important;
+  border-radius: 8px !important;
+  transition: transform .15s, box-shadow .15s, background-color .25s, color .25s, border-color .25s;
+  cursor: pointer;
+  overflow: visible !important;
+}
+button.ant-btn:hover {
+  box-shadow: none !important;
+}
+button.ant-btn:active {
+  transform: translateY(1px);
+}
+button.ant-btn.ant-btn-default {
+  background: var(--panel-bg) !important; /* Dark panel bg for default buttons */
+  color: var(--text-ink) !important;
+  border: 0.5px solid var(--text-ink) !important;
+  box-shadow: 0px 2px 0 var(--text-ink);
+}
+button.ant-btn.ant-btn-primary {
+  background: var(--accent-color) !important;
+  color: var(--main-dark-bg) !important;
+  border: 0.5px solid var(--main-dark-bg) !important;
+  box-shadow: 0px 2px 0 var(--main-dark-bg) !important;
+}
+button.ant-btn .ml-1,
+div.flex.flex-wrap.justify-end [class*=ml-] {}
+button.ant-btn:has(svg.lucide-messages-square)::after,
+button.ant-btn.ant-btn-default:has(.anticon-star)::after {
+  content: "";
+  position: absolute;
+  inset: -2px !important;
+  border-radius: inherit;
+  background: 0 0;
+  box-shadow: 0 0 0 0 var(--sonar-color);
+  animation: 2.8s ease-out infinite btn-sonar !important;
+  pointer-events: none;
+  z-index: 1;
+}
+button.ant-btn.ant-btn-default:has(.anticon-star)::after {
+  --sonar-color: var(--accent-color);
+}
+button.ant-btn:has(svg.lucide-messages-square)::after {
+  --sonar-color: var(--accent-color);
+}
+button.ant-btn:has(svg.lucide-messages-square) {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  height: 64px !important;
+  padding: 0 1.8em 0 1.8em;
+  border-radius: 10px !important;
+  background: var(--accent-color) !important;
+  color: var(--main-dark-bg) !important;
+  border: 2px solid var(--text-ink) !important;
+  outline: 1px solid var(--main-dark-bg);
+  box-shadow: .5px .5px 0 0 var(--text-ink), 1px 1px 0 0 var(--text-ink), 1.5px 1.5px 0 0 var(--text-ink), 2px 2px 0 0 var(--text-ink), 2.5px 2.5px 0 0 var(--text-ink), 3px 3px 0 0 var(--text-ink), 0 0 0 2px var(--panel-bg), .5px .5px 0 2px var(--panel-bg), 1px 1px 0 2px var(--panel-bg), 1.5px 1.5px 0 2px var(--panel-bg), 2px 2px 0 2px var(--panel-bg), 2.5px 2.5px 0 2px var(--panel-bg), 3px 3px 0 2px var(--panel-bg), 3.5px 3.5px 0 2px var(--panel-bg), 4px 4px 0 2px var(--panel-bg);
+  z-index: 10;
+  transition: background .25s, color .25s, box-shadow .25s, transform .15s;
+}
+button.ant-btn:has(svg.lucide-messages-square):hover {
+  background: var(--text-ink) !important;
+  color: var(--main-dark-bg) !important;
+  box-shadow: none !important;
+  border-color: var(--accent-color) !important;
   }
