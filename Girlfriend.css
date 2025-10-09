@@ -5,7 +5,7 @@
 =================================================================
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@600;700&family=Orbitron:wght@700;900&display=swap');
 
 :root {
   --primary-blue: #1e3a8a;
@@ -17,6 +17,8 @@
   
   --font-heading: 'Bebas Neue', sans-serif;
   --font-body: 'Inter', sans-serif;
+  --font-desc: 'Rajdhani', sans-serif;
+  --font-note: 'Orbitron', sans-serif;
 }
 
 /* Base Layout */
@@ -39,6 +41,11 @@ body::before {
   pointer-events: none;
   z-index: 0;
   filter: brightness(0.7);
+}
+
+/* Hide Chub search bar */
+.ant-layout-header {
+  display: none !important;
 }
 
 /* Main Container */
@@ -90,25 +97,57 @@ body::before {
 
 .tg-title {
   font-family: var(--font-heading);
-  font-size: clamp(64px, 8vw, 96px) !important;
-  line-height: 0.9 !important;
+  font-size: clamp(48px, 6vw, 64px) !important;
+  line-height: 1.1 !important;
   font-weight: 400 !important;
   color: var(--accent-blue) !important;
-  margin: 0 0 20px !important;
-  letter-spacing: 0.02em !important;
+  margin: 0 !important;
+  letter-spacing: 0.05em !important;
   text-transform: uppercase;
   text-shadow: 0 0 40px rgba(6, 182, 212, 0.5);
 }
 
+.tg-title-sub {
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 4.5vw, 52px) !important;
+  line-height: 1 !important;
+  font-weight: 400 !important;
+  color: rgba(6, 182, 212, 0.7) !important;
+  margin: 0 0 30px !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* Description Box */
+.tg-desc-box {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 40px;
+  animation: fadeInUp 0.8s ease-out 0.1s both;
+}
+
+.tg-desc-title {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 3vw, 42px);
+  font-weight: 400;
+  color: var(--accent-blue);
+  margin: 0 0 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .tg-description {
-  font-size: clamp(16px, 1.5vw, 18px) !important;
-  line-height: 1.6 !important;
+  font-family: var(--font-desc);
+  font-size: clamp(17px, 1.6vw, 19px) !important;
+  line-height: 1.7 !important;
+  font-weight: 600 !important;
   color: var(--text-light) !important;
-  max-width: 600px;
   margin: 0 !important;
 }
 
-/* Paths Section */
+/* Adventures Section */
 .tg-paths {
   background: var(--card-bg);
   backdrop-filter: blur(10px);
@@ -131,8 +170,8 @@ body::before {
 
 .tg-paths-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
   list-style: none;
   padding: 0 !important;
   margin: 0;
@@ -146,10 +185,10 @@ body::before {
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
-  counter-increment: path;
-  min-height: 180px;
+  min-height: 220px;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .tg-path-card::before {
@@ -161,27 +200,31 @@ body::before {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.tg-path-card::after {
-  content: "0" counter(path);
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  font-family: var(--font-heading);
-  font-size: 28px;
-  color: var(--accent-blue);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+.tg-path-content {
+  position: relative;
   z-index: 2;
+  padding: 20px;
+  width: 100%;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.7));
+}
+
+.tg-path-heading {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--accent-blue);
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .tg-path-text {
-  position: relative;
-  z-index: 2;
-  padding: 16px;
-  width: 100%;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.95), transparent);
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin: 0;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
 }
 
@@ -207,8 +250,9 @@ body::before {
 }
 
 .tg-note-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-note);
   font-size: 24px;
+  font-weight: 900;
   color: var(--accent-blue);
   margin: 0 0 12px;
   text-transform: uppercase;
@@ -216,8 +260,10 @@ body::before {
 }
 
 .tg-note-text {
-  font-size: 15px;
-  line-height: 1.6;
+  font-family: var(--font-note);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
   color: var(--text-muted);
   margin: 0;
 }
@@ -238,8 +284,8 @@ body::before {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   z-index: 9999;
   pointer-events: none;
   animation: fadeIn 1s ease-out 0.6s both, float 3s ease-in-out infinite;
@@ -316,8 +362,8 @@ body::before {
   }
   
   .tg-chibi {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     bottom: 16px;
     right: 16px;
   }
@@ -334,11 +380,6 @@ h4.ant-typography.mt-8+div {
 
 .ant-layout-footer {
   display: none !important;
-}
-
-.ant-layout-header {
-  background-color: transparent !important;
-  z-index: 99999 !important;
 }
 
 button.ant-btn {
