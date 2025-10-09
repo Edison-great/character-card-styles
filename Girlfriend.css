@@ -1,6 +1,18 @@
 /* Tomboy Girlfriend Theme by Edison */
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Lato:wght@400;700&family=Bangers&display=swap');
 
+/* FORCE TRANSPARENT CHUB.AI CONTAINERS */
+.character-page,
+.character-container,
+.character-content,
+.profile-container,
+.profile-wrapper,
+div[class*="character"],
+div[class*="profile"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
 /* General Styles */
 * {
   margin: 0;
@@ -9,7 +21,7 @@
 }
 
 body {
-  background-color: #f0f0f0; /* Light gray fallback for consistency */
+  background-color: #f0f0f0;
   color: #333;
   font-family: 'Lato', sans-serif;
   line-height: 1.6;
@@ -17,56 +29,43 @@ body {
   position: relative;
 }
 
-/* --- Attempt to target Chub.ai's main content wrapper if html/body fails for top section --- */
-/* (This is a guess, might need adjustment based on actual Chub.ai DOM) */
-#app, .main-layout-wrapper, .chakra-container, div[data-testid="main-content"] { /* Common wrapper IDs/classes */
-  background-color: #2c3e50 !important;
+/* --- FULL SITE BACKGROUND --- */
+html, body {
+  background-color: #2c3e50;
   background-image: 
     linear-gradient(135deg, rgba(52, 73, 94, 0.7), rgba(44, 62, 80, 0.7)),
-    url('https://archive.org/download/shion-1/shion%20%2810%29.jpg') !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
-}
-
-/* --- FULL SITE BACKGROUND (Urban Edge / Skate Park / Nature Trail) --- */
-html, body {
-  background-color: #2c3e50 !important; /* Darker base color for contrast */
-  background-image: 
-    linear-gradient(135deg, rgba(52, 73, 94, 0.7), rgba(44, 62, 80, 0.7)), /* Darker, cooler gradient overlay */
-    url('https://archive.org/download/shion-1/shion%20%2810%29.jpg') !important; /* Example: Blurred skate park, urban alley, forest trail */
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
+    url('https://archive.org/download/shion-1/shion%20%2810%29.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* Content Wrapper */
 .tomboy-wrapper {
-  max-width: 960px; /* Slightly wider for a more open feel */
+  max-width: 960px;
   margin: 60px auto;
   padding: 0 30px;
   position: relative;
-  z-index: 10; /* Ensure content is above backgrounds and chibi */
+  z-index: 10;
 }
 
-/* --- CHARACTER HEADER (Main Title & Names) --- */
+/* --- CHARACTER HEADER --- */
 .tomboy-header {
   text-align: center;
   margin-bottom: 50px;
-  background: linear-gradient(135deg, rgba(236, 240, 241, 0.95), rgba(189, 195, 199, 0.95)); /* Lighter, cooler gradient */
+  background: linear-gradient(135deg, rgba(236, 240, 241, 0.95), rgba(189, 195, 199, 0.95));
   padding: 50px 40px;
-  border-radius: 15px; /* Slightly less rounded */
+  border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 2px solid rgba(127, 140, 141, 0.5); /* Muted border */
+  border: 2px solid rgba(127, 140, 141, 0.5);
 }
 
 .main-title {
-  font-family: 'Bangers', cursive; /* More playful, bold font */
-  font-size: 5em; /* Larger, more impactful */
+  font-family: 'Bangers', cursive;
+  font-size: 5em;
   font-weight: 700;
-  color: #e74c3c; /* A pop of energetic red */
+  color: #e74c3c;
   margin-bottom: 10px;
   text-shadow: 0 4px 10px rgba(192, 57, 43, 0.4);
   letter-spacing: 3px;
@@ -74,9 +73,9 @@ html, body {
 }
 
 .character-names {
-  font-family: 'Chakra Petch', sans-serif; /* Techy/modern sans-serif */
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 1.8em;
-  color: #34495e; /* Darker, grounded text */
+  color: #34495e;
   margin-top: 15px;
   font-weight: 600;
   line-height: 1.3;
@@ -84,11 +83,11 @@ html, body {
 
 /* --- DESCRIPTION SECTION --- */
 .description-section {
-  background: rgba(255, 255, 255, 0.9); /* Mostly white, slightly transparent */
+  background: rgba(255, 255, 255, 0.9);
   padding: 40px;
   border-radius: 10px;
   margin: 40px 0;
-  border-left: 4px solid #3498db; /* A strong, cool blue accent */
+  border-left: 4px solid #3498db;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
@@ -98,29 +97,28 @@ html, body {
   color: #555;
   text-align: center;
   font-weight: 400;
-  font-style: normal; /* No italic, keep it direct */
+  font-style: normal;
 }
 
-/* --- FEATURED IMAGE (Tomboy Posing / Activity) --- */
+/* --- FEATURED IMAGE --- */
 .featured-image {
   width: 100%;
-  height: 450px; /* Slightly taller */
+  height: 450px;
   margin: 50px 0;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-  border: 3px solid #3498db; /* Consistent blue border */
-  position: relative; /* For the ::before message */
+  border: 3px solid #3498db;
+  position: relative;
 }
 
 .featured-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background: url('YOUR_FEATURED_IMAGE_URL') center/cover no-repeat; /* Example: Chloe on a skateboard */
+  background: url('YOUR_FEATURED_IMAGE_URL') center/cover no-repeat;
 }
 
-/* If you still want a placeholder text, otherwise remove this rule */
 .featured-img::before {
   content: 'YOUR TOMBOY GF FEATURED IMAGE HERE';
   position: absolute;
@@ -135,9 +133,8 @@ html, body {
   border: 2px dashed #e74c3c;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 8px;
-  pointer-events: none; /* Allows interaction beneath */
+  pointer-events: none;
 }
-
 
 /* --- SCENARIOS SECTION --- */
 .scenarios-section {
@@ -146,8 +143,8 @@ html, body {
 
 .scenarios-title {
   font-family: 'Bangers', cursive;
-  font-size: 3.5em; /* Large and bold */
-  color: #e74c3c; /* Energetic red */
+  font-size: 3.5em;
+  color: #e74c3c;
   text-align: center;
   margin-bottom: 40px;
   font-weight: 700;
@@ -155,11 +152,10 @@ html, body {
   text-transform: uppercase;
 }
 
-/* Scenario Table */
 .scenario-table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0 20px; /* Slightly tighter spacing */
+  border-spacing: 0 20px;
 }
 
 .scenario-row {
@@ -168,53 +164,52 @@ html, body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 10px; /* Slightly less rounded */
+  border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid transparent; /* Default transparent border */
+  border: 2px solid transparent;
 }
 
 .scenario-row:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-  border-color: #3498db; /* Highlight with blue on hover */
+  border-color: #3498db;
 }
 
-/* --- SCENARIO ROW BACKGROUNDS (6 Paths) --- */
 .scenario-row.path-skatepark {
-  background-image: linear-gradient(135deg, rgba(52, 152, 219, 0.75), rgba(46, 204, 113, 0.75)), /* Blue to green */
-                    url('YOUR_SKATEPARK_IMAGE_URL'); /* Example: Skate ramp, park scene */
+  background-image: linear-gradient(135deg, rgba(52, 152, 219, 0.75), rgba(46, 204, 113, 0.75)),
+                    url('YOUR_SKATEPARK_IMAGE_URL');
 }
 
 .scenario-row.path-gaming-den {
-  background-image: linear-gradient(135deg, rgba(155, 89, 182, 0.75), rgba(52, 152, 219, 0.75)), /* Purple to blue */
-                    url('YOUR_GAMING_IMAGE_URL'); /* Example: Gaming setup, neon lights */
+  background-image: linear-gradient(135deg, rgba(155, 89, 182, 0.75), rgba(52, 152, 219, 0.75)),
+                    url('YOUR_GAMING_IMAGE_URL');
 }
 
 .scenario-row.path-workshop {
-  background-image: linear-gradient(135deg, rgba(230, 126, 34, 0.75), rgba(241, 196, 15, 0.75)), /* Orange to yellow */
-                    url('YOUR_WORKSHOP_IMAGE_URL'); /* Example: Workbench with tools, car engine */
+  background-image: linear-gradient(135deg, rgba(230, 126, 34, 0.75), rgba(241, 196, 15, 0.75)),
+                    url('YOUR_WORKSHOP_IMAGE_URL');
 }
 
 .scenario-row.path-urban-exploration {
-  background-image: linear-gradient(135deg, rgba(44, 62, 80, 0.75), rgba(127, 140, 141, 0.75)), /* Dark gray to light gray */
-                    url('YOUR_URBAN_EXPLORATION_IMAGE_URL'); /* Example: City street, street art */
+  background-image: linear-gradient(135deg, rgba(44, 62, 80, 0.75), rgba(127, 140, 141, 0.75)),
+                    url('YOUR_URBAN_EXPLORATION_IMAGE_URL');
 }
 
 .scenario-row.path-chill-at-home {
-  background-image: linear-gradient(135deg, rgba(39, 174, 96, 0.75), rgba(22, 160, 133, 0.75)), /* Greenish-teal */
-                    url('YOUR_CHILL_AT_HOME_IMAGE_URL'); /* Example: Cozy sofa, messy room */
+  background-image: linear-gradient(135deg, rgba(39, 174, 96, 0.75), rgba(22, 160, 133, 0.75)),
+                    url('YOUR_CHILL_AT_HOME_IMAGE_URL');
 }
 
 .scenario-row.path-forest-hike {
-  background-image: linear-gradient(135deg, rgba(243, 156, 18, 0.75), rgba(211, 84, 0, 0.75)), /* Yellow to dark orange */
-                    url('YOUR_FOREST_HIKE_IMAGE_URL'); /* Example: Forest path, mountain view */
+  background-image: linear-gradient(135deg, rgba(243, 156, 18, 0.75), rgba(211, 84, 0, 0.75)),
+                    url('YOUR_FOREST_HIKE_IMAGE_URL');
 }
 
 .scenario-content {
   display: grid;
-  grid-template-columns: 70px 1fr 2fr; /* Slightly smaller number column */
+  grid-template-columns: 70px 1fr 2fr;
   gap: 15px;
   align-items: center;
   height: 100%;
@@ -223,7 +218,7 @@ html, body {
 
 .scenario-number {
   font-family: 'Bangers', cursive;
-  font-size: 3em; /* Bold and clear */
+  font-size: 3em;
   font-weight: 700;
   color: #fff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
@@ -242,7 +237,7 @@ html, body {
 .scenario-description {
   font-family: 'Lato', sans-serif;
   font-size: 1em;
-  color: #f0f0f0; /* Lighter text for readability on dark backgrounds */
+  color: #f0f0f0;
   line-height: 1.5;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
@@ -251,28 +246,28 @@ html, body {
 .author-section {
   margin: 70px 0;
   padding: 50px;
-  background: linear-gradient(135deg, rgba(189, 195, 199, 0.95), rgba(149, 165, 166, 0.95)); /* Muted, cool gradient */
+  background: linear-gradient(135deg, rgba(189, 195, 199, 0.95), rgba(149, 165, 166, 0.95));
   border-radius: 15px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  border: 2px solid rgba(52, 152, 219, 0.5); /* Blue accent border */
+  border: 2px solid rgba(52, 152, 219, 0.5);
   position: relative;
 }
 
 .author-section::before {
-  content: '★'; /* A star instead of a heart */
+  content: '★';
   position: absolute;
   top: -20px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 2.5em;
-  color: #e74c3c; /* Red star */
+  color: #e74c3c;
 }
 
 .author-title {
   font-family: 'Bangers', cursive;
   font-size: 2.8em;
-  color: #34495e; /* Darker heading */
+  color: #34495e;
   margin-bottom: 20px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -280,9 +275,9 @@ html, body {
 }
 
 .author-note {
-  font-family: 'Chakra Petch', sans-serif; /* Consistent with character names */
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 1.8em;
-  color: #2c3e50; /* Darker text */
+  color: #2c3e50;
   font-weight: 600;
   line-height: 1.4;
   font-style: italic;
@@ -294,14 +289,14 @@ button,
 input[type="submit"],
 input[type="button"],
 .button {
-  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%) !important; /* Cool blue gradient */
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%) !important;
   border: 2px solid #2980b9 !important;
   color: #fff !important;
   font-family: 'Chakra Petch', sans-serif !important;
-  font-size: 1.1em !important; /* Slightly larger text */
+  font-size: 1.1em !important;
   font-weight: 600 !important;
-  padding: 12px 30px !important; /* Slightly more compact */
-  border-radius: 8px !important; /* More angular */
+  padding: 12px 30px !important;
+  border-radius: 8px !important;
   cursor: pointer !important;
   transition: all 0.3s ease !important;
   text-transform: uppercase !important;
@@ -324,19 +319,19 @@ input[type="text"],
 input[type="email"],
 textarea,
 select {
-  background: rgba(255, 255, 255, 0.8) !important; /* Light and slightly transparent */
-  border: 2px solid #bdc3c7 !important; /* Muted gray border */
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 2px solid #bdc3c7 !important;
   color: #333 !important;
   font-family: 'Lato', sans-serif !important;
   padding: 10px !important;
-  border-radius: 6px !important; /* Less rounded */
+  border-radius: 6px !important;
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus,
 textarea:focus,
 select:focus {
-  border-color: #3498db !important; /* Highlight with blue on focus */
+  border-color: #3498db !important;
   box-shadow: 0 0 10px rgba(52, 152, 219, 0.3) !important;
   outline: none !important;
 }
@@ -351,7 +346,7 @@ select:focus {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #3498db, #2980b9); /* Blue gradient scrollbar */
+  background: linear-gradient(180deg, #3498db, #2980b9);
   border-radius: 8px;
   border: 2px solid #f0f0f0;
 }
@@ -360,29 +355,27 @@ select:focus {
   background: linear-gradient(180deg, #2980b9, #3498db);
 }
 
-/* --- CHIBI IMAGE (Fixed Bottom Right) --- */
-/* Using ::before for chibi. Ensure no other ::before is active for main body background */
+/* --- CHIBI IMAGE --- */
 body::before { 
   content: '';
   position: fixed;
-  bottom: 20px; /* Distance from bottom */
-  right: 20px; /* Distance from right */
-  width: 160px; /* Chibi size */
-  height: 160px; /* Chibi size */
-  background: url('https://archive.org/download/shion-1/shion%20%289%29.png') center/contain no-repeat; /* Transparent PNG */
-  z-index: 1000; /* Extremely high to be always on top */
-  pointer-events: none; /* Allows clicks to pass through */
-  filter: drop-shadow(0 5px 12px rgba(0,0,0,0.4)); /* Stronger shadow for pop */
-  animation: chibiBounce 4s ease-in-out infinite alternate; /* Subtle animation */
+  bottom: 20px;
+  right: 20px;
+  width: 160px;
+  height: 160px;
+  background: url('https://archive.org/download/shion-1/shion%20%289%29.png') center/contain no-repeat;
+  z-index: 1000;
+  pointer-events: none;
+  filter: drop-shadow(0 5px 12px rgba(0,0,0,0.4));
+  animation: chibiBounce 4s ease-in-out infinite alternate;
 }
 
 @keyframes chibiBounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); } /* Gentle up and down movement */
+  50% { transform: translateY(-8px); }
 }
 
-
-/* --- RESPONSIVE ADJUSTMENTS --- */
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
   .main-title {
     font-size: 3em;
@@ -397,7 +390,7 @@ body::before {
   }
   
   .scenario-content {
-    grid-template-columns: 1fr; /* Stack vertically on small screens */
+    grid-template-columns: 1fr;
     gap: 10px;
     padding: 15px;
   }
@@ -436,10 +429,10 @@ body::before {
     font-size: 1.5em;
   }
 
-  body::before { /* Adjust chibi size for mobile */
+  body::before {
     width: 120px;
     height: 120px;
     bottom: 15px;
     right: 15px;
   }
-    }
+  }
