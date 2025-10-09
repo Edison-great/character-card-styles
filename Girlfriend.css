@@ -1,516 +1,466 @@
 /*
 =================================================================
-  Tomboy Girlfriend Theme by Edison (Edison-great)
-  File: Girlfriend.css
+  Tomboy Girlfriend Theme Stylesheet
+  Custom theme by Edison-great
 =================================================================
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@400;700&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;700&display=swap');
 
-/* Define Root Variables for Easy Customization */
+/*
+////////////////////////////////////////////////////////////////////////////////
+// 1. EDIT YOUR URLs AND COLORS HERE
+////////////////////////////////////////////////////////////////////////////////
+*/
+
 :root {
-  --main-dark-bg: #1a1a2e; /* Deep Indigo/Charcoal */
-  --accent-color: #ff4d6d; /* Vibrant Pinkish Red */
-  --text-ink: #e0e0e0; /* Light Grey for main text */
-  --text-muted: #b0b0d0; /* Muted Purple-Grey for secondary text */
-  --panel-bg: #282a4a; /* Slightly lighter dark indigo for panels */
-  --header-panel-bg: linear-gradient(135deg, rgba(40, 42, 74, 0.9), rgba(50, 52, 90, 0.9));
-  --description-bg: rgba(40, 42, 74, 0.95);
-  
   /* Fonts */
-  --font-heading: 'Bebas Neue', sans-serif;
-  --font-body: 'Roboto Condensed', sans-serif;
-  --font-flavor: 'Permanent Marker', cursive; /* For special text like author notes, char names */
+  --font-heading: 'Bebas Neue', cursive;
+  --font-body: 'Nunito', sans-serif;
+
+  /* Theme Colors (Blues) */
+  --primary-blue: #2c3e50;    /* Darker background/accents */
+  --secondary-blue: #34495e;  /* Slightly lighter for panels */
+  --accent-blue: #3498db;     /* Bright accent color */
+  --text-light: #ecf0f1;      /* Light text for dark backgrounds */
+  --text-dark: #2c3e50;       /* Dark text for light elements */
+  --border-color: #5d6d7e;    /* Border color */
+
+  /* Image URLs - YOU WILL EDIT THESE */
+  --bg-image-main: url('https://archive.org/download/shion-1/shion%20%2810%29.jpg'); /* Main top banner */
+  --hero-image: url('https://archive.org/download/shion-1/shion%20%289%29.png'); /* Tomboy character image */
 }
 
-/* Global Reset & Box Sizing */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/*
+////////////////////////////////////////////////////////////////////////////////
+// GLOBAL STYLES & RESET (Minimal)
+////////////////////////////////////////////////////////////////////////////////
+*/
 
-/* Base Body Styles */
-body {
-  background: var(--main-dark-bg); /* Default fallback for content area */
-  color: var(--text-ink);
-  font-family: var(--font-body);
-  line-height: 1.8;
-  overflow-x: hidden;
-  position: relative;
-}
-
-/* === FULL SITE BACKGROUND - MODIFIED TO MATCH BUNNY'S STRATEGY === */
-html,
 body,
 .ant-layout,
 .ant-layout-content {
-  background-color: var(--main-dark-bg) !important; /* Ensure base color is dark */
-  background-image: 
-    linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(40, 42, 74, 0.7)), /* Dark overlay */
-    url('https://archive.org/download/shion-1/shion%20%2810%29.jpg') !important; /* Replace with your desired full site background */
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important; /* Stays fixed during scroll */
-  min-height: 100vh; /* Ensure it covers the full viewport height */
+  background: var(--primary-blue) !important;
+  font-family: var(--font-body) !important;
+  color: var(--text-light) !important;
 }
 
-/* === TOP BANNER IMAGE (HERO SHOT) - ADAPTED FROM BUNNY'S body::before === */
 body::before {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: min(45vh, 520px); /* Adjust height as desired for your banner */
-  background: 
-    linear-gradient(180deg, rgba(26, 26, 46, 0) 0%, rgba(26, 26, 46, 0.7) 60%, var(--main-dark-bg) 100%), 
-    url('YOUR_HERO_BANNER_URL') center center/cover no-repeat; /* Your Tomboy character's hero shot */
+  height: min(45vh, 520px); /* Adjust height as needed */
+  background: linear-gradient(180deg, rgba(44, 62, 80, 0) 0%, rgba(44, 62, 80, 0.7) 60%, var(--primary-blue) 100%), var(--bg-image-main) center center/cover no-repeat;
   pointer-events: none;
-  z-index: 0; /* Keep this low so content is on top */
-  animation: pan-background 60s ease-in-out infinite; /* Optional subtle animation */
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
-  will-change: transform;
-  -webkit-mask-image: linear-gradient(to bottom, black 98%, transparent 100%); /* Fades bottom edge */
+  z-index: 0;
+  animation: pan-background 60s ease-in-out infinite; /* Keep if you like the animation */
+  box-shadow: 0 2px 2px 0px var(--primary-blue), 0 3px 3px 0px var(--primary-blue), inset 0 -5px 10px -5px var(--primary-blue);
+  -webkit-mask-image: linear-gradient(to bottom, black 98%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 98%, transparent 100%);
 }
 
-/* Overlay effect - similar to your original, now for subtle glow */
+/* Chibi version of her in the bottom right corner */
 body::after {
+  content: "";
+  position: fixed;
+  bottom: 10px; /* Adjust as needed */
+  right: 10px;  /* Adjust as needed */
+  width: 150px; /* Adjust size as needed */
+  height: 150px; /* Adjust size as needed */
+  background: url('https://archive.org/download/shion-1/shion%20%289%29.png') center center/contain no-repeat; /* Chibi image URL */
+  z-index: 9999; /* Ensure it's on top */
+  pointer-events: none; /* Allows clicks to pass through */
+  animation: chibi-bounce 3s ease-in-out infinite alternate; /* Optional animation */
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////
+// test
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+.bb-sec {
+  font-family: var(--font-body);
+  position: relative;
+  --gap: 20px;
+  --hero-over: clamp(80px, 10vw, 200px);
+  overflow: visible !important;
+}
+
+.bb-wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 8px;
+  overflow: visible !important;
+}
+
+.bb-header {
+  margin-bottom: 24px;
+}
+
+.bb-title {
+  font-family: var(--font-heading);
+  font-size: clamp(88px, 12vw, 150px) !important;
+  line-height: 1 !important;
+  font-weight: 700 !important; /* Make it bolder for tomboy feel */
+  color: var(--accent-blue) !important;
+  margin: 0 0 12px !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase; /* More assertive */
+  animation: accentGlow 2.5s ease-in-out infinite;
+}
+
+.bb-tagline {
+  font-size: clamp(24px, 2vw, 22px) !important;
+  line-height: 1.7 !important;
+  font-weight: 400 !important;
+  color: var(--text-light) !important;
+  max-width: none !important;
+  width: auto !important;
+}
+
+.bb-intros {
+  background: var(--secondary-blue); /* Panel background */
+  padding: clamp(16px, 2vw, 24px);
+  position: relative;
+  overflow: visible !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.bb-section-title {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: clamp(48px, 4vw, 62px);
+  font-weight: 700;
+  margin: 0 0 clamp(10px, 1.5vw, 14px);
+  color: var(--accent-blue);
+  display: flex;
+  align-items: center;
+  gap: .6em;
+  line-height: 1.2;
+}
+
+.bb-card {
+  padding: clamp(16px, 2vw, 24px);
+  margin-bottom: 24px;
+  background: var(--secondary-blue); /* Panel background */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.bb-card p {
+  font-size: 0.9em;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--text-light);
+  font-weight: 400;
+}
+
+.bb-meta-hdr {
+  padding: 10px 0;
+  font-weight: 700; /* Bolder header */
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--accent-blue);
+}
+
+.bbx-hero,
+.bb-top-content,
+.bb-bottom-content {
+  min-width: 0 !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.bbx-band {
+  --bleed: 500px;
+  z-index: 10;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start !important;
+  position: relative !important;
+  margin-top: calc(-1*var(--bleed)) !important;
+  padding-top: var(--bleed) !important;
+  overflow: visible !important;
+}
+
+.bbx-band::before {
+  content: "";
+  position: absolute;
+  left: calc(50% + 10px);
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--hero-image) center bottom/cover no-repeat; /* Tomboy character */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bb-top-content,
+.bb-bottom-content {
+  grid-column: 1;
+}
+
+.bbx-hero {
+  grid-column: 2;
+}
+
+/* Chapters (Paths) */
+.bb-intro-list {
+  list-style: none;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+	perspective: 1800px;
+}
+
+.bb-intro-list li {
+  background: var(--text-light); /* Light background for chapters */
+  color: var(--text-dark); /* Dark text for chapters */
+  padding: 16px 16px 16px 80px;
+  position: relative;
+  counter-increment: scn;
+  font-size: 1.2em;
+  border-radius: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+  transition: all .6s cubic-bezier(.25, 1, .5, 1);
+  overflow: hidden;
+  --rot: 0deg;
+  --dx: 0px;
+  --dy: 0px;
+  --rx: 0;
+  --ry: 0;
+  transform-origin: center;
+  transform: translate(var(--dx), var(--dy)) rotate3d(var(--rx), var(--ry), 1, var(--rot));
+}
+
+.bb-intro-list li+li {
+  margin-top: -42px !important; /* Keep the overlap */
+}
+
+/* Scatter effect - Adjusted for 6 paths */
+.bb-intro-list li:nth-child(6n+1) { transform: translateX(-3px) translateY(1px) rotate(-1.5deg) !important; }
+.bb-intro-list li:nth-child(6n+2) { transform: translateX(6px) translateY(-2px) rotate(2.5deg) !important; }
+.bb-intro-list li:nth-child(6n+3) { transform: translateX(8px) translateY(1px) rotate(-2deg) !important; }
+.bb-intro-list li:nth-child(6n+4) { transform: translateX(-2px) translateY(2px) rotate(-1.5deg) !important; }
+.bb-intro-list li:nth-child(6n+5) { transform: translateX(5px) translateY(-1px) rotate(2.5deg) !important; }
+.bb-intro-list li:nth-child(6n+6) { transform: translateX(8px) rotate(-2deg) !important; }
+
+.bb-intro-list li::before {
+  content: counter(scn, decimal-leading-zero);
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-heading);
+  font-size: 42px;
+  color: var(--accent-blue);
+  z-index: 1;
+  transition: all .4s ease;
+  animation: accentGlow 2.5s ease-in-out infinite; /* Glow effect on numbers */
+}
+
+.bb-intro-list li::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  height: 0;
+  background-image: var(--bg-image); /* This will be set inline in HTML */
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: all .6s cubic-bezier(.25, 1, .5, 1);
+  z-index: 0;
+}
+
+.bb-intro-list li:hover {
+  padding-top: 240px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .4);
+  transform: scale(1.08) rotate(0) !important;
+  z-index: 10;
+  animation: none;
+}
+
+.bb-intro-list li:hover::after {
+  opacity: 1;
+  height: 200px;
+}
+
+.bb-intro-list li:hover::before {
+  top: auto;
+  bottom: 12px;
+  transform: translateY(0);
+}
+
+/* Author's Note */
+.bb-note {
+  font-family: var(--font-body); /* Using body font for consistency */
+  font-size: 0.9em !important;
+  font-weight: 400;
+  color: var(--text-light);
+}
+
+/* Star sparkle effect for the main section */
+.bb-sec::before {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 30% 40%, rgba(255, 77, 109, 0.1), transparent 60%),
-              radial-gradient(circle at 70% 60%, rgba(255, 138, 101, 0.1), transparent 60%);
-  animation: warmGlow 8s ease-in-out infinite;
-  z-index: -1;
-  pointer-events: none; /* Allows clicks to pass through */
+  height: min(45vh, 520px);
+  z-index: 1;
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--accent-blue) 1px, transparent 1px), radial-gradient(circle, var(--accent-blue) 1.5px, transparent 1.5px), radial-gradient(circle, var(--text-light) 1px, transparent 1px);
+  background-repeat: repeat;
+  background-size: 150px 150px, 250px 250px, 350px 350px;
+  animation: sparkle-fall 20s linear infinite;
+  animation-delay: 1s;
+  filter: drop-shadow(0 0 8px var(--accent-blue)) drop-shadow(0 0 10px #6fa8dc); /* Blue glow */
 }
 
-@keyframes warmGlow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.8; }
+/*
+////////////////////////////////////////////////////////////////////////////////
+// ANIMATIONS & KEYFRAMES
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+@keyframes pan-background {
+  0% { transform: scale(1.2) translateX(-5%) translateY(1px); }
+  50% { transform: scale(1.2) translateX(5%) translateY(1px); }
+  100% { transform: scale(1.2) translateX(-5%) translateY(1px); }
 }
 
-/* Main Content Wrapper */
-.family-wrapper { /* Renamed from your previous .family-wrapper to .tomboy-wrapper for clarity */
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 0 30px;
-  position: relative; /* Ensure wrapper elements are above backgrounds */
-  z-index: 1; /* Place content above body::before and ::after */
+@keyframes accentGlow {
+  0%, 100% { text-shadow: 0 0 5px rgb(from var(--accent-blue) r g b / .2); }
+  50% { text-shadow: 0 0 20px rgb(from var(--accent-blue) r g b / .7); }
 }
 
-/* Character Names Section */
-.family-header { /* Retained for now, but consider renaming to .char-header or .intro-header */
-  text-align: center;
-  margin-bottom: 50px;
-  background: var(--header-panel-bg);
-  padding: 50px 40px;
-  border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-  border: 3px solid rgba(255, 77, 109, 0.3); /* Accent border */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.main-title {
-  font-family: var(--font-heading);
-  font-size: 4.5em; /* clamp(3em, 8vw, 4.5em); for responsiveness */
-  font-weight: 700;
-  color: var(--accent-color);
-  margin-bottom: 15px;
-  text-shadow: 0 0 15px rgba(255, 77, 109, 0.6); /* Glowing text shadow */
-  letter-spacing: 2px;
+@keyframes puppetGlide {
+  0% { transform: translateY(60vh) rotate(-1deg); opacity: 0; }
+  100% { transform: translateY(0) rotate(0); opacity: 1; }
 }
 
-.character-names {
-  font-family: var(--font-flavor); /* Playful font for names */
-  font-size: 2em;
-  color: var(--text-ink);
-  margin-top: 20px;
-  font-weight: 600;
-  line-height: 1.4;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+@keyframes sparkle-fall {
+  0% { background-position: 0 -200px, 0 -200px, 0 -200px; opacity: 0; }
+  90% { opacity: .8; }
+  100% { background-position: 0 650px, 0 500px, 0 700px; opacity: 0; }
 }
 
-/* Description Section */
-.description-section {
-  background: var(--description-bg);
-  padding: 45px;
-  border-radius: 15px;
-  margin: 40px 0;
-  border-left: 5px solid var(--accent-color);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+@keyframes chibi-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); } /* Adjust bounce height */
 }
 
-.description-text {
-  font-family: var(--font-body);
-  font-size: 1.4em;
-  color: var(--text-ink);
-  text-align: center;
-  font-weight: 400; /* Regular weight for readability */
-  font-style: italic;
-}
-
-/* Second Image Above Scenarios (Featured Item) */
-.featured-image {
-  width: 100%;
-  height: 400px; /* Adjust as needed */
-  margin: 50px 0;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-  border: 4px solid rgba(255, 77, 109, 0.4);
-}
-
-.featured-img { /* This div acts as the image container */
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background: 
-    linear-gradient(135deg, rgba(26, 26, 46, 0.3), rgba(255, 77, 109, 0.3)), /* Subtle accent tint */
-    url('YOUR_FEATURED_ITEM_URL') center/cover no-repeat; /* Your featured item image */
-}
-
-/* Scenarios Section */
-.scenarios-section {
-  margin: 60px 0;
-}
-
-.scenarios-title {
-  font-family: var(--font-heading);
-  font-size: 3em;
-  color: var(--accent-color);
-  text-align: center;
-  margin-bottom: 40px;
-  font-weight: 700;
-  text-shadow: 0 0 10px rgba(255, 77, 109, 0.4);
-}
-
-/* Scenario Table */
-.scenario-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 25px;
-}
-
-.scenario-row {
-  position: relative;
-  height: 180px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.scenario-row:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* Scenario Row backgrounds - REPLACE THESE URLs */
-.scenario-row.path-1 { /* Renamed from .kitchen */
-  background-image: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(255, 77, 109, 0.5)),
-                    url('YOUR_SCENARIO_1_URL'); /* Hangout/Creative Corner */
-}
-
-.scenario-row.path-2 { /* Renamed from .living-room */
-  background-image: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(100, 100, 150, 0.5)),
-                    url('YOUR_SCENARIO_2_URL'); /* Gaming/Chill Zone */
-}
-
-.scenario-row.path-3 { /* Renamed from .bedroom */
-  background-image: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(70, 180, 100, 0.5)),
-                    url('YOUR_SCENARIO_3_URL'); /* Outdoor Adventure */
-}
-
-.scenario-row.path-4 { /* Renamed from .dining-room */
-  background-image: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(200, 100, 70, 0.5)),
-                    url('YOUR_SCENARIO_4_URL'); /* Music/Expression Spot */
-}
-
-.scenario-row.path-5 { /* New Path */
-  background-image: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(150, 150, 70, 0.5)),
-                    url('YOUR_SCENARIO_5_URL'); /* Study/Work Nook */
-}
-
-.scenario-row.path-6 { /* New Path */
-  background-image: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(100, 170, 200, 0.5)),
-                    url('YOUR_SCENARIO_6_URL'); /* Comfort/Relaxation */
-}
-
-
-.scenario-content {
-  display: grid;
-  grid-template-columns: 80px 1fr 2fr;
-  gap: 20px;
-  align-items: center;
-  height: 100%;
-  padding: 30px;
-  color: var(--text-ink); /* Ensure white text on dark backgrounds */
-}
-
-.scenario-number {
-  font-family: var(--font-heading);
-  font-size: 3.5em;
-  font-weight: 700;
-  color: var(--accent-color); /* Number in accent color */
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
-  text-align: center;
-}
-
-.scenario-title {
-  font-family: var(--font-body);
-  font-size: 1.8em;
-  font-weight: 700;
-  color: var(--text-ink);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-}
-
-.scenario-description {
-  font-family: var(--font-body);
-  font-size: 1.1em;
-  color: var(--text-muted); /* Slightly muted for description */
-  line-height: 1.6;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-}
-
-/* Author Note Section */
-.author-section {
-  margin: 70px 0 100px 0; /* Added more bottom margin for chibi */
-  padding: 50px;
-  background: var(--header-panel-bg);
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-  border: 3px solid rgba(255, 77, 109, 0.3);
-  position: relative;
-}
-
-.author-section::before {
-  content: '⚡'; /* Changed heart to lightning bolt for tomboy vibe */
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2.5em;
-  color: var(--accent-color);
-}
-
-.author-title {
-  font-family: var(--font-heading);
-  font-size: 2.5em;
-  color: var(--accent-color);
-  margin-bottom: 20px;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.author-note {
-  font-family: var(--font-flavor); /* Playful font for note */
-  font-size: 2em;
-  color: var(--text-ink); /* Changed to text-ink for better contrast */
-  font-weight: 700;
-  line-height: 1.5;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-}
-
-/* === CHIBI COMPANION (HTML REQUIRED) === */
-/* You need to add this to your HTML: <img src="YOUR_CHIBI_IMAGE_URL" class="chibi-companion" alt="Tomboy Chibi"> */
-.chibi-companion {
-  position: fixed;
-  bottom: 20px; /* Distance from bottom */
-  right: 20px; /* Distance from right */
-  width: 120px; /* Size of the chibi. Adjust as needed (e.g., 80px-150px) */
-  height: auto; /* Maintain aspect ratio */
-  z-index: 9999; /* Make sure it's on top of everything else */
-  pointer-events: none; /* Allows clicks to pass through to elements beneath */
-  animation: floatEffect 3s ease-in-out infinite alternate; /* Subtle floating animation */
-}
-
-@keyframes floatEffect {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-8px); } /* Moves slightly up and down */
-}
-
-/* Button Styling (Adapted for theme) */
-button,
-.btn,
-input[type="submit"],
-input[type="button"],
-.button {
-  background: linear-gradient(135deg, var(--accent-color) 0%, darken(var(--accent-color), 10%) 100%) !important;
-  border: 2px solid var(--accent-color) !important;
-  color: var(--main-dark-bg) !important; /* Dark text on accent button */
-  font-family: var(--font-body) !important;
-  font-size: 1em !important;
-  font-weight: 700 !important;
-  padding: 14px 35px !important;
-  border-radius: 50px !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  text-transform: uppercase !important;
-  letter-spacing: 1px !important;
-  box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4) !important;
-}
-
-button:hover,
-.btn:hover,
-input[type="submit"]:hover,
-input[type="button"]:hover,
-.button:hover {
-  background: linear-gradient(135deg, darken(var(--accent-color), 10%) 0%, var(--accent-color) 100%) !important;
-  box-shadow: 0 8px 30px rgba(255, 77, 109, 0.6) !important;
-  transform: translateY(-2px) !important;
-}
-
-/* Input Fields (Adapted for theme) */
-input[type="text"],
-input[type="email"],
-textarea,
-select {
-  background: var(--panel-bg) !important;
-  border: 2px solid rgba(255, 77, 109, 0.5) !important; /* Accent border */
-  color: var(--text-ink) !important;
-  font-family: var(--font-body) !important;
-  padding: 12px !important;
-  border-radius: 10px !important;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--accent-color) !important;
-  box-shadow: 0 0 15px rgba(255, 77, 109, 0.4) !important;
-  outline: none !important;
-}
-
-/* Scrollbar (Adapted for theme) */
-::-webkit-scrollbar {
-  width: 14px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--main-dark-bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--accent-color), darken(var(--accent-color), 15%));
-  border-radius: 10px;
-  border: 2px solid var(--main-dark-bg);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, darken(var(--accent-color), 15%), var(--accent-color));
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .main-title {
-    font-size: 2.5em;
+/*
+////////////////////////////////////////////////////////////////////////////////
+// RESPONSIVE & MEDIA QUERIES (ADAPTED)
+////////////////////////////////////////////////////////////////////////////////
+*/
+@media(min-width:769px) {
+  .bbx-band {
+    transform: none !important;
+    margin-left: 0 !important;
   }
-  
-  .character-names {
-    font-size: 1.5em;
+  .bbx-band .bb-intros {
+    padding: clamp(14px, 1.6vw, 18px) !important;
+    margin: 0 !important;
+    max-width: 100% !important;
   }
-  
-  .scenario-content {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 20px;
+  .bbx-band .bb-section-title {
+    margin: 0 0 10px !important;
   }
-  
-  .scenario-number {
-    font-size: 2em;
+  .bbx-band .bb-intro-list {
+    padding-left: 0 !important;
   }
-  
-  .scenario-title {
-    font-size: 1.3em;
+}
+@media(max-width:768px) {
+  .bbx-band {
+    grid-template-columns: 1fr !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    overflow: visible !important;
   }
-  
-  .scenario-row {
-    height: auto;
-    min-height: 200px;
+  .bb-top-content { grid-row: 1; }
+  .bbx-hero { grid-column: 1; grid-row: 2; }
+  .bb-bottom-content { grid-row: 3; }
+  .bbx-hero {
+    background: var(--hero-image) top center/cover no-repeat !important;
+    min-height: clamp(260px, 50vh, 560px) !important;
   }
-  
-  .featured-image {
-    height: 250px;
+  .bb-intros { max-width: 100% !important; }
+  .bbx-band .bb-intros {
+    margin: 0 !important;
+    padding: 16px !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
   }
-  
-  .family-wrapper { /* .tomboy-wrapper */
-    padding: 0 20px;
-    margin: 40px auto;
+  :is(h1, h2, h3, h4, h5, h6).ant-typography,
+  .ant-typography[class*="css-"],
+  .msg-mkdn-container.font-size-message,
+  .msg-mkdn-container.font-size-message>*,
+  .sc-beySPh.eewLKS.msg-mkdn-container.font-size-message,
+  .sc-beySPh.eewLKS.msg-mkdn-container.font-size-message>* {
+    max-width: none !important;
+    width: 100% !important;
   }
-
-  .chibi-companion {
-    width: 90px; /* Smaller chibi on mobile */
-    bottom: 15px;
-    right: 15px;
+  body::after { /* Adjust chibi for mobile */
+    width: 100px;
+    height: 100px;
+    bottom: 5px;
+    right: 5px;
+  }
+}
+@media(max-width:480px) {
+  .bb-intros { max-width: 100% !important; }
+  .bbx-hero {
+    min-height: clamp(240px, 52vh, 520px) !important;
+    background-position: top center !important;
+  }
+}
+@media(hover:hover) {
+  .bb-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .06) inset, 0 6px 14px rgba(0, 0, 0, .3);
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }
 
-/* Chub.ai Overrides (Copied from Bunny's CSS, essential!) */
+/*
+////////////////////////////////////////////////////////////////////////////////
+// CHUB.AI OVERRIDES (Minimal & Adapted)
+////////////////////////////////////////////////////////////////////////////////
+*/
 h3.ant-typography,
 h5.ant-typography,
 div.msg-mkdn-container:not(:has(.bb-sec)),
 h4.ant-typography.mt-8,
 h4.ant-typography.mt-8+div {
-  display: none !important;
+  display: none !important; /* Hide elements you don't want */
 }
 .ant-layout-footer {
-  display: none !important;
-}
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag {
-  background: rgba(255, 255, 255, .5) !important;
-  color: #000 !important;
-  border: none !important;
-  padding: .15em .55em !important;
-  font-size: 1rem !important;
-  font-family: var(--font-flavor);
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  opacity: 1 !important;
-  transition: background .2s, color .2s;
-  border-radius: 4px !important;
-}
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover {
-  background: #000 !important;
-  color: #fff !important;
-}
-.ant-space.ant-space-horizontal.ant-space-align-center {
-  max-height: none !important;
-  overflow: visible !important;
-  flex-wrap: wrap !important;
-}
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item {
-  transition: transform .2s ease-in-out;
-}
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:nth-child(4n+1) {
-  transform: rotate(-2.5deg);
-}
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:nth-child(4n+2) {
-  transform: rotate(1.8deg);
-}
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:nth-child(4n+3) {
-  transform: rotate(3deg);
-}
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:nth-child(4n+4) {
-  transform: rotate(-1.5deg);
-}
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-space-item:hover {
-  transform: rotate(0deg) scale(1.1);
-  z-index: 10;
-}
-.ant-ribbon.ant-ribbon-placement-end,
-.no-vertical-anything *,
-div#chara-list {
   display: none !important;
 }
 .ant-layout-header,
@@ -519,30 +469,10 @@ div#chara-list {
   background-color: rgb(0, 0, 0, 0) !important;
 }
 
-button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
-  position: fixed !important;
-  right: 24px !important;
-  bottom: 24px !important;
-  z-index: 2147483647 !important;
-}
-@media(max-width:785px) {
-  button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
-    right: 16px !important;
-    bottom: 16px !important;
-    padding: 6px 10px !important;
-    font-size: 12px !important;
-    line-height: 1 !important;
-  }
-}
+/* Buttons - keep generic and simple, remove specific bunnyUI styling */
 button.ant-btn {
-  position: relative;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: .5em;
-  white-space: nowrap;
+  font-family: var(--font-body) !important;
   font-weight: 700 !important;
-  font-family: var(--font-body); /* Changed to body font */
-  font-size: 18px !important;
   height: 48px !important;
   min-width: 64px !important;
   padding: .5em 1.4em !important;
@@ -558,54 +488,77 @@ button.ant-btn:active {
   transform: translateY(1px);
 }
 button.ant-btn.ant-btn-default {
-  background: var(--panel-bg) !important; /* Dark panel bg for default buttons */
-  color: var(--text-ink) !important;
-  border: 0.5px solid var(--text-ink) !important;
-  box-shadow: 0px 2px 0 var(--text-ink);
+  background: var(--primary-blue) !important;
+  color: var(--text-light) !important;
+  border: 1px solid var(--accent-blue) !important;
 }
 button.ant-btn.ant-btn-primary {
-  background: var(--accent-color) !important;
-  color: var(--main-dark-bg) !important;
-  border: 0.5px solid var(--main-dark-bg) !important;
-  box-shadow: 0px 2px 0 var(--main-dark-bg) !important;
+  background: var(--accent-blue) !important;
+  color: var(--text-dark) !important;
+  border: 1px solid var(--primary-blue) !important;
 }
-button.ant-btn .ml-1,
-div.flex.flex-wrap.justify-end [class*=ml-] {}
-button.ant-btn:has(svg.lucide-messages-square)::after,
-button.ant-btn.ant-btn-default:has(.anticon-star)::after {
-  content: "";
-  position: absolute;
-  inset: -2px !important;
-  border-radius: inherit;
-  background: 0 0;
-  box-shadow: 0 0 0 0 var(--sonar-color);
-  animation: 2.8s ease-out infinite btn-sonar !important;
-  pointer-events: none;
-  z-index: 1;
+
+/* Other general Chub.ai overrides */
+:is(h1, h2, h3).ant-typography[class*=css-] {
+  font-size: clamp(30px, 4vw, 38px) !important;
+  line-height: 1.15 !important;
+  font-weight: 700 !important;
+  color: var(--text-light) !important;
+  margin: 0 0 6px !important;
+  letter-spacing: 0 !important;
+  max-width: 50%;
 }
-button.ant-btn.ant-btn-default:has(.anticon-star)::after {
-  --sonar-color: var(--accent-color);
+.msg-mkdn-container.font-size-message {
+  font-size: clamp(18px, 1.8vw, 20px) !important;
+  line-height: 1.7 !important;
+  font-weight: 400 !important;
+  color: var(--text-light) !important;
+  max-width: none !important;
+  width: auto !important;
 }
-button.ant-btn:has(svg.lucide-messages-square)::after {
-  --sonar-color: var(--accent-color);
+.msg-mkdn-container.font-size-message>:is(h1, h2, h3, p, blockquote, ul, ol):has(~.bb-sec) {
+  max-width: 50% !important;
 }
-button.ant-btn:has(svg.lucide-messages-square) {
-  font-size: 18px !important;
-  font-weight: 800 !important;
-  height: 64px !important;
-  padding: 0 1.8em 0 1.8em;
-  border-radius: 10px !important;
-  background: var(--accent-color) !important;
-  color: var(--main-dark-bg) !important;
-  border: 2px solid var(--text-ink) !important;
-  outline: 1px solid var(--main-dark-bg);
-  box-shadow: .5px .5px 0 0 var(--text-ink), 1px 1px 0 0 var(--text-ink), 1.5px 1.5px 0 0 var(--text-ink), 2px 2px 0 0 var(--text-ink), 2.5px 2.5px 0 0 var(--text-ink), 3px 3px 0 0 var(--text-ink), 0 0 0 2px var(--panel-bg), .5px .5px 0 2px var(--panel-bg), 1px 1px 0 2px var(--panel-bg), 1.5px 1.5px 0 2px var(--panel-bg), 2px 2px 0 2px var(--panel-bg), 2.5px 2.5px 0 2px var(--panel-bg), 3px 3px 0 2px var(--panel-bg), 3.5px 3.5px 0 2px var(--panel-bg), 4px 4px 0 2px var(--panel-bg);
-  z-index: 10;
-  transition: background .25s, color .25s, box-shadow .25s, transform .15s;
+.msg-mkdn-container.font-size-message>:where(h1, h2, h3, p, blockquote, ul, ol, pre) {
+  max-width: 50% !important;
+  margin-right: auto;
 }
-button.ant-btn:has(svg.lucide-messages-square):hover {
-  background: var(--text-ink) !important;
-  color: var(--main-dark-bg) !important;
-  box-shadow: none !important;
-  border-color: var(--accent-color) !important;
+
+.bbx-band::before {
+  transform: translateY(60vh) rotate(-1deg);
+  animation: 2.2s cubic-bezier(.25, 1, .5, 1) both puppetGlide;
+}
+@media(prefers-reduced-motion:reduce) {
+  .bbx-band::before {
+    animation: none;
+    transform: none;
   }
+}
+@media(max-width:768px) {
+  .msg-mkdn-container.font-size-message p {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    inline-size: 100% !important;
+    max-inline-size: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+}
+.ant-collapse-content.ant-collapse-content-active {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25));
+  border: none !important;
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+.ant-col.text-left [class*=ant-image] .ant-image-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform .28s ease, filter .28s ease;
+  will-change: transform, filter;
+}
+header.ant-layout-header{
+  z-index: 99999 !important;
+       }
