@@ -1,7 +1,7 @@
 /* Tomboy Girlfriend Theme by Edison */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600;700&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Lato:wght@400;700&family=Bangers&display=swap');
 
-/* General Styling */
+/* General Styles */
 * {
   margin: 0;
   padding: 0;
@@ -9,306 +9,291 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  line-height: 1.7;
-  color: #333; /* Darker text for readability */
-  background-color: #f0f0f0; /* Fallback body background, main is on html */
+  background-color: #f0f0f0; /* Light gray fallback for consistency */
+  color: #333;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
 }
 
-/* Full Site Background */
+/* --- FULL SITE BACKGROUND (Urban Edge / Skate Park / Nature Trail) --- */
 html, body {
-  background-color: #2c3e50; /* Base dark blue-gray */
+  background-color: #2c3e50; /* Darker base color for contrast */
   background-image: 
-    linear-gradient(135deg, rgba(44, 62, 80, 0.7), rgba(52, 73, 94, 0.7)), /* Dark, subtle overlay */
-    url('YOUR_FULL_SITE_BACKGROUND_IMAGE_URL'); /* Suggested: Faded denim, leather texture, blurred outdoor scene */
+    linear-gradient(135deg, rgba(52, 73, 94, 0.7), rgba(44, 62, 80, 0.7)), /* Darker, cooler gradient overlay */
+    url('YOUR_FULL_SITE_BACKGROUND_IMAGE_URL'); /* Example: Blurred skate park, urban alley, forest trail */
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
-/* Main Wrapper for Content */
-.character-wrapper {
+/* Content Wrapper */
+.tomboy-wrapper {
   max-width: 960px; /* Slightly wider for a more open feel */
   margin: 60px auto;
-  padding: 0 25px;
-  background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white for content area */
-  border-radius: 15px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  padding: 0 30px;
   position: relative;
-  z-index: 10; /* Ensure content is above backgrounds */
+  z-index: 10; /* Ensure content is above backgrounds and chibi */
 }
 
-/* Character Header */
-.character-header {
+/* --- CHARACTER HEADER (Main Title & Names) --- */
+.tomboy-header {
   text-align: center;
   margin-bottom: 50px;
-  padding: 60px 40px;
-  border-radius: 15px;
-  overflow: hidden; /* To contain background image */
-  position: relative;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  background: 
-    linear-gradient(135deg, rgba(69, 90, 100, 0.8), rgba(84, 110, 122, 0.8)), /* Muted blue-gray overlay */
-    url('YOUR_HEADER_BACKGROUND_IMAGE_URL') center/cover no-repeat; /* Suggested: Action shot, candid laugh */
-}
-
-.character-header::before { /* Optional: subtle texture on header */
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('OPTIONAL_SUBTLE_TEXTURE_URL') center/cover repeat; /* e.g., subtle grunge, canvas texture */
-  opacity: 0.1;
-  z-index: -1;
+  background: linear-gradient(135deg, rgba(236, 240, 241, 0.95), rgba(189, 195, 199, 0.95)); /* Lighter, cooler gradient */
+  padding: 50px 40px;
+  border-radius: 15px; /* Slightly less rounded */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(127, 140, 141, 0.5); /* Muted border */
 }
 
 .main-title {
-  font-family: 'Oswald', sans-serif;
-  font-size: 4.2em;
+  font-family: 'Bangers', cursive; /* More playful, bold font */
+  font-size: 5em; /* Larger, more impactful */
   font-weight: 700;
-  color: #f5f5f5; /* Light color for contrast */
+  color: #e74c3c; /* A pop of energetic red */
   margin-bottom: 10px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-  letter-spacing: 2px;
+  text-shadow: 0 4px 10px rgba(192, 57, 43, 0.4);
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
-.character-tagline { /* Replaced character-names with a more generic tagline */
-  font-family: 'Inter', sans-serif;
-  font-size: 1.5em;
-  color: #b0bec5; /* Lighter gray */
+.character-names {
+  font-family: 'Chakra Petch', sans-serif; /* Techy/modern sans-serif */
+  font-size: 1.8em;
+  color: #34495e; /* Darker, grounded text */
   margin-top: 15px;
   font-weight: 600;
   line-height: 1.3;
 }
 
-/* Description Section */
+/* --- DESCRIPTION SECTION --- */
 .description-section {
-  background-color: #eceff1; /* Light gray background */
+  background: rgba(255, 255, 255, 0.9); /* Mostly white, slightly transparent */
   padding: 40px;
   border-radius: 10px;
   margin: 40px 0;
-  border-left: 6px solid #546e7a; /* Muted blue-gray border */
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #3498db; /* A strong, cool blue accent */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .description-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.2em;
-  color: #455a64; /* Darker blue-gray text */
+  font-family: 'Lato', sans-serif;
+  font-size: 1.3em;
+  color: #555;
   text-align: center;
   font-weight: 400;
-  font-style: italic;
-  line-height: 1.6;
+  font-style: normal; /* No italic, keep it direct */
 }
 
-/* Featured Image (above Scenarios) */
+/* --- FEATURED IMAGE (Tomboy Posing / Activity) --- */
 .featured-image {
   width: 100%;
   height: 450px; /* Slightly taller */
   margin: 50px 0;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
-  border: 4px solid #78909c; /* Muted blue border */
-  position: relative;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  border: 3px solid #3498db; /* Consistent blue border */
+  position: relative; /* For the ::before message */
 }
 
-.featured-img-content { /* Changed to a div to hold the image */
+.featured-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background: 
-    linear-gradient(135deg, rgba(84, 110, 122, 0.4), rgba(120, 144, 156, 0.4)), /* Subtle overlay */
-    url('YOUR_FEATURED_IMAGE_URL') center/cover no-repeat; /* Suggested: Candid outfit shot, relaxing */
+  background: url('YOUR_FEATURED_IMAGE_URL') center/cover no-repeat; /* Example: Chloe on a skateboard */
 }
 
-/* Scenarios Section */
+/* If you still want a placeholder text, otherwise remove this rule */
+.featured-img::before {
+  content: 'YOUR TOMBOY GF FEATURED IMAGE HERE';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.2em;
+  color: #e74c3c;
+  text-align: center;
+  padding: 20px;
+  border: 2px dashed #e74c3c;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  pointer-events: none; /* Allows interaction beneath */
+}
+
+
+/* --- SCENARIOS SECTION --- */
 .scenarios-section {
   margin: 60px 0;
 }
 
 .scenarios-title {
-  font-family: 'Oswald', sans-serif;
-  font-size: 3em;
-  color: #37474f; /* Dark blue-gray */
+  font-family: 'Bangers', cursive;
+  font-size: 3.5em; /* Large and bold */
+  color: #e74c3c; /* Energetic red */
   text-align: center;
   margin-bottom: 40px;
   font-weight: 700;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 /* Scenario Table */
 .scenario-table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0 20px; /* Slightly less spacing */
+  border-spacing: 0 20px; /* Slightly tighter spacing */
 }
 
 .scenario-row {
   position: relative;
-  height: 200px; /* Slightly taller rows */
-  border-radius: 10px;
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px; /* Slightly less rounded */
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent; /* Default transparent border */
 }
 
 .scenario-row:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  border-color: #3498db; /* Highlight with blue on hover */
 }
 
-/* Scenario Row Backgrounds - REPLACE THESE URLs and adjust gradients */
-.scenario-row.path-1 { /* Morning */
-  background-image: 
-    linear-gradient(135deg, rgba(96, 125, 139, 0.75), rgba(69, 90, 100, 0.75)),
-    url('YOUR_PATH1_IMAGE_URL'); /* Suggested: Cozy bedroom */
+/* --- SCENARIO ROW BACKGROUNDS (6 Paths) --- */
+.scenario-row.path-skatepark {
+  background-image: linear-gradient(135deg, rgba(52, 152, 219, 0.75), rgba(46, 204, 113, 0.75)), /* Blue to green */
+                    url('YOUR_SKATEPARK_IMAGE_URL'); /* Example: Skate ramp, park scene */
 }
 
-.scenario-row.path-2 { /* Adventure/Outdoor */
-  background-image: 
-    linear-gradient(135deg, rgba(67, 160, 71, 0.75), rgba(46, 125, 50, 0.75)), /* Green tones */
-    url('YOUR_PATH2_IMAGE_URL'); /* Suggested: Hiking trail, campfire */
+.scenario-row.path-gaming-den {
+  background-image: linear-gradient(135deg, rgba(155, 89, 182, 0.75), rgba(52, 152, 219, 0.75)), /* Purple to blue */
+                    url('YOUR_GAMING_IMAGE_URL'); /* Example: Gaming setup, neon lights */
 }
 
-.scenario-row.path-3 { /* Hobby/Activity */
-  background-image: 
-    linear-gradient(135deg, rgba(100, 120, 140, 0.75), rgba(80, 100, 120, 0.75)), /* Cool blue-gray */
-    url('YOUR_PATH3_IMAGE_URL'); /* Suggested: Gaming, fixing something */
+.scenario-row.path-workshop {
+  background-image: linear-gradient(135deg, rgba(230, 126, 34, 0.75), rgba(241, 196, 15, 0.75)), /* Orange to yellow */
+                    url('YOUR_WORKSHOP_IMAGE_URL'); /* Example: Workbench with tools, car engine */
 }
 
-.scenario-row.path-4 { /* Chill/Relaxation */
-  background-image: 
-    linear-gradient(135deg, rgba(121, 85, 72, 0.75), rgba(93, 64, 55, 0.75)), /* Warm brown tones */
-    url('YOUR_PATH4_IMAGE_URL'); /* Suggested: Living room couch */
+.scenario-row.path-urban-exploration {
+  background-image: linear-gradient(135deg, rgba(44, 62, 80, 0.75), rgba(127, 140, 141, 0.75)), /* Dark gray to light gray */
+                    url('YOUR_URBAN_EXPLORATION_IMAGE_URL'); /* Example: City street, street art */
 }
 
-.scenario-row.path-5 { /* Casual Date */
-  background-image: 
-    linear-gradient(135deg, rgba(255, 152, 0, 0.75), rgba(245, 124, 0, 0.75)), /* Ochre/orange tones */
-    url('YOUR_PATH5_IMAGE_URL'); /* Suggested: Coffee shop, park bench */
+.scenario-row.path-chill-at-home {
+  background-image: linear-gradient(135deg, rgba(39, 174, 96, 0.75), rgba(22, 160, 133, 0.75)), /* Greenish-teal */
+                    url('YOUR_CHILL_AT_HOME_IMAGE_URL'); /* Example: Cozy sofa, messy room */
 }
 
-.scenario-row.path-6 { /* Serious Conversation */
-  background-image: 
-    linear-gradient(135deg, rgba(38, 50, 56, 0.85), rgba(23, 32, 38, 0.85)), /* Very dark, serious tones */
-    url('YOUR_PATH6_IMAGE_URL'); /* Suggested: Dimly lit, thoughtful expressions */
+.scenario-row.path-forest-hike {
+  background-image: linear-gradient(135deg, rgba(243, 156, 18, 0.75), rgba(211, 84, 0, 0.75)), /* Yellow to dark orange */
+                    url('YOUR_FOREST_HIKE_IMAGE_URL'); /* Example: Forest path, mountain view */
 }
 
 .scenario-content {
   display: grid;
   grid-template-columns: 70px 1fr 2fr; /* Slightly smaller number column */
-  gap: 20px;
+  gap: 15px;
   align-items: center;
   height: 100%;
   padding: 25px;
-  color: #fff; /* White text for scenarios */
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .scenario-number {
-  font-family: 'Oswald', sans-serif;
-  font-size: 3em;
+  font-family: 'Bangers', cursive;
+  font-size: 3em; /* Bold and clear */
   font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   text-align: center;
 }
 
 .scenario-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 1.6em;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
 }
 
 .scenario-description {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 1em;
+  color: #f0f0f0; /* Lighter text for readability on dark backgrounds */
   line-height: 1.5;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* Author Note Section */
+/* --- AUTHOR NOTE SECTION --- */
 .author-section {
   margin: 70px 0;
   padding: 50px;
-  background-color: #cfd8dc; /* Lighter blue-gray */
+  background: linear-gradient(135deg, rgba(189, 195, 199, 0.95), rgba(149, 165, 166, 0.95)); /* Muted, cool gradient */
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border: 3px solid #78909c;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(52, 152, 219, 0.5); /* Blue accent border */
   position: relative;
 }
 
 .author-section::before {
-  content: '⚡'; /* Changed icon to something more tomboy/energetic */
+  content: '★'; /* A star instead of a heart */
   position: absolute;
   top: -20px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 2.5em;
-  color: #ff9800; /* Ochre/orange accent */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  color: #e74c3c; /* Red star */
 }
 
 .author-title {
-  font-family: 'Oswald', sans-serif;
-  font-size: 2.5em;
-  color: #37474f; /* Dark blue-gray */
+  font-family: 'Bangers', cursive;
+  font-size: 2.8em;
+  color: #34495e; /* Darker heading */
   margin-bottom: 20px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .author-note {
-  font-family: 'Permanent Marker', cursive; /* A more casual, hand-written font */
+  font-family: 'Chakra Petch', sans-serif; /* Consistent with character names */
   font-size: 1.8em;
-  color: #546e7a; /* Muted blue-gray */
-  font-weight: 400;
+  color: #2c3e50; /* Darker text */
+  font-weight: 600;
   line-height: 1.4;
-  font-style: normal;
+  font-style: italic;
 }
 
-/* Chibi Bot - Always at bottom right of webpage */
-.chibi-bot {
-  position: fixed;
-  bottom: 20px; /* Distance from bottom */
-  right: 20px;  /* Distance from right */
-  width: 150px; /* Adjust size as needed */
-  height: auto;
-  z-index: 1000; /* Ensure it's on top of everything */
-  opacity: 0.9; /* Slightly transparent */
-  transition: transform 0.2s ease-in-out;
-}
-
-.chibi-bot:hover {
-  transform: scale(1.05); /* Slight grow on hover */
-}
-
-/* Button Styling (updated colors for new theme) */
+/* --- BUTTON STYLING --- */
 button,
 .btn,
 input[type="submit"],
 input[type="button"],
 .button {
-  background: linear-gradient(135deg, #78909c 0%, #546e7a 100%) !important; /* Muted blue-gray */
-  border: 2px solid #546e7a !important;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%) !important; /* Cool blue gradient */
+  border: 2px solid #2980b9 !important;
   color: #fff !important;
-  font-family: 'Inter', sans-serif !important;
-  font-size: 1em !important;
+  font-family: 'Chakra Petch', sans-serif !important;
+  font-size: 1.1em !important; /* Slightly larger text */
   font-weight: 600 !important;
-  padding: 14px 35px !important;
-  border-radius: 50px !important;
+  padding: 12px 30px !important; /* Slightly more compact */
+  border-radius: 8px !important; /* More angular */
   cursor: pointer !important;
   transition: all 0.3s ease !important;
   text-transform: uppercase !important;
   letter-spacing: 1px !important;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
 }
 
 button:hover,
@@ -316,93 +301,132 @@ button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover,
 .button:hover {
-  background: linear-gradient(135deg, #546e7a 0%, #78909c 100%) !important;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2) !important;
-  transform: translateY(-2px) !important;
+  background: linear-gradient(135deg, #2980b9 0%, #3498db 100%) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-1px) !important;
 }
 
-/* Input Fields (updated colors) */
+/* --- INPUT FIELDS --- */
 input[type="text"],
 input[type="email"],
 textarea,
 select {
-  background: rgba(236, 239, 241, 0.95) !important; /* Light gray */
-  border: 2px solid #90a4ae !important; /* Muted blue-gray */
-  color: #37474f !important; /* Dark blue-gray */
-  font-family: 'Inter', sans-serif !important;
-  padding: 12px !important;
-  border-radius: 8px !important; /* Slightly less rounded */
+  background: rgba(255, 255, 255, 0.8) !important; /* Light and slightly transparent */
+  border: 2px solid #bdc3c7 !important; /* Muted gray border */
+  color: #333 !important;
+  font-family: 'Lato', sans-serif !important;
+  padding: 10px !important;
+  border-radius: 6px !important; /* Less rounded */
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus,
 textarea:focus,
 select:focus {
-  border-color: #546e7a !important;
-  box-shadow: 0 0 15px rgba(84, 110, 122, 0.3) !important;
+  border-color: #3498db !important; /* Highlight with blue on focus */
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.3) !important;
   outline: none !important;
 }
 
-/* Scrollbar (updated colors) */
+/* --- SCROLLBAR --- */
 ::-webkit-scrollbar {
   width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #cfd8dc; /* Lighter blue-gray */
+  background: #f0f0f0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #78909c, #546e7a); /* Muted blue-gray */
+  background: linear-gradient(180deg, #3498db, #2980b9); /* Blue gradient scrollbar */
   border-radius: 8px;
-  border: 2px solid #cfd8dc;
+  border: 2px solid #f0f0f0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #546e7a, #78909c);
+  background: linear-gradient(180deg, #2980b9, #3498db);
 }
 
-/* Responsive */
+/* --- CHIBI IMAGE (Fixed Bottom Right) --- */
+/* Using ::before for chibi. Ensure no other ::before is active for main body background */
+body::before { 
+  content: '';
+  position: fixed;
+  bottom: 20px; /* Distance from bottom */
+  right: 20px; /* Distance from right */
+  width: 160px; /* Chibi size */
+  height: 160px; /* Chibi size */
+  background: url('https://archive.org/download/shion-1/shion%20%2810%29.png') center/contain no-repeat; /* Transparent PNG */
+  z-index: 1000; /* Extremely high to be always on top */
+  pointer-events: none; /* Allows clicks to pass through */
+  filter: drop-shadow(0 5px 12px rgba(0,0,0,0.4)); /* Stronger shadow for pop */
+  animation: chibiBounce 4s ease-in-out infinite alternate; /* Subtle animation */
+}
+
+@keyframes chibiBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); } /* Gentle up and down movement */
+}
+
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
 @media (max-width: 768px) {
   .main-title {
-    font-size: 2.8em;
+    font-size: 3em;
   }
   
-  .character-tagline {
-    font-size: 1.2em;
+  .character-names {
+    font-size: 1.3em;
+  }
+  
+  .scenarios-title {
+    font-size: 2.5em;
   }
   
   .scenario-content {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 20px;
+    grid-template-columns: 1fr; /* Stack vertically on small screens */
+    gap: 10px;
+    padding: 15px;
   }
   
   .scenario-number {
-    font-size: 2.2em;
+    font-size: 2em;
   }
   
   .scenario-title {
-    font-size: 1.4em;
+    font-size: 1.2em;
+  }
+  
+  .scenario-description {
+    font-size: 0.9em;
   }
   
   .scenario-row {
     height: auto;
-    min-height: 180px;
+    min-height: 150px;
   }
   
   .featured-image {
     height: 300px;
   }
   
-  .character-wrapper {
+  .tomboy-wrapper {
     padding: 0 15px;
     margin: 30px auto;
   }
 
-  .chibi-bot {
-    width: 100px; /* Smaller on mobile */
+  .author-title {
+    font-size: 2em;
+  }
+
+  .author-note {
+    font-size: 1.5em;
+  }
+
+  body::before { /* Adjust chibi size for mobile */
+    width: 120px;
+    height: 120px;
     bottom: 15px;
     right: 15px;
   }
-}
+  }
