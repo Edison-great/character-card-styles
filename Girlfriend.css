@@ -356,7 +356,7 @@ body::before {
   right: 20px; /* Distance from right */
   width: 160px; /* Chibi size */
   height: 160px; /* Chibi size */
-  background: url('https://archive.org/download/shion-1/shion%20%2810%29.png') center/contain no-repeat; /* Transparent PNG */
+  background: url('https://archive.org/download/shion-1/shion%20%289%29.png') center/contain no-repeat; /* Transparent PNG */
   z-index: 1000; /* Extremely high to be always on top */
   pointer-events: none; /* Allows clicks to pass through */
   filter: drop-shadow(0 5px 12px rgba(0,0,0,0.4)); /* Stronger shadow for pop */
