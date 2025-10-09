@@ -19,14 +19,14 @@ body {
 
 /* --- FULL SITE BACKGROUND (Urban Edge / Skate Park / Nature Trail) --- */
 html, body {
-  background-color: #2c3e50; /* Darker base color for contrast */
+  background-color: #2c3e50 !important; /* Darker base color for contrast */
   background-image: 
     linear-gradient(135deg, rgba(52, 73, 94, 0.7), rgba(44, 62, 80, 0.7)), /* Darker, cooler gradient overlay */
-    url('https://archive.org/download/shion-1/shion%20%2810%29.jpg'); /* Example: Blurred skate park, urban alley, forest trail */
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+    url('YOUR_FULL_SITE_BACKGROUND_IMAGE_URL') !important; /* Example: Blurred skate park, urban alley, forest trail */
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
 }
 
 /* Content Wrapper */
