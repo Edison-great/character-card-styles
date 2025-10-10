@@ -356,14 +356,19 @@ header[class*="header"] {
   }
   
   .tg-right {
-    position: relative;
-    top: 0;
-    order: -1;
+    position: relative !important;
+    top: 0 !important;
+    order: -1 !important;
+    display: block !important;
+    width: 100% !important;
   }
   
   .tg-hero {
+    display: block !important;
     height: 60vh !important;
     min-height: 400px !important;
+    width: 100% !important;
+    margin-bottom: 20px !important;
   }
   
   .tg-chibi {
@@ -443,4 +448,4 @@ button.ant-btn:hover {
     animation: none !important;
     transition: none !important;
   }
-		}
+	  }
