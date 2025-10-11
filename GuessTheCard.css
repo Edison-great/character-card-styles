@@ -45,7 +45,8 @@ body::before {
   background-repeat: no-repeat;
   pointer-events: none;
   z-index: 0;
-  filter: brightness(0.6) contrast(1.2);
+  /* Reduced brightness and contrast to make it less intensely dark but still atmospheric */
+  filter: brightness(0.8) contrast(1.0); /* Adjusted from 0.6 brightness, 1.2 contrast */
 }
 
 body::after {
@@ -56,8 +57,10 @@ body::after {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.8) 70%, #0a0a0a 100%),
-    linear-gradient(180deg, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.9) 100%);
+    /* Reduced opacity in the center of the radial gradient */
+    radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.5) 70%, #0a0a0a 100%), /* Adjusted from 0.8 to 0.5 */
+    /* Reduced opacity for the linear gradient to allow more background visibility */
+    linear-gradient(180deg, rgba(10, 10, 10, 0.15) 0%, rgba(10, 10, 10, 0.7) 100%); /* Adjusted from 0.3 and 0.9 */
   pointer-events: none;
   z-index: 0;
 }
@@ -347,10 +350,10 @@ header.ant-layout-header,
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.1) 0%, /* Adjusted from 0.3 to 0.1 */
     transparent 30%,
     transparent 70%,
-    rgba(0, 0, 0, 0.6) 100%
+    rgba(0, 0, 0, 0.4) 100% /* Adjusted from 0.6 to 0.4 */
   );
   pointer-events: none;
   z-index: 2;
@@ -472,194 +475,3 @@ header.ant-layout-header,
   opacity: 0.15;
   z-index: 9998;
   pointer-events: none;
-  background: url('PLACEHOLDER_MASKS_IMAGE') center/contain no-repeat;
-  animation: fadeIn 2s ease-out 2s both;
-  filter: grayscale(1) brightness(1.5);
-}
-
-/* Playing Cards Decoration (Subtle hint) */
-.gtc-cards-hint {
-  position: fixed;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%) rotate(15deg);
-  opacity: 0.1;
-  z-index: 1;
-  pointer-events: none;
-  animation: cardFloat 6s ease-in-out infinite;
-}
-
-.gtc-cards-hint::before,
-.gtc-cards-hint::after {
-  content: "🂡";
-  font-size: 120px;
-  color: var(--crimson);
-  position: absolute;
-  filter: drop-shadow(0 0 10px rgba(220, 20, 60, 0.6));
-}
-
-.gtc-cards-hint::after {
-  content: "🃁";
-  color: var(--gold);
-  transform: translate(40px, 20px) rotate(-10deg);
-}
-
-/* Animations */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.15;
-  }
-}
-
-@keyframes titlePulse {
-  0%, 100% {
-    text-shadow: 
-      0 0 20px rgba(218, 165, 32, 0.8),
-      0 0 40px rgba(220, 20, 60, 0.6),
-      4px 4px 0 var(--blood-red),
-      8px 8px 0 rgba(0, 0, 0, 0.8);
-  }
-  50% {
-    text-shadow: 
-      0 0 30px rgba(218, 165, 32, 1),
-      0 0 60px rgba(220, 20, 60, 0.8),
-      4px 4px 0 var(--blood-red),
-      8px 8px 0 rgba(0, 0, 0, 0.8);
-  }
-}
-
-@keyframes timerBlink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
-@keyframes cardFloat {
-  0%, 100% {
-    transform: translateY(-50%) rotate(15deg);
-  }
-  50% {
-    transform: translateY(-55%) rotate(18deg);
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .gtc-card-deck {
-    max-width: 350px;
-    height: 520px;
-  }
-  
-  .gtc-cards-hint {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .gtc-wrap {
-    padding: 0 16px;
-  }
-  
-  .gtc-top-bar {
-    gap: 20px;
-    padding: 12px 16px;
-  }
-  
-  .gtc-timer-display,
-  .gtc-questions-display {
-    font-size: 22px;
-  }
-  
-  .gtc-card-deck {
-    max-width: 300px;
-    height: 450px;
-  }
-  
-  .gtc-masks {
-    width: 60px;
-    height: 60px;
-    bottom: 16px;
-    left: 16px;
-  }
-}
-
-/* Chub.ai Overrides */
-h3.ant-typography,
-h5.ant-typography,
-div.msg-mkdn-container:not(:has(.gtc-sec)),
-h4.ant-typography.mt-8,
-h4.ant-typography.mt-8+div {
-  display: none !important;
-}
-
-.ant-layout-footer {
-  display: none !important;
-}
-
-button.ant-btn {
-  font-family: var(--font-body) !important;
-  font-weight: 700 !important;
-  background: var(--blood-red) !important;
-  border: 2px solid var(--gold) !important;
-  color: var(--text-light) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  transition: all 0.3s ease !important;
-}
-
-button.ant-btn:hover {
-  background: var(--gold) !important;
-  color: var(--dark-bg) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(218, 165, 32, 0.4) !important;
-}
-
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag {
-  background: rgba(139, 0, 0, 0.3) !important;
-  color: var(--gold) !important;
-  border: 1px solid var(--gold) !important;
-  font-family: var(--font-body) !important;
-  font-weight: 600 !important;
-  transition: all 0.2s ease !important;
-}
-
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover {
-  background: var(--gold) !important;
-  color: var(--dark-bg) !important;
-  transform: scale(1.05) !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-  }
