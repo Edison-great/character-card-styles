@@ -470,7 +470,7 @@ header.ant-layout-header,
   opacity: 0.15;
   z-index: 9998;
   pointer-events: none;
-  background: url('https://archive.org/download/custom-image-1759801622172/Untitled30_20251007122421.png') center/contain no-repeat;
+  background: url('https://archive.org/download/kevin_202510/Untitled49_20251011165629.png') center/contain no-repeat;
   animation: fadeIn 2s ease-out 2s both;
   filter: grayscale(1) brightness(1.5);
 }
