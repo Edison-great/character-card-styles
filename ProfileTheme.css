@@ -26,7 +26,7 @@
 
 /* Background */
 body {
-  background: #0a0a0a !important;
+  background: linear-gradient(180deg, #1a0505 0%, #0a0a0a 50%, #000000 100%) !important;
 }
 
 body::before {
@@ -43,133 +43,263 @@ body::before {
   background-attachment: fixed;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.4;
-  filter: grayscale(0.3) brightness(0.5);
+  opacity: 0.2;
+  filter: brightness(0.4);
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.8) 70%, #0a0a0a 100%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Main profile container */
+/* Main content wrapper */
 .sc-eDvSVe,
-[class*="ProfilePage"] {
+[class*="ProfilePage"],
+main {
   position: relative;
   z-index: 2;
+  background: transparent !important;
 }
 
-/* Profile header section */
-.sc-eDvSVe > div:first-child,
-[class*="profile-header"] {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 60px 20px 40px !important;
-  background: linear-gradient(180deg, 
-    rgba(229, 9, 20, 0.2) 0%, 
-    rgba(10, 10, 10, 0.95) 40%,
-    rgba(10, 10, 10, 0.98) 100%) !important;
-  border-bottom: 3px solid var(--rated-r-red);
-  margin-bottom: 0 !important;
+/* Profile header - Clean centered layout */
+.ant-row.ant-row-middle {
+  background: transparent !important;
+  padding: 40px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
 }
 
-/* Profile avatar - CENTERED */
-.ant-avatar {
-  width: 180px !important;
-  height: 180px !important;
-  border: 5px solid var(--rated-r-red) !important;
+/* Avatar container */
+.ant-col:has(.ant-avatar) {
+  display: flex !important;
+  justify-content: center !important;
+  margin-bottom: 20px !important;
+}
+
+/* Profile avatar - CENTERED & GLOWING */
+.ant-avatar,
+.ant-avatar.ant-avatar-circle {
+  width: 200px !important;
+  height: 200px !important;
+  border: 4px solid var(--rated-r-red) !important;
   box-shadow: 
-    0 0 30px rgba(229, 9, 20, 0.8),
-    0 0 60px rgba(229, 9, 20, 0.4),
-    0 8px 32px rgba(0, 0, 0, 0.8) !important;
-  animation: avatarPulse 3s ease-in-out infinite;
-  margin: 0 auto 30px !important;
-  position: relative;
-  z-index: 10;
+    0 0 40px rgba(229, 9, 20, 0.9),
+    0 0 80px rgba(229, 9, 20, 0.5),
+    0 8px 40px rgba(0, 0, 0, 0.9),
+    inset 0 0 20px rgba(229, 9, 20, 0.3) !important;
+  animation: avatarPulse 3s ease-in-out infinite !important;
+  position: relative !important;
+  z-index: 10 !important;
+  display: block !important;
 }
 
-/* Username styling - GEN3RATED-R with glitch effect */
-h1.ant-typography,
-[class*="username"] {
+/* Username container */
+.ant-col:has(h1.ant-typography) {
+  width: 100% !important;
+  text-align: center !important;
+}
+
+/* Username - GEN3RATED-R with glitch */
+h1.ant-typography {
   font-family: var(--font-title) !important;
-  font-size: clamp(48px, 8vw, 72px) !important;
+  font-size: clamp(56px, 10vw, 84px) !important;
   font-weight: 700 !important;
   text-align: center !important;
-  margin: 20px 0 10px !important;
+  margin: 20px 0 15px !important;
   letter-spacing: 0.15em !important;
-  position: relative;
-  color: var(--text-light) !important;
+  position: relative !important;
+  color: transparent !important;
   text-shadow: none !important;
+  background: transparent !important;
+  line-height: 1.2 !important;
 }
 
-/* GEN3 part - glitching */
-h1.ant-typography::before,
-[class*="username"]::before {
-  content: "GEN3";
+/* GEN3 - glitching layer */
+h1.ant-typography::before {
+  content: "GEN3RATED-R";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   top: 0;
+  width: 100%;
   font-family: var(--font-glitch);
   color: var(--neon-red);
   text-shadow: 
-    0 0 10px var(--neon-red),
-    2px 0 5px rgba(255, 0, 0, 0.8),
-    -2px 0 5px rgba(0, 255, 255, 0.8);
-  animation: glitchFlicker 0.5s infinite alternate;
+    0 0 15px var(--neon-red),
+    3px 0 5px rgba(255, 0, 0, 0.9),
+    -3px 0 5px rgba(0, 255, 255, 0.7);
+  animation: glitchFlicker 0.6s infinite alternate;
   z-index: 1;
-  opacity: 0.9;
 }
 
-/* RATED-R part - stable neon glow */
-h1.ant-typography::after,
-[class*="username"]::after {
-  content: "RATED-R";
+/* RATED-R - stable glow layer */
+h1.ant-typography::after {
+  content: "GEN3RATED-R";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   top: 0;
+  width: 100%;
   color: var(--rated-r-red);
   text-shadow: 
-    0 0 20px var(--rated-r-red),
-    0 0 40px var(--rated-r-red),
-    0 0 60px rgba(229, 9, 20, 0.6);
-  animation: neonGlow 2s ease-in-out infinite;
+    0 0 25px var(--rated-r-red),
+    0 0 50px var(--rated-r-red),
+    0 0 75px rgba(229, 9, 20, 0.7),
+    0 4px 10px rgba(0, 0, 0, 0.8);
+  animation: neonGlow 2.5s ease-in-out infinite;
   z-index: 2;
 }
 
-/* Follower count */
-.ant-typography:has([class*="follower"]),
-[class*="follower-count"] {
-  font-family: var(--font-body);
-  font-size: 16px;
+/* Follower/Following text */
+.ant-typography.text-sm,
+.ant-space-item {
+  font-family: var(--font-body) !important;
+  font-size: 15px !important;
   color: var(--text-muted) !important;
-  text-align: center;
-  margin: 10px 0;
+  text-align: center !important;
 }
 
-/* Tab navigation (Characters, Lorebooks, etc.) */
+/* Mutual Follower badge */
+.ant-tag {
+  background: rgba(229, 9, 20, 0.2) !important;
+  border: 1px solid rgba(229, 9, 20, 0.6) !important;
+  color: var(--text-light) !important;
+  font-family: var(--font-body) !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  padding: 4px 12px !important;
+  transition: all 0.2s ease !important;
+}
+
+.ant-tag:hover {
+  background: var(--rated-r-red) !important;
+  border-color: var(--rated-r-red) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Unfollow button */
+button.ant-btn,
+.ant-btn-default {
+  font-family: var(--font-bold) !important;
+  background: var(--dark-red) !important;
+  border: 2px solid var(--rated-r-red) !important;
+  color: var(--text-light) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  font-size: 14px !important;
+  padding: 8px 24px !important;
+  height: auto !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.3) !important;
+}
+
+button.ant-btn:hover {
+  background: var(--rated-r-red) !important;
+  box-shadow: 0 0 25px rgba(229, 9, 20, 0.7) !important;
+  transform: translateY(-2px) !important;
+  border-color: var(--rated-r-red) !important;
+}
+
+/* Bio container */
+.ant-typography {
+  font-family: var(--font-body) !important;
+  color: var(--text-light) !important;
+  background: transparent !important;
+}
+
+/* Bio headings */
+.ant-typography h1 {
+  font-family: var(--font-title) !important;
+  font-size: clamp(32px, 5vw, 48px) !important;
+  color: var(--text-light) !important;
+  text-align: center !important;
+  margin: 30px 0 20px !important;
+  text-shadow: 0 2px 10px rgba(229, 9, 20, 0.5) !important;
+}
+
+.ant-typography h2 {
+  font-family: var(--font-bold) !important;
+  font-size: clamp(22px, 3vw, 28px) !important;
+  color: var(--rated-r-red) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  margin: 35px 0 15px !important;
+  padding-bottom: 12px !important;
+  position: relative !important;
+  text-shadow: 0 0 15px rgba(229, 9, 20, 0.6) !important;
+}
+
+.ant-typography h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: var(--rated-r-red);
+  box-shadow: 0 0 10px var(--rated-r-red);
+}
+
+.ant-typography h3 {
+  font-family: var(--font-bold) !important;
+  font-size: clamp(20px, 2.5vw, 26px) !important;
+  color: var(--rated-r-red) !important;
+  text-align: center !important;
+  margin: 40px 0 20px !important;
+  text-shadow: 0 0 15px rgba(229, 9, 20, 0.7) !important;
+}
+
+/* Bio paragraphs */
+.ant-typography p {
+  font-family: var(--font-body) !important;
+  font-size: 16px !important;
+  line-height: 1.8 !important;
+  color: var(--text-light) !important;
+  margin-bottom: 18px !important;
+}
+
+.ant-typography strong {
+  color: var(--rated-r-red) !important;
+  font-weight: 700 !important;
+}
+
+.ant-typography em {
+  color: var(--text-muted) !important;
+  font-style: italic !important;
+}
+
+/* Horizontal rules */
+.ant-typography hr {
+  border: none !important;
+  border-top: 2px solid var(--rated-r-red) !important;
+  margin: 30px 0 !important;
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.4) !important;
+}
+
+/* Images in bio */
+.ant-typography img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  border: 3px solid var(--rated-r-red) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8) !important;
+  margin: 20px auto !important;
+  display: block !important;
+}
+
+/* Tab navigation */
 .ant-tabs-nav {
   background: rgba(20, 20, 20, 0.9) !important;
   border-bottom: 2px solid var(--rated-r-red) !important;
   padding: 0 20px !important;
+  backdrop-filter: blur(10px) !important;
 }
 
 .ant-tabs-tab {
   font-family: var(--font-bold) !important;
-  font-size: 16px !important;
+  font-size: 15px !important;
   color: var(--text-muted) !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
+  letter-spacing: 0.08em !important;
   transition: all 0.3s ease !important;
 }
 
@@ -187,14 +317,15 @@ h1.ant-typography::after,
   box-shadow: 0 0 10px var(--rated-r-red) !important;
 }
 
-/* Character cards - Enhanced styling */
+/* Character cards */
 .ant-card {
-  background: var(--card-bg) !important;
+  background: rgba(20, 20, 20, 0.95) !important;
   border: 2px solid rgba(229, 9, 20, 0.3) !important;
   border-radius: 12px !important;
   transition: all 0.3s ease !important;
   overflow: hidden !important;
   position: relative !important;
+  backdrop-filter: blur(10px) !important;
 }
 
 .ant-card::before {
@@ -204,17 +335,14 @@ h1.ant-typography::after,
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    var(--rated-r-red) 50%, 
-    transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, var(--rated-r-red) 50%, transparent 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .ant-card:hover {
   border-color: var(--rated-r-red) !important;
-  box-shadow: 0 8px 32px rgba(229, 9, 20, 0.4) !important;
+  box-shadow: 0 8px 32px rgba(229, 9, 20, 0.5) !important;
   transform: translateY(-4px) !important;
 }
 
@@ -223,101 +351,32 @@ h1.ant-typography::after,
   animation: scanLine 2s linear infinite;
 }
 
-/* Card titles */
 .ant-card-meta-title {
   font-family: var(--font-bold) !important;
   font-size: 18px !important;
   color: var(--text-light) !important;
 }
 
-/* Card descriptions */
 .ant-card-meta-description {
   color: var(--text-muted) !important;
   line-height: 1.6 !important;
-}
-
-/* Tags */
-.ant-tag {
-  background: rgba(229, 9, 20, 0.2) !important;
-  border: 1px solid rgba(229, 9, 20, 0.5) !important;
-  color: var(--text-light) !important;
-  font-family: var(--font-body) !important;
-  font-size: 12px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  transition: all 0.2s ease !important;
-}
-
-.ant-tag:hover {
-  background: var(--rated-r-red) !important;
-  border-color: var(--rated-r-red) !important;
-  transform: scale(1.05) !important;
-}
-
-/* Buttons */
-button.ant-btn {
-  font-family: var(--font-bold) !important;
-  background: var(--dark-red) !important;
-  border: 2px solid var(--rated-r-red) !important;
-  color: var(--text-light) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  transition: all 0.3s ease !important;
-}
-
-button.ant-btn:hover {
-  background: var(--rated-r-red) !important;
-  box-shadow: 0 0 20px rgba(229, 9, 20, 0.6) !important;
-  transform: translateY(-2px) !important;
-}
-
-/* Profile description/bio section */
-.ant-typography p {
-  font-family: var(--font-body) !important;
-  font-size: 16px !important;
-  line-height: 1.8 !important;
-  color: var(--text-light) !important;
-  margin-bottom: 20px !important;
-}
-
-/* Section headers in bio */
-.ant-typography h2,
-.ant-typography h3 {
-  font-family: var(--font-bold) !important;
-  color: var(--rated-r-red) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
-  margin-top: 30px !important;
-  margin-bottom: 15px !important;
-  position: relative !important;
-  padding-bottom: 10px !important;
-}
-
-.ant-typography h2::after,
-.ant-typography h3::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: var(--rated-r-red);
-  box-shadow: 0 0 10px var(--rated-r-red);
 }
 
 /* Animations */
 @keyframes avatarPulse {
   0%, 100% {
     box-shadow: 
-      0 0 30px rgba(229, 9, 20, 0.8),
-      0 0 60px rgba(229, 9, 20, 0.4),
-      0 8px 32px rgba(0, 0, 0, 0.8);
+      0 0 40px rgba(229, 9, 20, 0.9),
+      0 0 80px rgba(229, 9, 20, 0.5),
+      0 8px 40px rgba(0, 0, 0, 0.9),
+      inset 0 0 20px rgba(229, 9, 20, 0.3);
   }
   50% {
     box-shadow: 
-      0 0 40px rgba(229, 9, 20, 1),
-      0 0 80px rgba(229, 9, 20, 0.6),
-      0 8px 32px rgba(0, 0, 0, 0.8);
+      0 0 60px rgba(229, 9, 20, 1),
+      0 0 120px rgba(229, 9, 20, 0.7),
+      0 8px 40px rgba(0, 0, 0, 0.9),
+      inset 0 0 30px rgba(229, 9, 20, 0.5);
   }
 }
 
@@ -325,44 +384,44 @@ button.ant-btn:hover {
   0% {
     opacity: 0.9;
     transform: translateX(-50%) skew(0deg);
-    filter: hue-rotate(0deg);
+    text-shadow: 0 0 15px var(--neon-red), 3px 0 5px rgba(255, 0, 0, 0.9), -3px 0 5px rgba(0, 255, 255, 0.7);
   }
-  20% {
+  25% {
     opacity: 0.3;
-    transform: translateX(-49%) skew(2deg);
+    transform: translateX(-49%) skew(3deg);
+    text-shadow: 0 0 15px var(--neon-red), 5px 0 8px rgba(255, 0, 0, 1), -5px 0 8px rgba(0, 255, 255, 0.9);
   }
-  40% {
+  50% {
     opacity: 0.8;
-    transform: translateX(-51%) skew(-1deg);
+    transform: translateX(-51%) skew(-2deg);
+    text-shadow: 0 0 15px var(--neon-red), -3px 0 5px rgba(255, 0, 0, 0.9), 3px 0 5px rgba(0, 255, 255, 0.7);
   }
-  60% {
+  75% {
     opacity: 0.2;
-    transform: translateX(-50%) skew(1deg);
-    filter: hue-rotate(20deg);
-  }
-  80% {
-    opacity: 0.9;
-    transform: translateX(-50%) skew(-2deg);
+    transform: translateX(-50%) skew(2deg);
+    text-shadow: 0 0 15px var(--neon-red), 4px 0 6px rgba(255, 0, 0, 0.8), -4px 0 6px rgba(0, 255, 255, 0.8);
   }
   100% {
     opacity: 0.7;
     transform: translateX(-50%) skew(0deg);
-    filter: hue-rotate(0deg);
+    text-shadow: 0 0 15px var(--neon-red), 3px 0 5px rgba(255, 0, 0, 0.9), -3px 0 5px rgba(0, 255, 255, 0.7);
   }
 }
 
 @keyframes neonGlow {
   0%, 100% {
     text-shadow: 
-      0 0 20px var(--rated-r-red),
-      0 0 40px var(--rated-r-red),
-      0 0 60px rgba(229, 9, 20, 0.6);
+      0 0 25px var(--rated-r-red),
+      0 0 50px var(--rated-r-red),
+      0 0 75px rgba(229, 9, 20, 0.7),
+      0 4px 10px rgba(0, 0, 0, 0.8);
   }
   50% {
     text-shadow: 
-      0 0 30px var(--rated-r-red),
-      0 0 60px var(--rated-r-red),
-      0 0 90px rgba(229, 9, 20, 0.8);
+      0 0 35px var(--rated-r-red),
+      0 0 70px var(--rated-r-red),
+      0 0 105px rgba(229, 9, 20, 0.9),
+      0 4px 10px rgba(0, 0, 0, 0.8);
   }
 }
 
@@ -378,17 +437,16 @@ button.ant-btn:hover {
 /* Responsive */
 @media (max-width: 768px) {
   .ant-avatar {
-    width: 140px !important;
-    height: 140px !important;
+    width: 160px !important;
+    height: 160px !important;
   }
   
-  h1.ant-typography,
-  [class*="username"] {
-    font-size: clamp(36px, 10vw, 48px) !important;
+  h1.ant-typography {
+    font-size: clamp(42px, 12vw, 56px) !important;
   }
 }
 
-/* Scrollbar styling */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -405,4 +463,4 @@ button.ant-btn:hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--rated-r-red);
-  }
+    }
