@@ -41,18 +41,69 @@ img[src="https://avatars.charhub.io/avatars/users/avatars/plain/GEN3RATED_R.png"
 
 
 /* 2. Hide the site's default username/title */
-.ant-typography.my-2.css-1v3fjfx { /* This specifically targets the H5 with @GEN3RATED_R */
+/* THIS IS THE @GEN3RATED_R TEXT ABOVE THE NATIVE FOLLOWER COUNT */
+.ant-typography.my-2.css-1v3fjfx {
     display: none !important;
 }
 
-
-/* 3. Hide the site's native "Follow" button AND other related buttons/text */
-/* This targets the span for "Mutual Follower" and the actual unfollow button */
-span.ant-tag.mb-2.css-1v3fjfx,
-button.ant-btn.css-1v3fjfx.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm {
-    display: none !important;
+/* 3. Reposition the site's native "Follow" button AND follower count */
+/* These elements are no longer hidden, but moved into our custom header area */
+/* We target the immediate container of the follow button and follower count */
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:first-child { /* This is a common parent of the name and the follow block */
+    position: relative; /* Make it a positioning context */
+    height: 0; /* Collapse its height so it doesn't take up space */
+    pointer-events: none; /* Make it unclickable in its original position */
 }
-/* Also hide the "Block this creator" button */
+
+
+/* The actual follower count and button container */
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:first-child > div:nth-child(2) {
+    position: absolute !important;
+    top: 300px !important; /* Adjust this value to move it down relative to your custom image/name */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: auto !important; /* Allow content to dictate width */
+    display: flex !important;
+    flex-direction: column !important; /* Stack followers and button */
+    align-items: center !important;
+    z-index: 100 !important; /* Ensure it's above other elements */
+    pointer-events: auto !important; /* Make it clickable here */
+    background: rgba(0,0,0,0.5); /* Semi-transparent background for readability */
+    padding: 8px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+}
+
+/* Style the follower count text */
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:first-child > div:nth-child(2) > .ant-typography {
+    font-family: 'IBM Plex Mono', monospace !important;
+    color: #00ffff !important;
+    font-size: 1em !important;
+    text-shadow: 0 0 8px #00ffff !important;
+    margin-bottom: 5px !important;
+}
+
+/* Style the actual follow/unfollow button */
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:first-child > div:nth-child(2) > button {
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 1em !important;
+    padding: 5px 15px !important;
+    border-radius: 20px !important;
+    background-color: #ff0000 !important; /* Red button */
+    color: #fff !important;
+    border: 2px solid #ff0000 !important;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.7) !important;
+    transition: all 0.2s ease !important;
+}
+
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:first-child > div:nth-child(2) > button:hover {
+    background-color: #cc0000 !important;
+    border-color: #fff !important;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Hide the "Block this creator" button */
 button[aria-describedby=":rn:"].ant-btn.css-1v3fjfx {
     display: none !important;
 }
@@ -67,14 +118,14 @@ button.ant-btn.css-1v3fjfx.ant-btn-default.ant-btn-color-default.ant-btn-variant
 .profile-container {
     max-width: 900px;
     margin: 40px auto; /* Centered, with margin from top */
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.9); /* Opaque background for your bio's content */
-    border-radius: 15px;
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.8), 0 0 50px rgba(255, 0, 0, 0.4);
+    padding: 0px; /* Removed padding here, sections will have their own */
+    background: none !important; /* MAKE IT FLOAT */
+    border-radius: 0px !important;
+    box-shadow: none !important; /* MAKE IT FLOAT */
     position: relative;
     z-index: 2; /* Ensure it's above the background */
-    overflow: hidden;
-    border: 4px solid #ff0000; /* Rated R border */
+    overflow: visible; /* Allow content to spill if needed */
+    border: none !important; /* MAKE IT FLOAT */
     display: flex;
     flex-direction: column;
     align-items: center; /* Center content horizontally */
@@ -144,40 +195,16 @@ button.ant-btn.css-1v3fjfx.ant-btn-default.ant-btn-color-default.ant-btn-variant
     }
 }
 
-/* Custom Follow Button (Purely visual within your bio) */
-.custom-follow-button {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #555; /* Neutral grey, like the example */
-    color: #fff;
-    border: 2px solid #888;
-    border-radius: 25px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.1em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: default; /* Not a real button, so no pointer */
-    margin-top: 20px;
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-}
-
-.custom-follow-button:hover {
-    background-color: #777;
-    border-color: #fff;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-
 /* Bio Section */
 .bio-section {
     padding: 25px;
-    background: rgba(10, 10, 10, 0.9); /* Slightly darker background for text */
+    background: rgba(10, 10, 10, 0.7); /* Semi-transparent background for text */
     border-radius: 10px;
     margin-top: 30px;
     box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5);
     border: 2px dashed rgba(255, 0, 0, 0.7);
     width: 100%;
+    max-width: 900px; /* Constrain width to align with profile-container */
     text-align: left;
     box-sizing: border-box;
 }
@@ -195,11 +222,12 @@ button.ant-btn.css-1v3fjfx.ant-btn-default.ant-btn-color-default.ant-btn-variant
 }
 
 .bio-section p {
-    font-family: 'IBM Plex Mono', monospace;
-    color: #e0e0e0;
+    font-family: 'IBM Plex Mono', monospace !important; /* Added !important for consistency */
+    color: #e0e0e0 !important; /* Added !important for consistency */
     margin-bottom: 18px;
     font-size: 1.15em;
     line-height: 1.7;
+    word-wrap: break-word; /* Ensure long words break */
 }
 
 .bio-section .image-wrapper {
@@ -250,18 +278,18 @@ button.ant-btn.css-1v3fjfx.ant-btn-default.ant-btn-color-default.ant-btn-variant
 .sc-fmKFGs.hikinD.character-list-container {
     margin-top: 40px !important;
     padding: 25px !important;
-    background: rgba(10, 10, 10, 0.95) !important;
+    background: rgba(10, 10, 10, 0.7) !important; /* Semi-transparent black */
     border-radius: 12px !important;
     box-shadow: 0 0 25px rgba(255, 0, 0, 0.7) !important;
     border: 3px solid #ff0000 !important;
     width: 100% !important;
+    max-width: 900px !important; /* Align with profile-container width */
     box-sizing: border-box !important;
     /* Ensure it becomes a grid if it isn't already, or style its children if it is */
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
     gap: 25px !important;
-    /* Reset background if it inherited the global one */
-    background-image: none !important;
+    background-image: none !important; /* Ensure the global background shows */
 }
 
 
@@ -342,6 +370,7 @@ img.sc-ktwOfi.eCEqAJ {
     height: auto !important; /* Allow content to dictate height */
     max-height: unset !important; /* Remove any max-height restrictions */
     overflow-y: visible !important; /* Ensure all text is visible */
+    word-wrap: break-word; /* Added for font consistency */
 }
 
 /* Card stats (hearts, downloads, etc.) */
@@ -406,7 +435,7 @@ p[style*="justify-content: space-between"] button {
 @media (max-width: 768px) {
     .profile-container {
         margin: 20px auto !important;
-        padding: 20px !important;
+        padding: 0px !important;
     }
     .username {
         font-size: 3em !important;
@@ -439,7 +468,7 @@ p[style*="justify-content: space-between"] button {
 @media (max-width: 480px) {
     .profile-container {
         margin: 10px !important;
-        padding: 15px !important;
+        padding: 0px !important;
     }
     .username {
         font-size: 2.2em !important;
@@ -461,11 +490,4 @@ p[style*="justify-content: space-between"] button {
     }
     /* Adjusted bot card section for extra small screens */
     .sc-fmKFGs.hikinD.character-list-container {
-        grid-template-columns: 1fr !important; /* Single column */
-        gap: 15px !important;
-        padding: 15px !important;
-    }
-    img.sc-ktwOfi.eCEqAJ {
-        height: 140px !important;
-    }
-    }
+        grid-template-columns: 1fr !important; /* Single
