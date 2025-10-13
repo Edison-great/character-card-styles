@@ -1,344 +1,548 @@
-/* GEN3RATED_R Profile Styles */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+/* Basic Reset & Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap');
 
-:root {
-  --rated-red: #c41e3a;
-  --neon-red: #ff003c;
-  --neon-glow: #ff6b9d;
-  --dark-bg: #0a0a0a;
-  --card-bg: #1a1a1a;
-  --border-glow: #ff003c;
+body {
+    background-color: #0d0d0d; /* Dark background for the R-rated theme */
+    color: #e0e0e0; /* Light grey text */
+    font-family: 'Chakra Petch', sans-serif;
 }
 
-/* Background Setup */
-body.mobile-override,
-body.light-mobile-override,
-.galaxy-bg,
-.bg-color-main {
-  background-image: url('https://archive.org/download/background_GEN3RATED_R/Screenshot_20250728-232410.jpg') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-}
-
-/* Dark overlay for readability */
-.galaxy-bg::before,
-.bg-color-main::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* Profile Picture Styling */
-.ant-avatar,
-img[alt*="avatar"],
-.ant-image img {
-  border: 4px solid var(--neon-red) !important;
-  box-shadow: 0 0 20px var(--neon-red),
-              0 0 40px var(--neon-glow),
-              inset 0 0 20px rgba(255, 0, 60, 0.3) !important;
-  animation: pulse-glow 2s ease-in-out infinite;
-  filter: brightness(1.1) contrast(1.2);
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px var(--neon-red),
-                0 0 40px var(--neon-glow),
-                inset 0 0 20px rgba(255, 0, 60, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 30px var(--neon-red),
-                0 0 60px var(--neon-glow),
-                inset 0 0 30px rgba(255, 0, 60, 0.5);
-  }
-}
-
-/* Username Styling with Flickering Effect */
-h1, h2, h3, h4,
-.ant-typography h1,
-.ant-typography h2,
-.ant-card-head-title,
-[class*="username"],
-[class*="profile-name"] {
-  font-family: 'Bebas Neue', 'Orbitron', sans-serif !important;
-  font-size: 3.5rem !important;
-  font-weight: 900 !important;
-  text-align: center !important;
-  letter-spacing: 0.15em !important;
-  margin: 2rem 0 !important;
-  text-transform: uppercase;
-}
-
-/* GEN3 Flickering Effect */
-h1::before,
-h2::before,
-.ant-card-head-title::before {
-  content: 'GEN3';
-  color: var(--neon-red);
-  text-shadow: 0 0 10px var(--neon-red),
-               0 0 20px var(--neon-red),
-               0 0 30px var(--neon-glow);
-  animation: flicker 3s infinite;
-  margin-right: 0.1em;
-}
-
-/* RATED - R Steady Glow */
-h1::after,
-h2::after,
-.ant-card-head-title::after {
-  content: 'RATED - R';
-  color: var(--rated-red);
-  text-shadow: 0 0 15px var(--neon-red),
-               0 0 30px var(--neon-glow),
-               0 0 45px rgba(255, 107, 157, 0.5);
-  margin-left: 0.1em;
-  letter-spacing: 0.2em;
-}
-
-@keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    opacity: 1;
-    text-shadow: 0 0 10px var(--neon-red),
-                 0 0 20px var(--neon-red),
-                 0 0 30px var(--neon-glow);
-  }
-  20%, 24%, 55% {
-    opacity: 0.3;
-    text-shadow: none;
-  }
-  22% {
-    opacity: 0.6;
-    text-shadow: 0 0 5px var(--neon-red);
-  }
-}
-
-/* Content Text Styling */
-p, span, div,
-.ant-typography,
-.display-linebreak {
-  font-family: 'Share Tech Mono', 'Courier New', monospace !important;
-  color: #e0e0e0 !important;
-  line-height: 1.8 !important;
-  text-shadow: 0 0 5px rgba(255, 0, 60, 0.3);
-}
-
-/* Section Headers */
-h3, h4, h5 {
-  font-family: 'Orbitron', sans-serif !important;
-  color: var(--neon-red) !important;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-top: 2rem !important;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--rated-red);
-  text-shadow: 0 0 10px var(--neon-glow);
-}
-
-/* Character Cards Styling */
-.ant-card,
-.char-card-class,
-.fake-card {
-  background: linear-gradient(135deg, 
-              rgba(26, 26, 26, 0.95) 0%, 
-              rgba(40, 10, 10, 0.95) 100%) !important;
-  border: 2px solid var(--rated-red) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 0 20px rgba(196, 30, 58, 0.4),
-              0 8px 32px rgba(0, 0, 0, 0.6) !important;
-  transition: all 0.3s ease !important;
-  backdrop-filter: blur(10px);
-}
-
-.ant-card:hover,
-.char-card-class:hover {
-  transform: translateY(-8px) !important;
-  box-shadow: 0 0 35px rgba(255, 0, 60, 0.7),
-              0 12px 48px rgba(196, 30, 58, 0.5) !important;
-  border-color: var(--neon-red) !important;
-}
-
-.ant-card-head {
-  background: linear-gradient(90deg, 
-              rgba(196, 30, 58, 0.3) 0%, 
-              rgba(196, 30, 58, 0.1) 100%) !important;
-  border-bottom: 1px solid var(--rated-red) !important;
-}
-
-.ant-card-body {
-  color: #d0d0d0 !important;
-}
-
-/* Bot Card Titles */
-.ant-card-meta-title {
-  font-family: 'Orbitron', sans-serif !important;
-  color: var(--neon-red) !important;
-  font-weight: 700 !important;
-  text-shadow: 0 0 8px rgba(255, 0, 60, 0.5);
-}
-
-/* Buttons Styling */
-.ant-btn,
-button,
-.lk-button {
-  font-family: 'Bebas Neue', sans-serif !important;
-  background: linear-gradient(135deg, 
-              var(--rated-red) 0%, 
-              #8b0000 100%) !important;
-  border: 2px solid var(--neon-red) !important;
-  color: #ffffff !important;
-  border-radius: 8px !important;
-  padding: 10px 24px !important;
-  font-size: 1.1rem !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase;
-  box-shadow: 0 0 15px rgba(196, 30, 58, 0.5) !important;
-  transition: all 0.3s ease !important;
-}
-
-.ant-btn:hover,
-button:hover {
-  background: linear-gradient(135deg, 
-              var(--neon-red) 0%, 
-              var(--rated-red) 100%) !important;
-  box-shadow: 0 0 25px rgba(255, 0, 60, 0.8),
-              0 0 50px rgba(255, 107, 157, 0.4) !important;
-  transform: translateY(-2px);
-  border-color: var(--neon-glow) !important;
-}
-
-/* Tags Styling */
-.ant-tag,
-.fake-ribbon {
-  background: rgba(196, 30, 58, 0.3) !important;
-  border: 1px solid var(--rated-red) !important;
-  color: #ff6b9d !important;
-  font-family: 'Orbitron', sans-serif !important;
-  font-weight: 600 !important;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  padding: 4px 12px;
-  border-radius: 4px;
-}
-
-/* Image from "Fine" meme styling */
-img[src*="thanos"],
-img[src*="Untitled24"] {
-  border: 3px solid var(--neon-red) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 0 30px rgba(255, 0, 60, 0.6) !important;
-  margin: 20px 0 !important;
-  max-width: 100%;
-  transition: all 0.3s ease;
-}
-
-img[src*="thanos"]:hover,
-img[src*="Untitled24"]:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 45px rgba(255, 0, 60, 0.9) !important;
-}
-
-/* Scrollbar Styling */
+/* Custom Scrollbar for better aesthetic */
 ::-webkit-scrollbar {
-  width: 12px;
-  background: var(--dark-bg);
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: linear-gradient(180deg, 
-              rgba(26, 26, 26, 0.8) 0%, 
-              rgba(40, 10, 10, 0.8) 100%);
-  border-radius: 10px;
+    background: #222;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, 
-              var(--rated-red) 0%, 
-              var(--neon-red) 100%);
-  border-radius: 10px;
-  border: 2px solid var(--dark-bg);
-  box-shadow: 0 0 10px rgba(196, 30, 58, 0.5);
+    background: #880000;
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, 
-              var(--neon-red) 0%, 
-              var(--neon-glow) 100%);
-  box-shadow: 0 0 20px rgba(255, 0, 60, 0.8);
+    background: #ff0000;
 }
 
-/* Links Styling */
+
+/* Profile Picture Styling */
+.profile-container {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+.profile-picture {
+    width: 200px; /* Adjust size as needed */
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #ff0000; /* Red border, like a warning/restricted sign */
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.7); /* Red glow */
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-picture:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 1), 0 0 40px rgba(255, 0, 0, 0.5);
+}
+
+/* Neon Name Styling */
+.neon-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4em; /* Large size */
+    text-align: center;
+    color: #fff;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #ff0000, /* Red glow */
+        0 0 82px #ff0000,
+        0 0 92px #ff0000,
+        0 0 102px #ff0000,
+        0 0 151px #ff0000;
+    animation: neon-glow 1.5s ease-in-out infinite alternate;
+    margin-top: 15px;
+    letter-spacing: 2px;
+}
+
+@keyframes neon-glow {
+    from {
+        text-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px #ff0000,
+            0 0 82px #ff0000,
+            0 0 92px #ff0000,
+            0 0 102px #ff0000,
+            0 0 151px #ff0000;
+    }
+    to {
+        text-shadow:
+            0 0 3.5px #fff,
+            0 0 5px #fff,
+            0 0 10.5px #fff,
+            0 0 21px #ff0000,
+            0 0 41px #ff0000,
+            0 0 46px #ff0000,
+            0 0 51px #ff0000,
+            0 0 75.5px #ff0000;
+    }
+}
+
+/* Flickering Effect for 'GEN3' */
+.flicker {
+    animation: flicker-animation 1s steps(10, end) infinite;
+    color: #ffcc00; /* Slightly different color for the flickering part */
+    text-shadow:
+        0 0 5px #ffcc00,
+        0 0 10px #ffcc00,
+        0 0 20px #ffcc00,
+        0 0 30px rgba(255, 204, 0, 0.5);
+}
+
+@keyframes flicker-animation {
+    0%, 19.9%, 22%, 24.9%, 26%, 28.9%, 30%, 32.9%, 34%, 36.9%, 38%, 40.9%, 42%, 44.9%, 46%, 48.9%, 50%, 52.9%, 54%, 56.9%, 58%, 60.9%, 62%, 64.9%, 66%, 68.9%, 70%, 72.9%, 74%, 76.9%, 78%, 80.9%, 82%, 84.9%, 86%, 88.9%, 90%, 92.9%, 94%, 96.9%, 98%, 100% {
+        opacity: 1;
+    }
+    20%, 21.9%, 25%, 25.9%, 29%, 29.9%, 33%, 33.9%, 37%, 37.9%, 41%, 41.9%, 45%, 45.9%, 49%, 49.9%, 53%, 53.9%, 57%, 57.9%, 61%, 61.9%, 65%, 65.9%, 69%, 69.9%, 73%, 73.9%, 77%, 77.9%, 81%, 81.9%, 85%, 85.9%, 89%, 89.9%, 93%, 93.9%, 97%, 97.9% {
+        opacity: 0.2;
+    }
+}
+
+
+/* General Layout and Background */
+.profile-wrapper {
+    background-image: url('https://archive.org/download/background_GEN3RATED_R/Screenshot_20250728-232410.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.content-area {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: rgba(10, 10, 10, 0.9); /* Slightly transparent dark background */
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    border: 2px solid #ff0000; /* Red border */
+    position: relative;
+    z-index: 5;
+}
+
+/* Section Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: #ff0000;
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px dashed #880000;
+    padding-bottom: 5px;
+}
+
+/* Paragraphs and general text */
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
 a {
-  color: var(--neon-red) !important;
-  text-decoration: none;
-  text-shadow: 0 0 8px rgba(255, 0, 60, 0.4);
-  transition: all 0.3s ease;
+    color: #00ffff; /* Cyberpunk blue for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-  color: var(--neon-glow) !important;
-  text-shadow: 0 0 15px rgba(255, 107, 157, 0.8);
+    color: #ff00ff; /* Pink on hover */
+    text-decoration: underline;
 }
 
-/* Unfollow/Follow Button Special Styling */
-button[class*="unfollow"],
-button[class*="follow"] {
-  background: linear-gradient(135deg, 
-              #1a1a1a 0%, 
-              #2a0a0a 100%) !important;
-  border: 2px solid var(--rated-red) !important;
+/* R-Rated Movie Logo Style for the disclaimer/warning section */
+.r-rated-box {
+    border: 4px solid #ff0000;
+    padding: 20px;
+    margin: 30px 0;
+    background-color: rgba(50, 0, 0, 0.8);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    color: #ffcc00;
+    font-size: 1.2em;
+    position: relative;
+    overflow: hidden;
+    animation: border-flash 2s infinite alternate;
 }
 
-button[class*="unfollow"]:hover,
-button[class*="follow"]:hover {
-  background: linear-gradient(135deg, 
-              var(--rated-red) 0%, 
-              var(--neon-red) 100%) !important;
+.r-rated-box::before {
+    content: "WARNING";
+    display: block;
+    font-size: 0.8em;
+    color: #fff;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px #fff;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  h1::before, h2::before {
-    font-size: 2rem !important;
-  }
-  
-  h1::after, h2::after {
-    font-size: 2rem !important;
-  }
-  
-  .ant-card {
-    margin: 10px 5px !important;
-  }
+.r-rated-box p {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 1em;
+    color: #e0e0e0;
+    margin-top: 10px;
 }
 
-/* Warning Banner Styling */
-.ant-alert,
-[class*="disclaimer"] {
-  background: linear-gradient(135deg, 
-              rgba(139, 0, 0, 0.3) 0%, 
-              rgba(196, 30, 58, 0.3) 100%) !important;
-  border: 2px solid var(--rated-red) !important;
-  border-radius: 8px !important;
-  color: #ffffff !important;
-  font-family: 'Orbitron', sans-serif !important;
-  box-shadow: 0 0 20px rgba(196, 30, 58, 0.4);
+/* Animated flashing border for the R-rated box */
+@keyframes border-flash {
+    0% { border-color: #ff0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.8); }
+    50% { border-color: #ffcc00; box-shadow: 0 0 25px rgba(255, 204, 0, 0.8); }
+    100% { border-color: #ff0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.8); }
 }
 
-/* Footer Text */
-footer,
-.ant-layout-footer {
-  font-family: 'Share Tech Mono', monospace !important;
-  color: #808080 !important;
-  text-align: center;
-  padding: 20px;
-  background: rgba(10, 10, 10, 0.8) !important;
-  border-top: 1px solid var(--rated-red);
+
+/* Image in text (Thanos) */
+.inline-image {
+    max-width: 100px;
+    height: auto;
+    border: 2px solid #880000;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
 }
+
+/* Ant Design overrides - Crucial for styling the character cards */
+/* General card styling */
+.ant-card {
+    background-color: rgba(30, 30, 30, 0.95) !important; /* Darker card background */
+    border: 1px solid #444 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(255, 0, 0, 0.2) !important;
+    transition: all 0.3s ease !important;
+    overflow: hidden; /* Ensure content stays within borders */
+    margin-bottom: 15px; /* Add some spacing between cards */
+}
+
+.ant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.5) !important;
+    border-color: #ff0000 !important;
+}
+
+/* Card Header */
+.ant-card-head {
+    background-color: rgba(50, 0, 0, 0.9) !important; /* Dark red header */
+    border-bottom: 1px solid #880000 !important;
+    padding: 8px 16px !important;
+    min-height: auto !important; /* Override Ant Design's fixed height */
+}
+
+.ant-card-head-title {
+    color: #fff !important;
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 1.1em !important;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8) !important;
+}
+
+.ant-card-head-title .card-title-row span:first-child {
+    max-width: calc(100% - 60px) !important; /* Adjust if icon pushes too much */
+}
+
+
+/* Card Body */
+.ant-card-body {
+    padding: 10px 16px !important;
+    color: #e0e0e0 !important;
+}
+
+.ant-card-meta-description {
+    color: #bbb !important;
+    font-size: 0.9em !important;
+}
+
+/* Character Image within Card */
+.sc-ktwOfi.eCEqAJ { /* This is a specific class from your provided HTML */
+    border-radius: 5px !important;
+    border: 1px solid #666 !important;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) !important;
+}
+
+
+/* Stats (Likes, Downloads, Gold) */
+.fake-ribbon.grid.grid-cols-3 { /* Class for the stat ribbon */
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    border-top: 1px solid #880000 !important;
+    padding: 5px 0 !important;
+    color: #ffcc00 !important; /* Goldish color for stats */
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 0.7em !important;
+    text-align: center;
+}
+
+.fake-ribbon.grid.grid-cols-3 svg {
+    color: #ffcc00 !important; /* Icon color */
+    margin-right: 3px;
+}
+
+/* Tags within cards */
+.ant-tag {
+    background-color: #880000 !important; /* Dark red tags */
+    border-color: #ff0000 !important;
+    color: #fff !important;
+    font-family: 'Chakra Petch', sans-serif !important;
+    font-size: 0.7em !important;
+    padding: 3px 8px !important;
+    border-radius: 3px !important;
+    margin-inline-end: 4px !important; /* Spacing between tags */
+    margin-bottom: 4px !important;
+}
+
+.ant-tag-error { /* For the 🔥 tag */
+    background-color: #ff0000 !important;
+    border-color: #fff !important;
+    color: #fff !important;
+    animation: tag-pulse 1.5s infinite alternate;
+}
+
+@keyframes tag-pulse {
+    0% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
+    100% { box-shadow: 0 0 15px rgba(255, 0, 0, 1); }
+}
+
+/* Creator name and time stamp */
+.ant-row.ant-row-no-wrap.ant-row-space-between.css-1v3fjfx p a {
+    color: #00ffff !important; /* Creator name link */
+    font-weight: bold;
+}
+
+.ant-btn.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.ant-btn-sm {
+    color: #aaa !important; /* Timestamp color */
+}
+
+
+/* Top half of profile (Followers, Following, Buttons) */
+.ant-col.text-left.pt-4 {
+    background-color: rgba(20, 20, 20, 0.95); /* Dark background for this section */
+    border-radius: 10px;
+    padding: 20px !important;
+    margin-bottom: 20px;
+    border: 1px solid #444;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+.ant-typography.my-2 {
+    color: #e0e0e0;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5em;
+    margin-top: 10px !important;
+    margin-bottom: 5px !important;
+}
+
+.ant-tag.mb-2 { /* Mutual Follower tag */
+    background-color: #008800 !important; /* Green for mutual */
+    border-color: #00ff00 !important;
+    color: #fff !important;
+    font-family: 'Chakra Petch', sans-serif !important;
+    font-size: 0.8em !important;
+    padding: 4px 10px !important;
+    border-radius: 5px !important;
+}
+
+.text-sm.mb-2 {
+    color: #bbb;
+    font-size: 0.9em;
+}
+
+/* Buttons (Follow, Unfollow, Block, Nominate) */
+.ant-btn {
+    font-family: 'Press Start 2P', cursive !important;
+    text-transform: uppercase;
+    border-radius: 5px !important;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    font-size: 0.8em !important;
+    padding: 8px 15px !important;
+    height: auto !important; /* Override fixed height */
+}
+
+/* Default button style */
+.ant-btn-default {
+    background-color: #333 !important;
+    color: #00ffff !important; /* Cyan for text */
+    border-color: #00ffff !important;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.4) !important;
+}
+
+.ant-btn-default:hover {
+    background-color: #00ffff !important;
+    color: #111 !important;
+    border-color: #00ffff !important;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8) !important;
+}
+
+/* Unfollow button (example of a specific button) */
+.ant-btn[aria-describedby]:not(.galaxy-bg) { /* Target generic action buttons */
+    background-color: #660000 !important;
+    color: #ffcc00 !important;
+    border-color: #ffcc00 !important;
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.4) !important;
+}
+
+.ant-btn[aria-describedby]:not(.galaxy-bg):hover {
+    background-color: #ffcc00 !important;
+    color: #111 !important;
+    border-color: #ffcc00 !important;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.8) !important;
+}
+
+
+/* Nominate Button (galaxy-bg already has styles, we'll enhance) */
+.ant-btn.galaxy-bg {
+    background-image: linear-gradient(rgba(23, 23, 23, 0.85) 0%, rgba(23, 23, 23, 0.6) 50%, rgba(23, 23, 23, 0.85) 100%), url("https://avatars.charhub.io/galaxy_hd-min.jpg") !important;
+    background-size: cover !important;
+    color: #fff !important;
+    border: 2px solid #00ffff !important; /* Cyberpunk border */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6) !important;
+    animation: galaxy-pulse 3s infinite alternate;
+}
+
+@keyframes galaxy-pulse {
+    0% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); }
+    100% { box-shadow: 0 0 25px rgba(0, 255, 255, 1); }
+}
+
+/* Icons within buttons */
+.ant-btn .anticon {
+    color: inherit !important; /* Inherit color from button text */
+    margin-right: 5px;
+}
+
+/* Tabs for Characters, Lorebooks, etc. */
+.ant-tabs-nav {
+    background-color: rgba(10, 10, 10, 0.9) !important;
+    border-bottom: 1px solid #ff0000 !important;
+    border-radius: 8px 8px 0 0 !important;
+    margin-bottom: 0px !important;
+}
+
+.ant-tabs-tab {
+    font-family: 'Press Start 2P', cursive !important;
+    color: #aaa !important;
+    padding: 12px 18px !important;
+    margin: 0 5px !important;
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+    background-color: rgba(30, 30, 30, 0.8) !important;
+    border: 1px solid transparent !important;
+    border-bottom: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.ant-tabs-tab:hover {
+    color: #ffcc00 !important;
+    background-color: rgba(50, 50, 50, 0.9) !important;
+    border-color: #ffcc00 !important;
+    box-shadow: 0 -3px 10px rgba(255, 204, 0, 0.3);
+}
+
+.ant-tabs-tab-active {
+    color: #ff0000 !important;
+    background-color: rgba(50, 0, 0, 0.9) !important;
+    border-color: #ff0000 !important;
+    border-bottom-color: transparent !important;
+    box-shadow: 0 -5px 15px rgba(255, 0, 0, 0.5);
+}
+
+.ant-tabs-ink-bar {
+    background: #ff0000 !important; /* Red underline for active tab */
+    height: 3px !important;
+    bottom: -1px !important;
+}
+
+/* Content Holder for tabs */
+.ant-tabs-content-holder {
+    background-color: rgba(10, 10, 10, 0.9) !important;
+    border-radius: 0 0 10px 10px !important;
+    border: 1px solid #ff0000 !important;
+    border-top: none !important;
+    padding: 15px !important;
+}
+
+/* Pagination */
+.ant-pagination-total-text,
+.ant-pagination-item-link,
+.ant-pagination-item a {
+    color: #00ffff !important;
+    font-family: 'Press Start 2P', cursive !important;
+}
+
+.ant-pagination-item-active a {
+    color: #ff0000 !important;
+    border-color: #ff0000 !important;
+    background-color: rgba(50, 0, 0, 0.8) !important;
+}
+
+.ant-pagination-item {
+    border: 1px solid #444 !important;
+    background-color: #222 !important;
+    border-radius: 4px !important;
+}
+
+.ant-pagination-item:hover {
+    border-color: #00ffff !important;
+}
+
+/* Search and Filter Inputs */
+.ant-input, .ant-select-selector {
+    background-color: #222 !important;
+    border: 1px solid #555 !important;
+    color: #eee !important;
+    border-radius: 5px !important;
+    font-family: 'Chakra Petch', sans-serif !important;
+}
+
+.ant-input::placeholder {
+    color: #888 !important;
+}
+
+.ant-select-selection-item, .ant-select-selection-placeholder {
+    color: #eee !important;
+}
+
+.ant-select-arrow {
+    color: #00ffff !important;
+}
+
+/* Specific styling for the custom character list container */
+.sc-fmKFGs.hikinD.character-list-container {
+    padding-top: 20px; /* Adjust as needed */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid for cards */
+    gap: 20px; /* Space between cards */
+}
+
+/* Final touches for elements not directly overridden but might be affected */
+.ant-col.px-3.py-1 {
+    color: #e0e0e0; /* Ensure text in this specific column is light */
+}
+
+/* Ensure the full width of the character card body for content */
+.ant-card-body .ant-row.ant-row-no-wrap.card-main-body {
+    width: 100%;
+}
+
+/* Adjust the quote-color spans if they become too small or too big */
+.quote-color {
+    color: #ffcc00; /* Consistent goldish color */
+          }
