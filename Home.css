@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex+Mono:wght@400;700&display=swap'); /* Keep IBM Plex Mono for specific elements if needed */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap'); /* Added Space Mono */
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex+Mono:wght@400;700&display=swap');
 
 body, html, #root > div, .layout-content, #root,
 .ant-layout, .ant-layout-content, main.ant-layout-content {
@@ -8,7 +8,6 @@ body, html, #root > div, .layout-content, #root,
     min-height: 100vh !important;
     background-color: #000 !important;
     color: #e0e0e0 !important;
-    overflow-x: hidden !important; /* Prevent horizontal scroll */
 }
 
 /* Aggressively remove backgrounds/paddings from common containers */
@@ -26,7 +25,10 @@ body, html, #root > div, .layout-content, #root,
 .ant-col.ant-col-lg-6,
 .ant-row.ant-row-center,
 .sc-fmKFGs.hikinD.character-list-container,
-.sc-jrQzUz.gIdnFm {
+.sc-jrQzUz.gIdnFm,
+.ant-row.ant-row-start.ant-row-middle.mt-2.gap-4.mb-2, /* Target for the follow button specifically */
+.ant-col.text-center.my-2, /* Original location of the user name */
+.ant-typography.my-2 { /* Original location of the followers text */
     background: none !important;
     padding: 0 !important;
     box-shadow: none !important;
@@ -39,15 +41,14 @@ body, html, #root > div, .layout-content, #root,
     background: rgba(10, 10, 10, 0.4) !important;
     padding: 25px !important;
     border-radius: 10px !important;
-    margin-top: 40px !important; /* Adjusted to create space below followers */
+    margin-top: 35px !important; /* Adjusted to create space below follower count */
     box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;
     border: 2px dashed rgba(255, 0, 0, 0.7) !important;
     width: 100% !important;
     max-width: 900px !important;
     text-align: left !important;
     box-sizing: border-box !important;
-    z-index: 5; /* Ensure bio is above background */
-    position: relative;
+    z-index: 2; /* Ensure bio is above background */
 }
 
 p, span, h1, h2, h3, a, div {
@@ -61,27 +62,23 @@ a:hover {
     text-decoration: underline !important;
 }
 
-/* Hide original elements, but re-enable the follower button's parent */
+/* Hide original elements *except* the actual follower count div */
 .ant-avatar.ant-avatar-square.ant-avatar-image[style*="width: 100px;"],
 img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
-.ant-typography.my-2,
-.ant-typography.text-lg.font-bold.mb-2.break-words,
-.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),
-.ant-typography[class*="Followers"] {
+.ant-typography.text-lg.font-bold.mb-2.break-words { /* Hide the *original* user name */
     display: none !important;
 }
 
-/* Follower count/button parent - Styled like Bleachbunny's */
-.ant-row.ant-row-start.ant-row-middle {
+/* Target the specific div containing the follower count and button */
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:nth-child(2) { /* This targets the container holding the follower count and unfollow button */
     display: flex !important;
-    flex-direction: row !important; /* Keep as row for horizontal layout */
+    flex-direction: column !important;
     align-items: center !important;
-    justify-content: center !important; /* Center content horizontally */
-    margin: 25px auto 0px auto !important; /* Space below username, above bio */
+    margin: 25px auto 0 auto !important; /* Position it below username, above bio */
     width: fit-content !important;
-    background: rgba(0,0,0,0.5) !important; /* Semi-transparent background */
+    background: rgba(0,0,0,0.5);
     padding: 10px 20px !important;
-    border-radius: 25px !important; /* Rounded like Bleachbunny */
+    border-radius: 10px !important;
     border: 1px solid rgba(0, 255, 255, 0.4) !important;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.6) !important;
     pointer-events: auto !important;
@@ -89,19 +86,20 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     z-index: 100 !important;
 }
 
-/* Style the follower text */
-.ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 {
-    font-family: 'Orbitron', sans-serif !important; /* New font for followers */
-    color: #e0e0e0 !important;
-    font-size: 1.1em !important;
-    text-shadow: 0 0 5px #00ffff !important;
-    margin-right: 15px !important; /* Space between text and button */
-    margin-bottom: 0 !important; /* Reset margin */
+/* Style the follower text (the visible part we want to display) */
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:nth-child(2) > div.text-sm.mb-2 {
+    font-family: 'Space Mono', monospace !important; /* New font for visibility */
+    color: #00ffff !important;
+    font-size: 1.15em !important;
+    text-shadow: 0 0 8px #00ffff !important;
+    margin-bottom: 8px !important;
     white-space: nowrap !important;
     display: block !important;
+    font-weight: 700 !important; /* Make it bolder */
 }
 
-.ant-row.ant-row-start.ant-row-middle > .ant-btn {
+/* Style the Unfollow button specifically */
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:nth-child(2) > div.text-sm.mb-2 > button {
     font-family: 'Bebas Neue', sans-serif !important;
     font-size: 1.1em !important;
     padding: 6px 20px !important;
@@ -111,10 +109,10 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     border: 2px solid #ff0000 !important;
     box-shadow: 0 0 8px rgba(255, 0, 0, 0.7) !important;
     transition: all 0.2s ease !important;
-    margin-left: 0 !important;
+    margin-left: 0 !important; /* Reset margin */
 }
 
-.ant-row.ant-row-start.ant-row-middle > .ant-btn:hover {
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:nth-child(2) > div.text-sm.mb-2 > button:hover {
     background-color: #cc0000 !important;
     border-color: #fff !important;
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.9) !important;
@@ -156,56 +154,39 @@ footer.ant-layout-footer,
     padding-bottom: 0px;
     width: 100%;
     background: none !important;
-    display: flex;
+    position: relative; /* Needed for z-index of glow */
+    display: flex; /* To center items inside */
     flex-direction: column;
-    align-items: center; /* Center children: profile pic and username */
-}
-
-/* New element for the fixed glow behind profile pic */
-.profile-pic-wrapper {
-    position: relative;
-    width: 200px; /* Same as profile-pic width */
-    height: 200px; /* Same as profile-pic height */
-    margin-bottom: 25px; /* Space below profile pic */
-    display: flex;
-    justify-content: center;
     align-items: center;
 }
 
-.profile-pic-wrapper::before {
-    content: '';
-    position: absolute;
-    top: -6px;
-    left: -6px;
-    right: -6px;
-    bottom: -6px;
-    border: 6px solid #ff0000; /* Red border */
+/* New wrapper for profile picture to manage glow */
+.profile-pic-wrapper {
+    width: 212px; /* Slightly larger than image to contain border/shadow */
+    height: 212px;
     border-radius: 50%;
+    background-color: transparent; /* Ensure no background interferes */
+    border: 6px solid #ff0000; /* Red border */
     box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000; /* Red glow */
-    z-index: -1; /* Behind the image */
-    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px; /* Space below wrapper */
+    position: relative;
+    z-index: 1; /* Glow is behind the image itself now */
+    transition: transform 0.3s ease-in-out;
 }
-
-.profile-pic:hover + .profile-pic-wrapper::before,
-.profile-pic-wrapper:hover::before { /* Hover on pic or wrapper */
-    box-shadow: 0 0 25px #ff0000, 0 0 50px #ff0000, 0 0 70px rgba(255, 0, 0, 0.7);
-    border-color: #ff3333;
-}
-
 
 .profile-pic {
-    width: 200px;
+    width: 200px; /* Original image size */
     height: 200px;
     border-radius: 50%;
-    border: 4px solid #fff; /* Thin white border for the pic itself */
     object-fit: cover;
-    transition: transform 0.3s ease-in-out;
-    z-index: 10;
-    position: relative; /* Ensure it's above the pseudo-element glow */
+    z-index: 2; /* Profile pic on top */
 }
 
-/* Profile Picture Tap/Hover Rotation */
-.profile-pic:hover, .profile-pic:active {
+/* Profile Picture Tap/Hover Rotation on the wrapper */
+.profile-pic-wrapper:hover, .profile-pic-wrapper:active {
     animation: spinning-animation 2s linear infinite;
 }
 
@@ -227,8 +208,8 @@ footer.ant-layout-footer,
     padding: 0;
     letter-spacing: 3px;
     line-height: 1.1;
-    margin-top: 20px;
-    z-index: 10;
+    margin-top: 20px; /* Space below profile pic */
+    margin-bottom: 20px; /* Space above follower count */
 }
 
 .username .flicker {
@@ -268,15 +249,18 @@ footer.ant-layout-footer,
     letter-spacing: 0.5px;
 }
 
+/* Improved bio paragraph font for visibility */
 .bio-section p {
-    font-family: 'Bebas Neue', sans-serif !important; /* Changed bio font */
-    color: #fff !important; /* Brighter color */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8), 0 0 5px rgba(255, 255, 255, 0.2); /* Added shadow for visibility */
+    font-family: 'Space Mono', monospace !important; /* Changed font */
+    color: #e0e0e0 !important;
+    text-shadow: 1px 1px 2px #000, -1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000; /* Added subtle shadow for contrast */
     margin-bottom: 18px;
-    font-size: 1.25em; /* Slightly larger */
+    font-size: 1.15em;
     line-height: 1.7;
-    word-wrap: break-word;
+    word-wrap: break-word; /* Ensure wrapping */
+    font-weight: 400 !important; /* Ensure it's not too bold unless specified */
 }
+
 
 .bio-section .image-wrapper {
     text-align: center;
@@ -335,8 +319,6 @@ footer.ant-layout-footer,
     width: fit-content !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    z-index: 5; /* Ensure tabs are above background */
-    position: relative;
 }
 
 .ant-tabs-tab {
@@ -380,8 +362,6 @@ footer.ant-layout-footer,
     background-image: none !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    z-index: 5; /* Ensure cards are above background */
-    position: relative;
 }
 
 .ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column,
@@ -534,11 +514,11 @@ p[style*="justify-content: space-between"] button,
     .username {
         font-size: 3em !important;
     }
-    .profile-pic {
-        width: 160px !important;
-        height: 160px !important;
-    }
     .profile-pic-wrapper {
+        width: 172px !important;
+        height: 172px !important;
+    }
+    .profile-pic {
         width: 160px !important;
         height: 160px !important;
     }
@@ -546,7 +526,7 @@ p[style*="justify-content: space-between"] button,
         font-size: 1.6em !important;
     }
     .bio-section p {
-        font-size: 1.1em !important;
+        font-size: 1.05em !important;
     }
     .cta {
         font-size: 1.1em !important;
@@ -563,7 +543,7 @@ p[style*="justify-content: space-between"] button,
     .ant-card-cover img {
         height: 160px !important;
     }
-    .ant-row.ant-row-start.ant-row-middle {
+    .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:nth-child(2) {
         margin-top: 25px !important;
     }
 }
@@ -577,11 +557,11 @@ p[style*="justify-content: space-between"] button,
         font-size: 2.2em !important;
         letter-spacing: 1px !important;
     }
-    .profile-pic {
-        width: 130px !important;
-        height: 130px !important;
-    }
     .profile-pic-wrapper {
+        width: 142px !important;
+        height: 142px !important;
+    }
+    .profile-pic {
         width: 130px !important;
         height: 130px !important;
     }
@@ -589,7 +569,7 @@ p[style*="justify-content: space-between"] button,
         font-size: 1.3em !important;
     }
     .bio-section p {
-        font-size: 1em !important;
+        font-size: 0.95em !important;
     }
     .cta {
         font-size: 0.9em !important;
@@ -606,7 +586,7 @@ p[style*="justify-content: space-between"] button,
     .ant-card-cover img {
         height: 140px !important;
     }
-    .ant-row.ant-row-start.ant-row-middle {
+    .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:nth-child(2) {
         margin-top: 20px !important;
     }
 }
