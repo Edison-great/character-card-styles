@@ -2,73 +2,92 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex+Mono:wght@400;700&display=swap');
 
+/* --- GLOBAL STYLES & SITE-WIDE OVERRIDES --- */
 
-/* --- Site-specific Overrides (IMPORTANT: You might need to adjust these based on inspection) --- */
-/* Try to hide the small, default profile picture at the very top left */
-/* You might need to find the specific class/ID for this element on the website */
-.profile-image-wrapper { /* This is a common class name, might need adjustment */
-    display: none !important;
-}
-
-/* Try to hide the default site-generated username and follower count if outside our bio */
-.user-info-header h1,
-.user-info-header p {
-    display: none !important;
-}
-
-/* If the site's follow button is directly below the main profile area but not in our bio, try to hide it */
-.follow-button-container { /* Again, adjust if needed */
-    display: none !important;
-}
-
-/* Ensure the main content area has the intended background */
-/* This assumes the main content wrapper for your profile can be styled */
-/* If the website has a main layout wrapper, we'll try to apply the background there */
-body, html {
-    background-color: #000 !important; /* Ensure black background everywhere */
-}
-
-/* This targets the main content area where your profile info sits */
-/* You may need to inspect the actual webpage to find the correct selector for the main content wrapper */
-div[id^="root"], .app-container, .main-content-wrapper {
+/* Apply background to the main content wrapper */
+/* This targets the ant-col that contains the user profile info and the tabs below it */
+/* Adding !important to force override */
+body, html, #root > div,
+.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6.css-1v3fjfx, /* Top half */
+.ant-tabs.ant-tabs-top.ant-tabs-mobile.css-1v3fjfx, /* Bottom half (tabs and bot cards) */
+.layout-content,
+.sc-fmKFGs.hikinD.character-list-container { /* Bot list container itself */
     background: url('https://archive.org/download/background_GEN3RATED_R/Screenshot_20250728-232410.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
-    min-height: 100vh; /* Ensure it covers the whole viewport */
-    color: #e0e0e0; /* Default text color for the page */
+    min-height: 100vh !important;
+    background-color: #000 !important; /* Fallback */
+    color: #e0e0e0 !important; /* Default text color */
 }
 
-/* Make sure any text within the main site content is visible */
-div[id^="root"] p, div[id^="root"] span, div[id^="root"] h1, div[id^="root"] h2, div[id^="root"] h3 {
+/* Ensure any text elements that are not explicitly styled in our bio get a readable color */
+p, span, h1, h2, h3, a, div {
     color: #e0e0e0 !important;
 }
+/* For links that might be default blue */
+a {
+    color: #00ffff !important;
+    text-decoration: none !important;
+}
+a:hover {
+    text-decoration: underline !important;
+}
 
 
-/* --- Profile Container - This wraps all YOUR custom HTML for the bio --- */
+/* 1. Hide the small, default profile picture */
+.ant-avatar.ant-avatar-square.ant-avatar-image.css-1v3fjfx[style="width: 100px; height: 100px; font-size: 18px;"],
+img[src="https://avatars.charhub.io/avatars/users/avatars/plain/GEN3RATED_R.png"] {
+    display: none !important;
+}
+
+
+/* 2. Hide the site's default username/title */
+.ant-typography.my-2.css-1v3fjfx { /* This specifically targets the H5 with @GEN3RATED_R */
+    display: none !important;
+}
+
+
+/* 3. Hide the site's native "Follow" button AND other related buttons/text */
+/* This targets the span for "Mutual Follower" and the actual unfollow button */
+span.ant-tag.mb-2.css-1v3fjfx,
+button.ant-btn.css-1v3fjfx.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm {
+    display: none !important;
+}
+/* Also hide the "Block this creator" button */
+button[aria-describedby=":rn:"].ant-btn.css-1v3fjfx {
+    display: none !important;
+}
+
+/* Hide the "Nominate..." button if it's not part of your custom HTML */
+button.ant-btn.css-1v3fjfx.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {
+    display: none !important;
+}
+
+
+/* --- PROFILE CONTAINER (YOUR CUSTOM BIO HTML) --- */
 .profile-container {
     max-width: 900px;
-    margin: 40px auto; /* More margin from top */
+    margin: 40px auto; /* Centered, with margin from top */
     padding: 30px;
-    background: rgba(0, 0, 0, 0.85); /* Darker overlay for text readability over the main background */
+    background: rgba(0, 0, 0, 0.9); /* Opaque background for your bio's content */
     border-radius: 15px;
     box-shadow: 0 0 25px rgba(255, 0, 0, 0.8), 0 0 50px rgba(255, 0, 0, 0.4);
     position: relative;
     z-index: 2; /* Ensure it's above the background */
     overflow: hidden;
     border: 4px solid #ff0000; /* Rated R border */
-    display: flex; /* Use flexbox for layout */
+    display: flex;
     flex-direction: column;
     align-items: center; /* Center content horizontally */
     text-align: center; /* Center text within the container */
+    box-sizing: border-box; /* Include padding in width */
 }
-
 
 /* Header */
 .profile-header {
     text-align: center;
     margin-bottom: 30px;
     padding-bottom: 20px;
-    /* Removed border-bottom here, will add to bio-section for separation */
-    width: 100%; /* Ensure it spans the width */
+    width: 100%;
 }
 
 .profile-pic {
@@ -96,6 +115,7 @@ div[id^="root"] p, div[id^="root"] span, div[id^="root"] h1, div[id^="root"] h2,
     padding: 0;
     letter-spacing: 3px;
     line-height: 1.1;
+    margin-top: 20px; /* Space between pic and name */
 }
 
 .username .flicker {
@@ -124,18 +144,11 @@ div[id^="root"] p, div[id^="root"] span, div[id^="root"] h1, div[id^="root"] h2,
     }
 }
 
-/* This is a placeholder for the follow button.
-   You would need to manually add this HTML into your bio
-   if you want to *mimic* the follow button's appearance
-   and if the platform doesn't strip JavaScript.
-   The original request for "move the follow button under the big one"
-   can only be achieved by creating a custom button in your bio HTML
-   and styling it. The actual site's follow button cannot be moved.
-*/
+/* Custom Follow Button (Purely visual within your bio) */
 .custom-follow-button {
     display: inline-block;
     padding: 12px 25px;
-    background-color: #555; /* Neutral grey or something like the example */
+    background-color: #555; /* Neutral grey, like the example */
     color: #fff;
     border: 2px solid #888;
     border-radius: 25px;
@@ -143,7 +156,7 @@ div[id^="root"] p, div[id^="root"] span, div[id^="root"] h1, div[id^="root"] h2,
     font-size: 1.1em;
     text-transform: uppercase;
     letter-spacing: 1px;
-    cursor: pointer;
+    cursor: default; /* Not a real button, so no pointer */
     margin-top: 20px;
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
@@ -164,9 +177,9 @@ div[id^="root"] p, div[id^="root"] span, div[id^="root"] h1, div[id^="root"] h2,
     margin-top: 30px;
     box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5);
     border: 2px dashed rgba(255, 0, 0, 0.7);
-    width: 100%; /* Take full width of profile-container */
-    text-align: left; /* Text content aligned left */
-    box-sizing: border-box; /* Include padding in width */
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
 }
 
 .bio-section h2 {
@@ -195,7 +208,7 @@ div[id^="root"] p, div[id^="root"] span, div[id^="root"] h1, div[id^="root"] h2,
 }
 
 .bio-section .inline-image {
-    max-width: 90%; /* Adjust width slightly for better fit */
+    max-width: 90%;
     height: auto;
     border: 4px solid #00ffff;
     box-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.6);
@@ -231,55 +244,43 @@ div[id^="root"] p, div[id^="root"] span, div[id^="root"] h1, div[id^="root"] h2,
 }
 
 
-/* Bot Card Section Styling (Highly dependent on website's HTML structure for bot listings) */
-/* Assuming this is *within* your bio HTML or the next major section the CSS can influence */
-.bot-card-section {
-    margin-top: 40px;
-    padding: 25px;
-    background: rgba(10, 10, 10, 0.95);
-    border-radius: 12px;
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
-    border: 3px solid #ff0000;
-    width: 100%;
-    box-sizing: border-box;
+/* --- BOT CARD STYLING (TARGETING SITE'S NATIVE ELEMENTS) --- */
+
+/* This targets the main container for the character list */
+.sc-fmKFGs.hikinD.character-list-container {
+    margin-top: 40px !important;
+    padding: 25px !important;
+    background: rgba(10, 10, 10, 0.95) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.7) !important;
+    border: 3px solid #ff0000 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    /* Ensure it becomes a grid if it isn't already, or style its children if it is */
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 25px !important;
+    /* Reset background if it inherited the global one */
+    background-image: none !important;
 }
 
-.bot-card-section h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    color: #00ff00;
-    text-shadow: 0 0 12px #00ff00;
-    text-align: center;
-    margin-bottom: 35px;
-    font-size: 2.5em;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+
+/* Targeting the individual bot card wrappers */
+.ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column.char-card-class.css-1v3fjfx {
+    background: #1a1a1a !important;
+    border: 2px solid rgba(255, 0, 0, 0.7) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.6), inset 0 0 6px rgba(255, 0, 0, 0.4) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    text-align: left !important;
 }
 
-/* Assuming the website wraps its bot cards in a grid-like container */
-/* We'll try to style the .character-card and its children based on your provided screenshot */
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-}
-
-/* Targeting the actual bot cards that the site generates */
-/* Based on your screenshot, the site uses a class like 'character-card' */
-/* You might need to adjust this selector: e.g., '.character-card' or '.bot-list-item' */
-.bot-card, .character-card {
-    background: #1a1a1a;
-    border: 2px solid rgba(255, 0, 0, 0.7);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 0 12px rgba(255, 0, 0, 0.6), inset 0 0 6px rgba(255, 0, 0, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    text-align: left; /* Ensure text inside cards aligns left */
-}
-
-.bot-card::before, .character-card::before {
+/* Pseudo-element for flickering border on cards */
+.ant-card.char-card-class.css-1v3fjfx::before {
     content: '';
     position: absolute;
     top: -6px;
@@ -306,150 +307,165 @@ div[id^="root"] p, div[id^="root"] span, div[id^="root"] h1, div[id^="root"] h2,
     100% { border-color: rgba(255, 0, 0, 0.2); }
 }
 
-.bot-card:hover, .character-card:hover {
-    transform: translateY(-7px) scale(1.03);
-    box-shadow: 0 0 18px #ff0000, 0 0 35px rgba(255, 0, 0, 0.8), inset 0 0 10px rgba(255, 0, 0, 0.6);
+.ant-card.char-card-class.css-1v3fjfx:hover {
+    transform: translateY(-7px) scale(1.03) !important;
+    box-shadow: 0 0 18px #ff0000, 0 0 35px rgba(255, 0, 0, 0.8), inset 0 0 10px rgba(255, 0, 0, 0.6) !important;
 }
 
-/* Targeting the elements *inside* the bot cards */
-/* This is based on typical card structures, may need adjustment */
-.bot-thumbnail, .character-card img {
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-    border-bottom: 2px solid rgba(255, 0, 0, 0.5);
+/* Image inside card */
+img.sc-ktwOfi.eCEqAJ {
+    width: 100% !important;
+    height: 190px !important;
+    object-fit: cover !important;
+    border-bottom: 2px solid rgba(255, 0, 0, 0.5) !important;
+    border-radius: 0 !important; /* Override any default border-radius */
 }
 
-.card-content, .character-card-content {
-    padding: 18px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+/* Card title (bot name) */
+.ant-card-head-title .ant-row.ant-row-space-between.card-title-row.css-1v3fjfx span:first-child span {
+    font-family: 'Bebas Neue', sans-serif !important;
+    color: #00ffff !important;
+    font-size: 1.6em !important;
+    margin-top: 0 !important;
+    text-shadow: 0 0 6px #00ffff !important;
+    white-space: normal !important; /* Allow text to wrap if too long */
+    overflow: visible !important;
+    text-overflow: clip !important;
 }
 
-.card-content h3, .character-card-title {
-    font-family: 'Bebas Neue', sans-serif;
-    color: #00ffff;
-    font-size: 1.6em;
-    margin-top: 0;
-    margin-bottom: 12px;
-    text-shadow: 0 0 6px #00ffff;
+/* Card description */
+.ant-card-meta-description span.quote-color {
+    font-family: 'IBM Plex Mono', monospace !important;
+    color: #ccc !important;
+    font-size: 1em !important;
+    line-height: 1.5 !important;
+    height: auto !important; /* Allow content to dictate height */
+    max-height: unset !important; /* Remove any max-height restrictions */
+    overflow-y: visible !important; /* Ensure all text is visible */
 }
 
-.card-content p, .character-card-description {
-    font-family: 'IBM Plex Mono', monospace;
-    color: #ccc;
-    font-size: 1em;
-    margin-bottom: 18px;
-    flex-grow: 1;
+/* Card stats (hearts, downloads, etc.) */
+.sc-brSamD.fqUhVt.quote-color.stats {
+    background-color: transparent !important; /* Ensure no unwanted background */
+    color: #00ffff !important; /* Example color for stats */
+    font-size: 0.9em !important;
+}
+.sc-brSamD.fqUhVt.quote-color.stats > span { /* Targeting individual stat spans */
+    color: #00ffff !important;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.7) !important;
+}
+.sc-brSamD.fqUhVt.quote-color.stats svg { /* Icons within stats */
+    color: #ff0000 !important; /* Make icons red */
 }
 
-.card-button, .character-card-button {
-    display: block;
-    width: 100%;
-    padding: 12px 18px;
-    background-color: #ff0000;
-    color: white;
-    border: none;
-    border-radius: 7px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
-    text-decoration: none; /* If it's an anchor tag */
+
+/* Tags in card */
+div.ant-row.ant-row-no-wrap.mb-1.custom-scroll.css-1v3fjfx {
+    overflow-x: auto !important; /* Keep scroll if many tags */
+    white-space: nowrap !important;
+    margin-top: 10px !important;
+    padding: 0 18px 18px !important; /* Adjust padding for tags */
 }
 
-.card-button:hover, .character-card-button:hover {
-    background-color: #cc0000;
-    box-shadow: 0 0 18px #ff0000, 0 0 30px rgba(255, 0, 0, 0.6);
+.ant-tag.css-1v3fjfx { /* Individual tags */
+    background-color: rgba(0, 255, 255, 0.1) !important;
+    color: #00ffff !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-size: 0.8em !important;
+    border: 1px solid rgba(0, 255, 255, 0.5) !important;
+    margin-inline-end: 5px !important; /* Spacing between tags */
+    margin-bottom: 5px !important;
+    display: inline-block !important; /* Ensure they behave like block elements for spacing */
+}
+/* Specific tag for "fire" icon */
+.ant-tag.ant-tag-error.css-1v3fjfx {
+    background-color: rgba(255, 0, 0, 0.2) !important;
+    color: #ff0000 !important;
+    border-color: rgba(255, 0, 0, 0.7) !important;
 }
 
-/* Style for Tags, if available on the platform */
-.character-card-tags { /* Example class name, adjust if needed */
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-}
 
-.character-card-tag { /* Example class name, adjust if needed */
-    background-color: rgba(0, 255, 255, 0.1);
-    color: #00ffff;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.8em;
-    border: 1px solid rgba(0, 255, 255, 0.5);
+/* Bot card footer (author and time) */
+p[style*="justify-content: space-between"] {
+    font-family: 'IBM Plex Mono', monospace !important;
+    color: #888 !important;
+    font-size: 0.9em !important;
+    margin-top: 10px !important;
+    padding: 0 18px 10px !important; /* Adjust padding for footer */
 }
-
+p[style*="justify-content: space-between"] a {
+    color: #00ffff !important; /* Author name link */
+}
+p[style*="justify-content: space-between"] button {
+    color: #888 !important; /* Time button */
+}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .profile-container {
-        margin: 20px auto;
-        padding: 20px;
+        margin: 20px auto !important;
+        padding: 20px !important;
     }
     .username {
-        font-size: 3em;
+        font-size: 3em !important;
     }
     .profile-pic {
-        width: 160px;
-        height: 160px;
+        width: 160px !important;
+        height: 160px !important;
     }
     .bio-section h2 {
-        font-size: 1.6em;
+        font-size: 1.6em !important;
     }
     .bio-section p {
-        font-size: 1.05em;
+        font-size: 1.05em !important;
     }
     .cta {
-        font-size: 1.1em;
-        padding: 15px;
+        font-size: 1.1em !important;
+        padding: 15px !important;
     }
-    .bot-card-section h2 {
-        font-size: 2em;
+    /* Adjusted bot card section for smaller screens */
+    .sc-fmKFGs.hikinD.character-list-container {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+        gap: 20px !important;
+        padding: 20px !important;
     }
-    .card-grid {
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 20px;
-    }
-    .bot-thumbnail, .character-card img {
-        height: 160px;
+    img.sc-ktwOfi.eCEqAJ {
+        height: 160px !important;
     }
 }
 
 @media (max-width: 480px) {
     .profile-container {
-        margin: 10px;
-        padding: 15px;
+        margin: 10px !important;
+        padding: 15px !important;
     }
     .username {
-        font-size: 2.2em;
-        letter-spacing: 1px;
+        font-size: 2.2em !important;
+        letter-spacing: 1px !important;
     }
     .profile-pic {
-        width: 130px;
-        height: 130px;
+        width: 130px !important;
+        height: 130px !important;
     }
     .bio-section h2 {
-        font-size: 1.3em;
+        font-size: 1.3em !important;
     }
     .bio-section p {
-        font-size: 0.95em;
+        font-size: 0.95em !important;
     }
     .cta {
-        font-size: 0.9em;
-        padding: 12px;
+        font-size: 0.9em !important;
+        padding: 12px !important;
     }
-    .bot-card-section h2 {
-        font-size: 1.7em;
+    /* Adjusted bot card section for extra small screens */
+    .sc-fmKFGs.hikinD.character-list-container {
+        grid-template-columns: 1fr !important; /* Single column */
+        gap: 15px !important;
+        padding: 15px !important;
     }
-    .card-grid {
-        grid-template-columns: 1fr; /* Single column on very small screens */
-        gap: 15px;
+    img.sc-ktwOfi.eCEqAJ {
+        height: 140px !important;
     }
-    .bot-thumbnail, .character-card img {
-        height: 140px;
-    }
-		}
+	}
