@@ -3,60 +3,84 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex+Mono:wght@400;700&display=swap');
 
 
-/* General Body Styling - (Might not work on all platforms if not applied to a div) */
-body {
-    background-color: #000;
-    color: #e0e0e0;
-    font-family: 'IBM Plex Mono', monospace;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll from animations */
+/* --- Site-specific Overrides (IMPORTANT: You might need to adjust these based on inspection) --- */
+/* Try to hide the small, default profile picture at the very top left */
+/* You might need to find the specific class/ID for this element on the website */
+.profile-image-wrapper { /* This is a common class name, might need adjustment */
+    display: none !important;
 }
 
-/* Profile Container */
+/* Try to hide the default site-generated username and follower count if outside our bio */
+.user-info-header h1,
+.user-info-header p {
+    display: none !important;
+}
+
+/* If the site's follow button is directly below the main profile area but not in our bio, try to hide it */
+.follow-button-container { /* Again, adjust if needed */
+    display: none !important;
+}
+
+/* Ensure the main content area has the intended background */
+/* This assumes the main content wrapper for your profile can be styled */
+/* If the website has a main layout wrapper, we'll try to apply the background there */
+body, html {
+    background-color: #000 !important; /* Ensure black background everywhere */
+}
+
+/* This targets the main content area where your profile info sits */
+/* You may need to inspect the actual webpage to find the correct selector for the main content wrapper */
+div[id^="root"], .app-container, .main-content-wrapper {
+    background: url('https://archive.org/download/background_GEN3RATED_R/Screenshot_20250728-232410.jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
+    min-height: 100vh; /* Ensure it covers the whole viewport */
+    color: #e0e0e0; /* Default text color for the page */
+}
+
+/* Make sure any text within the main site content is visible */
+div[id^="root"] p, div[id^="root"] span, div[id^="root"] h1, div[id^="root"] h2, div[id^="root"] h3 {
+    color: #e0e0e0 !important;
+}
+
+
+/* --- Profile Container - This wraps all YOUR custom HTML for the bio --- */
 .profile-container {
     max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    background: url('https://archive.org/download/background_GEN3RATED_R/Screenshot_20250728-232410.jpg') no-repeat center center fixed;
-    background-size: cover;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.7), 0 0 40px rgba(255, 0, 0, 0.3);
+    margin: 40px auto; /* More margin from top */
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.85); /* Darker overlay for text readability over the main background */
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.8), 0 0 50px rgba(255, 0, 0, 0.4);
     position: relative;
-    z-index: 1;
+    z-index: 2; /* Ensure it's above the background */
     overflow: hidden;
-    border: 3px solid #ff0000; /* Rated R border */
+    border: 4px solid #ff0000; /* Rated R border */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Center text within the container */
 }
 
-.profile-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7); /* Dark overlay for text readability */
-    z-index: -1;
-}
 
 /* Header */
 .profile-header {
     text-align: center;
     margin-bottom: 30px;
     padding-bottom: 20px;
-    border-bottom: 2px solid rgba(255, 0, 0, 0.5);
+    /* Removed border-bottom here, will add to bio-section for separation */
+    width: 100%; /* Ensure it spans the width */
 }
 
 .profile-pic {
-    width: 180px;
-    height: 180px;
+    width: 200px; /* Slightly larger */
+    height: 200px;
     border-radius: 50%;
-    border: 5px solid #ff0000; /* Neon red border */
-    box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
-    margin-bottom: 20px;
+    border: 6px solid #ff0000; /* Neon red border */
+    box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
+    margin-bottom: 25px; /* More space below pic */
     object-fit: cover;
     transition: transform 0.3s ease-in-out;
+    z-index: 10; /* Ensure it's on top */
 }
 
 .profile-pic:hover {
@@ -64,13 +88,14 @@ body {
 }
 
 .username {
-    font-family: 'Rubik Mono One', monospace; /* Modern techy font */
-    font-size: 3.5em;
-    color: #00ffff; /* Cyberpunk blue neon */
-    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
+    font-family: 'Rubik Mono One', monospace;
+    font-size: 4em; /* Larger name */
+    color: #00ffff;
+    text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;
     margin: 0;
     padding: 0;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    line-height: 1.1;
 }
 
 .username .flicker {
@@ -79,146 +104,190 @@ body {
 }
 
 .username .rated-r {
-    color: #ff0000; /* Distinct red for 'R' */
-    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000;
+    color: #ff0000;
+    text-shadow: 0 0 12px #ff0000, 0 0 25px #ff0000, 0 0 50px #ff0000;
 }
-
 
 /* Flickering Animation */
 @keyframes flicker-animation {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
         opacity: 1;
-        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
+        text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;
     }
     20%, 24%, 55% {
-        opacity: 0.5;
+        opacity: 0.4; /* More pronounced flicker to off */
         text-shadow: none;
     }
     22% {
-        opacity: 0.7;
-        text-shadow: 0 0 5px #00ffff;
+        opacity: 0.6;
+        text-shadow: 0 0 8px #00ffff;
     }
+}
+
+/* This is a placeholder for the follow button.
+   You would need to manually add this HTML into your bio
+   if you want to *mimic* the follow button's appearance
+   and if the platform doesn't strip JavaScript.
+   The original request for "move the follow button under the big one"
+   can only be achieved by creating a custom button in your bio HTML
+   and styling it. The actual site's follow button cannot be moved.
+*/
+.custom-follow-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #555; /* Neutral grey or something like the example */
+    color: #fff;
+    border: 2px solid #888;
+    border-radius: 25px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.custom-follow-button:hover {
+    background-color: #777;
+    border-color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 
 /* Bio Section */
 .bio-section {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.85); /* Slightly darker background for text */
-    border-radius: 8px;
+    padding: 25px;
+    background: rgba(10, 10, 10, 0.9); /* Slightly darker background for text */
+    border-radius: 10px;
     margin-top: 30px;
-    box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.4);
-    border: 1px dashed rgba(255, 0, 0, 0.6);
+    box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5);
+    border: 2px dashed rgba(255, 0, 0, 0.7);
+    width: 100%; /* Take full width of profile-container */
+    text-align: left; /* Text content aligned left */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 .bio-section h2 {
-    font-family: 'Orbitron', sans-serif; /* Sci-fi feel for headings */
-    color: #ffcc00; /* Warning yellow */
-    text-shadow: 0 0 8px #ffcc00;
-    margin-top: 25px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 204, 0, 0.3);
-    padding-bottom: 5px;
-    font-size: 1.6em;
+    font-family: 'Orbitron', sans-serif;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 204, 0, 0.4);
+    padding-bottom: 8px;
+    font-size: 1.8em;
+    letter-spacing: 0.5px;
 }
 
 .bio-section p {
-    font-family: 'IBM Plex Mono', monospace; /* Monospaced for code/terminal feel */
+    font-family: 'IBM Plex Mono', monospace;
     color: #e0e0e0;
-    margin-bottom: 15px;
-    font-size: 1.1em;
+    margin-bottom: 18px;
+    font-size: 1.15em;
+    line-height: 1.7;
 }
 
 .bio-section .image-wrapper {
     text-align: center;
-    margin: 20px 0;
+    margin: 25px 0;
 }
 
 .bio-section .inline-image {
-    max-width: 100%;
+    max-width: 90%; /* Adjust width slightly for better fit */
     height: auto;
-    border: 3px solid #00ffff;
-    box-shadow: 0 0 10px #00ffff, 0 0 20px rgba(0, 255, 255, 0.5);
-    border-radius: 5px;
+    border: 4px solid #00ffff;
+    box-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.6);
+    border-radius: 8px;
     transition: transform 0.3s ease-in-out;
 }
 
 .bio-section .inline-image:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
 .cta {
-    font-family: 'Press Start 2P', cursive; /* Retro arcade font */
+    font-family: 'Press Start 2P', cursive;
     color: #ff0000;
     text-align: center;
-    margin-top: 30px;
-    padding: 15px;
-    background: rgba(255, 0, 0, 0.2);
-    border: 2px solid #ff0000;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #ff0000;
-    font-size: 1.2em;
+    margin-top: 40px;
+    padding: 18px;
+    background: rgba(255, 0, 0, 0.3);
+    border: 3px solid #ff0000;
+    border-radius: 8px;
+    box-shadow: 0 0 12px #ff0000;
+    font-size: 1.3em;
     animation: pulse-border 2s infinite alternate;
 }
 
 @keyframes pulse-border {
     from {
-        box-shadow: 0 0 10px #ff0000, 0 0 20px rgba(255, 0, 0, 0.5);
+        box-shadow: 0 0 12px #ff0000, 0 0 25px rgba(255, 0, 0, 0.6);
     }
     to {
-        box-shadow: 0 0 15px #ff0000, 0 0 30px rgba(255, 0, 0, 0.7);
+        box-shadow: 0 0 18px #ff0000, 0 0 35px rgba(255, 0, 0, 0.8);
     }
 }
 
+
 /* Bot Card Section Styling (Highly dependent on website's HTML structure for bot listings) */
+/* Assuming this is *within* your bio HTML or the next major section the CSS can influence */
 .bot-card-section {
     margin-top: 40px;
-    padding: 20px;
-    background: rgba(10, 10, 10, 0.9);
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
-    border: 2px solid #ff0000;
+    padding: 25px;
+    background: rgba(10, 10, 10, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
+    border: 3px solid #ff0000;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .bot-card-section h2 {
-    font-family: 'Bebas Neue', sans-serif; /* Bold, impactful heading */
-    color: #00ff00; /* Green for 'creations' */
-    text-shadow: 0 0 10px #00ff00;
+    font-family: 'Bebas Neue', sans-serif;
+    color: #00ff00;
+    text-shadow: 0 0 12px #00ff00;
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.2em;
-    letter-spacing: 1px;
+    margin-bottom: 35px;
+    font-size: 2.5em;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
 }
 
 /* Assuming the website wraps its bot cards in a grid-like container */
+/* We'll try to style the .character-card and its children based on your provided screenshot */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    gap: 25px;
 }
 
-.bot-card {
+/* Targeting the actual bot cards that the site generates */
+/* Based on your screenshot, the site uses a class like 'character-card' */
+/* You might need to adjust this selector: e.g., '.character-card' or '.bot-list-item' */
+.bot-card, .character-card {
     background: #1a1a1a;
     border: 2px solid rgba(255, 0, 0, 0.7);
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), inset 0 0 5px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.6), inset 0 0 6px rgba(255, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex; /* For flexible card content */
+    display: flex;
     flex-direction: column;
     position: relative;
+    text-align: left; /* Ensure text inside cards aligns left */
 }
 
-.bot-card::before {
+.bot-card::before, .character-card::before {
     content: '';
     position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
     border: 1px solid rgba(255, 0, 0, 0.2);
-    border-radius: 12px;
+    border-radius: 14px;
     z-index: -1;
     animation: border-flicker 4s linear infinite;
 }
@@ -237,105 +306,150 @@ body {
     100% { border-color: rgba(255, 0, 0, 0.2); }
 }
 
-
-.bot-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 0 15px #ff0000, 0 0 30px rgba(255, 0, 0, 0.7), inset 0 0 8px rgba(255, 0, 0, 0.5);
+.bot-card:hover, .character-card:hover {
+    transform: translateY(-7px) scale(1.03);
+    box-shadow: 0 0 18px #ff0000, 0 0 35px rgba(255, 0, 0, 0.8), inset 0 0 10px rgba(255, 0, 0, 0.6);
 }
 
-.bot-thumbnail {
+/* Targeting the elements *inside* the bot cards */
+/* This is based on typical card structures, may need adjustment */
+.bot-thumbnail, .character-card img {
     width: 100%;
-    height: 180px;
+    height: 190px;
     object-fit: cover;
-    border-bottom: 1px solid rgba(255, 0, 0, 0.4);
+    border-bottom: 2px solid rgba(255, 0, 0, 0.5);
 }
 
-.card-content {
-    padding: 15px;
-    flex-grow: 1; /* Allows content to take up available space */
+.card-content, .character-card-content {
+    padding: 18px;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
-.card-content h3 {
+.card-content h3, .character-card-title {
     font-family: 'Bebas Neue', sans-serif;
     color: #00ffff;
-    font-size: 1.5em;
+    font-size: 1.6em;
     margin-top: 0;
-    margin-bottom: 10px;
-    text-shadow: 0 0 5px #00ffff;
+    margin-bottom: 12px;
+    text-shadow: 0 0 6px #00ffff;
 }
 
-.card-content p {
+.card-content p, .character-card-description {
     font-family: 'IBM Plex Mono', monospace;
     color: #ccc;
-    font-size: 0.95em;
-    margin-bottom: 15px;
-    flex-grow: 1; /* Push button to bottom if content is short */
+    font-size: 1em;
+    margin-bottom: 18px;
+    flex-grow: 1;
 }
 
-.card-button {
+.card-button, .character-card-button {
     display: block;
     width: 100%;
-    padding: 10px 15px;
-    background-color: #ff0000; /* Red button */
+    padding: 12px 18px;
+    background-color: #ff0000;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 7px;
     font-family: 'Press Start 2P', cursive;
-    font-size: 0.9em;
+    font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    text-decoration: none; /* If it's an anchor tag */
 }
 
-.card-button:hover {
+.card-button:hover, .character-card-button:hover {
     background-color: #cc0000;
-    box-shadow: 0 0 15px #ff0000, 0 0 25px rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 18px #ff0000, 0 0 30px rgba(255, 0, 0, 0.6);
 }
+
+/* Style for Tags, if available on the platform */
+.character-card-tags { /* Example class name, adjust if needed */
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.character-card-tag { /* Example class name, adjust if needed */
+    background-color: rgba(0, 255, 255, 0.1);
+    color: #00ffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8em;
+    border: 1px solid rgba(0, 255, 255, 0.5);
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .profile-container {
+        margin: 20px auto;
+        padding: 20px;
+    }
+    .username {
+        font-size: 3em;
+    }
+    .profile-pic {
+        width: 160px;
+        height: 160px;
+    }
+    .bio-section h2 {
+        font-size: 1.6em;
+    }
+    .bio-section p {
+        font-size: 1.05em;
+    }
+    .cta {
+        font-size: 1.1em;
+        padding: 15px;
+    }
+    .bot-card-section h2 {
+        font-size: 2em;
+    }
+    .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 20px;
+    }
+    .bot-thumbnail, .character-card img {
+        height: 160px;
+    }
+}
+
+@media (max-width: 480px) {
     .profile-container {
         margin: 10px;
         padding: 15px;
     }
     .username {
-        font-size: 2.5em;
+        font-size: 2.2em;
+        letter-spacing: 1px;
     }
     .profile-pic {
-        width: 150px;
-        height: 150px;
+        width: 130px;
+        height: 130px;
     }
     .bio-section h2 {
-        font-size: 1.4em;
+        font-size: 1.3em;
     }
     .bio-section p {
-        font-size: 1em;
+        font-size: 0.95em;
     }
     .cta {
-        font-size: 1em;
+        font-size: 0.9em;
+        padding: 12px;
     }
     .bot-card-section h2 {
-        font-size: 1.8em;
-    }
-    .card-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-}
-
-@media (max-width: 480px) {
-    .username {
-        font-size: 1.8em;
-    }
-    .profile-pic {
-        width: 120px;
-        height: 120px;
-    }
-    .bot-card-section h2 {
-        font-size: 1.5em;
+        font-size: 1.7em;
     }
     .card-grid {
         grid-template-columns: 1fr; /* Single column on very small screens */
+        gap: 15px;
     }
-	}
+    .bot-thumbnail, .character-card img {
+        height: 140px;
+    }
+		}
