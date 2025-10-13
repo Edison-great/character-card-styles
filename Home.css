@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex+Mono:wght@400;700&display=swap');
 
-body, html, #root > div, .layout-content, #root {
+body, html, #root > div, .layout-content, #root,
+.ant-layout, .ant-layout-content, main.ant-layout-content { /* Expanded global reset */
     background: url('https://archive.org/download/background_GEN3RATED_R/Screenshot_20251013-132014.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
     min-height: 100vh !important;
@@ -9,6 +10,7 @@ body, html, #root > div, .layout-content, #root {
     color: #e0e0e0 !important;
 }
 
+/* Aggressively remove backgrounds/paddings from common containers */
 .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6,
 .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18,
 .ant-card-body,
@@ -16,18 +18,28 @@ body, html, #root > div, .layout-content, #root {
 .ant-tabs-tabpane,
 .ant-tabs-nav-wrap,
 .ant-tabs-nav,
-.ant-row.ant-row-start.ant-row-middle.my-2.gap-4 { /* Targeted multiple containers */
+.ant-row.ant-row-start.ant-row-middle.my-2.gap-4,
+.ant-spin-container, /* Target spin container which often wraps content */
+.ant-col.ant-col-xs-24, /* Target responsive columns */
+.ant-col.ant-col-lg-18,
+.ant-col.ant-col-lg-6,
+.ant-row.ant-row-center, /* Any row that might wrap things */
+.sc-fmKFGs.hikinD.character-list-container,
+.sc-jrQzUz.gIdnFm { /* More specific class names found on sites with similar structure */
     background: none !important;
     padding: 0 !important;
     box-shadow: none !important;
     margin: 0 !important;
+    /* For the blockage, ensure no default styling is coloring it */
+    background-color: transparent !important;
+    border: none !important;
 }
 
-.bio-section { /* Explicitly setting transparent background for your bio section */
+.bio-section {
     background: rgba(10, 10, 10, 0.4) !important;
-    padding: 25px !important; /* Re-add padding that was removed by global override */
+    padding: 25px !important;
     border-radius: 10px !important;
-    margin-top: 30px !important;
+    margin-top: 30px !important; /* Adjusted to create space above */
     box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;
     border: 2px dashed rgba(255, 0, 0, 0.7) !important;
     width: 100% !important;
@@ -47,41 +59,42 @@ a:hover {
     text-decoration: underline !important;
 }
 
+/* Hide original elements, but re-enable the follower button's parent */
 .ant-avatar.ant-avatar-square.ant-avatar-image[style*="width: 100px;"],
 img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
 .ant-typography.my-2,
 .ant-typography.text-lg.font-bold.mb-2.break-words,
 .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),
-.ant-row.ant-row-start.ant-row-middle > .ant-typography[class*="Followers"] {
+.ant-typography[class*="Followers"] { /* Hide the *text* of followers from its original spot */
     display: none !important;
 }
 
-.ant-row.ant-row-start.ant-row-middle { /* Target the parent of follower count & button */
-    position: absolute !important;
-    top: 550px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: auto !important;
-    z-index: 100 !important;
+/* Re-enable and style the follower count/button parent */
+.ant-row.ant-row-start.ant-row-middle {
+    display: flex !important; /* Re-enable display */
+    flex-direction: column !important; /* Stack vertically */
+    align-items: center !important; /* Center content */
+    margin: 20px auto 30px auto !important; /* Centered margin, pushes bio down */
+    width: fit-content !important; /* Take only necessary width */
     background: rgba(0,0,0,0.5);
     padding: 10px 20px !important;
     border-radius: 10px !important;
     border: 1px solid rgba(0, 255, 255, 0.4) !important;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.6) !important;
     pointer-events: auto !important;
+    position: relative !important; /* No absolute positioning here, it should flow */
+    z-index: 100 !important;
 }
 
-.ant-row.ant-row-start.ant-row-middle > .ant-typography:not([class*="Followers"]) {
+/* Style the follower text (the visible part we want to display) */
+.ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 { /* Targeting the div that typically holds "0 followers" */
     font-family: 'IBM Plex Mono', monospace !important;
     color: #00ffff !important;
     font-size: 1.1em !important;
     text-shadow: 0 0 8px #00ffff !important;
     margin-bottom: 8px !important;
     white-space: nowrap !important;
-    margin-right: 0 !important;
+    display: block !important; /* Ensure it's visible */
 }
 
 .ant-row.ant-row-start.ant-row-middle > .ant-btn {
@@ -117,7 +130,7 @@ footer.ant-layout-footer,
 
 .profile-container {
     max-width: 900px;
-    margin: 40px auto;
+    margin: 40px auto 0 auto; /* Adjusted top margin */
     padding: 0px;
     background: none !important;
     border-radius: 0px !important;
@@ -135,8 +148,8 @@ footer.ant-layout-footer,
 
 .profile-header {
     text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
+    margin-bottom: 0px; /* Reduced margin, follower count will fill space */
+    padding-bottom: 0px;
     width: 100%;
     background: none !important;
 }
@@ -153,8 +166,18 @@ footer.ant-layout-footer,
     z-index: 10;
 }
 
-.profile-pic:hover {
-    transform: scale(1.05) rotate(5deg);
+/* Profile Picture Tap/Hover Rotation */
+.profile-pic:hover, .profile-pic:active { /* :active simulates tap */
+    animation: spinning-animation 2s linear infinite;
+}
+
+@keyframes spinning-animation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .username {
@@ -256,9 +279,50 @@ footer.ant-layout-footer,
     }
 }
 
-.sc-fmKFGs.hikinD.character-list-container,
+.ant-tabs-content:not(.ant-tabs-content-top) { /* Hide non-active tab content */
+    display: none !important;
+}
+
+/* Tab container and headers styling */
+.ant-tabs-nav-list {
+    background: rgba(10, 10, 10, 0.7) !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 30px !important;
+    width: fit-content !important; /* Limit width to content */
+    margin-left: auto !important; /* Center the tabs */
+    margin-right: auto !important;
+}
+
+.ant-tabs-tab {
+    font-family: 'Bebas Neue', sans-serif !important;
+    color: #00ffff !important;
+    text-shadow: 0 0 8px #00ffff !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    margin: 0 5px !important;
+    transition: all 0.2s ease !important;
+}
+
+.ant-tabs-tab-active {
+    color: #ff0000 !important;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px rgba(255, 0, 0, 0.7) !important;
+    border-bottom: 2px solid #ff0000 !important;
+}
+
+.ant-tabs-tab:hover {
+    color: #fff !important;
+    text-shadow: 0 0 12px #fff !important;
+}
+
+/* Character Card Styling - Ensure proper grid display for character tabs */
 .ant-tabs-tabpane-active,
-.ant-tabs-content.ant-tabs-content-top {
+.sc-fmKFGs.hikinD.character-list-container,
+.ant-tabs-content.ant-tabs-content-top > div { /* Targeting the inner div that contains the grid */
     margin-top: 40px !important;
     padding: 0 !important;
     background: none !important;
@@ -272,42 +336,8 @@ footer.ant-layout-footer,
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
     gap: 25px !important;
     background-image: none !important;
-}
-
-.ant-tabs-content:not(.ant-tabs-content-top) { /* Hide non-active tab content */
-    display: none !important;
-}
-
-.ant-tabs-nav-list { /* Style for the tab headers container */
-    background: rgba(10, 10, 10, 0.7) !important;
-    border-radius: 10px !important;
-    padding: 10px !important;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
-    display: flex !important; /* Ensure they stay in a row */
-    justify-content: center !important;
-    margin-top: 30px !important;
-}
-
-.ant-tabs-tab { /* Individual tab header */
-    font-family: 'Bebas Neue', sans-serif !important;
-    color: #00ffff !important;
-    text-shadow: 0 0 8px #00ffff !important;
-    background: transparent !important;
-    border: none !important;
-    padding: 10px 20px !important;
-    margin: 0 5px !important;
-    transition: all 0.2s ease !important;
-}
-
-.ant-tabs-tab-active { /* Active tab header */
-    color: #ff0000 !important;
-    text-shadow: 0 0 10px #ff0000, 0 0 20px rgba(255, 0, 0, 0.7) !important;
-    border-bottom: 2px solid #ff0000 !important;
-}
-
-.ant-tabs-tab:hover {
-    color: #fff !important;
-    text-shadow: 0 0 12px #fff !important;
+    margin-left: auto !important; /* Center the grid */
+    margin-right: auto !important;
 }
 
 .ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column,
@@ -454,7 +484,7 @@ p[style*="justify-content: space-between"] button,
 
 @media (max-width: 768px) {
     .profile-container {
-        margin: 20px auto !important;
+        margin: 20px auto 0 auto !important;
         padding: 0px !important;
     }
     .username {
@@ -474,8 +504,9 @@ p[style*="justify-content: space-between"] button,
         font-size: 1.1em !important;
         padding: 15px !important;
     }
+    .ant-tabs-tabpane-active,
     .sc-fmKFGs.hikinD.character-list-container,
-    .ant-tabs-tabpane-active {
+    .ant-tabs-content.ant-tabs-content-top > div {
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
         gap: 20px !important;
         padding: 0 !important;
@@ -485,13 +516,13 @@ p[style*="justify-content: space-between"] button,
         height: 160px !important;
     }
     .ant-row.ant-row-start.ant-row-middle {
-        top: 480px !important;
+        margin-top: 25px !important; /* Adjust spacing on smaller screens */
     }
 }
 
 @media (max-width: 480px) {
     .profile-container {
-        margin: 10px !important;
+        margin: 10px auto 0 auto !important;
         padding: 0px !important;
     }
     .username {
@@ -512,8 +543,9 @@ p[style*="justify-content: space-between"] button,
         font-size: 0.9em !important;
         padding: 12px !important;
     }
+    .ant-tabs-tabpane-active,
     .sc-fmKFGs.hikinD.character-list-container,
-    .ant-tabs-tabpane-active {
+    .ant-tabs-content.ant-tabs-content-top > div {
         grid-template-columns: 1fr !important;
         gap: 15px !important;
         padding: 0 !important;
@@ -523,6 +555,6 @@ p[style*="justify-content: space-between"] button,
         height: 140px !important;
     }
     .ant-row.ant-row-start.ant-row-middle {
-        top: 400px !important;
+        margin-top: 20px !important; /* Adjust spacing on smallest screens */
     }
 }
