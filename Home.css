@@ -70,28 +70,29 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
 }
 
 /* Re-enable and style the follower count/button parent */
+/* Removed previous explicit styling for follower count container to allow it to be positioned more naturally */
 .ant-row.ant-row-start.ant-row-middle {
-    display: flex !important; /* Re-enable display */
-    flex-direction: column !important; /* Stack vertically */
-    align-items: center !important; /* Center content */
-    margin: 20px auto 30px auto !important; /* Centered margin, pushes bio down */
-    width: fit-content !important; /* Take only necessary width */
-    background: rgba(0,0,0,0.5);
-    padding: 10px 20px !important;
-    border-radius: 10px !important;
-    border: 1px solid rgba(0, 255, 255, 0.4) !important;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin: 10px auto 30px auto !important; /* Adjusted margin to place it closer to the username */
+    width: fit-content !important;
+    background: none !important; /* No background for this container */
+    padding: 0 !important; /* No padding */
+    border: none !important; /* No border */
+    box-shadow: none !important; /* No shadow */
     pointer-events: auto !important;
-    position: relative !important; /* No absolute positioning here, it should flow */
+    position: relative !important;
     z-index: 100 !important;
+    order: 2 !important; /* This helps visually place it below username */
 }
 
 /* Style the follower text (the visible part we want to display) */
 .ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 { /* Targeting the div that typically holds "0 followers" */
     font-family: 'IBM Plex Mono', monospace !important;
-    color: #00ffff !important;
+    color: #e0e0e0 !important; /* Changed to match bleachbunny's lighter text */
     font-size: 1.1em !important;
-    text-shadow: 0 0 8px #00ffff !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5) !important; /* Softer shadow */
     margin-bottom: 8px !important;
     white-space: nowrap !important;
     display: block !important; /* Ensure it's visible */
@@ -102,7 +103,7 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     font-size: 1.1em !important;
     padding: 6px 20px !important;
     border-radius: 20px !important;
-    background-color: #ff0000 !important;
+    background-color: #ff0000 !important; /* Bleachbunny uses a prominent button */
     color: #fff !important;
     border: 2px solid #ff0000 !important;
     box-shadow: 0 0 8px rgba(255, 0, 0, 0.7) !important;
@@ -152,24 +153,48 @@ footer.ant-layout-footer,
     padding-bottom: 0px;
     width: 100%;
     background: none !important;
+    display: flex; /* Use flexbox to arrange items */
+    flex-direction: column; /* Stack vertically */
+    align-items: center; /* Center horizontally */
 }
 
 .profile-pic {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 6px solid #ff0000;
-    box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
+    /* Removed direct red border/shadow to place it with a pseudo-element */
     margin-bottom: 25px;
     object-fit: cover;
     transition: transform 0.3s ease-in-out;
     z-index: 10;
+    position: relative; /* Needed for pseudo-element positioning */
+    box-shadow: none !important; /* Ensure no residual box-shadow */
+}
+
+/* Pseudo-element for the outer red glow, correctly layered */
+.profile-pic::before {
+    content: '';
+    position: absolute;
+    top: -6px; /* Adjust as needed for glow size */
+    left: -6px; /* Adjust as needed for glow size */
+    right: -6px; /* Adjust as needed for glow size */
+    bottom: -6px; /* Adjust as needed for glow size */
+    border-radius: 50%;
+    background: rgba(255, 0, 0, 0.2); /* Base glow color */
+    box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
+    z-index: -1; /* Place behind the image */
+    transition: all 0.3s ease-in-out;
 }
 
 /* Profile Picture Tap/Hover Rotation */
 .profile-pic:hover, .profile-pic:active { /* :active simulates tap */
     animation: spinning-animation 2s linear infinite;
 }
+/* Hover effect for the glow */
+.profile-pic:hover::before, .profile-pic:active::before {
+    box-shadow: 0 0 25px #ff0000, 0 0 50px #ff0000, 0 0 70px rgba(255, 0, 0, 0.7);
+}
+
 
 @keyframes spinning-animation {
     from {
@@ -190,6 +215,7 @@ footer.ant-layout-footer,
     letter-spacing: 3px;
     line-height: 1.1;
     margin-top: 20px;
+    order: 1; /* Ensure username comes before follower info */
 }
 
 .username .flicker {
@@ -516,7 +542,7 @@ p[style*="justify-content: space-between"] button,
         height: 160px !important;
     }
     .ant-row.ant-row-start.ant-row-middle {
-        margin-top: 25px !important; /* Adjust spacing on smaller screens */
+        margin-top: 15px !important; /* Adjust spacing on smaller screens */
     }
 }
 
@@ -555,6 +581,6 @@ p[style*="justify-content: space-between"] button,
         height: 140px !important;
     }
     .ant-row.ant-row-start.ant-row-middle {
-        margin-top: 20px !important; /* Adjust spacing on smallest screens */
+        margin-top: 10px !important; /* Adjust spacing on smallest screens */
     }
 }
