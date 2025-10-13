@@ -66,7 +66,6 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     display: none !important;
 }
 
-/* Follower Count and Button Styling and Positioning */
 .ant-row.ant-row-start.ant-row-middle {
     display: flex !important;
     flex-direction: column !important;
@@ -77,12 +76,12 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     border: none !important;
     box-shadow: none !important;
     pointer-events: auto !important;
-    position: absolute !important; /* Absolute position to control its placement */
-    top: 500px !important; /* This value will need tweaking. Will try to align below username. */
+    position: absolute !important;
+    top: 480px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    z-index: 101 !important; /* Ensure it's above other elements */
-    margin: 0 !important; /* Reset any default margins */
+    z-index: 101 !important;
+    margin: 0 !important;
 }
 
 .ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 > span.mr-4 {
@@ -93,23 +92,22 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     margin-bottom: 10px !important;
     white-space: nowrap !important;
     display: block !important;
-    order: 1 !important; /* Ensure text comes before button */
+    order: 1 !important;
 }
 
-/* Flickering Neon Follow Button */
 .ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 > button.ant-btn {
-    font-family: 'Press Start 2P', cursive !important; /* More neon-like font */
-    font-size: 1.2em !important; /* Bigger */
-    padding: 8px 25px !important; /* Larger padding */
-    border-radius: 5px !important; /* Sharper edges for neon look */
-    background-color: transparent !important; /* Transparent background */
-    color: #00ffff !important; /* Neon blue text */
-    border: 3px solid #00ffff !important; /* Neon blue border */
-    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff !important; /* Stronger neon glow */
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 1.2em !important;
+    padding: 8px 25px !important;
+    border-radius: 5px !important;
+    background-color: transparent !important;
+    color: #00ffff !important;
+    border: 3px solid #00ffff !important;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff !important;
     transition: all 0.1s ease-in-out !important;
     margin-left: 0 !important;
-    animation: neon-flicker 1.5s infinite alternate !important; /* Flicker animation */
-    order: 2 !important; /* Button after text */
+    animation: neon-flicker 1.5s infinite alternate !important;
+    order: 2 !important;
 }
 
 .ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 > button.ant-btn:hover {
@@ -153,7 +151,7 @@ footer.ant-layout-footer,
     background: none !important;
     border-radius: 0px !important;
     box-shadow: none !important;
-    position: relative; /* Crucial for absolute positioning of follower block */
+    position: relative;
     z-index: 2;
     overflow: visible;
     border: none !important;
@@ -173,10 +171,9 @@ footer.ant-layout-footer,
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative; /* Ensure z-index works within this context if needed */
+    position: relative;
 }
 
-/* Red Glow for URL Profile Picture */
 .profile-pic {
     width: 200px;
     height: 200px;
@@ -186,14 +183,13 @@ footer.ant-layout-footer,
     transition: transform 0.3s ease-in-out;
     z-index: 10;
     position: relative;
-    /* Direct box-shadow for glow */
-    box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000 !important; /* Stronger glow */
-    border: 3px solid rgba(255, 0, 0, 0.7) !important; /* Added a subtle border too */
+    box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000 !important;
+    border: 3px solid rgba(255, 0, 0, 0.7) !important;
 }
 
 .profile-pic:hover, .profile-pic:active {
     animation: spinning-animation 2s linear infinite;
-    box-shadow: 0 0 25px #ff0000, 0 0 50px #ff0000, 0 0 70px rgba(255, 0, 0, 0.7) !important; /* Stronger hover glow */
+    box-shadow: 0 0 25px #ff0000, 0 0 50px #ff0000, 0 0 70px rgba(255, 0, 0, 0.7) !important;
 }
 
 @keyframes spinning-animation {
@@ -281,11 +277,10 @@ footer.ant-layout-footer,
     transform: scale(1.03);
 }
 
-/* Big, Bold "I DON'T MAKE BOTS..." text */
 .cta {
-    font-family: 'Rubik Mono One', monospace !important; /* Big, bold font */
-    font-size: 1.8em !important; /* Larger size */
-    font-weight: bold !important; /* Ensure boldness */
+    font-family: 'Rubik Mono One', monospace !important;
+    font-size: 1.8em !important;
+    font-weight: bold !important;
     color: #ff0000 !important;
     text-align: center !important;
     margin-top: 40px !important;
@@ -295,7 +290,7 @@ footer.ant-layout-footer,
     border-radius: 8px !important;
     box-shadow: 0 0 12px #ff0000 !important;
     animation: pulse-border 2s infinite alternate !important;
-    line-height: 1.3 !important; /* Adjust line height for readability */
+    line-height: 1.3 !important;
 }
 
 @keyframes pulse-border {
@@ -543,7 +538,7 @@ p[style*="justify-content: space-between"] button,
         height: 160px !important;
     }
     .ant-row.ant-row-start.ant-row-middle {
-        top: 400px !important; /* Adjusted for smaller screens */
+        top: 400px !important;
     }
 }
 
@@ -583,6 +578,6 @@ p[style*="justify-content: space-between"] button,
         height: 140px !important;
     }
     .ant-row.ant-row-start.ant-row-middle {
-        top: 320px !important; /* Adjusted for smallest screens */
+        top: 320px !important;
     }
 }
