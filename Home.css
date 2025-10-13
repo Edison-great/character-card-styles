@@ -37,7 +37,7 @@ body, html, #root > div, .layout-content, #root,
     background: rgba(10, 10, 10, 0.4) !important;
     padding: 25px !important;
     border-radius: 10px !important;
-    margin-top: 1500px !important; /* BIO DROPPED VERY, VERY MUCH! */
+    margin-top: 550px !important; /* BIO DROPPED VERY MUCH */
     box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;
     border: 2px dashed rgba(255, 0, 0, 0.7) !important;
     width: 100% !important;
@@ -70,7 +70,7 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
 div.text-sm.mb-2, /* This targets the direct container that holds both the span and button */
 .ant-row.ant-row-start.ant-row-middle {
     position: absolute !important;
-    top: 550px !important; /* BACK TO EARLIER POSITION TO STAY WITH PROFILE */
+    top: 850px !important; /* RETAINED POSITION */
     left: 50% !important;
     transform: translateX(-50%) !important;
     display: flex !important;
@@ -171,7 +171,7 @@ footer.ant-layout-footer,
 
 .profile-container {
     max-width: 900px;
-    margin: 300px auto 0 auto !important; /* PROFILE CONTAINER BACK TO EARLIER POSITION */
+    margin: 300px auto 0 auto !important; /* RETAINED POSITION */
     padding: 0px;
     background: none !important;
     border-radius: 0px !important;
@@ -530,7 +530,7 @@ p[style*="justify-content: space-between"] button,
 
 @media (max-width: 768px) {
     .profile-container {
-        margin: 180px auto 0 auto !important; /* PROFILE CONTAINER ADJUSTED FOR SMALLER SCREENS */
+        margin: 180px auto 0 auto !important; /* RETAINED POSITION */
         padding: 0px !important;
     }
     .username {
@@ -542,11 +542,11 @@ p[style*="justify-content: space-between"] button,
         margin-bottom: 15px !important;
     }
     .bio-section {
-        margin-top: 1200px !important; /* BIO DROPPED VERY, VERY MUCH FOR SMALLER SCREENS! */
+        margin-top: 450px !important; /* ADJUSTED FOR SMALLER SCREENS - DROPPED VERY MUCH */
     }
     div.text-sm.mb-2,
     .ant-row.ant-row-start.ant-row-middle {
-        top: 450px !important; /* FOLLOWER COUNT ADJUSTED FOR SMALLER SCREENS */
+        top: 700px !important; /* RETAINED POSITION */
         width: 90% !important;
         padding: 20px 30px !important;
     }
@@ -582,7 +582,7 @@ p[style*="justify-content: space-between"] button,
 
 @media (max-width: 480px) {
     .profile-container {
-        margin: 100px auto 0 auto !important; /* PROFILE CONTAINER ADJUSTED FOR SMALLEST SCREENS */
+        margin: 100px auto 0 auto !important; /* RETAINED POSITION */
         padding: 0px !important;
     }
     .username {
@@ -595,11 +595,11 @@ p[style*="justify-content: space-between"] button,
         margin-bottom: 10px !important;
     }
     .bio-section {
-        margin-top: 900px !important; /* BIO DROPPED VERY, VERY MUCH FOR SMALLEST SCREENS! */
+        margin-top: 380px !important; /* ADJUSTED FOR SMALLEST SCREENS - DROPPED VERY MUCH */
     }
     div.text-sm.mb-2,
     .ant-row.ant-row-start.ant-row-middle {
-        top: 350px !important; /* FOLLOWER COUNT ADJUSTED FOR SMALLEST SCREENS */
+        top: 600px !important; /* RETAINED POSITION */
         width: 95% !important;
         padding: 15px 20px !important;
     }
