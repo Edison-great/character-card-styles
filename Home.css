@@ -62,85 +62,70 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
 .ant-typography.my-2,
 .ant-typography.text-lg.font-bold.mb-2.break-words,
 .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),
-.ant-typography[class*="Followers"] {
+.ant-typography[class*="Followers"],
+/* Hide the original Ant Design follower/button block */
+.ant-row.ant-row-start.ant-row-middle {
     display: none !important;
 }
 
-/* Specific targeting for the follower count and button block */
-.ant-row.ant-row-start.ant-row-middle {
-    position: absolute !important;
-    top: 490px !important; /* Adjusted to be below the username */
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 101 !important;
-    width: auto !important;
+/* Custom follower count and button styling */
+#custom-follower-block {
     display: flex !important;
-    flex-direction: column !important; /* Stack text and button */
+    flex-direction: column !important;
     align-items: center !important;
-    justify-content: center !important;
-    background: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-    border: none !important;
+    margin-top: 20px !important; /* Adjust space below username */
+    margin-bottom: 30px !important; /* Adjust space above bio */
+    width: 100% !important;
     text-align: center !important;
+    z-index: 10; /* Ensure it's on top */
+    position: relative; /* For proper z-index */
 }
 
-.ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 {
-    display: flex !important;
-    flex-direction: column !important; /* Ensure text and button are stacked */
-    align-items: center !important;
-    margin-bottom: 15px !important; /* Space between count and button */
-    padding: 0 !important;
-}
-
-.ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 > span.mr-4 {
+#custom-follower-block .follower-count {
     font-family: 'IBM Plex Mono', monospace !important;
     color: #e0e0e0 !important;
     font-size: 1.1em !important;
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.5) !important;
-    margin-bottom: 10px !important; /* Space between count and button if they are siblings */
+    margin-bottom: 10px !important;
     white-space: nowrap !important;
-    display: block !important; /* Ensure it takes its own line */
+    display: block !important;
 }
 
-.ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 > button.ant-btn {
+#custom-follower-block .custom-unfollow-btn {
     font-family: 'Press Start 2P', cursive !important;
     font-size: 1.2em !important;
-    padding: 10px 30px !important; /* Make button bigger */
+    padding: 10px 30px !important; /* Bigger button */
     border-radius: 5px !important;
     background-color: transparent !important;
     color: #00ffff !important;
     border: 3px solid #00ffff !important;
     box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff !important;
     transition: all 0.1s ease-in-out !important;
-    margin-left: 0 !important;
     animation: neon-flicker 1.5s infinite alternate !important;
-    width: auto !important; /* Allow button to size to content */
-    display: inline-flex !important; /* Keep icon and text together */
+    width: auto !important;
+    display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
+    cursor: pointer !important; /* Indicate it's clickable */
 }
 
-.ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 > button.ant-btn:hover {
+#custom-follower-block .custom-unfollow-btn:hover {
     background-color: rgba(0, 255, 255, 0.2) !important;
     border-color: #fff !important;
     color: #fff !important;
     box-shadow: 0 0 15px #fff, 0 0 30px rgba(255, 255, 255, 0.8) !important;
 }
 
-.ant-btn-icon {
-    margin-right: 8px !important; /* Space for the icon */
-}
-
-.ant-btn-icon svg {
+#custom-follower-block .custom-unfollow-btn svg {
     fill: #00ffff !important;
+    margin-right: 8px !important;
     transition: fill 0.1s ease-in-out !important;
 }
 
-.ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
+#custom-follower-block .custom-unfollow-btn:hover svg {
     fill: #fff !important;
 }
+
 
 @keyframes neon-flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
@@ -155,12 +140,6 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
         opacity: 0.9;
         box-shadow: 0 0 5px #00ffff;
     }
-}
-
-span.ant-tag.mb-2,
-button[aria-describedby]:not(.ant-btn-text),
-.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {
-    display: none !important;
 }
 
 footer.ant-layout-footer,
@@ -541,6 +520,17 @@ p[style*="justify-content: space-between"] button,
         height: 160px !important;
         margin-bottom: 15px !important;
     }
+    #custom-follower-block {
+        margin-top: 15px !important;
+        margin-bottom: 25px !important;
+    }
+    #custom-follower-block .follower-count {
+        font-size: 1em !important;
+    }
+    #custom-follower-block .custom-unfollow-btn {
+        font-size: 1.1em !important;
+        padding: 8px 25px !important;
+    }
     .bio-section h2 {
         font-size: 1.6em !important;
     }
@@ -562,9 +552,6 @@ p[style*="justify-content: space-between"] button,
     .ant-card-cover img {
         height: 160px !important;
     }
-    .ant-row.ant-row-start.ant-row-middle {
-        top: 400px !important;
-    }
 }
 
 @media (max-width: 480px) {
@@ -580,6 +567,17 @@ p[style*="justify-content: space-between"] button,
         width: 130px !important;
         height: 130px !important;
         margin-bottom: 10px !important;
+    }
+    #custom-follower-block {
+        margin-top: 10px !important;
+        margin-bottom: 20px !important;
+    }
+    #custom-follower-block .follower-count {
+        font-size: 0.9em !important;
+    }
+    #custom-follower-block .custom-unfollow-btn {
+        font-size: 1em !important;
+        padding: 6px 20px !important;
     }
     .bio-section h2 {
         font-size: 1.3em !important;
@@ -601,8 +599,5 @@ p[style*="justify-content: space-between"] button,
     img.sc-ktwOfi.eCEqAJ,
     .ant-card-cover img {
         height: 140px !important;
-    }
-    .ant-row.ant-row-start.ant-row-middle {
-        top: 320px !important;
     }
 }
