@@ -77,7 +77,7 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     box-shadow: none !important;
     pointer-events: auto !important;
     position: absolute !important;
-    top: 480px !important;
+    top: 500px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     z-index: 101 !important;
