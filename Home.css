@@ -18,7 +18,7 @@ body, html, #root > div, .layout-content, #root,
 .ant-tabs-tabpane,
 .ant-tabs-nav-wrap,
 .ant-tabs-nav,
-.ant-row.ant-row-start.ant-row-middle.my-2.gap-4,
+.my-2.gap-4, /* Targeting the specific gap-4 class which might be problematic */
 .ant-spin-container, /* Target spin container which often wraps content */
 .ant-col.ant-col-xs-24, /* Target responsive columns */
 .ant-col.ant-col-lg-18,
@@ -61,20 +61,20 @@ a:hover {
 
 /* Hide original elements, but re-enable the follower button's parent */
 .ant-avatar.ant-avatar-square.ant-avatar-image[style*="width: 100px;"],
-img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
+img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"], /* Hides the original chub.ai avatar */
 .ant-typography.my-2,
 .ant-typography.text-lg.font-bold.mb-2.break-words,
 .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),
-.ant-typography[class*="Followers"] { /* Hide the *text* of followers from its original spot */
+.ant-typography[class*="Followers"] { /* Hide the *text* of followers from its original spot if it's rendered separately */
     display: none !important;
 }
 
-/* Re-enable and style the follower count/button parent */
-/* Removed previous explicit styling for follower count container to allow it to be positioned more naturally */
-.ant-row.ant-row-start.ant-row-middle {
+/* Specific targeting for the follower count/button's containing div from your provided HTML snippet */
+div.text-sm.mb-2 {
+    /* Ensure it's displayed and styled */
     display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
+    flex-direction: column !important; /* Stack text and button */
+    align-items: center !important; /* Center horizontally */
     margin: 10px auto 30px auto !important; /* Adjusted margin to place it closer to the username */
     width: fit-content !important;
     background: none !important; /* No background for this container */
@@ -84,11 +84,10 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     pointer-events: auto !important;
     position: relative !important;
     z-index: 100 !important;
-    order: 2 !important; /* This helps visually place it below username */
+    /* The `order` property will be applied to the `.profile-header` flex container */
 }
 
-/* Style the follower text (the visible part we want to display) */
-.ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 { /* Targeting the div that typically holds "0 followers" */
+div.text-sm.mb-2 > span.mr-4 { /* Targeting the follower count text */
     font-family: 'IBM Plex Mono', monospace !important;
     color: #e0e0e0 !important; /* Changed to match bleachbunny's lighter text */
     font-size: 1.1em !important;
@@ -98,7 +97,7 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     display: block !important; /* Ensure it's visible */
 }
 
-.ant-row.ant-row-start.ant-row-middle > .ant-btn {
+div.text-sm.mb-2 > button.ant-btn { /* Targeting the Unfollow button */
     font-family: 'Bebas Neue', sans-serif !important;
     font-size: 1.1em !important;
     padding: 6px 20px !important;
@@ -111,7 +110,7 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     margin-left: 0 !important;
 }
 
-.ant-row.ant-row-start.ant-row-middle > .ant-btn:hover {
+div.text-sm.mb-2 > button.ant-btn:hover {
     background-color: #cc0000 !important;
     border-color: #fff !important;
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.9) !important;
@@ -131,7 +130,7 @@ footer.ant-layout-footer,
 
 .profile-container {
     max-width: 900px;
-    margin: 40px auto 0 auto; /* Adjusted top margin */
+    margin: 40px auto 0 auto;
     padding: 0px;
     background: none !important;
     border-radius: 0px !important;
@@ -149,26 +148,26 @@ footer.ant-layout-footer,
 
 .profile-header {
     text-align: center;
-    margin-bottom: 0px; /* Reduced margin, follower count will fill space */
+    margin-bottom: 0px;
     padding-bottom: 0px;
     width: 100%;
     background: none !important;
-    display: flex; /* Use flexbox to arrange items */
-    flex-direction: column; /* Stack vertically */
-    align-items: center; /* Center horizontally */
+    display: flex; /* IMPORTANT: Make this a flex container */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center items horizontally */
 }
 
 .profile-pic {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    /* Removed direct red border/shadow to place it with a pseudo-element */
     margin-bottom: 25px;
     object-fit: cover;
     transition: transform 0.3s ease-in-out;
     z-index: 10;
     position: relative; /* Needed for pseudo-element positioning */
     box-shadow: none !important; /* Ensure no residual box-shadow */
+    order: 1; /* Profile picture first */
 }
 
 /* Pseudo-element for the outer red glow, correctly layered */
@@ -215,8 +214,24 @@ footer.ant-layout-footer,
     letter-spacing: 3px;
     line-height: 1.1;
     margin-top: 20px;
-    order: 1; /* Ensure username comes before follower info */
+    order: 2; /* Username after the profile picture */
 }
+
+/* Re-target the parent of the follower element and ensure it's ordered correctly */
+.ant-row.ant-row-start.ant-row-middle {
+    margin: 10px auto 30px auto !important; /* Adjust spacing as needed */
+    order: 3 !important; /* IMPORTANT: Ensure it appears after username */
+    /* Remove any default fixed positioning that might be applied by the platform */
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: fit-content !important; /* To center it properly */
+}
+
 
 .username .flicker {
     animation: flicker-animation 1.5s infinite alternate;
@@ -541,7 +556,8 @@ p[style*="justify-content: space-between"] button,
     .ant-card-cover img {
         height: 160px !important;
     }
-    .ant-row.ant-row-start.ant-row-middle {
+    /* Adjusted the specific follower div */
+    div.text-sm.mb-2 {
         margin-top: 15px !important; /* Adjust spacing on smaller screens */
     }
 }
@@ -580,7 +596,8 @@ p[style*="justify-content: space-between"] button,
     .ant-card-cover img {
         height: 140px !important;
     }
-    .ant-row.ant-row-start.ant-row-middle {
+    /* Adjusted the specific follower div */
+    div.text-sm.mb-2 {
         margin-top: 10px !important; /* Adjust spacing on smallest screens */
     }
 }
