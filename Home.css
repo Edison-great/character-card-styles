@@ -17,12 +17,15 @@ body, html, #root > div,
 }
 
 /* Ensure the specific containers that hold YOUR custom HTML and the bot cards are transparent */
-.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6.css-1v3fjfx, /* Top half - your bio and custom content */
+/* THIS IS THE CRITICAL CHANGE FOR THE BLACK PADDING */
+.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6.css-1v3fjfx, /* The main wrapper around your profile content */
 .ant-tabs.ant-tabs-top.ant-tabs-mobile.css-1v3fjfx /* Bottom half - the tabs and bot cards */
  {
     background: none !important; /* Make these transparent to show the background */
+    padding: 0 !important; /* Remove any padding from this wrapper */
+    box-shadow: none !important; /* Remove any shadow from this wrapper */
+    margin: 0 !important; /* Remove any margin from this wrapper */
 }
-
 
 /* Ensure any text elements that are not explicitly styled in our bio get a readable color */
 p, span, h1, h2, h3, a, div {
@@ -67,7 +70,8 @@ img[src="https://avatars.charhub.io/avatars/users/avatars/plain/GEN3RATED_R.png"
 */
 
 /* Hide the original follower/following text and button for repositioning */
-.ant-row.ant-row-start.ant-row-middle.css-1v3fjfx {
+/* The target for the follower count and follow button block */
+div.text-sm.mb-2 {
     position: absolute !important; /* Take it out of flow */
     top: 550px !important; /* Adjusted position, fine-tune as needed */
     left: 50% !important;
@@ -86,17 +90,18 @@ img[src="https://avatars.charhub.io/avatars/users/avatars/plain/GEN3RATED_R.png"
 }
 
 /* Style the follower count text */
-.ant-row.ant-row-start.ant-row-middle.css-1v3fjfx > .ant-typography.css-1v3fjfx {
+div.text-sm.mb-2 > span:first-child {
     font-family: 'IBM Plex Mono', monospace !important;
     color: #00ffff !important;
     font-size: 1.1em !important;
     text-shadow: 0 0 8px #00ffff !important;
     margin-bottom: 8px !important; /* Space between text and button */
     white-space: nowrap !important; /* Prevent text wrapping */
+    margin-right: 0 !important; /* Remove the mr-4 margin */
 }
 
 /* Style the actual follow/unfollow button */
-.ant-row.ant-row-start.ant-row-middle.css-1v3fjfx > button.ant-btn.css-1v3fjfx {
+div.text-sm.mb-2 > button.ant-btn.css-1v3fjfx {
     font-family: 'Bebas Neue', sans-serif !important;
     font-size: 1.1em !important;
     padding: 6px 20px !important;
@@ -109,16 +114,22 @@ img[src="https://avatars.charhub.io/avatars/users/avatars/plain/GEN3RATED_R.png"
     margin-left: 0 !important; /* Remove any default left margin */
 }
 
-.ant-row.ant-row-start.ant-row-middle.css-1v3fjfx > button.ant-btn.css-1v3fjfx:hover {
+div.text-sm.mb-2 > button.ant-btn.css-1v3fjfx:hover {
     background-color: #cc0000 !important;
     border-color: #fff !important;
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.9) !important;
 }
 
+/* Hide the "Mutual Follower" tag as it's not in your desired design */
+span.ant-tag.mb-2.css-1v3fjfx {
+    display: none !important;
+}
+
 
 /* Hide "Block this creator" and "Nominate" buttons if they appear outside your HTML */
-button[aria-describedby=":rn:"].ant-btn.css-1v3fjfx,
-button.ant-btn.css-1v3fjfx.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {
+button[aria-describedby=":r36:"].ant-btn.css-1v3fjfx, /* Block this creator */
+button.ant-btn.css-1v3fjfx.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg /* Nominate button */
+ {
     display: none !important;
 }
 
@@ -481,7 +492,7 @@ p[style*="justify-content: space-between"] button {
         height: 160px !important;
     }
     /* Adjust position for native follower info on small screens */
-    .ant-row.ant-row-start.ant-row-middle.css-1v3fjfx {
+    div.text-sm.mb-2 {
         top: 480px !important; /* Adjusted for smaller pics */
     }
 }
@@ -519,7 +530,7 @@ p[style*="justify-content: space-between"] button {
         height: 140px !important;
     }
     /* Adjust position for native follower info on small screens */
-    .ant-row.ant-row-start.ant-row-middle.css-1v3fjfx {
+    div.text-sm.mb-2 {
         top: 400px !important; /* Adjusted for smaller pics */
     }
     }
