@@ -1,451 +1,341 @@
-/*
-=================================================================
-  TOMBOY GIRLFRIEND THEME V2
-  Clean, sporty blue theme for character pages
-=================================================================
-*/
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex+Mono:wght@400;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@600;700&family=Orbitron:wght@700;900&display=swap');
 
-:root {
-  --primary-blue: #1e3a8a;
-  --accent-blue: #06b6d4;
-  --dark-navy: #0f172a;
-  --text-light: #e2e8f0;
-  --text-muted: #94a3b8;
-  --card-bg: rgba(30, 58, 138, 0.15);
-  
-  --font-heading: 'Bebas Neue', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-desc: 'Rajdhani', sans-serif;
-  --font-note: 'Orbitron', sans-serif;
+/* General Body Styling - (Might not work on all platforms if not applied to a div) */
+body {
+    background-color: #000;
+    color: #e0e0e0;
+    font-family: 'IBM Plex Mono', monospace;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
 }
 
-/* Base Layout */
-body,
-.ant-layout,
-.ant-layout-content {
-  background: var(--dark-navy) !important;
+/* Profile Container */
+.profile-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: url('https://archive.org/download/background_GEN3RATED_R/Screenshot_20250728-232410.jpg') no-repeat center center fixed;
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.7), 0 0 40px rgba(255, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    border: 3px solid #ff0000; /* Rated R border */
 }
 
-/* Background Image */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.8) 50%, #0f172a 100%), 
-              url(https://archive.org/download/shion-1/shion%20%2810%29.jpg) center center/cover no-repeat;
-  pointer-events: none;
-  z-index: 0;
-  filter: brightness(0.7);
+.profile-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Dark overlay for text readability */
+    z-index: -1;
 }
 
-/* FORCE HIDE CHUB SEARCH BAR - Multiple selectors */
-header.ant-layout-header,
-.ant-layout-header,
-nav.ant-menu,
-.ant-menu-overflow,
-div[class*="Header"],
-header[class*="header"] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  overflow: hidden !important;
+/* Header */
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 0, 0, 0.5);
 }
 
-/* Main Container */
-.tg-sec {
-  position: relative;
-  font-family: var(--font-body);
-  color: var(--text-light);
-  overflow: visible !important;
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 5px solid #ff0000; /* Neon red border */
+    box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
+    margin-bottom: 20px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
 }
 
-.tg-sec * {
-  box-sizing: border-box;
+.profile-pic:hover {
+    transform: scale(1.05) rotate(5deg);
 }
 
-.tg-wrap {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  overflow: visible !important;
+.username {
+    font-family: 'Rubik Mono One', monospace; /* Modern techy font */
+    font-size: 3.5em;
+    color: #00ffff; /* Cyberpunk blue neon */
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 2px;
 }
 
-/* Split Layout */
-.tg-band {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: start;
-  position: relative;
-  overflow: visible !important;
+.username .flicker {
+    animation: flicker-animation 1.5s infinite alternate;
+    display: inline-block;
 }
 
-.tg-left {
-  position: relative;
-  z-index: 10;
+.username .rated-r {
+    color: #ff0000; /* Distinct red for 'R' */
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000;
 }
 
-.tg-right {
-  position: sticky;
-  top: 100px;
-  height: fit-content;
+
+/* Flickering Animation */
+@keyframes flicker-animation {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
+    }
+    20%, 24%, 55% {
+        opacity: 0.5;
+        text-shadow: none;
+    }
+    22% {
+        opacity: 0.7;
+        text-shadow: 0 0 5px #00ffff;
+    }
 }
 
-/* Header - BOTH LINES BIG FONT */
-.tg-header {
-  margin-bottom: 40px;
-  animation: fadeInUp 0.8s ease-out;
+
+/* Bio Section */
+.bio-section {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.85); /* Slightly darker background for text */
+    border-radius: 8px;
+    margin-top: 30px;
+    box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.4);
+    border: 1px dashed rgba(255, 0, 0, 0.6);
 }
 
-.tg-title {
-  font-family: var(--font-heading) !important;
-  font-size: clamp(56px, 7vw, 80px) !important;
-  line-height: 1.1 !important;
-  font-weight: 400 !important;
-  color: var(--accent-blue) !important;
-  margin: 0 !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase !important;
-  text-shadow: 0 0 40px rgba(6, 182, 212, 0.5) !important;
+.bio-section h2 {
+    font-family: 'Orbitron', sans-serif; /* Sci-fi feel for headings */
+    color: #ffcc00; /* Warning yellow */
+    text-shadow: 0 0 8px #ffcc00;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+    padding-bottom: 5px;
+    font-size: 1.6em;
 }
 
-.tg-title-sub {
-  font-family: var(--font-heading) !important;
-  font-size: clamp(48px, 6vw, 72px) !important;
-  line-height: 1.1 !important;
-  font-weight: 400 !important;
-  color: rgba(6, 182, 212, 0.8) !important;
-  margin: 0 0 30px !important;
-  letter-spacing: 0.1em !important;
-  text-shadow: 0 0 30px rgba(6, 182, 212, 0.4) !important;
+.bio-section p {
+    font-family: 'IBM Plex Mono', monospace; /* Monospaced for code/terminal feel */
+    color: #e0e0e0;
+    margin-bottom: 15px;
+    font-size: 1.1em;
 }
 
-/* Description Box - WITH BACKGROUND */
-.tg-desc-box {
-  background: var(--card-bg) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(6, 182, 212, 0.2) !important;
-  border-radius: 12px !important;
-  padding: 30px !important;
-  margin-bottom: 40px !important;
-  animation: fadeInUp 0.8s ease-out 0.1s both;
+.bio-section .image-wrapper {
+    text-align: center;
+    margin: 20px 0;
 }
 
-.tg-desc-title {
-  font-family: var(--font-heading) !important;
-  font-size: clamp(32px, 3vw, 42px) !important;
-  font-weight: 400 !important;
-  color: var(--accent-blue) !important;
-  margin: 0 0 16px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
+.bio-section .inline-image {
+    max-width: 100%;
+    height: auto;
+    border: 3px solid #00ffff;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px rgba(0, 255, 255, 0.5);
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
 }
 
-.tg-description {
-  font-family: var(--font-desc) !important;
-  font-size: clamp(17px, 1.6vw, 19px) !important;
-  line-height: 1.7 !important;
-  font-weight: 700 !important;
-  color: var(--text-light) !important;
-  margin: 0 !important;
+.bio-section .inline-image:hover {
+    transform: scale(1.02);
 }
 
-/* Adventures Section */
-.tg-paths {
-  background: var(--card-bg) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(6, 182, 212, 0.2) !important;
-  border-radius: 12px !important;
-  padding: 30px !important;
-  margin-bottom: 30px !important;
-  animation: fadeInUp 0.8s ease-out 0.2s both;
+.cta {
+    font-family: 'Press Start 2P', cursive; /* Retro arcade font */
+    color: #ff0000;
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    background: rgba(255, 0, 0, 0.2);
+    border: 2px solid #ff0000;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ff0000;
+    font-size: 1.2em;
+    animation: pulse-border 2s infinite alternate;
 }
 
-.tg-paths-title {
-  font-family: var(--font-heading) !important;
-  font-size: clamp(32px, 3vw, 42px) !important;
-  font-weight: 400 !important;
-  color: var(--accent-blue) !important;
-  margin: 0 0 20px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
+@keyframes pulse-border {
+    from {
+        box-shadow: 0 0 10px #ff0000, 0 0 20px rgba(255, 0, 0, 0.5);
+    }
+    to {
+        box-shadow: 0 0 15px #ff0000, 0 0 30px rgba(255, 0, 0, 0.7);
+    }
 }
 
-.tg-paths-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  counter-reset: none !important;
+/* Bot Card Section Styling (Highly dependent on website's HTML structure for bot listings) */
+.bot-card-section {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(10, 10, 10, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+    border: 2px solid #ff0000;
 }
 
-.tg-path-card {
-  position: relative;
-  background: rgba(30, 58, 138, 0.3);
-  border: 2px solid rgba(6, 182, 212, 0.3);
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  min-height: 220px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  list-style: none !important;
+.bot-card-section h2 {
+    font-family: 'Bebas Neue', sans-serif; /* Bold, impactful heading */
+    color: #00ff00; /* Green for 'creations' */
+    text-shadow: 0 0 10px #00ff00;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-/* REMOVE NUMBERS COMPLETELY */
-.tg-path-card::before {
-  content: "" !important;
-  position: absolute;
-  inset: 0;
-  background: var(--path-image) center/cover no-repeat;
-  opacity: 0.4;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+/* Assuming the website wraps its bot cards in a grid-like container */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
 }
 
-.tg-path-content {
-  position: relative;
-  z-index: 2;
-  padding: 20px;
-  width: 100%;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.7));
+.bot-card {
+    background: #1a1a1a;
+    border: 2px solid rgba(255, 0, 0, 0.7);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), inset 0 0 5px rgba(255, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* For flexible card content */
+    flex-direction: column;
+    position: relative;
 }
 
-/* HEADING REPLACES NUMBER */
-.tg-path-heading {
-  font-family: var(--font-heading) !important;
-  font-size: 24px !important;
-  font-weight: 400 !important;
-  color: var(--accent-blue) !important;
-  margin: 0 0 8px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+.bot-card::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    border-radius: 12px;
+    z-index: -1;
+    animation: border-flicker 4s linear infinite;
 }
 
-.tg-path-text {
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  line-height: 1.5 !important;
-  color: var(--text-muted) !important;
-  margin: 0 !important;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+@keyframes border-flicker {
+    0% { border-color: rgba(255, 0, 0, 0.2); }
+    10% { border-color: rgba(255, 0, 0, 0.8); }
+    20% { border-color: rgba(255, 0, 0, 0.2); }
+    30% { border-color: rgba(255, 0, 0, 0.6); }
+    40% { border-color: rgba(255, 0, 0, 0.2); }
+    50% { border-color: rgba(255, 0, 0, 0.9); }
+    60% { border-color: rgba(255, 0, 0, 0.2); }
+    70% { border-color: rgba(255, 0, 0, 0.7); }
+    80% { border-color: rgba(255, 0, 0, 0.2); }
+    90% { border-color: rgba(255, 0, 0, 0.5); }
+    100% { border-color: rgba(255, 0, 0, 0.2); }
 }
 
-.tg-path-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent-blue);
-  box-shadow: 0 8px 24px rgba(6, 182, 212, 0.3);
+
+.bot-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 0 15px #ff0000, 0 0 30px rgba(255, 0, 0, 0.7), inset 0 0 8px rgba(255, 0, 0, 0.5);
 }
 
-.tg-path-card:hover::before {
-  opacity: 0.7;
-  transform: scale(1.05);
+.bot-thumbnail {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.4);
 }
 
-/* Author Note - ORBITRON FONT */
-.tg-note {
-  background: var(--card-bg) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(6, 182, 212, 0.2) !important;
-  border-radius: 12px !important;
-  padding: 24px !important;
-  animation: fadeInUp 0.8s ease-out 0.4s both;
+.card-content {
+    padding: 15px;
+    flex-grow: 1; /* Allows content to take up available space */
+    display: flex;
+    flex-direction: column;
 }
 
-.tg-note-title {
-  font-family: var(--font-note) !important;
-  font-size: 24px !important;
-  font-weight: 900 !important;
-  color: var(--accent-blue) !important;
-  margin: 0 0 12px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
+.card-content h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: #00ffff;
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px #00ffff;
 }
 
-.tg-note-text {
-  font-family: var(--font-note) !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-  line-height: 1.7 !important;
-  color: var(--text-muted) !important;
-  margin: 0 !important;
+.card-content p {
+    font-family: 'IBM Plex Mono', monospace;
+    color: #ccc;
+    font-size: 0.95em;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Push button to bottom if content is short */
 }
 
-/* Hero Image - FIXED */
-.tg-hero {
-  width: 100% !important;
-  height: 80vh !important;
-  min-height: 600px !important;
-  background-image: var(--hero-image) !important;
-  background-position: center center !important;
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  border-radius: 12px !important;
-  position: relative !important;
-  animation: fadeIn 1s ease-out 0.3s both !important;
+.card-button {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #ff0000; /* Red button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
 }
 
-/* Chibi Character - BIGGER SIZE */
-.tg-chibi {
-  position: fixed !important;
-  bottom: 20px !important;
-  right: 20px !important;
-  width: 200px !important;
-  height: 200px !important;
-  z-index: 9999 !important;
-  pointer-events: none !important;
-  animation: fadeIn 1s ease-out 0.6s both, float 3s ease-in-out infinite !important;
+.card-button:hover {
+    background-color: #cc0000;
+    box-shadow: 0 0 15px #ff0000, 0 0 25px rgba(255, 0, 0, 0.5);
 }
 
-.tg-chibi img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-  filter: drop-shadow(0 4px 12px rgba(6, 182, 212, 0.4)) !important;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .tg-band {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  .tg-right {
-    position: relative !important;
-    top: 0 !important;
-    order: -1 !important;
-    display: block !important;
-    width: 100% !important;
-  }
-  
-  .tg-hero {
-    display: block !important;
-    height: 60vh !important;
-    min-height: 400px !important;
-    width: 100% !important;
-    margin-bottom: 20px !important;
-  }
-  
-  .tg-chibi {
-    width: 150px !important;
-    height: 150px !important;
-  }
-}
-
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .tg-wrap {
-    padding: 20px 16px;
-  }
-  
-  .tg-paths-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .tg-hero {
-    height: 50vh !important;
-    min-height: 300px !important;
-  }
-  
-  .tg-chibi {
-    width: 140px !important;
-    height: 140px !important;
-    bottom: 16px !important;
-    right: 16px !important;
-  }
+    .profile-container {
+        margin: 10px;
+        padding: 15px;
+    }
+    .username {
+        font-size: 2.5em;
+    }
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+    .bio-section h2 {
+        font-size: 1.4em;
+    }
+    .bio-section p {
+        font-size: 1em;
+    }
+    .cta {
+        font-size: 1em;
+    }
+    .bot-card-section h2 {
+        font-size: 1.8em;
+    }
+    .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
 }
 
-/* Chub.ai Overrides */
-h3.ant-typography,
-h5.ant-typography,
-div.msg-mkdn-container:not(:has(.tg-sec)),
-h4.ant-typography.mt-8,
-h4.ant-typography.mt-8+div {
-  display: none !important;
-}
-
-.ant-layout-footer {
-  display: none !important;
-}
-
-button.ant-btn {
-  font-family: var(--font-body) !important;
-  font-weight: 600 !important;
-  background: var(--primary-blue) !important;
-  border: 2px solid var(--accent-blue) !important;
-  color: var(--text-light) !important;
-  transition: all 0.3s ease !important;
-}
-
-button.ant-btn:hover {
-  background: var(--accent-blue) !important;
-  color: var(--dark-navy) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4) !important;
-}
-
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag {
-  background: rgba(6, 182, 212, 0.2) !important;
-  color: var(--accent-blue) !important;
-  border: 1px solid rgba(6, 182, 212, 0.4) !important;
-  font-family: var(--font-body) !important;
-  font-weight: 600 !important;
-  transition: all 0.2s ease !important;
-}
-
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover {
-  background: var(--accent-blue) !important;
-  color: var(--dark-navy) !important;
-  transform: scale(1.05) !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-	  }
+@media (max-width: 480px) {
+    .username {
+        font-size: 1.8em;
+    }
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+    .bot-card-section h2 {
+        font-size: 1.5em;
+    }
+    .card-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+	}
