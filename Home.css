@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex+Mono:wght@400;700&display=swap');
 
-body, html, #root > div, .layout-content {
+body, html, #root > div, .layout-content, #root {
     background: url('https://archive.org/download/background_GEN3RATED_R/Screenshot_20251013-132014.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
     min-height: 100vh !important;
@@ -10,15 +10,30 @@ body, html, #root > div, .layout-content {
 }
 
 .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6,
-.ant-tabs.ant-tabs-top.ant-tabs-mobile,
-.ant-row.ant-row-start.ant-row-middle.my-2.gap-4,
 .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18,
 .ant-card-body,
-.ant-tabs-content-holder {
+.ant-tabs-content-holder,
+.ant-tabs-tabpane,
+.ant-tabs-nav-wrap,
+.ant-tabs-nav,
+.ant-row.ant-row-start.ant-row-middle.my-2.gap-4 { /* Targeted multiple containers */
     background: none !important;
     padding: 0 !important;
     box-shadow: none !important;
     margin: 0 !important;
+}
+
+.bio-section { /* Explicitly setting transparent background for your bio section */
+    background: rgba(10, 10, 10, 0.4) !important;
+    padding: 25px !important; /* Re-add padding that was removed by global override */
+    border-radius: 10px !important;
+    margin-top: 30px !important;
+    box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;
+    border: 2px dashed rgba(255, 0, 0, 0.7) !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
 }
 
 p, span, h1, h2, h3, a, div {
@@ -32,15 +47,16 @@ a:hover {
     text-decoration: underline !important;
 }
 
-.ant-avatar.ant-avatar-square.ant-avatar-image[style="width: 100px; height: 100px; font-size: 18px;"],
-img[src="https://avatars.charhub.io/avatars/users/avatars/plain/GEN3RATED_R.png"],
+.ant-avatar.ant-avatar-square.ant-avatar-image[style*="width: 100px;"],
+img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
 .ant-typography.my-2,
-.ant-typography.text-lg.font-bold.mb-2.break-words {
+.ant-typography.text-lg.font-bold.mb-2.break-words,
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),
+.ant-row.ant-row-start.ant-row-middle > .ant-typography[class*="Followers"] {
     display: none !important;
 }
 
-div.text-sm.mb-2,
-.ant-row.ant-row-start.ant-row-middle {
+.ant-row.ant-row-start.ant-row-middle { /* Target the parent of follower count & button */
     position: absolute !important;
     top: 550px !important;
     left: 50% !important;
@@ -58,8 +74,7 @@ div.text-sm.mb-2,
     pointer-events: auto !important;
 }
 
-div.text-sm.mb-2 > span:first-child,
-.ant-typography[class*="Followers"] {
+.ant-row.ant-row-start.ant-row-middle > .ant-typography:not([class*="Followers"]) {
     font-family: 'IBM Plex Mono', monospace !important;
     color: #00ffff !important;
     font-size: 1.1em !important;
@@ -69,8 +84,7 @@ div.text-sm.mb-2 > span:first-child,
     margin-right: 0 !important;
 }
 
-div.text-sm.mb-2 > button.ant-btn,
-.ant-btn.ml-2 {
+.ant-row.ant-row-start.ant-row-middle > .ant-btn {
     font-family: 'Bebas Neue', sans-serif !important;
     font-size: 1.1em !important;
     padding: 6px 20px !important;
@@ -83,22 +97,21 @@ div.text-sm.mb-2 > button.ant-btn,
     margin-left: 0 !important;
 }
 
-div.text-sm.mb-2 > button.ant-btn:hover,
-.ant-btn.ml-2:hover {
+.ant-row.ant-row-start.ant-row-middle > .ant-btn:hover {
     background-color: #cc0000 !important;
     border-color: #fff !important;
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.9) !important;
 }
 
 span.ant-tag.mb-2,
-button[aria-describedby]:not(.ml-2),
-button.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {
+button[aria-describedby]:not(.ant-btn-text),
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {
     display: none !important;
 }
 
 footer.ant-layout-footer,
 .ant-col.text-center.my-2,
-.ant-spin-container > div:last-child > div:last-child:not(.sc-fmKFGs) {
+.ant-spin-container > div:last-child > div:last-child:not(.sc-fmKFGs):not(.ant-tabs-content-holder) {
     display: none !important;
 }
 
@@ -181,19 +194,6 @@ footer.ant-layout-footer,
     }
 }
 
-.bio-section {
-    padding: 25px;
-    background: rgba(10, 10, 10, 0.4) !important;
-    border-radius: 10px;
-    margin-top: 30px;
-    box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5);
-    border: 2px dashed rgba(255, 0, 0, 0.7);
-    width: 100%;
-    max-width: 900px;
-    text-align: left;
-    box-sizing: border-box;
-}
-
 .bio-section h2 {
     font-family: 'Orbitron', sans-serif;
     color: #ffcc00;
@@ -257,7 +257,8 @@ footer.ant-layout-footer,
 }
 
 .sc-fmKFGs.hikinD.character-list-container,
-.ant-tabs-tabpane {
+.ant-tabs-tabpane-active,
+.ant-tabs-content.ant-tabs-content-top {
     margin-top: 40px !important;
     padding: 0 !important;
     background: none !important;
@@ -273,8 +274,44 @@ footer.ant-layout-footer,
     background-image: none !important;
 }
 
-.ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column.char-card-class,
-.ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column {
+.ant-tabs-content:not(.ant-tabs-content-top) { /* Hide non-active tab content */
+    display: none !important;
+}
+
+.ant-tabs-nav-list { /* Style for the tab headers container */
+    background: rgba(10, 10, 10, 0.7) !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
+    display: flex !important; /* Ensure they stay in a row */
+    justify-content: center !important;
+    margin-top: 30px !important;
+}
+
+.ant-tabs-tab { /* Individual tab header */
+    font-family: 'Bebas Neue', sans-serif !important;
+    color: #00ffff !important;
+    text-shadow: 0 0 8px #00ffff !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    margin: 0 5px !important;
+    transition: all 0.2s ease !important;
+}
+
+.ant-tabs-tab-active { /* Active tab header */
+    color: #ff0000 !important;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px rgba(255, 0, 0, 0.7) !important;
+    border-bottom: 2px solid #ff0000 !important;
+}
+
+.ant-tabs-tab:hover {
+    color: #fff !important;
+    text-shadow: 0 0 12px #fff !important;
+}
+
+.ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column,
+.ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column.char-card-class {
     background: #1a1a1a !important;
     border: 2px solid rgba(255, 0, 0, 0.7) !important;
     border-radius: 12px !important;
@@ -438,7 +475,7 @@ p[style*="justify-content: space-between"] button,
         padding: 15px !important;
     }
     .sc-fmKFGs.hikinD.character-list-container,
-    .ant-tabs-tabpane {
+    .ant-tabs-tabpane-active {
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
         gap: 20px !important;
         padding: 0 !important;
@@ -447,7 +484,6 @@ p[style*="justify-content: space-between"] button,
     .ant-card-cover img {
         height: 160px !important;
     }
-    div.text-sm.mb-2,
     .ant-row.ant-row-start.ant-row-middle {
         top: 480px !important;
     }
@@ -477,7 +513,7 @@ p[style*="justify-content: space-between"] button,
         padding: 12px !important;
     }
     .sc-fmKFGs.hikinD.character-list-container,
-    .ant-tabs-tabpane {
+    .ant-tabs-tabpane-active {
         grid-template-columns: 1fr !important;
         gap: 15px !important;
         padding: 0 !important;
@@ -486,7 +522,6 @@ p[style*="justify-content: space-between"] button,
     .ant-card-cover img {
         height: 140px !important;
     }
-    div.text-sm.mb-2,
     .ant-row.ant-row-start.ant-row-middle {
         top: 400px !important;
     }
