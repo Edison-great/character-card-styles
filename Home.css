@@ -8,17 +8,21 @@
 /* This targets the ant-col that contains the user profile info and the tabs below it */
 /* Adding !important to force override */
 body, html, #root > div,
-.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6.css-1v3fjfx, /* Top half */
-.ant-tabs.ant-tabs-top.ant-tabs-mobile.css-1v3fjfx, /* Bottom half (tabs and bot cards) */
-.layout-content,
-/* IMPORTANT: The character-list-container itself should NOT have a background for floating cards */
-/* .sc-fmKFGs.hikinD.character-list-container */ {
+.layout-content { /* Applying to main layout content */
     background: url('https://archive.org/download/background_GEN3RATED_R/Screenshot_20251013-132014.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
     min-height: 100vh !important;
     background-color: #000 !important; /* Fallback */
     color: #e0e0e0 !important; /* Default text color */
 }
+
+/* Ensure the specific containers that hold YOUR custom HTML and the bot cards are transparent */
+.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6.css-1v3fjfx, /* Top half - your bio and custom content */
+.ant-tabs.ant-tabs-top.ant-tabs-mobile.css-1v3fjfx /* Bottom half - the tabs and bot cards */
+ {
+    background: none !important; /* Make these transparent to show the background */
+}
+
 
 /* Ensure any text elements that are not explicitly styled in our bio get a readable color */
 p, span, h1, h2, h3, a, div {
@@ -48,69 +52,79 @@ img[src="https://avatars.charhub.io/avatars/users/avatars/plain/GEN3RATED_R.png"
 }
 
 /* 3. Reposition the site's native "Follow" button AND follower count */
-/* These elements are no longer hidden, but moved into our custom header area */
-/* We target the immediate container of the follow button and follower count */
-.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:first-child { /* This is a common parent of the name and the follow block */
-    position: relative; /* Make it a positioning context */
-    height: 0; /* Collapse its height so it doesn't take up space */
-    pointer-events: none; /* Make it unclickable in its original position */
-}
+/* Based on the new screenshot, these elements are structured differently.
+   We need to find a common parent for the follower count and the button.
+   The structure seems to be:
+   <div class="ant-col text-left pt-4 ant-col-xs-24 ant-col-lg-6 css-1v3fjfx"> (YOUR HTML IS HERE)
+     <div class="ant-col pt-4 ant-col-xs-24 ant-col-lg-18 css-1v3fjfx">
+       <div> (@GEN3RATED_R - hidden) </div>
+       <div class="ant-row ant-row-start ant-row-middle css-1v3fjfx"> (THIS IS THE FOLLOWER COUNT AND BUTTON PARENT)
+         <span class="ant-typography css-1v3fjfx">499 Followers, 2 Following</span>
+         <button class="ant-btn ant-btn-default ant-btn-color-default ant-btn-variant-outlined ml-2 css-1v3fjfx">
+       </div>
+     </div>
+   </div>
+*/
 
-
-/* The actual follower count and button container */
-.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:first-child > div:nth-child(2) {
-    position: absolute !important;
-    top: 300px !important; /* Adjust this value to move it down relative to your custom image/name */
+/* Hide the original follower/following text and button for repositioning */
+.ant-row.ant-row-start.ant-row-middle.css-1v3fjfx {
+    position: absolute !important; /* Take it out of flow */
+    top: 550px !important; /* Adjusted position, fine-tune as needed */
     left: 50% !important;
     transform: translateX(-50%) !important;
-    width: auto !important; /* Allow content to dictate width */
-    display: flex !important;
-    flex-direction: column !important; /* Stack followers and button */
-    align-items: center !important;
+    display: flex !important; /* Ensure it stays a flex container for centering */
+    flex-direction: column !important; /* Stack follower count and button vertically */
+    align-items: center !important; /* Center items within this new container */
+    width: auto !important; /* Allow width to be determined by content */
     z-index: 100 !important; /* Ensure it's above other elements */
-    pointer-events: auto !important; /* Make it clickable here */
     background: rgba(0,0,0,0.5); /* Semi-transparent background for readability */
-    padding: 8px 15px;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 255, 255, 0.4);
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+    padding: 10px 20px !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(0, 255, 255, 0.4) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6) !important;
+    pointer-events: auto !important; /* Make it clickable here */
 }
 
 /* Style the follower count text */
-.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:first-child > div:nth-child(2) > .ant-typography {
+.ant-row.ant-row-start.ant-row-middle.css-1v3fjfx > .ant-typography.css-1v3fjfx {
     font-family: 'IBM Plex Mono', monospace !important;
     color: #00ffff !important;
-    font-size: 1em !important;
+    font-size: 1.1em !important;
     text-shadow: 0 0 8px #00ffff !important;
-    margin-bottom: 5px !important;
+    margin-bottom: 8px !important; /* Space between text and button */
+    white-space: nowrap !important; /* Prevent text wrapping */
 }
 
 /* Style the actual follow/unfollow button */
-.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:first-child > div:nth-child(2) > button {
+.ant-row.ant-row-start.ant-row-middle.css-1v3fjfx > button.ant-btn.css-1v3fjfx {
     font-family: 'Bebas Neue', sans-serif !important;
-    font-size: 1em !important;
-    padding: 5px 15px !important;
+    font-size: 1.1em !important;
+    padding: 6px 20px !important;
     border-radius: 20px !important;
     background-color: #ff0000 !important; /* Red button */
     color: #fff !important;
     border: 2px solid #ff0000 !important;
     box-shadow: 0 0 8px rgba(255, 0, 0, 0.7) !important;
     transition: all 0.2s ease !important;
+    margin-left: 0 !important; /* Remove any default left margin */
 }
 
-.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:first-child > div:nth-child(2) > button:hover {
+.ant-row.ant-row-start.ant-row-middle.css-1v3fjfx > button.ant-btn.css-1v3fjfx:hover {
     background-color: #cc0000 !important;
     border-color: #fff !important;
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.9) !important;
 }
 
-/* Hide the "Block this creator" button */
-button[aria-describedby=":rn:"].ant-btn.css-1v3fjfx {
+
+/* Hide "Block this creator" and "Nominate" buttons if they appear outside your HTML */
+button[aria-describedby=":rn:"].ant-btn.css-1v3fjfx,
+button.ant-btn.css-1v3fjfx.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {
     display: none !important;
 }
 
-/* Hide the "Nominate..." button if it's not part of your custom HTML */
-button.ant-btn.css-1v3fjfx.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {
+
+/* --- FOOTER REMOVAL --- */
+footer.ant-layout-footer.css-f6nzt4 {
     display: none !important;
 }
 
@@ -466,6 +480,10 @@ p[style*="justify-content: space-between"] button {
     img.sc-ktwOfi.eCEqAJ {
         height: 160px !important;
     }
+    /* Adjust position for native follower info on small screens */
+    .ant-row.ant-row-start.ant-row-middle.css-1v3fjfx {
+        top: 480px !important; /* Adjusted for smaller pics */
+    }
 }
 
 @media (max-width: 480px) {
@@ -501,7 +519,7 @@ p[style*="justify-content: space-between"] button {
         height: 140px !important;
     }
     /* Adjust position for native follower info on small screens */
-    .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:first-child > div:nth-child(2) {
-        top: 250px !important; /* Adjusted for smaller pics */
+    .ant-row.ant-row-start.ant-row-middle.css-1v3fjfx {
+        top: 400px !important; /* Adjusted for smaller pics */
     }
     }
