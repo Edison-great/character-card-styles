@@ -37,7 +37,7 @@ body, html, #root > div, .layout-content, #root,
     background: rgba(10, 10, 10, 0.4) !important;
     padding: 25px !important;
     border-radius: 10px !important;
-    margin-top: 30px !important;
+    margin-top: 200px !important; /* SIGNIFICANTLY INCREASED MARGIN-TOP TO PUSH IT DOWN */
     box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;
     border: 2px dashed rgba(255, 0, 0, 0.7) !important;
     width: 100% !important;
@@ -66,48 +66,55 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     display: none !important;
 }
 
-/* Specific targeting for the follower count and button block - ADJUSTED FROM YOUR WORKING VERSION */
+/* Specific targeting for the follower count and button block - FIXED POSITIONING AND INCREASED SIZE */
 div.text-sm.mb-2, /* This targets the direct container that holds both the span and button */
 .ant-row.ant-row-start.ant-row-middle {
     position: absolute !important;
-    top: 550px !important; /* Copied directly from your working old CSS */
+    top: 550px !important; /* KEEPING THIS FIXED AS PER YOUR INSTRUCTION */
     left: 50% !important;
     transform: translateX(-50%) !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    width: auto !important;
-    z-index: 100 !important; /* Copied directly from your working old CSS */
-    /* REMOVED background, padding, border, box-shadow to ensure it's not a visible box */
-    pointer-events: auto !important; /* Ensures the button is clickable */
+    width: 80% !important; /* INCREASED WIDTH */
+    max-width: 500px !important; /* ADDED MAX-WIDTH */
+    z-index: 100 !important;
+    pointer-events: auto !important;
+    padding: 20px 30px !important; /* INCREASED PADDING */
+    border-radius: 10px !important;
+    background: rgba(0,0,0,0.6) !important; /* Added a subtle background for visibility */
+    border: 2px solid rgba(0, 255, 255, 0.7) !important; /* Added a border for definition */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8) !important; /* Added a shadow */
 }
 
 /* Ensure the span for followers is styled correctly within the new structure */
 div.text-sm.mb-2 > span.mr-4 {
     font-family: 'IBM Plex Mono', monospace !important;
-    color: #e0e0e0 !important;
-    font-size: 1.1em !important;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5) !important;
-    margin-bottom: 10px !important;
+    color: #00ffff !important; /* Changed to neon blue for consistency */
+    font-size: 1.5em !important; /* Increased font size */
+    text-shadow: 0 0 10px #00ffff, 0 0 20px rgba(0, 255, 255, 0.7) !important; /* More prominent shadow */
+    margin-bottom: 15px !important; /* More space below followers */
     white-space: nowrap !important;
     display: block !important;
-    margin-right: 0 !important; /* Override potential default margin */
+    margin-right: 0 !important;
+    letter-spacing: 1px !important;
 }
 
 /* Button styling, now applying the neon effect to the correctly positioned button */
 div.text-sm.mb-2 > button.ant-btn {
     font-family: 'Press Start 2P', cursive !important;
-    font-size: 1.2em !important;
-    padding: 10px 30px !important; /* Make button bigger */
-    border-radius: 5px !important;
+    font-size: 1.6em !important; /* Further increased button font size */
+    padding: 15px 40px !important; /* Further increased button padding */
+    border-radius: 8px !important; /* Slightly more defined corners */
     background-color: transparent !important;
     color: #00ffff !important;
-    border: 3px solid #00ffff !important;
-    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff !important;
+    border: 4px solid #00ffff !important; /* Thicker border */
+    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff !important; /* More intense shadow */
     transition: all 0.1s ease-in-out !important;
     margin-left: 0 !important;
     animation: neon-flicker 1.5s infinite alternate !important;
-    width: auto !important;
+    width: 90% !important; /* Make button wider */
+    max-width: 300px !important; /* Max width for consistency */
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -117,16 +124,18 @@ div.text-sm.mb-2 > button.ant-btn:hover {
     background-color: rgba(0, 255, 255, 0.2) !important;
     border-color: #fff !important;
     color: #fff !important;
-    box-shadow: 0 0 15px #fff, 0 0 30px rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 0 20px #fff, 0 0 40px rgba(255, 255, 255, 0.8) !important;
 }
 
 .ant-btn-icon {
-    margin-right: 8px !important;
+    margin-right: 10px !important; /* More space for icon */
 }
 
 .ant-btn-icon svg {
     fill: #00ffff !important;
     transition: fill 0.1s ease-in-out !important;
+    width: 28px !important; /* Larger icon */
+    height: 28px !important; /* Larger icon */
 }
 
 div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
@@ -136,7 +145,7 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
 @keyframes neon-flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
         opacity: 1;
-        box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+        box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
     }
     20%, 24%, 55% {
         opacity: 0.7;
@@ -144,7 +153,7 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
     }
     22% {
         opacity: 0.9;
-        box-shadow: 0 0 5px #00ffff;
+        box-shadow: 0 0 8px #00ffff;
     }
 }
 
@@ -532,6 +541,22 @@ p[style*="justify-content: space-between"] button,
         height: 160px !important;
         margin-bottom: 15px !important;
     }
+    .bio-section {
+        margin-top: 150px !important; /* Adjusted for smaller screens */
+    }
+    div.text-sm.mb-2,
+    .ant-row.ant-row-start.ant-row-middle {
+        top: 480px !important; /* Fixed position */
+        width: 90% !important;
+        padding: 15px 20px !important;
+    }
+    div.text-sm.mb-2 > span.mr-4 {
+        font-size: 1.3em !important;
+    }
+    div.text-sm.mb-2 > button.ant-btn {
+        font-size: 1.4em !important;
+        padding: 12px 30px !important;
+    }
     .bio-section h2 {
         font-size: 1.6em !important;
     }
@@ -553,11 +578,6 @@ p[style*="justify-content: space-between"] button,
     .ant-card-cover img {
         height: 160px !important;
     }
-    /* ADJUSTED FOR MOBILE - copied from your working old CSS */
-    div.text-sm.mb-2,
-    .ant-row.ant-row-start.ant-row-middle {
-        top: 480px !important;
-    }
 }
 
 @media (max-width: 480px) {
@@ -573,6 +593,22 @@ p[style*="justify-content: space-between"] button,
         width: 130px !important;
         height: 130px !important;
         margin-bottom: 10px !important;
+    }
+    .bio-section {
+        margin-top: 100px !important; /* Adjusted for smallest screens */
+    }
+    div.text-sm.mb-2,
+    .ant-row.ant-row-start.ant-row-middle {
+        top: 400px !important; /* Fixed position */
+        width: 95% !important;
+        padding: 10px 15px !important;
+    }
+    div.text-sm.mb-2 > span.mr-4 {
+        font-size: 1.1em !important;
+    }
+    div.text-sm.mb-2 > button.ant-btn {
+        font-size: 1.2em !important;
+        padding: 10px 20px !important;
     }
     .bio-section h2 {
         font-size: 1.3em !important;
@@ -594,10 +630,5 @@ p[style*="justify-content: space-between"] button,
     img.sc-ktwOfi.eCEqAJ,
     .ant-card-cover img {
         height: 140px !important;
-    }
-    /* ADJUSTED FOR SMALLER MOBILE - copied from your working old CSS */
-    div.text-sm.mb-2,
-    .ant-row.ant-row-start.ant-row-middle {
-        top: 400px !important;
     }
 }
