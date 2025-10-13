@@ -8,7 +8,8 @@
 /* This targets the ant-col that contains the user profile info and the tabs below it */
 /* Adding !important to force override */
 body, html, #root > div,
-.layout-content { /* Applying to main layout content */
+.layout-content,
+.sc-fmKFGs.hikinD { /* Added sc-fmKFGs.hikinD to ensure background applies to the bot card section as well */
     background: url('https://archive.org/download/background_GEN3RATED_R/Screenshot_20251013-132014.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
     min-height: 100vh !important;
@@ -16,19 +17,45 @@ body, html, #root > div,
     color: #e0e0e0 !important; /* Default text color */
 }
 
+
+/* --- CRITICAL BLACK BOX / PADDING FIXES --- */
+
 /* Ensure the specific containers that hold YOUR custom HTML and the bot cards are transparent */
-/* THIS IS THE CRITICAL CHANGE FOR THE BLACK PADDING */
-.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6.css-1v3fjfx, /* The main wrapper around your profile content */
-.ant-tabs.ant-tabs-top.ant-tabs-mobile.css-1v3fjfx /* Bottom half - the tabs and bot cards */
- {
+/* THIS IS THE CRITICAL CHANGE FOR THE BLACK PADDING - Targeting ALL likely culprits */
+/* The main wrapper around your profile content and the bot list */
+.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6.css-1v3fjfx,
+/* The next column over, which often contains the tabbed content (character cards, etc.) */
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx,
+/* The main tabs container for character cards, lorebooks, etc. */
+.ant-tabs.ant-tabs-top.ant-tabs-mobile.css-1v3fjfx,
+/* The inner content of the tabs */
+.ant-tabs-content-holder,
+.ant-tabs-tabpane,
+/* Any general page-level content wrappers that might have default backgrounds */
+.main-content-wrapper,
+.profile-page-wrapper,
+.user-profile-layout,
+.sc-hCPnWN.jRjQhV, /* A common wrapper class found on the site */
+.sc-eLelHf.jHkXjS, /* Another common wrapper class */
+.sc-fmKFGs.hikinD { /* The outer container for character cards */
     background: none !important; /* Make these transparent to show the background */
-    padding: 0 !important; /* Remove any padding from this wrapper */
-    box-shadow: none !important; /* Remove any shadow from this wrapper */
-    margin: 0 !important; /* Remove any margin from this wrapper */
+    padding: 0 !important; /* Remove any padding from these wrappers */
+    box-shadow: none !important; /* Remove any shadow from these wrappers */
+    margin: 0 !important; /* Remove any margin from these wrappers */
+    border: none !important; /* Remove any borders */
 }
 
-/* Ensure any text elements that are not explicitly styled in our bio get a readable color */
-p, span, h1, h2, h3, a, div {
+/* Ensure any specific divs wrapping your bio content or the bot list also remain transparent */
+.ant-col-xs-24.ant-col-lg-18 { /* This seems to be a common wrapper for the main content area */
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+
+/* General text color fallback */
+p, span, h1, h2, h3, a, div, .ant-typography {
     color: #e0e0e0 !important;
 }
 /* For links that might be default blue */
@@ -41,37 +68,34 @@ a:hover {
 }
 
 
+/* --- HIDE DEFAULT SITE ELEMENTS --- */
+
 /* 1. Hide the small, default profile picture */
-.ant-avatar.ant-avatar-square.ant-avatar-image.css-1v3fjfx[style="width: 100px; height: 100px; font-size: 18px;"],
+.ant-avatar.ant-avatar-square.ant-avatar-image.css-1v3fjfx[style*="width: 100px; height: 100px;"],
 img[src="https://avatars.charhub.io/avatars/users/avatars/plain/GEN3RATED_R.png"] {
     display: none !important;
 }
 
 
-/* 2. Hide the site's default username/title */
-/* THIS IS THE @GEN3RATED_R TEXT ABOVE THE NATIVE FOLLOWER COUNT */
-.ant-typography.my-2.css-1v3fjfx {
+/* 2. Hide the site's default username/title (regardless of login status) */
+/* This targets the @GEN3RATED_R text that appears in different places */
+.ant-typography.my-2.css-1v3fjfx, /* The most common instance of the username */
+.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6.css-1v3fjfx > .ant-typography, /* Another potential instance */
+.sc-bczRLJ.dpVfNq, /* Generic class that often contains the username */
+.sc-eLelHf.jHkXjS > div > .ant-typography, /* More specific targeting for a top-level username */
+/* Hiding the @GEN3RATED_R at the very top left when logged out */
+body > div:nth-child(1) > div > div.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:nth-child(1) > div > span {
     display: none !important;
 }
 
+
 /* 3. Reposition the site's native "Follow" button AND follower count */
-/* Based on the new screenshot, these elements are structured differently.
-   We need to find a common parent for the follower count and the button.
-   The structure seems to be:
-   <div class="ant-col text-left pt-4 ant-col-xs-24 ant-col-lg-6 css-1v3fjfx"> (YOUR HTML IS HERE)
-     <div class="ant-col pt-4 ant-col-xs-24 ant-col-lg-18 css-1v3fjfx">
-       <div> (@GEN3RATED_R - hidden) </div>
-       <div class="ant-row ant-row-start ant-row-middle css-1v3fjfx"> (THIS IS THE FOLLOWER COUNT AND BUTTON PARENT)
-         <span class="ant-typography css-1v3fjfx">499 Followers, 2 Following</span>
-         <button class="ant-btn ant-btn-default ant-btn-color-default ant-btn-variant-outlined ml-2 css-1v3fjfx">
-       </div>
-     </div>
-   </div>
-*/
 
 /* Hide the original follower/following text and button for repositioning */
 /* The target for the follower count and follow button block */
-div.text-sm.mb-2 {
+/* This is a more robust selector to catch it in different states */
+.ant-row.ant-row-start.ant-row-middle.css-1v3fjfx, /* Common wrapper for followers/button */
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:nth-child(2) { /* Specific parent if previous doesn't catch it */
     position: absolute !important; /* Take it out of flow */
     top: 550px !important; /* Adjusted position, fine-tune as needed */
     left: 50% !important;
@@ -90,7 +114,8 @@ div.text-sm.mb-2 {
 }
 
 /* Style the follower count text */
-div.text-sm.mb-2 > span:first-child {
+.ant-row.ant-row-start.ant-row-middle.css-1v3fjfx > span.ant-typography.css-1v3fjfx,
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:nth-child(2) > span.ant-typography.css-1v3fjfx {
     font-family: 'IBM Plex Mono', monospace !important;
     color: #00ffff !important;
     font-size: 1.1em !important;
@@ -98,10 +123,12 @@ div.text-sm.mb-2 > span:first-child {
     margin-bottom: 8px !important; /* Space between text and button */
     white-space: nowrap !important; /* Prevent text wrapping */
     margin-right: 0 !important; /* Remove the mr-4 margin */
+    display: block !important; /* Ensure it takes its own line within the flex container */
 }
 
 /* Style the actual follow/unfollow button */
-div.text-sm.mb-2 > button.ant-btn.css-1v3fjfx {
+.ant-row.ant-row-start.ant-row-middle.css-1v3fjfx > button.ant-btn.css-1v3fjfx,
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:nth-child(2) > button.ant-btn.css-1v3fjfx {
     font-family: 'Bebas Neue', sans-serif !important;
     font-size: 1.1em !important;
     padding: 6px 20px !important;
@@ -112,9 +139,11 @@ div.text-sm.mb-2 > button.ant-btn.css-1v3fjfx {
     box-shadow: 0 0 8px rgba(255, 0, 0, 0.7) !important;
     transition: all 0.2s ease !important;
     margin-left: 0 !important; /* Remove any default left margin */
+    display: block !important; /* Ensure it takes its own line within the flex container */
 }
 
-div.text-sm.mb-2 > button.ant-btn.css-1v3fjfx:hover {
+.ant-row.ant-row-start.ant-row-middle.css-1v3fjfx > button.ant-btn.css-1v3fjfx:hover,
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:nth-child(2) > button.ant-btn.css-1v3fjfx:hover {
     background-color: #cc0000 !important;
     border-color: #fff !important;
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.9) !important;
@@ -127,9 +156,11 @@ span.ant-tag.mb-2.css-1v3fjfx {
 
 
 /* Hide "Block this creator" and "Nominate" buttons if they appear outside your HTML */
-button[aria-describedby=":r36:"].ant-btn.css-1v3fjfx, /* Block this creator */
-button.ant-btn.css-1v3fjfx.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg /* Nominate button */
- {
+/* These often appear in different containers based on login state */
+button[aria-describedby*=":"].ant-btn.css-1v3fjfx, /* Block this creator (more generic aria-describedby) */
+button.ant-btn.css-1v3fjfx.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg, /* Nominate button */
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div.mt-2.mb-4, /* Wrapper that sometimes contains these buttons */
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div.ant-row.mt-2.mb-4 {
     display: none !important;
 }
 
@@ -138,6 +169,17 @@ button.ant-btn.css-1v3fjfx.ant-btn-default.ant-btn-color-default.ant-btn-variant
 footer.ant-layout-footer.css-f6nzt4 {
     display: none !important;
 }
+
+/* --- HIDE ADS AT THE BOTTOM --- */
+/* These are often specific divs that load conditionally */
+div[class*="Advertisement"],
+div[id*="ad-container"],
+.sc-iGPEol.jYVpjm, /* Another common ad container class */
+.sc-gGCDDS.eTfjxY,
+.sc-hCPnWN.jRjQhV > div:last-child { /* A very last div that sometimes contains ads */
+    display: none !important;
+}
+
 
 
 /* --- PROFILE CONTAINER (YOUR CUSTOM BIO HTML) --- */
@@ -238,56 +280,56 @@ footer.ant-layout-footer.css-f6nzt4 {
 }
 
 .bio-section h2 {
-    font-family: 'Orbitron', sans-serif;
-    color: #ffcc00;
-    text-shadow: 0 0 10px #ffcc00;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-bottom: 2px solid rgba(255, 204, 0, 0.4);
-    padding-bottom: 8px;
-    font-size: 1.8em;
-    letter-spacing: 0.5px;
+    font-family: 'Orbitron', sans-serif !important; /* Added !important */
+    color: #ffcc00 !important; /* Added !important */
+    text-shadow: 0 0 10px #ffcc00 !important; /* Added !important */
+    margin-top: 30px !important;
+    margin-bottom: 15px !important;
+    border-bottom: 2px solid rgba(255, 204, 0, 0.4) !important;
+    padding-bottom: 8px !important;
+    font-size: 1.8em !important;
+    letter-spacing: 0.5px !important;
 }
 
 .bio-section p {
-    font-family: 'IBM Plex Mono', monospace !important; /* Added !important for consistency */
-    color: #e0e0e0 !important; /* Added !important for consistency */
-    margin-bottom: 18px;
-    font-size: 1.15em;
-    line-height: 1.7;
-    word-wrap: break-word; /* Ensure long words break */
+    font-family: 'IBM Plex Mono', monospace !important;
+    color: #e0e0e0 !important;
+    margin-bottom: 18px !important;
+    font-size: 1.15em !important;
+    line-height: 1.7 !important;
+    word-wrap: break-word !important;
 }
 
 .bio-section .image-wrapper {
-    text-align: center;
-    margin: 25px 0;
+    text-align: center !important;
+    margin: 25px 0 !important;
 }
 
 .bio-section .inline-image {
-    max-width: 90%;
-    height: auto;
-    border: 4px solid #00ffff;
-    box-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.6);
-    border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
+    max-width: 90% !important;
+    height: auto !important;
+    border: 4px solid #00ffff !important;
+    box-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.6) !important;
+    border-radius: 8px !important;
+    transition: transform 0.3s ease-in-out !important;
 }
 
 .bio-section .inline-image:hover {
-    transform: scale(1.03);
+    transform: scale(1.03) !important;
 }
 
 .cta {
-    font-family: 'Press Start 2P', cursive;
-    color: #ff0000;
-    text-align: center;
-    margin-top: 40px;
-    padding: 18px;
-    background: rgba(255, 0, 0, 0.3);
-    border: 3px solid #ff0000;
-    border-radius: 8px;
-    box-shadow: 0 0 12px #ff0000;
-    font-size: 1.3em;
-    animation: pulse-border 2s infinite alternate;
+    font-family: 'Press Start 2P', cursive !important;
+    color: #ff0000 !important;
+    text-align: center !important;
+    margin-top: 40px !important;
+    padding: 18px !important;
+    background: rgba(255, 0, 0, 0.3) !important;
+    border: 3px solid #ff0000 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 12px #ff0000 !important;
+    font-size: 1.3em !important;
+    animation: pulse-border 2s infinite alternate !important;
 }
 
 @keyframes pulse-border {
@@ -303,7 +345,8 @@ footer.ant-layout-footer.css-f6nzt4 {
 /* --- BOT CARD STYLING (TARGETING SITE'S NATIVE ELEMENTS) --- */
 
 /* This targets the main container for the character list and makes it transparent */
-.sc-fmKFGs.hikinD.character-list-container {
+.sc-fmKFGs.hikinD.character-list-container, /* Added a more specific class found on site */
+.sc-fmKFGs.hikinD { /* The general container for character list when logged out */
     margin-top: 40px !important;
     padding: 0 !important; /* REMOVED PADDING */
     background: none !important; /* REMOVED BACKGROUND */
@@ -321,7 +364,8 @@ footer.ant-layout-footer.css-f6nzt4 {
 
 
 /* Targeting the individual bot card wrappers */
-.ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column.char-card-class.css-1v3fjfx {
+.ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column.char-card-class.css-1v3fjfx,
+.ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column { /* More generic selector for logged out state */
     background: #1a1a1a !important;
     border: 2px solid rgba(255, 0, 0, 0.7) !important;
     border-radius: 12px !important;
@@ -336,7 +380,9 @@ footer.ant-layout-footer.css-f6nzt4 {
 }
 
 /* Pseudo-element for flickering border on cards */
-.ant-card.char-card-class.css-1v3fjfx::before {
+/* Applied to both known classes to ensure it works logged in/out */
+.ant-card.char-card-class.css-1v3fjfx::before,
+.ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column::before {
     content: '';
     position: absolute;
     top: -6px;
@@ -363,13 +409,15 @@ footer.ant-layout-footer.css-f6nzt4 {
     100% { border-color: rgba(255, 0, 0, 0.2); }
 }
 
-.ant-card.char-card-class.css-1v3fjfx:hover {
+.ant-card.char-card-class.css-1v3fjfx:hover,
+.ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column:hover {
     transform: translateY(-7px) scale(1.03) !important;
     box-shadow: 0 0 18px #ff0000, 0 0 35px rgba(255, 0, 0, 0.8), inset 0 0 10px rgba(255, 0, 0, 0.6) !important;
 }
 
 /* Image inside card */
-img.sc-ktwOfi.eCEqAJ {
+img.sc-ktwOfi.eCEqAJ,
+.ant-card-cover img { /* Generic img within card cover */
     width: 100% !important;
     height: 190px !important;
     object-fit: cover !important;
@@ -377,8 +425,9 @@ img.sc-ktwOfi.eCEqAJ {
     border-radius: 0 !important; /* Override any default border-radius */
 }
 
-/* Card title (bot name) */
-.ant-card-head-title .ant-row.ant-row-space-between.card-title-row.css-1v3fjfx span:first-child span {
+/* Card title (bot name) - now targeting more broadly */
+.ant-card-head-title .ant-row.ant-row-space-between.card-title-row.css-1v3fjfx span:first-child span,
+.ant-card-head-title span.ant-typography { /* Broader target for logged out state */
     font-family: 'Bebas Neue', sans-serif !important;
     color: #00ffff !important;
     font-size: 1.6em !important;
@@ -390,7 +439,8 @@ img.sc-ktwOfi.eCEqAJ {
 }
 
 /* Card description */
-.ant-card-meta-description span.quote-color {
+.ant-card-meta-description span.quote-color,
+.ant-card-meta-description .ant-typography { /* Broader target for description */
     font-family: 'IBM Plex Mono', monospace !important;
     color: #ccc !important;
     font-size: 1em !important;
@@ -398,33 +448,38 @@ img.sc-ktwOfi.eCEqAJ {
     height: auto !important; /* Allow content to dictate height */
     max-height: unset !important; /* Remove any max-height restrictions */
     overflow-y: visible !important; /* Ensure all text is visible */
-    word-wrap: break-word; /* Added for font consistency */
+    word-wrap: break-word !important; /* Added for font consistency */
 }
 
 /* Card stats (hearts, downloads, etc.) */
-.sc-brSamD.fqUhVt.quote-color.stats {
+.sc-brSamD.fqUhVt.quote-color.stats,
+.ant-card-body .ant-row.ant-row-space-between.text-sm { /* Broader target for stats row */
     background-color: transparent !important; /* Ensure no unwanted background */
     color: #00ffff !important; /* Example color for stats */
     font-size: 0.9em !important;
 }
-.sc-brSamD.fqUhVt.quote-color.stats > span { /* Targeting individual stat spans */
+.sc-brSamD.fqUhVt.quote-color.stats > span,
+.ant-card-body .ant-row.ant-row-space-between.text-sm > span { /* Targeting individual stat spans */
     color: #00ffff !important;
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.7) !important;
 }
-.sc-brSamD.fqUhVt.quote-color.stats svg { /* Icons within stats */
+.sc-brSamD.fqUhVt.quote-color.stats svg,
+.ant-card-body .ant-row.ant-row-space-between.text-sm svg { /* Icons within stats */
     color: #ff0000 !important; /* Make icons red */
 }
 
 
 /* Tags in card */
-div.ant-row.ant-row-no-wrap.mb-1.custom-scroll.css-1v3fjfx {
+div.ant-row.ant-row-no-wrap.mb-1.custom-scroll.css-1v3fjfx,
+.ant-card-body .ant-row.ant-row-no-wrap.mb-1 { /* Broader tag container target */
     overflow-x: auto !important; /* Keep scroll if many tags */
     white-space: nowrap !important;
     margin-top: 10px !important;
     padding: 0 18px 18px !important; /* Adjust padding for tags */
 }
 
-.ant-tag.css-1v3fjfx { /* Individual tags */
+.ant-tag.css-1v3fjfx,
+.ant-tag { /* Individual tags - extremely broad for maximum coverage */
     background-color: rgba(0, 255, 255, 0.1) !important;
     color: #00ffff !important;
     padding: 4px 8px !important;
@@ -437,7 +492,8 @@ div.ant-row.ant-row-no-wrap.mb-1.custom-scroll.css-1v3fjfx {
     display: inline-block !important; /* Ensure they behave like block elements for spacing */
 }
 /* Specific tag for "fire" icon */
-.ant-tag.ant-tag-error.css-1v3fjfx {
+.ant-tag.ant-tag-error.css-1v3fjfx,
+.ant-tag.ant-tag-error {
     background-color: rgba(255, 0, 0, 0.2) !important;
     color: #ff0000 !important;
     border-color: rgba(255, 0, 0, 0.7) !important;
@@ -445,21 +501,47 @@ div.ant-row.ant-row-no-wrap.mb-1.custom-scroll.css-1v3fjfx {
 
 
 /* Bot card footer (author and time) */
-p[style*="justify-content: space-between"] {
+/* THIS COMBINES BOTH SCENARIOS for styling */
+p[style*="justify-content: space-between"], /* Targets the <p> tag if it has the inline style */
+.ant-card-meta > div:last-child > div.ant-row.ant-row-space-between.text-sm, /* Targets a specific div structure */
+.ant-card-meta-footer { /* A more general class that might be used for the footer */
     font-family: 'IBM Plex Mono', monospace !important;
-    color: #888 !important;
+    color: #888 !important; /* Default grey for footer text */
     font-size: 0.9em !important;
     margin-top: 10px !important;
     padding: 0 18px 10px !important; /* Adjust padding for footer */
-}
-p[style*="justify-content: space-between"] a {
-    color: #00ffff !important; /* Author name link */
-}
-p[style*="justify-content: space-between"] button {
-    color: #888 !important; /* Time button */
+    display: flex !important; /* Ensure it's always a flex container */
+    justify-content: space-between !important; /* Distribute content */
+    align-items: center !important; /* Vertically center content */
 }
 
-/* Responsive adjustments */
+/* Author name link within the footer */
+p[style*="justify-content: space-between"] a,
+.ant-card-meta > div:last-child > div.ant-row.ant-row-space-between.text-sm a,
+.ant-card-meta-footer a {
+    color: #00ffff !important; /* Author name link */
+    text-decoration: none !important;
+}
+p[style*="justify-content: space-between"] a:hover,
+.ant-card-meta > div:last-child > div.ant-row.ant-row-space-between.text-sm a:hover,
+.ant-card-meta-footer a:hover {
+    text-decoration: underline !important;
+}
+
+/* Time button/text within the footer */
+p[style*="justify-content: space-between"] button,
+.ant-card-meta > div:last-child > div.ant-row.ant-row-space-between.text-sm button,
+.ant-card-meta-footer button,
+.ant-card-meta-footer span { /* Also target generic span if not a button */
+    color: #888 !important; /* Time button/text */
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-size: 0.9em !important;
+    cursor: default !important; /* Not typically clickable */
+
+/* --- RESPONSIVE ADJUSTMENTS (ALL !IMPORTANT) --- */
 @media (max-width: 768px) {
     .profile-container {
         margin: 20px auto !important;
@@ -483,16 +565,19 @@ p[style*="justify-content: space-between"] button {
         padding: 15px !important;
     }
     /* Adjusted bot card section for smaller screens */
-    .sc-fmKFGs.hikinD.character-list-container {
+    .sc-fmKFGs.hikinD.character-list-container,
+    .sc-fmKFGs.hikinD { /* Ensuring this applies to both logged in/out */
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
         gap: 20px !important;
         padding: 0 !important; /* Removed padding */
     }
-    img.sc-ktwOfi.eCEqAJ {
+    img.sc-ktwOfi.eCEqAJ,
+    .ant-card-cover img {
         height: 160px !important;
     }
     /* Adjust position for native follower info on small screens */
-    div.text-sm.mb-2 {
+    .ant-row.ant-row-start.ant-row-middle.css-1v3fjfx,
+    .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:nth-child(2) {
         top: 480px !important; /* Adjusted for smaller pics */
     }
 }
@@ -521,16 +606,19 @@ p[style*="justify-content: space-between"] button {
         padding: 12px !important;
     }
     /* Adjusted bot card section for extra small screens */
-    .sc-fmKFGs.hikinD.character-list-container {
+    .sc-fmKFGs.hikinD.character-list-container,
+    .sc-fmKFGs.hikinD { /* Ensuring this applies to both logged in/out */
         grid-template-columns: 1fr !important; /* Single column */
         gap: 15px !important;
         padding: 0 !important; /* Removed padding */
     }
-    img.sc-ktwOfi.eCEqAJ {
+    img.sc-ktwOfi.eCEqAJ,
+    .ant-card-cover img {
         height: 140px !important;
     }
     /* Adjust position for native follower info on small screens */
-    div.text-sm.mb-2 {
+    .ant-row.ant-row-start.ant-row-middle.css-1v3fjfx,
+    .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:nth-child(2) {
         top: 400px !important; /* Adjusted for smaller pics */
     }
-    }
+        }
