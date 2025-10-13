@@ -37,7 +37,7 @@ body, html, #root > div, .layout-content, #root,
     background: rgba(10, 10, 10, 0.4) !important;
     padding: 25px !important;
     border-radius: 10px !important;
-    margin-top: 200px !important; /* SIGNIFICANTLY INCREASED MARGIN-TOP TO PUSH IT DOWN */
+    margin-top: 380px !important; /* MUCH LOWER MARGIN-TOP FOR BIO */
     box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;
     border: 2px dashed rgba(255, 0, 0, 0.7) !important;
     width: 100% !important;
@@ -70,72 +70,72 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
 div.text-sm.mb-2, /* This targets the direct container that holds both the span and button */
 .ant-row.ant-row-start.ant-row-middle {
     position: absolute !important;
-    top: 550px !important; /* KEEPING THIS FIXED AS PER YOUR INSTRUCTION */
+    top: 700px !important; /* DROPPED LOWER TO ACCOMMODATE PROFILE */
     left: 50% !important;
     transform: translateX(-50%) !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    width: 80% !important; /* INCREASED WIDTH */
-    max-width: 500px !important; /* ADDED MAX-WIDTH */
+    width: 90% !important; /* INCREASED WIDTH MORE */
+    max-width: 550px !important; /* INCREASED MAX-WIDTH */
     z-index: 100 !important;
     pointer-events: auto !important;
-    padding: 20px 30px !important; /* INCREASED PADDING */
-    border-radius: 10px !important;
-    background: rgba(0,0,0,0.6) !important; /* Added a subtle background for visibility */
-    border: 2px solid rgba(0, 255, 255, 0.7) !important; /* Added a border for definition */
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8) !important; /* Added a shadow */
+    padding: 30px 40px !important; /* SIGNIFICANTLY INCREASED PADDING */
+    border-radius: 12px !important; /* SLIGHTLY MORE ROUNDED */
+    background: rgba(0,0,0,0.7) !important; /* Slightly darker background for prominence */
+    border: 3px solid rgba(0, 255, 255, 0.8) !important; /* THICKER BORDER */
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.9), inset 0 0 10px rgba(0, 255, 255, 0.5) !important; /* MORE INTENSE SHADOW */
 }
 
 /* Ensure the span for followers is styled correctly within the new structure */
 div.text-sm.mb-2 > span.mr-4 {
     font-family: 'IBM Plex Mono', monospace !important;
-    color: #00ffff !important; /* Changed to neon blue for consistency */
-    font-size: 1.5em !important; /* Increased font size */
-    text-shadow: 0 0 10px #00ffff, 0 0 20px rgba(0, 255, 255, 0.7) !important; /* More prominent shadow */
-    margin-bottom: 15px !important; /* More space below followers */
+    color: #00ffff !important;
+    font-size: 2em !important; /* FURTHER INCREASED FONT SIZE */
+    text-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.8) !important; /* MORE PROMINENT SHADOW */
+    margin-bottom: 20px !important; /* MORE SPACE BELOW FOLLOWERS */
     white-space: nowrap !important;
     display: block !important;
     margin-right: 0 !important;
-    letter-spacing: 1px !important;
+    letter-spacing: 2px !important;
 }
 
 /* Button styling, now applying the neon effect to the correctly positioned button */
 div.text-sm.mb-2 > button.ant-btn {
     font-family: 'Press Start 2P', cursive !important;
-    font-size: 1.6em !important; /* Further increased button font size */
-    padding: 15px 40px !important; /* Further increased button padding */
-    border-radius: 8px !important; /* Slightly more defined corners */
+    font-size: 1.8em !important; /* FURTHER INCREASED BUTTON FONT SIZE */
+    padding: 18px 50px !important; /* FURTHER INCREASED BUTTON PADDING */
+    border-radius: 10px !important; /* SLIGHTLY MORE DEFINED CORNERS */
     background-color: transparent !important;
     color: #00ffff !important;
-    border: 4px solid #00ffff !important; /* Thicker border */
-    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff !important; /* More intense shadow */
+    border: 5px solid #00ffff !important; /* EVEN THICKER BORDER */
+    box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff !important; /* EVEN MORE INTENSE SHADOW */
     transition: all 0.1s ease-in-out !important;
     margin-left: 0 !important;
     animation: neon-flicker 1.5s infinite alternate !important;
-    width: 90% !important; /* Make button wider */
-    max-width: 300px !important; /* Max width for consistency */
+    width: 95% !important; /* MAKE BUTTON WIDER */
+    max-width: 350px !important; /* MAX WIDTH FOR CONSISTENCY */
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
 }
 
 div.text-sm.mb-2 > button.ant-btn:hover {
-    background-color: rgba(0, 255, 255, 0.2) !important;
+    background-color: rgba(0, 255, 255, 0.3) !important;
     border-color: #fff !important;
     color: #fff !important;
-    box-shadow: 0 0 20px #fff, 0 0 40px rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 0 25px #fff, 0 0 50px rgba(255, 255, 255, 0.9) !important;
 }
 
 .ant-btn-icon {
-    margin-right: 10px !important; /* More space for icon */
+    margin-right: 12px !important; /* MORE SPACE FOR ICON */
 }
 
 .ant-btn-icon svg {
     fill: #00ffff !important;
     transition: fill 0.1s ease-in-out !important;
-    width: 28px !important; /* Larger icon */
-    height: 28px !important; /* Larger icon */
+    width: 32px !important; /* LARGER ICON */
+    height: 32px !important; /* LARGER ICON */
 }
 
 div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
@@ -145,7 +145,7 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
 @keyframes neon-flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
         opacity: 1;
-        box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+        box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
     }
     20%, 24%, 55% {
         opacity: 0.7;
@@ -153,7 +153,7 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
     }
     22% {
         opacity: 0.9;
-        box-shadow: 0 0 8px #00ffff;
+        box-shadow: 0 0 12px #00ffff;
     }
 }
 
@@ -171,7 +171,7 @@ footer.ant-layout-footer,
 
 .profile-container {
     max-width: 900px;
-    margin: 40px auto 0 auto;
+    margin: 150px auto 0 auto !important; /* DROPPED PROFILE CONTAINER SIGNIFICANTLY */
     padding: 0px;
     background: none !important;
     border-radius: 0px !important;
@@ -530,7 +530,7 @@ p[style*="justify-content: space-between"] button,
 
 @media (max-width: 768px) {
     .profile-container {
-        margin: 20px auto 0 auto !important;
+        margin: 80px auto 0 auto !important; /* ADJUSTED FOR SMALLER SCREENS */
         padding: 0px !important;
     }
     .username {
@@ -542,20 +542,20 @@ p[style*="justify-content: space-between"] button,
         margin-bottom: 15px !important;
     }
     .bio-section {
-        margin-top: 150px !important; /* Adjusted for smaller screens */
+        margin-top: 300px !important; /* ADJUSTED FOR SMALLER SCREENS */
     }
     div.text-sm.mb-2,
     .ant-row.ant-row-start.ant-row-middle {
-        top: 480px !important; /* Fixed position */
+        top: 600px !important; /* ADJUSTED FOR SMALLER SCREENS */
         width: 90% !important;
-        padding: 15px 20px !important;
+        padding: 20px 30px !important;
     }
     div.text-sm.mb-2 > span.mr-4 {
-        font-size: 1.3em !important;
+        font-size: 1.6em !important;
     }
     div.text-sm.mb-2 > button.ant-btn {
-        font-size: 1.4em !important;
-        padding: 12px 30px !important;
+        font-size: 1.6em !important;
+        padding: 15px 40px !important;
     }
     .bio-section h2 {
         font-size: 1.6em !important;
@@ -582,7 +582,7 @@ p[style*="justify-content: space-between"] button,
 
 @media (max-width: 480px) {
     .profile-container {
-        margin: 10px auto 0 auto !important;
+        margin: 50px auto 0 auto !important; /* ADJUSTED FOR SMALLEST SCREENS */
         padding: 0px !important;
     }
     .username {
@@ -595,20 +595,20 @@ p[style*="justify-content: space-between"] button,
         margin-bottom: 10px !important;
     }
     .bio-section {
-        margin-top: 100px !important; /* Adjusted for smallest screens */
+        margin-top: 220px !important; /* ADJUSTED FOR SMALLEST SCREENS */
     }
     div.text-sm.mb-2,
     .ant-row.ant-row-start.ant-row-middle {
-        top: 400px !important; /* Fixed position */
+        top: 500px !important; /* ADJUSTED FOR SMALLEST SCREENS */
         width: 95% !important;
-        padding: 10px 15px !important;
+        padding: 15px 20px !important;
     }
     div.text-sm.mb-2 > span.mr-4 {
-        font-size: 1.1em !important;
+        font-size: 1.3em !important;
     }
     div.text-sm.mb-2 > button.ant-btn {
-        font-size: 1.2em !important;
-        padding: 10px 20px !important;
+        font-size: 1.4em !important;
+        padding: 12px 25px !important;
     }
     .bio-section h2 {
         font-size: 1.3em !important;
