@@ -1,0 +1,436 @@
+/*
+=================================================================
+  GEN3RATED-R PROFILE THEME
+  Mature Content Warning Aesthetic
+=================================================================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@700&family=Roboto:wght@400;700&family=VT323&display=swap');
+
+:root {
+  --rated-r-red: #E50914;
+  --warning-red: #DC143C;
+  --dark-red: #8B0000;
+  --neon-red: #FF0000;
+  --gold-text: #FFD700;
+  --bg-dark: #0a0a0a;
+  --card-bg: rgba(20, 20, 20, 0.95);
+  --text-light: #e8e8e8;
+  --text-muted: #a0a0a0;
+  
+  --font-title: 'Bebas Neue', sans-serif;
+  --font-bold: 'Oswald', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+  --font-glitch: 'VT323', monospace;
+}
+
+/* Background */
+body {
+  background: #0a0a0a !important;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://archive.org/download/background_GEN3RATED_R/Screenshot_20250728-232410.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+  filter: grayscale(0.3) brightness(0.5);
+}
+
+/* Vignette overlay */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.8) 70%, #0a0a0a 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main profile container */
+.sc-eDvSVe,
+[class*="ProfilePage"] {
+  position: relative;
+  z-index: 2;
+}
+
+/* Profile header section */
+.sc-eDvSVe > div:first-child,
+[class*="profile-header"] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px 40px !important;
+  background: linear-gradient(180deg, 
+    rgba(229, 9, 20, 0.2) 0%, 
+    rgba(10, 10, 10, 0.95) 40%,
+    rgba(10, 10, 10, 0.98) 100%) !important;
+  border-bottom: 3px solid var(--rated-r-red);
+  margin-bottom: 0 !important;
+}
+
+/* Profile avatar - CENTERED */
+.ant-avatar {
+  width: 180px !important;
+  height: 180px !important;
+  border: 5px solid var(--rated-r-red) !important;
+  box-shadow: 
+    0 0 30px rgba(229, 9, 20, 0.8),
+    0 0 60px rgba(229, 9, 20, 0.4),
+    0 8px 32px rgba(0, 0, 0, 0.8) !important;
+  animation: avatarPulse 3s ease-in-out infinite;
+  margin: 0 auto 30px !important;
+  position: relative;
+  z-index: 10;
+}
+
+/* Username styling - GEN3RATED-R with glitch effect */
+h1.ant-typography,
+[class*="username"] {
+  font-family: var(--font-title) !important;
+  font-size: clamp(48px, 8vw, 72px) !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  margin: 20px 0 10px !important;
+  letter-spacing: 0.15em !important;
+  position: relative;
+  color: var(--text-light) !important;
+  text-shadow: none !important;
+}
+
+/* GEN3 part - glitching */
+h1.ant-typography::before,
+[class*="username"]::before {
+  content: "GEN3";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  font-family: var(--font-glitch);
+  color: var(--neon-red);
+  text-shadow: 
+    0 0 10px var(--neon-red),
+    2px 0 5px rgba(255, 0, 0, 0.8),
+    -2px 0 5px rgba(0, 255, 255, 0.8);
+  animation: glitchFlicker 0.5s infinite alternate;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+/* RATED-R part - stable neon glow */
+h1.ant-typography::after,
+[class*="username"]::after {
+  content: "RATED-R";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  color: var(--rated-r-red);
+  text-shadow: 
+    0 0 20px var(--rated-r-red),
+    0 0 40px var(--rated-r-red),
+    0 0 60px rgba(229, 9, 20, 0.6);
+  animation: neonGlow 2s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* Follower count */
+.ant-typography:has([class*="follower"]),
+[class*="follower-count"] {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-muted) !important;
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* Warning banner under header */
+.sc-eDvSVe > div:nth-child(2) {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(229, 9, 20, 0.3) 50%, 
+    transparent 100%);
+  border-top: 2px solid var(--rated-r-red);
+  border-bottom: 2px solid var(--rated-r-red);
+  padding: 15px 20px;
+  text-align: center;
+  font-family: var(--font-bold);
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  color: var(--rated-r-red);
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.8);
+  animation: warningFlash 3s ease-in-out infinite;
+}
+
+/* Tab navigation (Characters, Lorebooks, etc.) */
+.ant-tabs-nav {
+  background: rgba(20, 20, 20, 0.9) !important;
+  border-bottom: 2px solid var(--rated-r-red) !important;
+  padding: 0 20px !important;
+}
+
+.ant-tabs-tab {
+  font-family: var(--font-bold) !important;
+  font-size: 16px !important;
+  color: var(--text-muted) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  transition: all 0.3s ease !important;
+}
+
+.ant-tabs-tab:hover {
+  color: var(--rated-r-red) !important;
+}
+
+.ant-tabs-tab-active {
+  color: var(--rated-r-red) !important;
+}
+
+.ant-tabs-ink-bar {
+  background: var(--rated-r-red) !important;
+  height: 3px !important;
+  box-shadow: 0 0 10px var(--rated-r-red) !important;
+}
+
+/* Character cards - Enhanced styling */
+.ant-card {
+  background: var(--card-bg) !important;
+  border: 2px solid rgba(229, 9, 20, 0.3) !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.ant-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--rated-r-red) 50%, 
+    transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ant-card:hover {
+  border-color: var(--rated-r-red) !important;
+  box-shadow: 0 8px 32px rgba(229, 9, 20, 0.4) !important;
+  transform: translateY(-4px) !important;
+}
+
+.ant-card:hover::before {
+  opacity: 1;
+  animation: scanLine 2s linear infinite;
+}
+
+/* Card titles */
+.ant-card-meta-title {
+  font-family: var(--font-bold) !important;
+  font-size: 18px !important;
+  color: var(--text-light) !important;
+}
+
+/* Card descriptions */
+.ant-card-meta-description {
+  color: var(--text-muted) !important;
+  line-height: 1.6 !important;
+}
+
+/* Tags */
+.ant-tag {
+  background: rgba(229, 9, 20, 0.2) !important;
+  border: 1px solid rgba(229, 9, 20, 0.5) !important;
+  color: var(--text-light) !important;
+  font-family: var(--font-body) !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  transition: all 0.2s ease !important;
+}
+
+.ant-tag:hover {
+  background: var(--rated-r-red) !important;
+  border-color: var(--rated-r-red) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Buttons */
+button.ant-btn {
+  font-family: var(--font-bold) !important;
+  background: var(--dark-red) !important;
+  border: 2px solid var(--rated-r-red) !important;
+  color: var(--text-light) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  transition: all 0.3s ease !important;
+}
+
+button.ant-btn:hover {
+  background: var(--rated-r-red) !important;
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.6) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Profile description/bio section */
+.ant-typography p {
+  font-family: var(--font-body) !important;
+  font-size: 16px !important;
+  line-height: 1.8 !important;
+  color: var(--text-light) !important;
+  margin-bottom: 20px !important;
+}
+
+/* Section headers in bio */
+.ant-typography h2,
+.ant-typography h3 {
+  font-family: var(--font-bold) !important;
+  color: var(--rated-r-red) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  margin-top: 30px !important;
+  margin-bottom: 15px !important;
+  position: relative !important;
+  padding-bottom: 10px !important;
+}
+
+.ant-typography h2::after,
+.ant-typography h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--rated-r-red);
+  box-shadow: 0 0 10px var(--rated-r-red);
+}
+
+/* Animations */
+@keyframes avatarPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 30px rgba(229, 9, 20, 0.8),
+      0 0 60px rgba(229, 9, 20, 0.4),
+      0 8px 32px rgba(0, 0, 0, 0.8);
+  }
+  50% {
+    box-shadow: 
+      0 0 40px rgba(229, 9, 20, 1),
+      0 0 80px rgba(229, 9, 20, 0.6),
+      0 8px 32px rgba(0, 0, 0, 0.8);
+  }
+}
+
+@keyframes glitchFlicker {
+  0% {
+    opacity: 0.9;
+    transform: translateX(-50%) skew(0deg);
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    opacity: 0.3;
+    transform: translateX(-49%) skew(2deg);
+  }
+  40% {
+    opacity: 0.8;
+    transform: translateX(-51%) skew(-1deg);
+  }
+  60% {
+    opacity: 0.2;
+    transform: translateX(-50%) skew(1deg);
+    filter: hue-rotate(20deg);
+  }
+  80% {
+    opacity: 0.9;
+    transform: translateX(-50%) skew(-2deg);
+  }
+  100% {
+    opacity: 0.7;
+    transform: translateX(-50%) skew(0deg);
+    filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes neonGlow {
+  0%, 100% {
+    text-shadow: 
+      0 0 20px var(--rated-r-red),
+      0 0 40px var(--rated-r-red),
+      0 0 60px rgba(229, 9, 20, 0.6);
+  }
+  50% {
+    text-shadow: 
+      0 0 30px var(--rated-r-red),
+      0 0 60px var(--rated-r-red),
+      0 0 90px rgba(229, 9, 20, 0.8);
+  }
+}
+
+@keyframes warningFlash {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ant-avatar {
+    width: 140px !important;
+    height: 140px !important;
+  }
+  
+  h1.ant-typography,
+  [class*="username"] {
+    font-size: clamp(36px, 10vw, 48px) !important;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dark-red);
+  border: 2px solid var(--bg-dark);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rated-r-red);
+  }
