@@ -66,22 +66,32 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     display: none !important;
 }
 
+/* Specific targeting for the follower count and button block */
 .ant-row.ant-row-start.ant-row-middle {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 100% !important;
-    background: none !important;
-    padding: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-    pointer-events: auto !important;
     position: absolute !important;
-    top: 480px !important;
+    top: 490px !important; /* Adjusted to be below the username */
     left: 50% !important;
     transform: translateX(-50%) !important;
     z-index: 101 !important;
+    width: auto !important;
+    display: flex !important;
+    flex-direction: column !important; /* Stack text and button */
+    align-items: center !important;
+    justify-content: center !important;
+    background: none !important;
+    padding: 0 !important;
     margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    text-align: center !important;
+}
+
+.ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 {
+    display: flex !important;
+    flex-direction: column !important; /* Ensure text and button are stacked */
+    align-items: center !important;
+    margin-bottom: 15px !important; /* Space between count and button */
+    padding: 0 !important;
 }
 
 .ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 > span.mr-4 {
@@ -89,16 +99,15 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     color: #e0e0e0 !important;
     font-size: 1.1em !important;
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.5) !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 10px !important; /* Space between count and button if they are siblings */
     white-space: nowrap !important;
-    display: block !important;
-    order: 1 !important;
+    display: block !important; /* Ensure it takes its own line */
 }
 
 .ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 > button.ant-btn {
     font-family: 'Press Start 2P', cursive !important;
     font-size: 1.2em !important;
-    padding: 8px 25px !important;
+    padding: 10px 30px !important; /* Make button bigger */
     border-radius: 5px !important;
     background-color: transparent !important;
     color: #00ffff !important;
@@ -107,7 +116,10 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     transition: all 0.1s ease-in-out !important;
     margin-left: 0 !important;
     animation: neon-flicker 1.5s infinite alternate !important;
-    order: 2 !important;
+    width: auto !important; /* Allow button to size to content */
+    display: inline-flex !important; /* Keep icon and text together */
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 .ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 > button.ant-btn:hover {
@@ -115,6 +127,19 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     border-color: #fff !important;
     color: #fff !important;
     box-shadow: 0 0 15px #fff, 0 0 30px rgba(255, 255, 255, 0.8) !important;
+}
+
+.ant-btn-icon {
+    margin-right: 8px !important; /* Space for the icon */
+}
+
+.ant-btn-icon svg {
+    fill: #00ffff !important;
+    transition: fill 0.1s ease-in-out !important;
+}
+
+.ant-row.ant-row-start.ant-row-middle > div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
+    fill: #fff !important;
 }
 
 @keyframes neon-flicker {
@@ -343,7 +368,7 @@ footer.ant-layout-footer,
 
 .ant-tabs-tabpane-active,
 .sc-fmKFGs.hikinD.character-list-container,
-.ant-tabs-content.ant-tabs-content-top > div {
+.ant-tabs-content.ant-tabs-top > div {
     margin-top: 40px !important;
     padding: 0 !important;
     background: none !important;
