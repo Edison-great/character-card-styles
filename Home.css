@@ -461,4 +461,47 @@ p[style*="justify-content: space-between"] button {
     .sc-fmKFGs.hikinD.character-list-container {
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
         gap: 20px !important;
-        padding: 0 !important; /* R
+        padding: 0 !important; /* Removed padding */
+    }
+    img.sc-ktwOfi.eCEqAJ {
+        height: 160px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        margin: 10px !important;
+        padding: 0px !important;
+    }
+    .username {
+        font-size: 2.2em !important;
+        letter-spacing: 1px !important;
+    }
+    .profile-pic {
+        width: 130px !important;
+        height: 130px !important;
+    }
+    .bio-section h2 {
+        font-size: 1.3em !important;
+    }
+    .bio-section p {
+        font-size: 0.95em !important;
+    }
+    .cta {
+        font-size: 0.9em !important;
+        padding: 12px !important;
+    }
+    /* Adjusted bot card section for extra small screens */
+    .sc-fmKFGs.hikinD.character-list-container {
+        grid-template-columns: 1fr !important; /* Single column */
+        gap: 15px !important;
+        padding: 0 !important; /* Removed padding */
+    }
+    img.sc-ktwOfi.eCEqAJ {
+        height: 140px !important;
+    }
+    /* Adjust position for native follower info on small screens */
+    .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18.css-1v3fjfx > div:first-child > div:nth-child(2) {
+        top: 250px !important; /* Adjusted for smaller pics */
+    }
+}
