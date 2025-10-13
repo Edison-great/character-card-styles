@@ -62,26 +62,28 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
 .ant-typography.my-2,
 .ant-typography.text-lg.font-bold.mb-2.break-words,
 .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),
-.ant-typography[class*="Followers"],
-/* Hide the original Ant Design follower/button block */
-.ant-row.ant-row-start.ant-row-middle {
+.ant-typography[class*="Followers"] {
     display: none !important;
 }
 
-/* Custom follower count and button styling */
-#custom-follower-block {
+/* Specific targeting for the follower count and button block - ADJUSTED FROM YOUR WORKING VERSION */
+div.text-sm.mb-2, /* This targets the direct container that holds both the span and button */
+.ant-row.ant-row-start.ant-row-middle {
+    position: absolute !important;
+    top: 550px !important; /* Copied directly from your working old CSS */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    margin-top: 20px !important; /* Adjust space below username */
-    margin-bottom: 30px !important; /* Adjust space above bio */
-    width: 100% !important;
-    text-align: center !important;
-    z-index: 10; /* Ensure it's on top */
-    position: relative; /* For proper z-index */
+    width: auto !important;
+    z-index: 100 !important; /* Copied directly from your working old CSS */
+    /* REMOVED background, padding, border, box-shadow to ensure it's not a visible box */
+    pointer-events: auto !important; /* Ensures the button is clickable */
 }
 
-#custom-follower-block .follower-count {
+/* Ensure the span for followers is styled correctly within the new structure */
+div.text-sm.mb-2 > span.mr-4 {
     font-family: 'IBM Plex Mono', monospace !important;
     color: #e0e0e0 !important;
     font-size: 1.1em !important;
@@ -89,43 +91,47 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     margin-bottom: 10px !important;
     white-space: nowrap !important;
     display: block !important;
+    margin-right: 0 !important; /* Override potential default margin */
 }
 
-#custom-follower-block .custom-unfollow-btn {
+/* Button styling, now applying the neon effect to the correctly positioned button */
+div.text-sm.mb-2 > button.ant-btn {
     font-family: 'Press Start 2P', cursive !important;
     font-size: 1.2em !important;
-    padding: 10px 30px !important; /* Bigger button */
+    padding: 10px 30px !important; /* Make button bigger */
     border-radius: 5px !important;
     background-color: transparent !important;
     color: #00ffff !important;
     border: 3px solid #00ffff !important;
     box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff !important;
     transition: all 0.1s ease-in-out !important;
+    margin-left: 0 !important;
     animation: neon-flicker 1.5s infinite alternate !important;
     width: auto !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    cursor: pointer !important; /* Indicate it's clickable */
 }
 
-#custom-follower-block .custom-unfollow-btn:hover {
+div.text-sm.mb-2 > button.ant-btn:hover {
     background-color: rgba(0, 255, 255, 0.2) !important;
     border-color: #fff !important;
     color: #fff !important;
     box-shadow: 0 0 15px #fff, 0 0 30px rgba(255, 255, 255, 0.8) !important;
 }
 
-#custom-follower-block .custom-unfollow-btn svg {
-    fill: #00ffff !important;
+.ant-btn-icon {
     margin-right: 8px !important;
+}
+
+.ant-btn-icon svg {
+    fill: #00ffff !important;
     transition: fill 0.1s ease-in-out !important;
 }
 
-#custom-follower-block .custom-unfollow-btn:hover svg {
+div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
     fill: #fff !important;
 }
-
 
 @keyframes neon-flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
@@ -140,6 +146,12 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
         opacity: 0.9;
         box-shadow: 0 0 5px #00ffff;
     }
+}
+
+span.ant-tag.mb-2,
+button[aria-describedby]:not(.ant-btn-text),
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {
+    display: none !important;
 }
 
 footer.ant-layout-footer,
@@ -520,17 +532,6 @@ p[style*="justify-content: space-between"] button,
         height: 160px !important;
         margin-bottom: 15px !important;
     }
-    #custom-follower-block {
-        margin-top: 15px !important;
-        margin-bottom: 25px !important;
-    }
-    #custom-follower-block .follower-count {
-        font-size: 1em !important;
-    }
-    #custom-follower-block .custom-unfollow-btn {
-        font-size: 1.1em !important;
-        padding: 8px 25px !important;
-    }
     .bio-section h2 {
         font-size: 1.6em !important;
     }
@@ -552,6 +553,11 @@ p[style*="justify-content: space-between"] button,
     .ant-card-cover img {
         height: 160px !important;
     }
+    /* ADJUSTED FOR MOBILE - copied from your working old CSS */
+    div.text-sm.mb-2,
+    .ant-row.ant-row-start.ant-row-middle {
+        top: 480px !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -567,17 +573,6 @@ p[style*="justify-content: space-between"] button,
         width: 130px !important;
         height: 130px !important;
         margin-bottom: 10px !important;
-    }
-    #custom-follower-block {
-        margin-top: 10px !important;
-        margin-bottom: 20px !important;
-    }
-    #custom-follower-block .follower-count {
-        font-size: 0.9em !important;
-    }
-    #custom-follower-block .custom-unfollow-btn {
-        font-size: 1em !important;
-        padding: 6px 20px !important;
     }
     .bio-section h2 {
         font-size: 1.3em !important;
@@ -599,5 +594,10 @@ p[style*="justify-content: space-between"] button,
     img.sc-ktwOfi.eCEqAJ,
     .ant-card-cover img {
         height: 140px !important;
+    }
+    /* ADJUSTED FOR SMALLER MOBILE - copied from your working old CSS */
+    div.text-sm.mb-2,
+    .ant-row.ant-row-start.ant-row-middle {
+        top: 400px !important;
     }
 }
