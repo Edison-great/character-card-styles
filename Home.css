@@ -153,21 +153,35 @@ footer.ant-layout-footer {
     20%, 24%, 55% { opacity: 0.4; }
 }
 
-/* === FIX #4 (Updated): FOLLOWER/BUTTON — move beneath username instead of fixed === */
-/* Previously fixed to screen; now positioned relative to profile header */
+/* === FIX #2 FINAL: FOLLOWER COUNT + BUTTON anchored beneath username === */
+
+/* Make the profile header the positioning context */
+.profile-header {
+    position: relative !important; /* ensures absolute children anchor correctly */
+}
+
+/* Position follower section directly beneath the username */
 .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
-    position: absolute !important; /* ← changed from fixed */
-    top: 100% !important; /* ← positions right below username area */
+    position: absolute !important;
+    top: calc(100% + 15px) !important; /* 15px below the header content */
     left: 50% !important;
-    transform: translate(-50%, 20px) !important; /* add small space below name */
-    z-index: 999 !important;
+    transform: translateX(-50%) !important;
+    z-index: 99 !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 15px !important;
+    gap: 12px !important;
     background: transparent !important;
     width: auto !important;
     padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Adjust spacing for smaller screens */
+@media (max-width: 768px) {
+    .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
+        top: calc(100% + 10px) !important;
+    }
 }
 
 /* Alternative approach - inject into profile-header using CSS */
