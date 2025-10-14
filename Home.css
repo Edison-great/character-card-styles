@@ -91,6 +91,109 @@ footer.ant-layout-footer {
     display: none !important;
 }
 
+/* Specific targeting for the follower count and button block - FIXED POSITIONING AND INCREASED SIZE */
+div.text-sm.mb-2, /* This targets the direct container that holds both the span and button */
+.ant-row.ant-row-start.ant-row-middle {
+    position: absolute !important;
+    top: 850px !important; /* RETAINED POSITION */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 90% !important;
+    max-width: 550px !important;
+    z-index: 100 !important;
+    pointer-events: auto !important;
+    padding: 30px 40px !important;
+    border-radius: 12px !important;
+    background: rgba(0,0,0,0.7) !important;
+    border: 3px solid rgba(0, 255, 255, 0.8) !important;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.9), inset 0 0 10px rgba(0, 255, 255, 0.5) !important;
+}
+
+/* Ensure the span for followers is styled correctly within the new structure */
+div.text-sm.mb-2 > span.mr-4 {
+    font-family: 'IBM Plex Mono', monospace !important;
+    color: #00ffff !important;
+    font-size: 2em !important;
+    text-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.8) !important;
+    margin-bottom: 20px !important;
+    white-space: nowrap !important;
+    display: block !important;
+    margin-right: 0 !important;
+    letter-spacing: 2px !important;
+}
+
+/* Button styling, now applying the neon effect to the correctly positioned button */
+div.text-sm.mb-2 > button.ant-btn {
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 1.8em !important;
+    padding: 18px 50px !important;
+    border-radius: 10px !important;
+    background-color: transparent !important;
+    color: #00ffff !important;
+    border: 5px solid #00ffff !important;
+    box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff !important;
+    transition: all 0.1s ease-in-out !important;
+    margin-left: 0 !important;
+    animation: neon-flicker 1.5s infinite alternate !important;
+    width: 95% !important;
+    max-width: 350px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+div.text-sm.mb-2 > button.ant-btn:hover {
+    background-color: rgba(0, 255, 255, 0.3) !important;
+    border-color: #fff !important;
+    color: #fff !important;
+    box-shadow: 0 0 25px #fff, 0 0 50px rgba(255, 255, 255, 0.9) !important;
+}
+
+.ant-btn-icon {
+    margin-right: 12px !important;
+}
+
+.ant-btn-icon svg {
+    fill: #00ffff !important;
+    transition: fill 0.1s ease-in-out !important;
+    width: 32px !important;
+    height: 32px !important;
+}
+
+div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
+    fill: #fff !important;
+}
+
+@keyframes neon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
+    }
+    20%, 24%, 55% {
+        opacity: 0.7;
+        box-shadow: none;
+    }
+    22% {
+        opacity: 0.9;
+        box-shadow: 0 0 12px #00ffff;
+    }
+}
+
+span.ant-tag.mb-2,
+button[aria-describedby]:not(.ant-btn-text),
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {
+    display: none !important;
+}
+
+footer.ant-layout-footer,
+.ant-col.text-center.my-2,
+.ant-spin-container > div:last-child > div:last-child:not(.sc-fmKFGs):not(.ant-tabs-content-holder) {
+    display: none !important;
+}
+
 /* === MAIN PROFILE CONTAINER === */
 .profile-container {
     max-width: 900px;
@@ -151,137 +254,6 @@ footer.ant-layout-footer {
 @keyframes flicker-animation {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
     20%, 24%, 55% { opacity: 0.4; }
-}
-
-/* === FOLLOWER / BUTTON FINAL FIX (mobile + desktop) === */
-
-/* Ensure the profile header defines a reference area */
-.profile-header {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    position: relative !important;
-    width: 100%; /* Ensure it takes full width to center children */
-}
-
-/* Target and reposition follower section visually beneath username */
-.sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2,
-div.text-sm.mb-2 {
-    position: relative !important; /* Allow normal document flow */
-    top: auto !important; /* Remove fixed/absolute positioning */
-    left: auto !important; /* Remove fixed/absolute positioning */
-    transform: none !important; /* Remove any transform offsets */
-    margin-top: 25px !important; /* Spacing below the username */
-    margin-bottom: 0 !important;
-
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 12px !important; /* Gap between follower count and button */
-    width: 100% !important;
-    background: transparent !important;
-    z-index: 1 !important;
-}
-
-/* Style the repositioned follower count */
-.sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 > span.mr-4,
-div.text-sm.mb-2 > span.mr-4 {
-    display: block !important; /* Ensure it takes its own line */
-    font-family: 'IBM Plex Mono', monospace !important;
-    color: #00ffff !important;
-    font-size: 1.6em !important;
-    text-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.8) !important;
-    margin-bottom: 0px !important;
-    margin-right: 0 !important;
-    white-space: nowrap !important;
-    letter-spacing: 2px !important;
-    text-align: center !important;
-}
-
-/* Style the repositioned follow button */
-.sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 > button.ant-btn,
-div.text-sm.mb-2 > button.ant-btn {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-family: 'Press Start 2P', cursive !important;
-    font-size: 1.4em !important;
-    padding: 12px 30px !important;
-    border-radius: 10px !important;
-    background-color: transparent !important;
-    color: #00ffff !important;
-    border: 3px solid #00ffff !important;
-    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px rgba(0, 255, 255, 0.7) !important;
-    transition: all 0.1s ease-in-out !important;
-    animation: neon-flicker 1.5s infinite alternate !important;
-    cursor: pointer !important;
-    margin: 0 !important;
-    width: auto !important;
-    max-width: 300px !important;
-}
-
-div.text-sm.mb-2 > button.ant-btn:hover {
-    background-color: rgba(0, 255, 255, 0.3) !important;
-    border-color: #fff !important;
-    color: #fff !important;
-    box-shadow: 0 0 20px #fff, 0 0 40px rgba(255, 255, 255, 0.9) !important;
-}
-
-.ant-btn-icon svg {
-    fill: #00ffff !important;
-    transition: fill 0.1s ease-in-out !important;
-    width: 24px !important;
-    height: 24px !important;
-    margin-right: 10px !important;
-}
-
-div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
-    fill: #fff !important;
-}
-
-@keyframes neon-flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
-        box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
-    }
-    20%, 24%, 55% {
-        opacity: 0.7;
-        box-shadow: none;
-    }
-    22% {
-        opacity: 0.9;
-        box-shadow: 0 0 10px #00ffff;
-    }
-}
-
-/* === RESPONSIVE DESIGN ADJUSTMENTS FOR FOLLOWER/BUTTON === */
-@media (max-width: 768px) {
-    div.text-sm.mb-2 {
-        margin-top: 20px !important; /* Adjust spacing for tablet */
-        gap: 10px !important;
-    }
-    div.text-sm.mb-2 > span.mr-4 {
-        font-size: 1.4em !important;
-    }
-    div.text-sm.mb-2 > button.ant-btn {
-        font-size: 1.2em !important;
-        padding: 10px 25px !important;
-    }
-}
-
-@media (max-width: 480px) {
-    div.text-sm.mb-2 {
-        margin-top: 18px !important; /* Adjust spacing for mobile */
-        gap: 8px !important;
-    }
-    div.text-sm.mb-2 > span.mr-4 {
-        font-size: 1.2em !important;
-    }
-    div.text-sm.mb-2 > button.ant-btn {
-        font-size: 1em !important;
-        padding: 8px 20px !important;
-    }
 }
 
 /* === TABS (Fix #6 - Slider functionality) === */
