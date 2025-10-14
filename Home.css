@@ -29,47 +29,49 @@ body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
     background: transparent !important;
     border: 1px solid rgba(0, 255, 255, 0.3) !important;
 }
-/* === LOGO REPLACEMENT (Fix #1 - stronger removal of background box) === */
+
+/* === LOGO REPLACEMENT (FINAL FIX — removes all background box/containers) === */
+
+/* Remove backgrounds and boxes from all possible logo containers */
+.ant-menu-item,
+.ant-menu-item a,
+.ant-menu-item a::before,
+.ant-menu-item a::after,
+.top-nav-logo,
+.top-nav-logo::before,
+.top-nav-logo::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Replace the actual logo image cleanly */
 .ant-menu-item a img[src="/logo_cataract.png"],
 img[src="/logo_cataract.png"],
-.top-nav-logo,
-.ant-menu-item a,
 .top-nav-logo img,
-.top-nav-logo::before,
-.top-nav-logo::after,
-.ant-menu-item a::before,
-.ant-menu-item a::after {
+.top-nav-logo {
     content: url('https://archive.org/download/background_GEN3RATED_R/Untitled61_20251014054044.png') !important;
     width: 50px !important;
     height: 50px !important;
-
-    /* Remove any visible box/background from the image itself and parent */
-    background: none !important;
-    background-color: transparent !important;
-    background-image: none !important;
-    box-shadow: none !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-
-    /* Ensure image displays cleanly and doesn't inherit layout box */
     display: inline-block !important;
-    vertical-align: middle !important;
-    line-height: 0 !important;
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-
-    /* Prevent pseudo-elements from showing anything */
-    pointer-events: auto !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    object-fit: contain !important;
+    image-rendering: auto !important;
+    filter: none !important;
 }
 
-/* Hide any pseudo-element decorations explicitly (extra safety) */
-.top-nav-logo::before,
-.top-nav-logo::after,
-.ant-menu-item a::before,
-.ant-menu-item a::after {
-    content: none !important;
-    display: none !important;
+/* Extra measure: prevent menu hover highlight box from appearing */
+.ant-menu-item-selected,
+.ant-menu-item:hover {
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
 /* === LAYOUT CLEANUP === */
