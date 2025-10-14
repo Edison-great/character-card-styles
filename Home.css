@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex Mono:wght@400;700&display=swap');
 
 /* === GLOBAL STYLES === */
 body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
@@ -9,18 +9,17 @@ body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
     color: #e0e0e0 !important;
 }
 
-/* === HEADER TRANSPARENCY (Fix #3) === */
+/* === HEADER TRANSPARENCY === */
 .ant-layout-header {
     background: transparent !important;
     backdrop-filter: none !important;
     padding: 0 !important;
+    /* Ensure the header itself doesn't hide content below it by taking up too much space if your HTML is *below* the header */
+    position: relative !important;
+    z-index: 100 !important; /* Ensure it stays on top of other elements if needed */
 }
 
-.ant-menu-overflow.ant-menu {
-    background-color: transparent !important;
-}
-
-/* Search bar transparency */
+/* Specific for chub.ai's search/nav bar within the header */
 .no-arrow.no-vertical-anything {
     background: transparent !important;
 }
@@ -30,48 +29,71 @@ body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
     border: 1px solid rgba(0, 255, 255, 0.3) !important;
 }
 
-/* === LOGO REPLACEMENT (Fix #1) === */
+/* === LOGO REPLACEMENT === */
+/* Target the main chub.ai logo */
 .ant-menu-item a img[src="/logo_cataract.png"],
 img[src="/logo_cataract.png"],
 .top-nav-logo {
     content: url('https://archive.org/download/background_GEN3RATED_R/Untitled61_20251014054044.png') !important;
     width: 50px !important;
     height: 50px !important;
+    position: relative !important; /* Ensure it's rendered */
+    z-index: 200 !important; /* Higher z-index to appear on top */
 }
 
-/* === LAYOUT CLEANUP === */
+
+/* === LAYOUT CLEANUP (REVISED) === */
 .ant-layout-content, .ant-card-body, .ant-tabs-content-holder, .ant-tabs-tabpane, .ant-row, .ant-col {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
 }
 
-/* Hide original/unwanted left sidebar elements but keep follower/button for repositioning */
-.ant-avatar[style*="width: 100px;"],
-.ant-typography.my-2,
-.ant-typography.text-lg.font-bold.mb-2.break-words,
-span.ant-tag.mb-2,
-.galaxy-bg,
+/* HIDE UNWANTED CHUB.AI PROFILE ELEMENTS (Keep the main content area) */
+/* The key is to hide elements *within* the left sidebar if you want to replace them,
+   but not the sidebar container itself if it's needed for overall layout.
+   However, since you want a full-width custom header, we'll hide the entire sidebar
+   and make the main content span full width. */
+.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 { /* This is the entire left sidebar */
+    display: none !important;
+}
+
+/* Make the main content area span full width where the sidebar used to be */
+.ant-col.ant-col-xs-24.ant-col-lg-18 { /* This is chub.ai's main content column */
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    padding-left: 0 !important; /* Remove any left padding from the main content */
+    padding-right: 0 !important; /* Remove any right padding */
+}
+
+/* Hide other specific elements within the main layout that you don't want */
+.ant-typography.my-2, /* Original username/bio in main content */
+.ant-typography.text-lg.font-bold.mb-2.break-words, /* Another common username/title */
+span.ant-tag.mb-2, /* Original tags if they appear in an unwanted spot */
+.galaxy-bg, /* Any default background for content areas */
 footer.ant-layout-footer {
     display: none !important;
 }
 
-/* Hide the left sidebar container entirely */
-.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 {
-    display: none !important;
-}
 
-/* === MAIN PROFILE CONTAINER === */
+/* === MAIN PROFILE CONTAINER (Ensure it's visible and centered) === */
 .profile-container {
-    max-width: 900px;
-    margin: 40px auto !important;
+    max-width: 900px; /* Or 100% if you want it full width */
+    margin: 40px auto 20px auto !important; /* Top margin, auto left/right, bottom margin */
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
     position: relative;
+    /* Ensure it has a z-index if it's being covered by other elements */
+    z-index: 50;
+    /* Optional: If you want a background behind your custom profile */
+    /* background: rgba(0, 0, 0, 0.6) !important;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5); */
 }
+
 
 /* === PROFILE HEADER === */
 .profile-header {
@@ -81,9 +103,10 @@ footer.ant-layout-footer {
     gap: 15px;
     width: 100%;
     position: relative;
+    padding-top: 50px; /* Add some space if the header is covering it */
 }
 
-/* Fix #2: Proper glow wrap around profile picture */
+/* Profile Picture with Glow and Spin */
 .profile-pic {
     width: 180px;
     height: 180px;
@@ -123,14 +146,25 @@ footer.ant-layout-footer {
     20%, 24%, 55% { opacity: 0.4; }
 }
 
-/* === FIX #4: REPOSITION DYNAMIC FOLLOWER/BUTTON TO PROFILE HEADER === */
-/* Target the dynamic follower section from the left sidebar and reposition it */
-.sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
-    position: fixed !important;
-    top: 320px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 999 !important;
+/* === REPOSITION DYNAMIC FOLLOWER/BUTTON (REVISED APPROACH) === */
+/* Instead of fixed positioning, let's try to make it part of the flow *within* the profile header
+   or relative to a known container. Since the left sidebar is hidden, we need to
+   re-evaluate how chub.ai renders this. If it's *still* trying to render in the old spot,
+   we need a new strategy.
+
+   Let's assume chub.ai still renders this block as a child of the main content area,
+   or globally. We need to find its ultimate parent that is *not* hidden.
+
+   Given your image, the "528 Followers, 2 Following" and "Follow" button are appearing
+   *above* your custom profile content. This means they are likely children of the
+   `main.ant-layout-content` or a similar high-level container.
+
+   We will try to target them more generally and position them under the username.
+*/
+
+/* Target the follower text and button more generally if they are not in a hidden container */
+/* This assumes they are sibling elements to your injected profile-container */
+div.text-sm.mb-2 { /* This is the container for followers and the button */
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -138,19 +172,13 @@ footer.ant-layout-footer {
     background: transparent !important;
     width: auto !important;
     padding: 0 !important;
-    margin: 0 !important;
-}
-
-/* Alternative approach - inject into profile-header using CSS */
-.profile-header::after {
-    content: '' !important;
-    display: block !important;
-    height: 100px !important;
-    width: 100% !important;
+    margin-top: 20px !important; /* Add space below your custom profile header */
+    margin-bottom: 40px !important; /* Add space above tabs */
+    position: relative !important;
+    z-index: 60 !important;
 }
 
 /* Style the repositioned follower count */
-.sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 > span.mr-4,
 div.text-sm.mb-2 > span.mr-4 {
     display: block !important;
     font-family: 'IBM Plex Mono', monospace !important;
@@ -165,7 +193,6 @@ div.text-sm.mb-2 > span.mr-4 {
 }
 
 /* Style the repositioned follow button */
-.sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 > button.ant-btn,
 div.text-sm.mb-2 > button.ant-btn {
     display: inline-flex !important;
     align-items: center !important;
@@ -255,7 +282,10 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
     padding: 10px !important;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
     width: 100% !important;
-    margin: 0 auto !important;
+    max-width: 900px !important; /* Limit width */
+    margin: 0 auto 30px auto !important; /* Center and add bottom margin */
+    position: relative !important;
+    z-index: 50 !important;
 }
 
 .ant-tabs-tab {
@@ -287,6 +317,9 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
     border: 2px dashed rgba(255, 0, 0, 0.7) !important;
     width: 100% !important;
     max-width: 900px !important;
+    margin-bottom: 30px !important; /* Add space below bio and above character grid */
+    position: relative !important;
+    z-index: 50 !important;
 }
 
 .bio-section h2 {
@@ -334,12 +367,16 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
 }
 
 /* === CHARACTER CARD GRID === */
+/* Ensure the grid itself is positioned correctly and not being covered */
 .character-list-container {
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
     gap: 25px !important;
     width: 100% !important;
     max-width: 1200px !important;
+    margin: 0 auto !important; /* Center the grid */
+    position: relative !important;
+    z-index: 40 !important;
 }
 
 /* === INDIVIDUAL CHARACTER CARD === */
@@ -359,7 +396,7 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
     box-shadow: 0 0 25px #ff0000, 0 0 45px rgba(255, 0, 0, 0.8) !important;
 }
 
-/* Fix #5: Smaller character profile pictures with rounded edges */
+/* Smaller character profile pictures with rounded edges */
 .ant-card-cover img {
     height: 140px !important;
     object-fit: cover !important;
@@ -374,7 +411,7 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
     flex-grow: 1;
 }
 
-/* Fix #6: Smaller character card title */
+/* Smaller character card title */
 .card-title-row span:first-child span,
 .ant-card-meta-title {
     font-family: 'Bebas Neue', sans-serif !important;
@@ -383,7 +420,7 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
     text-shadow: 0 0 8px #00ffff !important;
 }
 
-/* Fix #7: Solid green character description */
+/* Solid green character description */
 .ant-card-meta-description {
     color: #00ff00 !important;
     font-size: 0.95em !important;
@@ -464,9 +501,7 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
     .character-list-container {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
     }
-    .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
-        top: 280px !important;
-    }
+    /* Removed fixed positioning for follower div as it's now part of the flow */
 }
 
 @media (max-width: 480px) {
@@ -497,7 +532,5 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
     .bio-section h2 {
         font-size: 1.5em;
     }
-    .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
-        top: 240px !important;
-    }
+    /* Removed fixed positioning for follower div */
 }
