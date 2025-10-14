@@ -123,9 +123,10 @@ div.text-sm.mb-2, /* This targets the direct container that holds both the span 
     pointer-events: auto !important;
     padding: 30px 40px !important;
     border-radius: 12px !important;
-    background: rgba(0,0,0,0.7) !important;
-    border: 3px solid rgba(0, 255, 255, 0.8) !important;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.9), inset 0 0 10px rgba(0, 255, 255, 0.5) !important;
+    /* REMOVED BACKGROUND AND BORDER FOR THE CONTAINER */
+    background: transparent !important; /* Removed background */
+    border: none !important; /* Removed border */
+    box-shadow: none !important; /* Removed box-shadow */
 }
 
 /* Ensure the span for followers is styled correctly within the new structure */
@@ -246,17 +247,20 @@ footer.ant-layout-footer,
     border-radius: 50%;
     margin-bottom: 25px;
     object-fit: cover;
-    transition: transform 0.3s ease-in-out;
+    /* transition: transform 0.3s ease-in-out; REMOVED to enable always-on animation */
     z-index: 10;
     position: relative;
     box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000 !important;
     border: 3px solid rgba(255, 0, 0, 0.7) !important;
+    /* Always-on and faster spinning animation */
+    animation: spinning-animation 1s linear infinite !important; /* Faster: 1s instead of 2s */
 }
 
-.profile-pic:hover, .profile-pic:active {
+/* Removed hover/active states for animation as it's now always on */
+/* .profile-pic:hover, .profile-pic:active {
     animation: spinning-animation 2s linear infinite;
     box-shadow: 0 0 25px #ff0000, 0 0 50px #ff0000, 0 0 70px rgba(255, 0, 0, 0.7) !important;
-}
+} */
 
 @keyframes spinning-animation {
     from {
