@@ -58,7 +58,7 @@ a:hover {
 }
 
 .ant-avatar.ant-avatar-square.ant-avatar-image[style*="width: 100px;"],
-img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
+/* img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"], */ /* Keep this comment for context, but it's not the user's pfp */
 .ant-typography.my-2,
 .ant-typography.text-lg.font-bold.mb-2.break-words,
 .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),
@@ -631,4 +631,51 @@ p[style*="justify-content: space-between"] button,
     .ant-card-cover img {
         height: 140px !important;
     }
+}
+
+/* --- NEW CSS FOR THIS REQUEST --- */
+
+/* 1. Make the search bar black */
+.ant-select-selector {
+    background-color: black !important; /* Make the search bar background black */
+    border-color: #00ffff !important; /* Keep the neon blue border */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7) !important; /* Add neon blue shadow */
+}
+
+/* Ensure placeholder and input text are visible */
+.ant-select-selection-placeholder,
+.ant-select-selection-search-input {
+    color: #e0e0e0 !important; /* Light text for dark background */
+}
+
+/* Ensure the arrow icon for the dropdown is visible */
+.ant-select-arrow .anticon svg {
+    fill: #00ffff !important; /* Neon blue arrow */
+}
+
+/* 2. Replace the Chub.ai logo */
+/* Hide the original image */
+.ant-menu-item .ant-menu-title-content a img[src="/logo_cataract.png"] {
+    display: none !important;
+}
+
+/* Add your new image using a pseudo-element on the anchor or parent span */
+.ant-menu-item .ant-menu-title-content a {
+    position: relative !important;
+    display: block !important;
+    width: 40px !important; /* Match original logo width */
+    height: 40px !important; /* Match original logo height */
+    top: -1px !important; /* Match original logo position */
+}
+
+.ant-menu-item .ant-menu-title-content a::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: url('https://archive.org/download/background_GEN3RATED_R/Untitled61_20251014054044.png') no-repeat center center !important;
+    background-size: contain !important; /* Ensure the image fits */
+    z-index: 1 !important;
 }
