@@ -153,123 +153,47 @@ footer.ant-layout-footer {
     20%, 24%, 55% { opacity: 0.4; }
 }
 
-/* === FIX #2 (FINAL–STRUCTURE-INDEPENDENT) FOLLOWER SECTION === */
+/* === FOLLOWER / BUTTON FINAL FIX (mobile + desktop) === */
 
-/* Force the profile header to serve as visual anchor */
+/* Ensure the profile header defines a reference area */
 .profile-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
     position: relative !important;
 }
 
-/* Reposition the follower count and button beneath the username */
-.sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
-    position: absolute !important;
-    top: auto !important;
-    bottom: -90px !important; /* positions below header block */
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 10 !important;
+/* Target and reposition follower section visually beneath username */
+.sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2,
+div.text-sm.mb-2 {
+    position: relative !important; /* allow normal document flow */
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    margin-top: 15px !important; /* ensures gap below username */
+    margin-bottom: 0 !important;
 
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 15px !important;
-
-    background: transparent !important;
-    width: 100% !important;
-    max-width: 400px !important;
-    padding: 0 !important;
-    margin: 0 auto !important;
-}
-
-/* Make sure it moves with the profile section when scrolling */
-.profile-container {
-    position: relative !important;
-}
-
-/* Adjust for smaller screens */
-@media (max-width: 768px) {
-    .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
-        bottom: -70px !important;
-        max-width: 90% !important;
-    }
-}
-
-/* Alternative approach - inject into profile-header using CSS */
-.profile-header::after {
-    content: '' !important;
-    display: block !important;
-    height: 100px !important;
-    width: 100% !important;
-}
-
-/* Style the repositioned follower count */
-.sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 > span.mr-4,
-div.text-sm.mb-2 > span.mr-4 {
-    display: block !important;
-    font-family: 'IBM Plex Mono', monospace !important;
-    color: #00ffff !important;
-    font-size: 1.6em !important;
-    text-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.8) !important;
-    margin-bottom: 0px !important;
-    margin-right: 0 !important;
-    white-space: nowrap !important;
-    letter-spacing: 2px !important;
-    text-align: center !important;
-}
-
-/* Style the repositioned follow button */
-.sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 > button.ant-btn,
-div.text-sm.mb-2 > button.ant-btn {
-    display: inline-flex !important;
-    align-items: center !important;
     justify-content: center !important;
-    font-family: 'Press Start 2P', cursive !important;
-    font-size: 1.4em !important;
-    padding: 12px 30px !important;
-    border-radius: 10px !important;
-    background-color: transparent !important;
-    color: #00ffff !important;
-    border: 3px solid #00ffff !important;
-    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px rgba(0, 255, 255, 0.7) !important;
-    transition: all 0.1s ease-in-out !important;
-    animation: neon-flicker 1.5s infinite alternate !important;
-    cursor: pointer !important;
-    margin: 0 !important;
-    width: auto !important;
-    max-width: 300px !important;
+    gap: 10px !important;
+    width: 100% !important;
+    background: transparent !important;
+    z-index: 1 !important;
 }
 
-div.text-sm.mb-2 > button.ant-btn:hover {
-    background-color: rgba(0, 255, 255, 0.3) !important;
-    border-color: #fff !important;
-    color: #fff !important;
-    box-shadow: 0 0 20px #fff, 0 0 40px rgba(255, 255, 255, 0.9) !important;
+/* Make sure it visually appears right under the username */
+.username + div.text-sm.mb-2,
+.username + .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
+    margin-top: 20px !important;
 }
 
-.ant-btn-icon svg {
-    fill: #00ffff !important;
-    transition: fill 0.1s ease-in-out !important;
-    width: 24px !important;
-    height: 24px !important;
-    margin-right: 10px !important;
-}
-
-div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
-    fill: #fff !important;
-}
-
-@keyframes neon-flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
-        box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
-    }
-    20%, 24%, 55% {
-        opacity: 0.7;
-        box-shadow: none;
-    }
-    22% {
-        opacity: 0.9;
-        box-shadow: 0 0 10px #00ffff;
+/* Adjust alignment for all viewports */
+@media (max-width: 768px) {
+    .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2,
+    div.text-sm.mb-2 {
+        margin-top: 12px !important;
     }
 }
 
