@@ -153,34 +153,44 @@ footer.ant-layout-footer {
     20%, 24%, 55% { opacity: 0.4; }
 }
 
-/* === FIX #2 FINAL: FOLLOWER COUNT + BUTTON anchored beneath username === */
+/* === FIX #2 (FINAL–STRUCTURE-INDEPENDENT) FOLLOWER SECTION === */
 
-/* Make the profile header the positioning context */
+/* Force the profile header to serve as visual anchor */
 .profile-header {
-    position: relative !important; /* ensures absolute children anchor correctly */
+    position: relative !important;
 }
 
-/* Position follower section directly beneath the username */
+/* Reposition the follower count and button beneath the username */
 .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
     position: absolute !important;
-    top: calc(100% + 15px) !important; /* 15px below the header content */
+    top: auto !important;
+    bottom: -90px !important; /* positions below header block */
     left: 50% !important;
     transform: translateX(-50%) !important;
-    z-index: 99 !important;
+    z-index: 10 !important;
+
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 12px !important;
+    gap: 15px !important;
+
     background: transparent !important;
-    width: auto !important;
+    width: 100% !important;
+    max-width: 400px !important;
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 0 auto !important;
 }
 
-/* Adjust spacing for smaller screens */
+/* Make sure it moves with the profile section when scrolling */
+.profile-container {
+    position: relative !important;
+}
+
+/* Adjust for smaller screens */
 @media (max-width: 768px) {
     .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
-        top: calc(100% + 10px) !important;
+        bottom: -70px !important;
+        max-width: 90% !important;
     }
 }
 
