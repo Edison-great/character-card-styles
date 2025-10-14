@@ -1,233 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex+Mono:wght@400;700&display=swap');
+
 /* === GLOBAL STYLES === */
 body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
     background: url('https://archive.org/download/background_GEN3RATED_R/Screenshot_20250728-232410.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
     font-family: 'IBM Plex Mono', monospace !important;
     color: #e0e0e0 !important;
-    margin: 0;
-    padding: 0;
 }
 
-/* === TOP NAVIGATION BAR === */
-.ant-layout-header {
+/* === LAYOUT CLEANUP: Remove unnecessary styles from ANT components === */
+/* 3. Make the entire search bar section at the top and it's padding transparent */
+.ant-layout-header, /* Assuming the top bar has this class */
+.ant-layout-content, .ant-card-body, .ant-tabs-content-holder, .ant-tabs-tabpane, .ant-tabs-nav-wrap, .ant-row, .ant-col {
     background: transparent !important;
-    padding: 0 20px !important;
-    height: 64px !important;
-    display: flex !important;
-    align-items: center !important;
-    z-index: 1000 !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-/* 1. Logo Replacement */
-.header-logo img,
+/* Hide original/unwanted elements */
+.ant-avatar[style*="width: 100px;"],
+.ant-typography.my-2,
+.ant-typography.text-lg.font-bold.mb-2.break-words,
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),
+/* Keep follower count visible to be restyled */
+/* .ant-typography[class*="Followers"], */
+span.ant-tag.mb-2,
+/* Keep follow button visible to be restyled */
+/* button[aria-describedby]:not(.ant-btn-text), */
+.galaxy-bg,
+footer.ant-layout-footer {
+    display: none !important;
+}
+
+/* 1. Replace the logo */
+/* You may need to adjust the selector to match your logo's class or ID */
 .top-nav-logo {
     content: url('https://archive.org/download/background_GEN3RATED_R/Untitled61_20251014054044.png') !important;
-    width: 40px !important;
-    height: 40px !important;
-    object-fit: contain !important;
-    margin-right: 16px !important;
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
 }
 
-/* 3. Transparent Search Bar */
-.ant-input-search,
-.ant-input-group-wrapper,
-.ant-input-wrapper {
-    background: transparent !important;
+/* === MAIN PROFILE CONTAINER === */
+.profile-container {
+    max-width: 900px;
+    margin: 40px auto !important; /* Centered layout with space on top/bottom */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Space between header, tabs, and content */
 }
 
-.ant-input-affix-wrapper,
-.ant-input {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    backdrop-filter: blur(5px) !important;
-}
-
-.ant-input {
-    color: #fff !important;
-}
-
-.ant-input-search-button {
-    background: transparent !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-}
-
-/* === PROFILE SECTION === */
+/* === PROFILE HEADER === */
 .profile-header {
-    position: relative !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    padding: 20px !important;
-}
-
-/* 2. Profile Picture Glow Effect */
-.profile-picture-container {
-    position: relative !important;
-    width: 180px !important;
-    height: 180px !important;
-    margin-bottom: 20px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Reduced gap to bring name and follow button closer */
+    width: 100%;
 }
 
 .profile-pic {
-    width: 100% !important;
-    height: 100% !important;
-    border-radius: 50% !important;
-    object-fit: cover !important;
-    position: relative !important;
-    z-index: 2 !important;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* 2. Wrap the glow properly around the picture */
+    border: none !important; /* Removed the solid red border */
+    box-shadow: 0 0 25px #ff0000, 0 0 50px #ff0000, 0 0 75px rgba(255, 0, 0, 0.7) !important; /* Enhanced glow effect */
+    animation: spinning-animation 15s linear infinite; /* Slow spin animation */
 }
 
-/* Glow Effect */
-.profile-picture-container::before {
-    content: '' !important;
-    position: absolute !important;
-    top: -10px !important;
-    left: -10px !important;
-    right: -10px !important;
-    bottom: -10px !important;
-    background: radial-gradient(circle, rgba(255,0,0,0.8) 0%, rgba(255,0,0,0) 70%) !important;
-    border-radius: 50% !important;
-    z-index: 1 !important;
-    filter: blur(15px) !important;
+@keyframes spinning-animation {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-/* 4. Follower Section Styling */
+.username {
+    font-family: 'Rubik Mono One', monospace;
+    font-size: 3.5em;
+    color: #00ffff;
+    text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff;
+    text-align: center;
+    margin-bottom: 10px; /* Space for the follow section */
+}
+
+.username .flicker {
+    animation: flicker-animation 1.5s infinite alternate;
+}
+
+.username .rated-r {
+    color: #ff0000;
+    text-shadow: 0 0 12px #ff0000, 0 0 25px #ff0000;
+}
+
+@keyframes flicker-animation {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: 0.4; }
+}
+
+/* 4. Move follower count and follow button */
 .follow-section {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 15px !important;
-    margin-top: 20px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: -10px; /* Pulls it closer to the username */
 }
 
-.follower-count {
-    font-size: 1.2em !important;
-    color: #fff !important;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+.ant-typography[class*="Followers"] {
+    display: block !important; /* Ensure it's visible */
+    font-size: 1.1em !important;
+    color: #e0e0e0 !important;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
 }
 
-/* Neon Follow Button */
 .follow-button {
+    display: inline-block !important; /* Ensure it's visible */
     background: transparent !important;
-    border: 2px solid #0ff !important;
-    color: #0ff !important;
+    border: 2px solid #00ffff;
+    color: #00ffff !important;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5em !important;
     padding: 8px 25px !important;
-    font-family: 'Orbitron', sans-serif !important;
-    font-size: 1.2em !important;
-    border-radius: 5px !important;
-    cursor: pointer !important;
-    position: relative !important;
-    overflow: hidden !important;
-    transition: all 0.3s ease !important;
-    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff !important;
-    box-shadow: 0 0 10px rgba(0,255,255,0.5),
-                inset 0 0 10px rgba(0,255,255,0.5) !important;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, inset 0 0 8px rgba(0, 255, 255, 0.5);
+    text-shadow: 0 0 8px #00ffff;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .follow-button:hover {
-    background: rgba(0,255,255,0.1) !important;
-    box-shadow: 0 0 20px rgba(0,255,255,0.8),
-                inset 0 0 15px rgba(0,255,255,0.8) !important;
+    color: #fff !important;
+    background: rgba(0, 255, 255, 0.2) !important;
+    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
 }
 
-/* 5. Category Slider Fix */
-.category-slider {
-    width: 100% !important;
-    overflow-x: auto !important;
-    scrollbar-width: thin !important;
-    scrollbar-color: rgba(255,255,255,0.3) transparent !important;
-    margin: 20px 0 !important;
-    padding: 10px 0 !important;
-}
 
-.category-slider::-webkit-scrollbar {
-    height: 6px !important;
-}
-
-.category-slider::-webkit-scrollbar-track {
-    background: transparent !important;
-}
-
-.category-slider::-webkit-scrollbar-thumb {
-    background-color: rgba(255,255,255,0.3) !important;
-    border-radius: 3px !important;
-}
-
-.ant-tabs-nav {
-    margin-bottom: 0 !important;
-    background: rgba(0,0,0,0.5) !important;
-    border-radius: 8px !important;
-    padding: 10px !important;
+/* === TABS (Characters / Profile) === */
+/* 5. Fix the slider that contains characters lore books preset etc */
+.ant-tabs-nav-wrap {
+    overflow: visible !important; /* Allow content to be visible */
 }
 
 .ant-tabs-nav-list {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    gap: 20px !important;
-    padding: 0 10px !important;
+    display: flex;
+    flex-wrap: wrap; /* Allow tabs to wrap on smaller screens if needed */
+    justify-content: center;
+}
+
+.ant-tabs-nav {
+    background: rgba(10, 10, 10, 0.7) !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
+    width: auto !important; /* Changed from fit-content to allow wrapping */
+    margin: 0 auto !important; /* Center the tabs */
 }
 
 .ant-tabs-tab {
-    color: rgba(255,255,255,0.7) !important;
-    transition: all 0.3s ease !important;
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 1.2em !important;
+    color: #00ffff !important;
+    text-shadow: 0 0 8px #00ffff !important;
+    background: transparent !important;
+    border: none !important;
+    transition: all 0.2s ease !important;
 }
 
 .ant-tabs-tab-active {
-    color: #0ff !important;
+    color: #ff0000 !important;
+    text-shadow: 0 0 10px #ff0000 !important;
 }
 
-/* 6. Character Cards Styling */
-.character-card {
-    background: rgba(0,0,0,0.7) !important;
-    border-radius: 15px !important;
-    overflow: hidden !important;
-    transition: transform 0.3s ease !important;
+.ant-tabs-ink-bar {
+    background: #ff0000 !important; /* Red underline for active tab */
 }
 
-.character-card:hover {
-    transform: translateY(-5px) !important;
-}
-
-.character-image {
+/* === BIO / PROFILE SECTION === */
+.bio-section {
+    background: rgba(10, 10, 10, 0.6) !important;
+    padding: 30px !important;
+    border-radius: 10px !important;
+    box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;
+    border: 2px dashed rgba(255, 0, 0, 0.7) !important;
     width: 100% !important;
-    height: 150px !important; /* Slightly smaller */
+    max-width: 900px !important;
+}
+
+.bio-section h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00;
+    border-bottom: 2px solid rgba(255, 204, 0, 0.4);
+    padding-bottom: 8px;
+    font-size: 1.8em;
+}
+
+.bio-section p {
+    font-size: 1.1em;
+    line-height: 1.7;
+}
+
+.bio-section .image-wrapper {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.bio-section .inline-image {
+    max-width: 90%;
+    border: 4px solid #00ffff;
+    box-shadow: 0 0 15px #00ffff;
+    border-radius: 8px;
+}
+
+.cta {
+    font-family: 'Rubik Mono One', monospace !important;
+    font-size: 1.5em !important;
+    color: #ff0000 !important;
+    text-align: center !important;
+    margin-top: 40px !important;
+    padding: 18px !important;
+    background: rgba(255, 0, 0, 0.15) !important;
+    border: 2px solid #ff0000 !important;
+    border-radius: 8px !important;
+    animation: pulse-border 2s infinite alternate !important;
+}
+
+@keyframes pulse-border {
+    from { box-shadow: 0 0 12px #ff0000; }
+    to { box-shadow: 0 0 25px rgba(255, 0, 0, 0.8); }
+}
+
+/* === CHARACTER CARD GRID === */
+.character-list-container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 25px !important;
+    width: 100% !important;
+    max-width: 1200px !important; /* Allow grid to be a bit wider */
+}
+
+/* === INDIVIDUAL CHARACTER CARD === */
+.char-card-class {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border: 2px solid #ff0000 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+}
+
+.char-card-class:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+    box-shadow: 0 0 25px #ff0000, 0 0 45px rgba(255, 0, 0, 0.8) !important;
+}
+
+.ant-card-cover img {
+    /* 6. Make profile picture for characters smaller and give them rounded edges */
+    height: 160px !important; /* Made slightly smaller */
     object-fit: cover !important;
-    border-radius: 15px 15px 0 0 !important; /* Rounded edges */
+    border-bottom: 2px solid rgba(255, 0, 0, 0.5) !important;
+    border-radius: 10px 10px 0 0 !important; /* Added rounded edges to the top */
 }
 
-/* Additional Fixes */
-.ant-layout-content {
-    background: transparent !important;
-    min-height: 100vh !important;
+.ant-card-body {
+    padding: 15px !important;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows footer elements to stick to the bottom */
 }
 
-.ant-card {
-    background: transparent !important;
+/* Card Title */
+.card-title-row span:first-child span {
+    font-family: 'Bebas Neue', sans-serif !important;
+    color: #00ffff !important;
+    font-size: 1.6em !important;
+    text-shadow: 0 0 8px #00ffff !important;
 }
 
-/* Responsive Design */
+/* Card Description */
+.ant-card-meta-description {
+    color: #e0e0e0 !important;
+    font-size: 1em !important;
+    line-height: 1.5 !important;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Pushes tags/stats to the bottom */
+}
+
+/* Card Tags */
+.custom-scroll {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.ant-tag {
+    background-color: rgba(0, 255, 255, 0.15) !important;
+    color: #00ffff !important;
+    border: 1px solid rgba(0, 255, 255, 0.6) !important;
+    font-size: 0.85em !important;
+}
+
+.ant-tag-error {
+    background-color: rgba(255, 0, 0, 0.25) !important;
+    color: #ff0000 !important;
+    border-color: rgba(255, 0, 0, 0.8) !important;
+}
+
+/* Card Stats (Chats, Favs, etc.) */
+.stats {
+    display: flex !important;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.stats > div {
+    color: #00ffff !important;
+    text-shadow: 0 0 6px rgba(0, 255, 255, 0.7) !important;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stats svg {
+    fill: #ff0000 !important;
+    width: 18px;
+    height: 18px;
+}
+
+/* === RESPONSIVE DESIGN === */
 @media (max-width: 768px) {
-    .category-slider {
-        padding: 5px 0 !important;
+    .profile-container {
+        margin: 20px auto !important;
+        gap: 20px;
     }
-    
-    .ant-tabs-nav-list {
-        gap: 10px !important;
+    .profile-pic {
+        width: 150px;
+        height: 150px;
     }
-    
-    .follow-button {
-        padding: 6px 20px !important;
-        font-size: 1em !important;
+    .username {
+        font-size: 2.8em;
+    }
+    .character-list-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
     }
 }
 
 @media (max-width: 480px) {
-    .profile-picture-container {
-        width: 150px !important;
-        height: 150px !important;
+    .username {
+        font-size: 2em;
     }
-    
-    .character-image {
-        height: 120px !important;
+    .profile-pic {
+        width: 120px;
+        height: 120px;
     }
+    .character-list-container {
+        grid-template-columns: 1fr !important; /* Single column on small screens */
     }
+    .bio-section {
+        padding: 20px !important;
+    }
+    .bio-section h2 {
+        font-size: 1.5em;
+    }
+}
