@@ -29,17 +29,47 @@ body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
     background: transparent !important;
     border: 1px solid rgba(0, 255, 255, 0.3) !important;
 }
-
-/* === LOGO REPLACEMENT (Fix #1 - remove unwanted background box) === */
+/* === LOGO REPLACEMENT (Fix #1 - stronger removal of background box) === */
 .ant-menu-item a img[src="/logo_cataract.png"],
 img[src="/logo_cataract.png"],
-.top-nav-logo {
+.top-nav-logo,
+.ant-menu-item a,
+.top-nav-logo img,
+.top-nav-logo::before,
+.top-nav-logo::after,
+.ant-menu-item a::before,
+.ant-menu-item a::after {
     content: url('https://archive.org/download/background_GEN3RATED_R/Untitled61_20251014054044.png') !important;
     width: 50px !important;
     height: 50px !important;
-    background: transparent !important; /* ← remove any square background */
-    box-shadow: none !important; /* ← ensure no shadow box is behind */
+
+    /* Remove any visible box/background from the image itself and parent */
+    background: none !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
     border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    /* Ensure image displays cleanly and doesn't inherit layout box */
+    display: inline-block !important;
+    vertical-align: middle !important;
+    line-height: 0 !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+
+    /* Prevent pseudo-elements from showing anything */
+    pointer-events: auto !important;
+}
+
+/* Hide any pseudo-element decorations explicitly (extra safety) */
+.top-nav-logo::before,
+.top-nav-logo::after,
+.ant-menu-item a::before,
+.ant-menu-item a::after {
+    content: none !important;
+    display: none !important;
 }
 
 /* === LAYOUT CLEANUP === */
