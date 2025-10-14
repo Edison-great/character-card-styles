@@ -153,13 +153,13 @@ footer.ant-layout-footer {
     20%, 24%, 55% { opacity: 0.4; }
 }
 
-/* === FIX #4: REPOSITION DYNAMIC FOLLOWER/BUTTON TO PROFILE HEADER === */
-/* Target the dynamic follower section from the left sidebar and reposition it */
+/* === FIX #4 (Updated): FOLLOWER/BUTTON — move beneath username instead of fixed === */
+/* Previously fixed to screen; now positioned relative to profile header */
 .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
-    position: fixed !important;
-    top: 320px !important;
+    position: absolute !important; /* ← changed from fixed */
+    top: 100% !important; /* ← positions right below username area */
     left: 50% !important;
-    transform: translateX(-50%) !important;
+    transform: translate(-50%, 20px) !important; /* add small space below name */
     z-index: 999 !important;
     display: flex !important;
     flex-direction: column !important;
@@ -168,7 +168,6 @@ footer.ant-layout-footer {
     background: transparent !important;
     width: auto !important;
     padding: 0 !important;
-    margin: 0 !important;
 }
 
 /* Alternative approach - inject into profile-header using CSS */
