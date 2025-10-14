@@ -19,18 +19,12 @@ body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
     margin: 0 !important;
 }
 
-/* Hide original/unwanted elements */
-.ant-avatar[style*="width: 100px;"],
-.ant-typography.my-2,
-.ant-typography.text-lg.font-bold.mb-2.break-words,
-.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),
-span.ant-tag.mb-2,
-.galaxy-bg,
-footer.ant-layout-footer {
+/* Hiding original elements */
+.ant-avatar[style*="width: 100px;"], .ant-typography.my-2, .ant-typography.text-lg.font-bold.mb-2.break-words, .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row), span.ant-tag.mb-2, .galaxy-bg, footer.ant-layout-footer {
     display: none !important;
 }
 
-/* === MAIN PROFILE CONTAINER === */
+/* === PROFILE HEADER === */
 .profile-container {
     max-width: 900px;
     margin: 40px auto !important;
@@ -41,7 +35,6 @@ footer.ant-layout-footer {
     gap: 30px;
 }
 
-/* === PROFILE HEADER === */
 .profile-header {
     display: flex;
     flex-direction: column;
@@ -65,28 +58,13 @@ footer.ant-layout-footer {
     to { transform: rotate(360deg); }
 }
 
-/* 3. REDUCE THE TITLE SIZE */
+/* 1. REDUCE THE BIG BOT TITLE */
 .username {
     font-family: 'Rubik Mono One', monospace;
-    font-size: 2.5em; /* Further reduced from 3em */
+    font-size: 2.2em !important; /* SIGNIFICANTLY REDUCED */
     color: #00ffff;
     text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff;
     text-align: center;
-    margin-bottom: 10px;
-}
-
-.username .flicker {
-    animation: flicker-animation 1.5s infinite alternate;
-}
-
-.username .rated-r {
-    color: #ff0000;
-    text-shadow: 0 0 12px #ff0000, 0 0 25px #ff0000;
-}
-
-@keyframes flicker-animation {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-    20%, 24%, 55% { opacity: 0.4; }
 }
 
 .follow-section {
@@ -94,85 +72,32 @@ footer.ant-layout-footer {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    margin-top: 0;
 }
 
-.ant-typography[class*="Followers"] {
-    display: block !important;
-    font-size: 1.1em !important;
-    color: #e0e0e0 !important;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
-}
-
-.follow-button {
-    display: inline-block !important;
-    background: transparent !important;
-    border: 2px solid #00ffff;
-    color: #00ffff !important;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5em !important;
-    padding: 8px 25px !important;
-    border-radius: 8px;
-    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, inset 0 0 8px rgba(0, 255, 255, 0.5);
-    text-shadow: 0 0 8px #00ffff;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.follow-button:hover {
-    color: #fff !important;
-    background: rgba(0, 255, 255, 0.2) !important;
-    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
-}
-
-/* === TABS (Characters / Profile) === */
+/* === TABS === */
 .ant-tabs-nav-wrap {
     overflow: visible !important;
 }
-
-.ant-tabs-nav-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 .ant-tabs-nav {
     background: rgba(10, 10, 10, 0.7) !important;
     border-radius: 10px !important;
     padding: 10px !important;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
-    width: auto !important;
+    width: fit-content !important;
     margin: 0 auto !important;
 }
-
 .ant-tabs-tab {
     font-family: 'Bebas Neue', sans-serif !important;
     font-size: 1.2em !important;
     color: #00ffff !important;
     text-shadow: 0 0 8px #00ffff !important;
-    background: transparent !important;
-    border: none !important;
-    transition: all 0.2s ease !important;
 }
-
 .ant-tabs-tab-active {
     color: #ff0000 !important;
     text-shadow: 0 0 10px #ff0000 !important;
 }
-
 .ant-tabs-ink-bar {
     background: #ff0000 !important;
-}
-
-/* === BIO / PROFILE SECTION === */
-.bio-section {
-    background: rgba(10, 10, 10, 0.6) !important;
-    padding: 30px !important;
-    border-radius: 10px !important;
-    box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;
-    border: 2px dashed rgba(255, 0, 0, 0.7) !important;
-    width: 100% !important;
-    max-width: 900px !important;
 }
 
 /* === CHARACTER CARD GRID === */
@@ -188,11 +113,11 @@ footer.ant-layout-footer {
 .char-card-class {
     background: rgba(0, 0, 0, 0.8) !important;
     border: 2px solid #ff0000 !important;
-    border-radius: 20px !important; /* Made corners more rounded */
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.7) !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
     display: flex !important;
     flex-direction: column !important;
+    /* 2. MAKE PICTURES HAVE ROUNDED CORNERS - This is the key part */
+    border-radius: 20px !important;
     overflow: hidden !important;
 }
 
@@ -201,19 +126,11 @@ footer.ant-layout-footer {
     box-shadow: 0 0 25px #ff0000, 0 0 45px rgba(255, 0, 0, 0.8) !important;
 }
 
-/* 2. MAKE PICTURES SMALLER AND ROUNDED */
+/* 2. MAKE PICTURES SMALLER */
 .ant-card-cover img {
-    height: 130px !important; /* Made smaller */
+    height: 120px !important; /* SIGNIFICANTLY SMALLER */
     object-fit: cover !important;
     border-bottom: 2px solid rgba(255, 0, 0, 0.5) !important;
-    /* The rounding is controlled by the parent .char-card-class with overflow:hidden */
-}
-
-.ant-card-body {
-    padding: 15px !important;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
 }
 
 /* Card Title */
@@ -224,13 +141,12 @@ footer.ant-layout-footer {
     text-shadow: 0 0 8px #00ffff !important;
 }
 
-/* 1. MAKE DESCRIPTION GREEN */
+/* 3. MAKE DESCRIPTION GREEN (SOLID) */
 .ant-card-meta-description {
-    color: #00ff00 !important; /* Set to solid green */
-    text-shadow: none !important; /* Removed glow */
+    color: #00ff00 !important; /* SOLID GREEN */
+    text-shadow: none !important; /* NO GLOW */
     font-size: 1em !important;
     line-height: 1.5 !important;
-    margin-bottom: 15px;
     flex-grow: 1;
 }
 
@@ -241,40 +157,20 @@ footer.ant-layout-footer {
     gap: 8px;
     margin-bottom: 10px;
 }
-
 .ant-tag {
     background-color: rgba(0, 255, 255, 0.15) !important;
     color: #00ffff !important;
     border: 1px solid rgba(0, 255, 255, 0.6) !important;
-    font-size: 0.85em !important;
 }
 
-/* Card Stats (Chats, Favs, etc.) */
+/* Card Stats */
 .stats {
     display: flex !important;
     justify-content: space-between;
-    width: 100%;
-    padding-top: 10px;
     border-top: 1px solid rgba(255, 0, 0, 0.3);
+    padding-top: 10px;
 }
-
 .stats > div {
     color: #00ffff !important;
     text-shadow: 0 0 6px rgba(0, 255, 255, 0.7) !important;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-/* === RESPONSIVE DESIGN === */
-@media (max-width: 768px) {
-    .username {
-        font-size: 2.2em; /* Adjusted for smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .username {
-        font-size: 2em;
-    }
 }
