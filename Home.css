@@ -12,7 +12,7 @@ body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
 /* === LAYOUT CLEANUP: Remove unnecessary styles from ANT components === */
 /* 3. Make the entire search bar section at the top and it's padding transparent */
 .ant-layout-header, /* Assuming the top bar has this class */
-.ant-layout-content, .ant-card-body, .ant-tabs-content-holder, .ant-tabs-tabpane, .ant-row, .ant-col {
+.ant-layout-content, .ant-card-body, .ant-tabs-content-holder, .ant-tabs-tabpane, .ant-tabs-nav-wrap, .ant-row, .ant-col {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
@@ -25,7 +25,11 @@ body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
 .ant-typography.my-2,
 .ant-typography.text-lg.font-bold.mb-2.break-words,
 .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),
+/* Re-enable follower count for specific styling below */
+/* .ant-typography[class*="Followers"], */
 span.ant-tag.mb-2,
+/* Re-enable follow button for specific styling below */
+/* button[aria-describedby]:not(.ant-btn-text), */
 .galaxy-bg,
 footer.ant-layout-footer {
     display: none !important;
@@ -81,7 +85,7 @@ footer.ant-layout-footer {
     color: #00ffff;
     text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff;
     text-align: center;
-    margin-bottom: 0px; /* Adjust to allow followers to be below */
+    margin-bottom: 10px; /* Space for the follow section */
 }
 
 .username .flicker {
@@ -106,14 +110,14 @@ div.text-sm.mb-2, /* This targets the direct container that holds both the span 
     flex-direction: column !important;
     align-items: center !important;
     gap: 15px; /* Space between count and button */
-    margin-top: 15px !important; /* Pushes it below the username */
-    position: relative !important;
+    margin-top: -10px !important; /* Pulls it closer to the username */
+    position: relative !important; /* Keep it in the normal flow, but allow positioning within itself */
     z-index: 10 !important;
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    width: auto !important;
+    padding: 0 !important; /* Remove any padding that might push it out */
+    background: transparent !important; /* Ensure background is transparent */
+    border: none !important; /* Remove any borders */
+    box-shadow: none !important; /* Remove any shadows */
+    width: auto !important; /* Let content dictate width */
 }
 
 /* Ensure the span for followers/following is styled correctly within the new structure */
@@ -191,6 +195,7 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg,
 
 
 /* === TABS (Characters / Profile) === */
+/* 5. Fix the slider that contains characters lore books preset etc */
 .ant-tabs-nav-wrap {
     overflow: visible !important; /* Allow content to be visible */
 }
@@ -310,37 +315,32 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg,
     box-shadow: 0 0 25px #ff0000, 0 0 45px rgba(255, 0, 0, 0.8) !important;
 }
 
-/* 3. Make profile picture for characters smaller with rounded corners */
 .ant-card-cover img {
-    height: 120px !important; /* Smaller height */
-    width: 120px !important; /* Smaller width */
+    /* 6. Make profile picture for characters smaller and give them rounded edges */
+    height: 160px !important; /* Made slightly smaller */
     object-fit: cover !important;
-    border-radius: 50% !important; /* Rounded corners (make it a circle) */
-    position: relative !important;
-    top: 15px !important; /* Position it correctly within the card */
-    left: 15px !important;
-    border: 2px solid rgba(255, 0, 0, 0.5) !important; /* Optional: add a border */
+    border-bottom: 2px solid rgba(255, 0, 0, 0.5) !important;
+    border-radius: 10px 10px 0 0 !important; /* Added rounded edges to the top */
 }
 
+.ant-card-body {
+    padding: 15px !important;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows footer elements to stick to the bottom */
+}
 
-/* Card Title - 4. The big bot title, reduced, it's too big and doesn't fit */
-.card-title-row span:first-child span,
-.ant-card-head-title { /* Targeting the title container and the span within it */
+/* Card Title */
+.card-title-row span:first-child span {
     font-family: 'Bebas Neue', sans-serif !important;
     color: #00ffff !important;
-    font-size: 1.2em !important; /* Reduced font size */
+    font-size: 1.6em !important;
     text-shadow: 0 0 8px #00ffff !important;
-    white-space: normal !important; /* Allow text to wrap */
-    overflow: hidden !important; /* Hide overflow if it still happens */
-    text-overflow: ellipsis !important; /* Add ellipsis if text is cut */
-    line-height: 1.3 !important; /* Adjust line height for wrapped text */
-    padding-top: 15px !important; /* Added some padding for better alignment */
-    padding-left: 150px !important; /* Adjust based on image size */
 }
 
-/* Card Description - 2. I want the description of the bot to be green */
+/* Card Description */
 .ant-card-meta-description {
-    color: #00ff00 !important; /* Green color for description text */
+    color: #e0e0e0 !important;
     font-size: 1em !important;
     line-height: 1.5 !important;
     margin-bottom: 15px;
@@ -420,15 +420,6 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg,
     .character-list-container {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
     }
-    .ant-card-cover img {
-        height: 100px !important;
-        width: 100px !important;
-    }
-    .card-title-row span:first-child span,
-    .ant-card-head-title {
-        font-size: 1.1em !important;
-        padding-left: 120px !important;
-    }
 }
 
 @media (max-width: 480px) {
@@ -460,14 +451,5 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg,
     }
     .bio-section h2 {
         font-size: 1.5em;
-    }
-    .ant-card-cover img {
-        height: 80px !important;
-        width: 80px !important;
-    }
-    .card-title-row span:first-child span,
-    .ant-card-head-title {
-        font-size: 1em !important;
-        padding-left: 100px !important;
     }
 }
