@@ -10,9 +10,15 @@ body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
 }
 
 /* === LAYOUT CLEANUP: Remove unnecessary styles from ANT components === */
-/* 3. Make the entire search bar section at the top and it's padding transparent */
-.ant-layout-header, /* Assuming the top bar has this class */
-.ant-layout-content, .ant-card-body, .ant-tabs-content-holder, .ant-tabs-tabpane, .ant-tabs-nav-wrap, .ant-row, .ant-col {
+/* 3. Make the entire search bar section at the top and its padding transparent */
+.ant-layout-header,
+.ant-layout-content,
+.ant-card-body,
+.ant-tabs-content-holder,
+.ant-tabs-tabpane,
+.ant-tabs-nav-wrap,
+.ant-row,
+.ant-col {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
@@ -25,33 +31,30 @@ body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
 .ant-typography.my-2,
 .ant-typography.text-lg.font-bold.mb-2.break-words,
 .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),
-/* Keep follower count visible to be restyled */
-/* .ant-typography[class*="Followers"], */
 span.ant-tag.mb-2,
-/* Keep follow button visible to be restyled */
-/* button[aria-describedby]:not(.ant-btn-text), */
 .galaxy-bg,
 footer.ant-layout-footer {
     display: none !important;
 }
 
 /* 1. Replace the logo */
-/* You may need to adjust the selector to match your logo's class or ID */
 .top-nav-logo {
     content: url('https://archive.org/download/background_GEN3RATED_R/Untitled61_20251014054044.png') !important;
     width: 50px; /* Adjust size as needed */
     height: 50px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 /* === MAIN PROFILE CONTAINER === */
 .profile-container {
     max-width: 900px;
-    margin: 40px auto !important; /* Centered layout with space on top/bottom */
+    margin: 40px auto !important;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px; /* Space between header, tabs, and content */
+    gap: 30px;
 }
 
 /* === PROFILE HEADER === */
@@ -59,7 +62,7 @@ footer.ant-layout-footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; /* Reduced gap to bring name and follow button closer */
+    gap: 15px;
     width: 100%;
 }
 
@@ -68,10 +71,14 @@ footer.ant-layout-footer {
     height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    /* 2. Wrap the glow properly around the picture */
-    border: none !important; /* Removed the solid red border */
-    box-shadow: 0 0 25px #ff0000, 0 0 50px #ff0000, 0 0 75px rgba(255, 0, 0, 0.7) !important; /* Enhanced glow effect */
-    animation: spinning-animation 15s linear infinite; /* Slow spin animation */
+    /* 2. WRAPPED GLOW PROPERLY AROUND THE PICTURE (no space, soft spread) */
+    border: none !important;
+    box-shadow:
+        0 0 50px 25px rgba(255,0,0,0.7),
+        0 0 90px 40px rgba(255,0,0,0.25),
+        0 0 140px 60px rgba(255,0,0,0.13)
+        !important;
+    animation: spinning-animation 15s linear infinite;
 }
 
 @keyframes spinning-animation {
@@ -85,41 +92,39 @@ footer.ant-layout-footer {
     color: #00ffff;
     text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff;
     text-align: center;
-    margin-bottom: 10px; /* Space for the follow section */
+    margin-bottom: 10px;
 }
-
 .username .flicker {
     animation: flicker-animation 1.5s infinite alternate;
 }
-
 .username .rated-r {
     color: #ff0000;
     text-shadow: 0 0 12px #ff0000, 0 0 25px #ff0000;
 }
-
 @keyframes flicker-animation {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
     20%, 24%, 55% { opacity: 0.4; }
 }
 
-/* 4. Move follower count and follow button */
+/* 4. Move follower count and follow button below the username */
 .follow-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    margin-top: -10px; /* Pulls it closer to the username */
+    margin-top: -10px;
 }
 
 .ant-typography[class*="Followers"] {
-    display: block !important; /* Ensure it's visible */
+    display: block !important;
     font-size: 1.1em !important;
     color: #e0e0e0 !important;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
 }
 
+/* 4. Neon Glowing Follow Button */
 .follow-button {
-    display: inline-block !important; /* Ensure it's visible */
+    display: inline-block !important;
     background: transparent !important;
     border: 2px solid #00ffff;
     color: #00ffff !important;
@@ -127,40 +132,45 @@ footer.ant-layout-footer {
     font-size: 1.5em !important;
     padding: 8px 25px !important;
     border-radius: 8px;
-    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, inset 0 0 8px rgba(0, 255, 255, 0.5);
-    text-shadow: 0 0 8px #00ffff;
+    box-shadow:
+        0 0 30px #00ffff,
+        0 0 60px #00ffff,
+        inset 0 0 12px rgba(0,255,255,0.7),
+        0 0 8px #00ffff;
+    text-shadow:
+        0 0 16px #00ffff,
+        0 0 32px #00ffff;
     transition: all 0.3s ease;
     cursor: pointer;
+    animation: neon-flicker 2s infinite alternate;
 }
-
+@keyframes neon-flicker {
+    0%, 100% { box-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff, inset 0 0 12px rgba(0,255,255,0.7), 0 0 8px #00ffff; }
+    50% { box-shadow: 0 0 40px #00ffff, 0 0 80px #00ffff, inset 0 0 20px rgba(0,255,255,0.9), 0 0 12px #00ffff; }
+}
 .follow-button:hover {
     color: #fff !important;
     background: rgba(0, 255, 255, 0.2) !important;
-    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+    box-shadow: 0 0 45px #00ffff, 0 0 90px #00ffff, 0 0 120px #00ffff;
 }
-
 
 /* === TABS (Characters / Profile) === */
-/* 5. Fix the slider that contains characters lore books preset etc */
 .ant-tabs-nav-wrap {
-    overflow: visible !important; /* Allow content to be visible */
+    overflow: visible !important;
 }
-
 .ant-tabs-nav-list {
     display: flex;
-    flex-wrap: wrap; /* Allow tabs to wrap on smaller screens if needed */
+    flex-wrap: wrap;
     justify-content: center;
 }
-
 .ant-tabs-nav {
     background: rgba(10, 10, 10, 0.7) !important;
     border-radius: 10px !important;
     padding: 10px !important;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
-    width: auto !important; /* Changed from fit-content to allow wrapping */
-    margin: 0 auto !important; /* Center the tabs */
+    width: auto !important;
+    margin: 0 auto !important;
 }
-
 .ant-tabs-tab {
     font-family: 'Bebas Neue', sans-serif !important;
     font-size: 1.2em !important;
@@ -170,14 +180,12 @@ footer.ant-layout-footer {
     border: none !important;
     transition: all 0.2s ease !important;
 }
-
 .ant-tabs-tab-active {
     color: #ff0000 !important;
     text-shadow: 0 0 10px #ff0000 !important;
 }
-
 .ant-tabs-ink-bar {
-    background: #ff0000 !important; /* Red underline for active tab */
+    background: #ff0000 !important;
 }
 
 /* === BIO / PROFILE SECTION === */
@@ -190,7 +198,6 @@ footer.ant-layout-footer {
     width: 100% !important;
     max-width: 900px !important;
 }
-
 .bio-section h2 {
     font-family: 'Orbitron', sans-serif;
     color: #ffcc00;
@@ -199,24 +206,20 @@ footer.ant-layout-footer {
     padding-bottom: 8px;
     font-size: 1.8em;
 }
-
 .bio-section p {
     font-size: 1.1em;
     line-height: 1.7;
 }
-
 .bio-section .image-wrapper {
     text-align: center;
     margin: 25px 0;
 }
-
 .bio-section .inline-image {
     max-width: 90%;
     border: 4px solid #00ffff;
     box-shadow: 0 0 15px #00ffff;
     border-radius: 8px;
 }
-
 .cta {
     font-family: 'Rubik Mono One', monospace !important;
     font-size: 1.5em !important;
@@ -229,7 +232,6 @@ footer.ant-layout-footer {
     border-radius: 8px !important;
     animation: pulse-border 2s infinite alternate !important;
 }
-
 @keyframes pulse-border {
     from { box-shadow: 0 0 12px #ff0000; }
     to { box-shadow: 0 0 25px rgba(255, 0, 0, 0.8); }
@@ -241,7 +243,7 @@ footer.ant-layout-footer {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
     gap: 25px !important;
     width: 100% !important;
-    max-width: 1200px !important; /* Allow grid to be a bit wider */
+    max-width: 1200px !important;
 }
 
 /* === INDIVIDUAL CHARACTER CARD === */
@@ -255,42 +257,38 @@ footer.ant-layout-footer {
     flex-direction: column !important;
     overflow: hidden !important;
 }
-
 .char-card-class:hover {
     transform: translateY(-5px) scale(1.02) !important;
     box-shadow: 0 0 25px #ff0000, 0 0 45px rgba(255, 0, 0, 0.8) !important;
 }
 
+/* 5. Make profile picture for characters smaller and rounded */
 .ant-card-cover img {
-    /* 6. Make profile picture for characters smaller and give them rounded edges */
-    height: 160px !important; /* Made slightly smaller */
+    height: 140px !important; /* Slightly smaller */
     object-fit: cover !important;
     border-bottom: 2px solid rgba(255, 0, 0, 0.5) !important;
-    border-radius: 10px 10px 0 0 !important; /* Added rounded edges to the top */
+    border-radius: 12px 12px 0 0 !important; /* More rounded */
 }
 
 .ant-card-body {
     padding: 15px !important;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Allows footer elements to stick to the bottom */
+    flex-grow: 1;
 }
 
-/* Card Title */
 .card-title-row span:first-child span {
     font-family: 'Bebas Neue', sans-serif !important;
     color: #00ffff !important;
     font-size: 1.6em !important;
     text-shadow: 0 0 8px #00ffff !important;
 }
-
-/* Card Description */
 .ant-card-meta-description {
     color: #e0e0e0 !important;
     font-size: 1em !important;
     line-height: 1.5 !important;
     margin-bottom: 15px;
-    flex-grow: 1; /* Pushes tags/stats to the bottom */
+    flex-grow: 1;
 }
 
 /* Card Tags */
@@ -300,14 +298,12 @@ footer.ant-layout-footer {
     gap: 8px;
     margin-bottom: 10px;
 }
-
 .ant-tag {
     background-color: rgba(0, 255, 255, 0.15) !important;
     color: #00ffff !important;
     border: 1px solid rgba(0, 255, 255, 0.6) !important;
     font-size: 0.85em !important;
 }
-
 .ant-tag-error {
     background-color: rgba(255, 0, 0, 0.25) !important;
     color: #ff0000 !important;
@@ -322,7 +318,6 @@ footer.ant-layout-footer {
     padding-top: 10px;
     border-top: 1px solid rgba(255, 0, 0, 0.3);
 }
-
 .stats > div {
     color: #00ffff !important;
     text-shadow: 0 0 6px rgba(0, 255, 255, 0.7) !important;
@@ -330,7 +325,6 @@ footer.ant-layout-footer {
     align-items: center;
     gap: 5px;
 }
-
 .stats svg {
     fill: #ff0000 !important;
     width: 18px;
@@ -351,10 +345,12 @@ footer.ant-layout-footer {
         font-size: 2.8em;
     }
     .character-list-container {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+    }
+    .ant-card-cover img {
+        height: 110px !important;
     }
 }
-
 @media (max-width: 480px) {
     .username {
         font-size: 2em;
@@ -364,7 +360,7 @@ footer.ant-layout-footer {
         height: 120px;
     }
     .character-list-container {
-        grid-template-columns: 1fr !important; /* Single column on small screens */
+        grid-template-columns: 1fr !important;
     }
     .bio-section {
         padding: 20px !important;
@@ -372,4 +368,7 @@ footer.ant-layout-footer {
     .bio-section h2 {
         font-size: 1.5em;
     }
-}
+    .ant-card-cover img {
+        height: 80px !important;
+    }
+        }
