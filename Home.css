@@ -3,7 +3,7 @@
 
 /* === GLOBAL STYLES === */
 body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
-    background: url('https://archive.org/download/background_GEN3RATED_R/Screenshot_20250728-232410.jpg') no-repeat center center fixed !important;
+    background: url('https://archive.org/download/background_GEN3RATED_R/Untitled9_20251014153739.png') no-repeat center center fixed !important;
     background-size: cover !important;
     font-family: 'IBM Plex Mono', monospace !important;
     color: #e0e0e0 !important;
@@ -74,20 +74,36 @@ img[src="/logo_cataract.png"],
     box-shadow: none !important;
 }
 
-/* === LAYOUT CLEANUP === */
-.ant-layout-content, .ant-card-body, .ant-tabs-content-holder, .ant-tabs-tabpane, .ant-row, .ant-col {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
+.bio-section {
+    background: rgba(10, 10, 10, 0.4) !important;
+    padding: 25px !important;
+    border-radius: 10px !important;
+    margin-top: 550px !important; /* BIO DROPPED VERY MUCH */
+    box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;
+    border: 2px dashed rgba(255, 0, 0, 0.7) !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
 }
 
-/* Hide original/unwanted left sidebar elements but keep follower/button for repositioning */
-.ant-avatar[style*="width: 100px;"],
+p, span, h1, h2, h3, a, div {
+    color: #e0e0e0 !important;
+}
+a {
+    color: #00ffff !important;
+    text-decoration: none !important;
+}
+a:hover {
+    text-decoration: underline !important;
+}
+
+.ant-avatar.ant-avatar-square.ant-avatar-image[style*="width: 100px;"],
+img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
 .ant-typography.my-2,
 .ant-typography.text-lg.font-bold.mb-2.break-words,
-span.ant-tag.mb-2,
-.galaxy-bg,
-footer.ant-layout-footer {
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),
+.ant-typography[class*="Followers"] {
     display: none !important;
 }
 
@@ -194,66 +210,137 @@ footer.ant-layout-footer,
     display: none !important;
 }
 
-/* === MAIN PROFILE CONTAINER === */
 .profile-container {
     max-width: 900px;
-    margin: 40px auto !important;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
+    margin: 300px auto 0 auto !important; /* RETAINED POSITION */
+    padding: 0px;
+    background: none !important;
+    border-radius: 0px !important;
+    box-shadow: none !important;
     position: relative;
-}
-
-/* === PROFILE HEADER === */
-.profile-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    width: 100%;
-    position: relative;
-}
-
-/* Fix #2: Proper glow wrap around profile picture */
-.profile-pic {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
+    z-index: 2;
+    overflow: visible;
     border: none !important;
-    box-shadow: 0 0 20px 8px rgba(255, 0, 0, 0.8), 0 0 40px 12px rgba(255, 0, 0, 0.6), 0 0 60px 16px rgba(255, 0, 0, 0.4) !important;
-    animation: spinning-animation 15s linear infinite;
-    filter: drop-shadow(0 0 25px rgba(255, 0, 0, 0.9));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    width: 100%;
+    background: none !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+    z-index: 10;
+    position: relative;
+    box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000 !important;
+    border: 3px solid rgba(255, 0, 0, 0.7) !important;
+}
+
+.profile-pic:hover, .profile-pic:active {
+    animation: spinning-animation 2s linear infinite;
+    box-shadow: 0 0 25px #ff0000, 0 0 50px #ff0000, 0 0 70px rgba(255, 0, 0, 0.7) !important;
 }
 
 @keyframes spinning-animation {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .username {
     font-family: 'Rubik Mono One', monospace;
-    font-size: 3.5em;
+    font-size: 4em;
     color: #00ffff;
-    text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff;
-    text-align: center;
-    margin-bottom: 0px;
+    text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 3px;
+    line-height: 1.1;
+    margin-top: 20px;
 }
 
 .username .flicker {
     animation: flicker-animation 1.5s infinite alternate;
+    display: inline-block;
 }
 
 .username .rated-r {
     color: #ff0000;
-    text-shadow: 0 0 12px #ff0000, 0 0 25px #ff0000;
+    text-shadow: 0 0 12px #ff0000, 0 0 25px #ff0000, 0 0 50px #ff0000;
 }
 
 @keyframes flicker-animation {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-    20%, 24%, 55% { opacity: 0.4; }
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;
+    }
+    20%, 24%, 55% {
+        opacity: 0.4;
+        text-shadow: none;
+    }
+    22% {
+        opacity: 0.6;
+        text-shadow: 0 0 8px #00ffff;
+    }
+}
+
+.bio-section h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 204, 0, 0.4);
+    padding-bottom: 8px;
+    font-size: 1.8em;
+    letter-spacing: 0.5px;
+}
+
+.bio-section p {
+    font-family: 'IBM Plex Mono', monospace !important;
+    color: #e0e0e0 !important;
+    margin-bottom: 18px;
+    font-size: 1.15em;
+    line-height: 1.7;
+    word-wrap: break-word;
+}
+
+.bio-section .image-wrapper {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.bio-section .inline-image {
+    max-width: 90%;
+    height: auto;
+    border: 4px solid #00ffff;
+    box-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.6);
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.bio-section .inline-image:hover {
+    transform: scale(1.03);
 }
 
 /* === TABS (Fix #6 - Slider functionality) === */
