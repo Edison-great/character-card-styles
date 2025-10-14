@@ -1,316 +1,145 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex+Mono:wght@400;700&display=swap');
 
-body, html, #root > div, .layout-content, #root,
-.ant-layout, .ant-layout-content, main.ant-layout-content {
+/* === GLOBAL STYLES === */
+body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
     background: url('https://archive.org/download/background_GEN3RATED_R/Screenshot_20250728-232410.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
-    min-height: 100vh !important;
-    background-color: #000 !important;
+    font-family: 'IBM Plex Mono', monospace !important;
     color: #e0e0e0 !important;
 }
 
-.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6,
-.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18,
-.ant-card-body,
-.ant-tabs-content-holder,
-.ant-tabs-tabpane,
-.ant-tabs-nav-wrap,
-.ant-tabs-nav,
-.my-2.gap-4,
-.ant-spin-container,
-.ant-col.ant-col-xs-24,
-.ant-col.ant-col-lg-18,
-.ant-col.ant-col-lg-6,
-.ant-row.ant-row-center,
-.sc-fmKFGs.hikinD.character-list-container,
-.sc-jrQzUz.gIdnFm {
-    background: none !important;
-    padding: 0 !important;
-    box-shadow: none !important;
-    margin: 0 !important;
-    background-color: transparent !important;
+/* === LAYOUT CLEANUP: Remove unnecessary styles from ANT components === */
+.ant-layout-content, .ant-card-body, .ant-tabs-content-holder, .ant-tabs-tabpane, .ant-tabs-nav-wrap, .ant-row, .ant-col {
+    background: transparent !important;
     border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-.ant-select-selector {
-    background-color: black !important;
-    border: 1px solid #00ffff !important;
-    box-shadow: 0 0 8px #00ffff, inset 0 0 4px #00ffff !important;
-    border-radius: 8px !important;
-    height: 40px !important;
-    display: flex !important;
-    align-items: center !important;
-}
-
-.ant-select-selection-placeholder {
-    color: #00ffff !important;
-    font-family: 'IBM Plex Mono', monospace !important;
-}
-
-.ant-select-selection-search-input {
-    color: #e0e0e0 !important;
-    font-family: 'IBM Plex Mono', monospace !important;
-}
-
-.ant-select-arrow {
-    color: #00ffff !important;
-}
-
-img[src="/logo_cataract.png"] {
-    content: url('https://archive.org/download/background_GEN3RATED_R/Untitled61_20251014054044.png') !important;
-    width: 40px !important;
-    height: 40px !important;
-    position: relative !important;
-    top: -1px !important;
-    object-fit: contain !important;
-}
-
-.bio-section {
-    background: rgba(10, 10, 10, 0.4) !important;
-    padding: 25px !important;
-    border-radius: 10px !important;
-    margin-top: 550px !important;
-    box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;
-    border: 2px dashed rgba(255, 0, 0, 0.7) !important;
-    width: 100% !important;
-    max-width: 900px !important;
-    text-align: left !important;
-    box-sizing: border-box !important;
-}
-
-p, span, h1, h2, h3, a, div {
-    color: #e0e0e0 !important;
-}
-a {
-    color: #00ffff !important;
-    text-decoration: none !important;
-}
-a:hover {
-    text-decoration: underline !important;
-}
-
-.ant-avatar.ant-avatar-square.ant-avatar-image[style*="width: 100px;"],
+/* Hide original/unwanted elements */
+.ant-avatar[style*="width: 100px;"],
 .ant-typography.my-2,
 .ant-typography.text-lg.font-bold.mb-2.break-words,
 .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),
-.ant-typography[class*="Followers"] {
-    display: none !important;
-}
-
-div.text-sm.mb-2,
-.ant-row.ant-row-start.ant-row-middle {
-    position: absolute !important;
-    top: 850px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 90% !important;
-    max-width: 550px !important;
-    z-index: 100 !important;
-    pointer-events: auto !important;
-    padding: 30px 40px !important;
-    border-radius: 12px !important;
-    background: rgba(0,0,0,0.7) !important;
-    border: 3px solid rgba(0, 255, 255, 0.8) !important;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.9), inset 0 0 10px rgba(0, 255, 255, 0.5) !important;
-}
-
-div.text-sm.mb-2 > span.mr-4 {
-    font-family: 'IBM Plex Mono', monospace !important;
-    color: #00ffff !important;
-    font-size: 2em !important;
-    text-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.8) !important;
-    margin-bottom: 20px !important;
-    white-space: nowrap !important;
-    display: block !important;
-    margin-right: 0 !important;
-    letter-spacing: 2px !important;
-}
-
-div.text-sm.mb-2 > button.ant-btn {
-    font-family: 'Press Start 2P', cursive !important;
-    font-size: 1.8em !important;
-    padding: 18px 50px !important;
-    border-radius: 10px !important;
-    background-color: transparent !important;
-    color: #00ffff !important;
-    border: 5px solid #00ffff !important;
-    box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff !important;
-    transition: all 0.1s ease-in-out !important;
-    margin-left: 0 !important;
-    animation: neon-flicker 1.5s infinite alternate !important;
-    width: 95% !important;
-    max-width: 350px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
-
-div.text-sm.mb-2 > button.ant-btn:hover {
-    background-color: rgba(0, 255, 255, 0.3) !important;
-    border-color: #fff !important;
-    color: #fff !important;
-    box-shadow: 0 0 25px #fff, 0 0 50px rgba(255, 255, 255, 0.9) !important;
-}
-
-.ant-btn-icon {
-    margin-right: 12px !important;
-}
-
-.ant-btn-icon svg {
-    fill: #00ffff !important;
-    transition: fill 0.1s ease-in-out !important;
-    width: 32px !important;
-    height: 32px !important;
-}
-
-div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
-    fill: #fff !important;
-}
-
-@keyframes neon-flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
-        box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
-    }
-    20%, 24%, 55% {
-        opacity: 0.7;
-        box-shadow: none;
-    }
-    22% {
-        opacity: 0.9;
-        box-shadow: 0 0 12px #00ffff;
-    }
-}
-
+.ant-typography[class*="Followers"],
 span.ant-tag.mb-2,
 button[aria-describedby]:not(.ant-btn-text),
-.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {
+.galaxy-bg,
+footer.ant-layout-footer {
     display: none !important;
 }
 
-footer.ant-layout-footer,
-.ant-col.text-center.my-2,
-.ant-spin-container > div:last-child > div:last-child:not(.sc-fmKFGs):not(.ant-tabs-content-holder) {
-    display: none !important;
-}
-
+/* === MAIN PROFILE CONTAINER === */
 .profile-container {
     max-width: 900px;
-    margin: 300px auto 0 auto !important;
-    padding: 0px;
-    background: none !important;
-    border-radius: 0px !important;
-    box-shadow: none !important;
-    position: relative;
-    z-index: 2;
-    overflow: visible;
-    border: none !important;
+    margin: 40px auto !important; /* Centered layout with space on top/bottom */
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    box-sizing: border-box;
+    gap: 30px; /* Space between header, tabs, and content */
 }
 
+/* === PROFILE HEADER === */
 .profile-header {
-    text-align: center;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    width: 100%;
-    background: none !important;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
+    gap: 20px;
+    width: 100%;
 }
 
 .profile-pic {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    margin-bottom: 25px;
     object-fit: cover;
-    transition: transform 0.3s ease-in-out;
-    z-index: 10;
-    position: relative;
-    box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000 !important;
     border: 3px solid rgba(255, 0, 0, 0.7) !important;
-}
-
-.profile-pic:hover, .profile-pic:active {
-    animation: spinning-animation 2s linear infinite;
-    box-shadow: 0 0 25px #ff0000, 0 0 50px #ff0000, 0 0 70px rgba(255, 0, 0, 0.7) !important;
+    box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000 !important;
+    animation: spinning-animation 15s linear infinite; /* Slow spin animation */
 }
 
 @keyframes spinning-animation {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .username {
     font-family: 'Rubik Mono One', monospace;
-    font-size: 4em;
+    font-size: 3.5em;
     color: #00ffff;
-    text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;
-    margin: 0;
-    padding: 0;
-    letter-spacing: 3px;
-    line-height: 1.1;
-    margin-top: 20px;
+    text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff;
+    text-align: center;
 }
 
 .username .flicker {
     animation: flicker-animation 1.5s infinite alternate;
-    display: inline-block;
 }
 
 .username .rated-r {
     color: #ff0000;
-    text-shadow: 0 0 12px #ff0000, 0 0 25px #ff0000, 0 0 50px #ff0000;
+    text-shadow: 0 0 12px #ff0000, 0 0 25px #ff0000;
 }
 
 @keyframes flicker-animation {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
-        text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;
-    }
-    20%, 24%, 55% {
-        opacity: 0.4;
-        text-shadow: none;
-    }
-    22% {
-        opacity: 0.6;
-        text-shadow: 0 0 8px #00ffff;
-    }
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: 0.4; }
+}
+
+/* === TABS (Characters / Profile) === */
+.ant-tabs-nav {
+    background: rgba(10, 10, 10, 0.7) !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
+    width: fit-content !important;
+    margin: 0 auto !important; /* Center the tabs */
+}
+
+.ant-tabs-tab {
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 1.2em !important;
+    color: #00ffff !important;
+    text-shadow: 0 0 8px #00ffff !important;
+    background: transparent !important;
+    border: none !important;
+    transition: all 0.2s ease !important;
+}
+
+.ant-tabs-tab-active {
+    color: #ff0000 !important;
+    text-shadow: 0 0 10px #ff0000 !important;
+}
+
+.ant-tabs-ink-bar {
+    background: #ff0000 !important; /* Red underline for active tab */
+}
+
+/* === BIO / PROFILE SECTION === */
+.bio-section {
+    background: rgba(10, 10, 10, 0.6) !important;
+    padding: 30px !important;
+    border-radius: 10px !important;
+    box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;
+    border: 2px dashed rgba(255, 0, 0, 0.7) !important;
+    width: 100% !important;
+    max-width: 900px !important;
 }
 
 .bio-section h2 {
     font-family: 'Orbitron', sans-serif;
     color: #ffcc00;
     text-shadow: 0 0 10px #ffcc00;
-    margin-top: 30px;
-    margin-bottom: 15px;
     border-bottom: 2px solid rgba(255, 204, 0, 0.4);
     padding-bottom: 8px;
     font-size: 1.8em;
-    letter-spacing: 0.5px;
 }
 
 .bio-section p {
-    font-family: 'IBM Plex Mono', monospace !important;
-    color: #e0e0e0 !important;
-    margin-bottom: 18px;
-    font-size: 1.15em;
+    font-size: 1.1em;
     line-height: 1.7;
-    word-wrap: break-word;
 }
 
 .bio-section .image-wrapper {
@@ -320,464 +149,162 @@ footer.ant-layout-footer,
 
 .bio-section .inline-image {
     max-width: 90%;
-    height: auto;
     border: 4px solid #00ffff;
-    box-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.6);
+    box-shadow: 0 0 15px #00ffff;
     border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.bio-section .inline-image:hover {
-    transform: scale(1.03);
 }
 
 .cta {
     font-family: 'Rubik Mono One', monospace !important;
-    font-size: 1.8em !important;
-    font-weight: bold !important;
+    font-size: 1.5em !important;
     color: #ff0000 !important;
     text-align: center !important;
     margin-top: 40px !important;
     padding: 18px !important;
-    background: rgba(255, 0, 0, 0.3) !important;
-    border: 3px solid #ff0000 !important;
+    background: rgba(255, 0, 0, 0.15) !important;
+    border: 2px solid #ff0000 !important;
     border-radius: 8px !important;
-    box-shadow: 0 0 12px #ff0000 !important;
     animation: pulse-border 2s infinite alternate !important;
-    line-height: 1.3 !important;
 }
 
 @keyframes pulse-border {
-    from {
-        box-shadow: 0 0 12px #ff0000, 0 0 25px rgba(255, 0, 0, 0.6);
-    }
-    to {
-        box-shadow: 0 0 18px #ff0000, 0 0 35px rgba(255, 0, 0, 0.8);
-    }
+    from { box-shadow: 0 0 12px #ff0000; }
+    to { box-shadow: 0 0 25px rgba(255, 0, 0, 0.8); }
 }
 
-.ant-tabs-content:not(.ant-tabs-content-top) {
-    display: none !important;
-}
-
-.ant-tabs-nav-list {
-    background: rgba(10, 10, 10, 0.7) !important;
-    border-radius: 10px !important;
-    padding: 10px !important;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
-    display: flex !important;
-    justify-content: center !important;
-    margin-top: 30px !important;
-    width: fit-content !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-.ant-tabs-tab {
-    font-family: 'Bebas Neue', sans-serif !important;
-    color: #00ffff !important;
-    text-shadow: 0 0 8px #00ffff !important;
-    background: transparent !important;
-    border: none !important;
-    padding: 10px 20px !important;
-    margin: 0 5px !important;
-    transition: all 0.2s ease !important;
-}
-
-.ant-tabs-tab-active {
-    color: #ff0000 !important;
-    text-shadow: 0 0 10px #ff0000, 0 0 20px rgba(255, 0, 0, 0.7) !important;
-    border-bottom: 2px solid #ff0000 !important;
-}
-
-.ant-tabs-tab:hover {
-    color: #fff !important;
-    text-shadow: 0 0 12px #fff !important;
-}
-
-.ant-tabs-tabpane-active,
-.sc-fmKFGs.hikinD.character-list-container,
-.ant-tabs-content.ant-tabs-top > div {
-    margin-top: 40px !important;
-    padding: 0 !important;
-    background: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    border: none !important;
-    width: 100% !important;
-    max-width: 900px !important;
-    box-sizing: border-box !important;
+/* === CHARACTER CARD GRID === */
+.character-list-container {
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
     gap: 25px !important;
-    background-image: none !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    width: 100% !important;
+    max-width: 1200px !important; /* Allow grid to be a bit wider */
 }
 
-.ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column,
-.ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column.char-card-class {
+/* === INDIVIDUAL CHARACTER CARD === */
+.char-card-class {
     background: rgba(0, 0, 0, 0.8) !important;
     border: 2px solid #ff0000 !important;
     border-radius: 12px !important;
-    overflow: hidden !important;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7), inset 0 0 5px rgba(255, 0, 0, 0.4) !important;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7) !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
     display: flex !important;
     flex-direction: column !important;
-    position: relative !important;
-    text-align: left !important;
-    margin-bottom: 25px !important;
+    overflow: hidden !important;
 }
 
-.ant-card.char-card-class::before,
-.ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column::before {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-    border: 1px solid rgba(255, 0, 0, 0.3);
-    border-radius: 14px;
-    z-index: -1;
-    animation: border-flicker 4s linear infinite;
-}
-
-@keyframes border-flicker {
-    0%, 100% {
-        border-color: rgba(255, 0, 0, 0.3);
-        box-shadow: none;
-    }
-    50% {
-        border-color: rgba(255, 0, 0, 0.8);
-        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-    }
-}
-
-.ant-card.char-card-class:hover,
-.ant-card.ant-card-bordered.ant-card-hoverable.ant-card-small.d-flex.flex-column:hover {
+.char-card-class:hover {
     transform: translateY(-5px) scale(1.02) !important;
-    box-shadow: 0 0 20px #ff0000, 0 0 40px rgba(255, 0, 0, 0.9), inset 0 0 12px rgba(255, 0, 0, 0.7) !important;
+    box-shadow: 0 0 25px #ff0000, 0 0 45px rgba(255, 0, 0, 0.8) !important;
 }
 
-img.sc-ktwOfi.eCEqAJ,
 .ant-card-cover img {
-    width: 100% !important;
-    height: 190px !important;
+    height: 180px !important;
     object-fit: cover !important;
     border-bottom: 2px solid rgba(255, 0, 0, 0.5) !important;
-    border-radius: 0 !important;
 }
 
-.ant-card-head-title .ant-row.ant-row-space-between.card-title-row span:first-child span,
-.ant-card-head-title .ant-row.ant-row-space-between span:first-child span {
+.ant-card-body {
+    padding: 15px !important;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows footer elements to stick to the bottom */
+}
+
+/* Card Title */
+.card-title-row span:first-child span {
     font-family: 'Bebas Neue', sans-serif !important;
     color: #00ffff !important;
     font-size: 1.6em !important;
-    margin-top: 0 !important;
-    text-shadow: 0 0 8px #00ffff, 0 0 15px rgba(0, 255, 255, 0.5) !important;
-    white-space: normal !important;
-    overflow: visible !important;
-    text-overflow: clip !important;
-    padding-left: 18px !important;
+    text-shadow: 0 0 8px #00ffff !important;
 }
 
-.ant-card-head-title {
-    padding-top: 10px !important;
-    padding-bottom: 5px !important;
-    background-color: rgba(0,0,0,0.5) !important;
-    border-top-left-radius: 10px !important;
-    border-top-right-radius: 10px !important;
-    border-bottom: 1px solid rgba(255,0,0,0.3) !important;
-}
-
-.ant-card-extra {
-    color: #00ffff !important;
-    font-size: 0.9em !important;
-    padding-right: 18px !important;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-top: -30px !important;
-    position: relative;
-    z-index: 3;
-    font-family: 'IBM Plex Mono', monospace !important;
-}
-
-.ant-card-head-title .ant-row.ant-row-space-between.card-title-row > div:last-child {
-    display: flex;
-    align-items: center;
-    font-size: 1.1em;
-    color: #ff0000;
-    text-shadow: 0 0 8px #ff0000;
-    padding-right: 18px !important;
-    margin-top: 0 !important;
-}
-
-.ant-card-head-title .ant-row.ant-row-space-between.card-title-row > div:last-child svg {
-    margin-right: 5px;
-    width: 20px;
-    height: 20px;
-    fill: #ff0000;
-}
-
-.ant-card-meta-description span.quote-color,
+/* Card Description */
 .ant-card-meta-description {
-    font-family: 'IBM Plex Mono', monospace !important;
     color: #e0e0e0 !important;
     font-size: 1em !important;
     line-height: 1.5 !important;
-    height: auto !important;
-    max-height: unset !important;
-    overflow-y: visible !important;
-    word-wrap: break-word;
-    padding: 0 18px !important;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Pushes tags/stats to the bottom */
 }
 
-.sc-brSamD.fqUhVt.quote-color.stats,
-.ant-card-body > div > span.fake-ribbon.grid.grid-cols-3 {
-    background-color: transparent !important;
-    color: #00ffff !important;
-    font-size: 0.9em !important;
-    padding: 0 18px 10px !important;
+/* Card Tags */
+.custom-scroll {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'IBM Plex Mono', monospace !important;
-    position: absolute;
-    bottom: 55px; /* Adjust this value based on your tags and other elements below */
-    left: 0;
-    right: 0;
-    z-index: 2;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
 }
 
-.sc-brSamD.fqUhVt.quote-color.stats > div,
-.ant-card-body > div > span.fake-ribbon.grid.grid-cols-3 > div {
+.ant-tag {
+    background-color: rgba(0, 255, 255, 0.15) !important;
+    color: #00ffff !important;
+    border: 1px solid rgba(0, 255, 255, 0.6) !important;
+    font-size: 0.85em !important;
+}
+
+.ant-tag-error {
+    background-color: rgba(255, 0, 0, 0.25) !important;
+    color: #ff0000 !important;
+    border-color: rgba(255, 0, 0, 0.8) !important;
+}
+
+/* Card Stats (Chats, Favs, etc.) */
+.stats {
+    display: flex !important;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.stats > div {
     color: #00ffff !important;
     text-shadow: 0 0 6px rgba(0, 255, 255, 0.7) !important;
     display: flex;
     align-items: center;
-    font-size: 1.1em !important;
+    gap: 5px;
 }
 
-.sc-brSamD.fqUhVt.quote-color.stats svg,
-.ant-card-body > div > span.fake-ribbon.grid.grid-cols-3 svg {
-    color: #ff0000 !important;
+.stats svg {
     fill: #ff0000 !important;
-    margin-right: 5px;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
 }
 
-div.ant-row.ant-row-no-wrap.mb-1.custom-scroll,
-.ant-card-body > div:last-child {
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-    margin-top: 10px !important;
-    padding: 0 18px 18px !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 5px !important;
-}
-
-.ant-tag,
-.ant-tag.css-1v3fjfx {
-    background-color: rgba(0, 255, 255, 0.15) !important;
-    color: #00ffff !important;
-    padding: 4px 10px !important;
-    border-radius: 6px !important;
-    font-family: 'IBM Plex Mono', monospace !important;
-    font-size: 0.85em !important;
-    border: 1px solid rgba(0, 255, 255, 0.6) !important;
-    text-shadow: 0 0 3px rgba(0, 255, 255, 0.4) !important;
-    margin-inline-end: 0 !important;
-    margin-bottom: 0 !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    height: fit-content !important;
-}
-.ant-tag.ant-tag-error {
-    background-color: rgba(255, 0, 0, 0.25) !important;
-    color: #ff0000 !important;
-    border-color: rgba(255, 0, 0, 0.8) !important;
-    text-shadow: 0 0 3px rgba(255, 0, 0, 0.4) !important;
-}
-
-p[style*="justify-content: space-between"],
-.ant-card-meta-detail > div:last-child,
-.ant-row.ant-row-no-wrap.ant-row-space-between.css-1v3fjfx {
-    font-family: 'IBM Plex Mono', monospace !important;
-    color: #888 !important;
-    font-size: 0.9em !important;
-    margin-top: 10px !important;
-    padding: 0 18px 10px !important;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.ant-row.ant-row-no-wrap.ant-row-space-between.css-1v3fjfx {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding-bottom: 10px !important;
-}
-
-p[style*="justify-content: space-between"] a,
-.ant-card-meta-detail > div:last-child a,
-.ant-row.ant-row-no-wrap.ant-row-space-between.css-1v3fjfx a {
-    color: #00ffff !important;
-}
-p[style*="justify-content: space-between"] button,
-.ant-card-meta-detail > div:last-child button,
-.ant-row.ant-row-no-wrap.ant-row-space-between.css-1v3fjfx button {
-    color: #888 !important;
-}
-
-.ant-tabs-tabpane-active,
-.sc-fmKFGs.hikinD.character-list-container,
-.ant-tabs-content.ant-tabs-top > div {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
-    gap: 25px !important;
-    padding: 0 15px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    max-width: 1200px !important;
-}
-
+/* === RESPONSIVE DESIGN === */
 @media (max-width: 768px) {
     .profile-container {
-        margin: 180px auto 0 auto !important;
-        padding: 0px !important;
-    }
-    .username {
-        font-size: 3em !important;
+        margin: 20px auto !important;
+        gap: 20px;
     }
     .profile-pic {
-        width: 160px !important;
-        height: 160px !important;
-        margin-bottom: 15px !important;
+        width: 150px;
+        height: 150px;
     }
-    .bio-section {
-        margin-top: 450px !important;
+    .username {
+        font-size: 2.8em;
     }
-    div.text-sm.mb-2,
-    .ant-row.ant-row-start.ant-row-middle {
-        top: 700px !important;
-        width: 90% !important;
-        padding: 20px 30px !important;
-    }
-    div.text-sm.mb-2 > span.mr-4 {
-        font-size: 1.6em !important;
-    }
-    div.text-sm.mb-2 > button.ant-btn {
-        font-size: 1.6em !important;
-        padding: 15px 40px !important;
-    }
-    .bio-section h2 {
-        font-size: 1.6em !important;
-    }
-    .bio-section p {
-        font-size: 1.05em !important;
-    }
-    .cta {
-        font-size: 1.4em !important;
-        padding: 15px !important;
-   }
-    .ant-tabs-tabpane-active,
-    .sc-fmKFGs.hikinD.character-list-container,
-    .ant-tabs-content.ant-tabs-top > div {
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
-        gap: 20px !important;
-        padding: 0 10px !important;
-    }
-    img.sc-ktwOfi.eCEqAJ,
-    .ant-card-cover img {
-        height: 160px !important;
-    }
-    .ant-card-meta-description,
-    .sc-brSamD.fqUhVt.quote-color.stats,
-    .ant-card-extra,
-    div.ant-row.ant-row-no-wrap.mb-1.custom-scroll,
-    .ant-card-body > div:last-child {
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-    }
-    .ant-card-head-title .ant-row.ant-row-space-between.card-title-row span:first-child span {
-        padding-left: 15px !important;
-    }
-    .ant-card-head-title .ant-row.ant-row-space-between.card-title-row > div:last-child {
-        padding-right: 15px !important;
+    .character-list-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
     }
 }
 
 @media (max-width: 480px) {
-    .profile-container {
-        margin: 100px auto 0 auto !important;
-        padding: 0px !important;
-    }
     .username {
-        font-size: 2.2em !important;
-        letter-spacing: 1px !important;
+        font-size: 2em;
     }
     .profile-pic {
-        width: 130px !important;
-        height: 130px !important;
-        margin-bottom: 10px !important;
+        width: 120px;
+        height: 120px;
+    }
+    .character-list-container {
+        grid-template-columns: 1fr !important; /* Single column on small screens */
     }
     .bio-section {
-        margin-top: 380px !important;
-    }
-    div.text-sm.mb-2,
-    .ant-row.ant-row-start.ant-row-middle {
-        top: 600px !important;
-        width: 95% !important;
-        padding: 15px 20px !important;
-    }
-    div.text-sm.mb-2 > span.mr-4 {
-        font-size: 1.3em !important;
-    }
-    div.text-sm.mb-2 > button.ant-btn {
-        font-size: 1.4em !important;
-        padding: 12px 25px !important;
+        padding: 20px !important;
     }
     .bio-section h2 {
-        font-size: 1.3em !important;
-    }
-    .bio-section p {
-        font-size: 0.95em !important;
-    }
-    .cta {
-        font-size: 1.1em !important;
-        padding: 12px !important;
-    }
-    .ant-tabs-tabpane-active,
-    .sc-fmKFGs.hikinD.character-list-container,
-    .ant-tabs-content.ant-tabs-top > div {
-        grid-template-columns: 1fr !important;
-        gap: 15px !important;
-        padding: 0 5px !important;
-    }
-    img.sc-ktwOfi.eCEqAJ,
-    .ant-card-cover img {
-        height: 140px !important;
-    }
-    .ant-card-meta-description,
-    .sc-brSamD.fqUhVt.quote-color.stats,
-    .ant-card-extra,
-    div.ant-row.ant-row-no-wrap.mb-1.custom-scroll,
-    .ant-card-body > div:last-child {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-    }
-    .ant-card-head-title .ant-row.ant-row-space-between.card-title-row span:first-child span {
-        padding-left: 10px !important;
-    }
-    .ant-card-head-title .ant-row.ant-row-space-between.card-title-row > div:last-child {
-        padding-right: 10px !important;
+        font-size: 1.5em;
     }
 }
-
