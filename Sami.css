@@ -44,6 +44,41 @@ body::before {
   filter: brightness(0.5) grayscale(0.3);
 }
 
+/* FIXED: Only hide the search bar and blue padding */
+.ant-layout-header {
+  background: transparent !important;
+  height: auto !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.ant-layout-header .ant-input-search,
+.ant-layout-header .ant-input-affix-wrapper,
+.ant-layout-header input[type="search"],
+.ant-layout-header .ant-input {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+nav.ant-menu,
+.ant-menu-overflow {
+  background: transparent !important;
+  border: none !important;
+}
+
+div[class="Header"] {
+  background: transparent !important;
+  height: auto !important;
+  padding: 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+}
 
 /* Main Container */
 .pw-sec {
