@@ -627,4 +627,12 @@ footer.ant-layout-footer,
     .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {  
         top: 240px !important;  
     }  
-        } 
+        }
+
+/* Hiding specific elements as requested */
+button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.ant-btn-lg.ant-dropdown-trigger,
+.ant-select-selection-overflow,
+.ant-select-selection-wrap,
+.ant-select-selector {
+  display: none !important;
+}
