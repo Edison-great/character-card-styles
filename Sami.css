@@ -466,18 +466,10 @@ button.ant-btn:hover {
   }
 }
 
-/* Hidden elements */
-.ant-btn-circle.ant-btn-text.ant-dropdown-trigger {
-  display: none !important;
-}
-
+/* Hiding specific elements as requested */
+button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.ant-btn-lg.ant-dropdown-trigger,
 .ant-select-selection-overflow,
 .ant-select-selection-wrap,
 .ant-select-selector {
   display: none !important;
 }
-
-.pw-desc-box,
-.pw-note {
-  display: none !important;
-  }
