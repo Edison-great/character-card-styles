@@ -464,3 +464,26 @@ button.ant-btn:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--rated-r-red);
     }
+
+/* Fix for invisible Block button */
+button.ant-btn.ant-btn-default.ant-btn-variant-outlined {
+  background: transparent !important;
+  border: 2px solid var(--warning-red) !important;
+  color: var(--warning-red) !important;
+  font-family: var(--font-bold) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  font-size: 14px !important;
+  padding: 8px 24px !important;
+  height: auto !important;
+  border-radius: 6px !important;
+  box-shadow: 0 0 15px rgba(220, 20, 60, 0.4) !important;
+  transition: all 0.3s ease !important;
+}
+
+button.ant-btn.ant-btn-default.ant-btn-variant-outlined:hover {
+  background: var(--warning-red) !important;
+  color: var(--text-light) !important;
+  box-shadow: 0 0 25px rgba(220, 20, 60, 0.8) !important;
+  transform: translateY(-2px) !important;
+}
