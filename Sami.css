@@ -44,40 +44,37 @@ body::before {
   filter: brightness(0.5) grayscale(0.3);
 }
 
-/* FIXED: Only hide the search bar and blue padding */
-.ant-layout-header {
+/* FIX: Hide only the search bar and blue header background, keep profile icons visible */
+
+/* Remove blue header background */
+.menu,
+.side-menu {
   background: transparent !important;
-  height: auto !important;
-  padding: 0 !important;
   border: none !important;
+  box-shadow: none !important;
 }
 
-.ant-layout-header .ant-input-search,
-.ant-layout-header .ant-input-affix-wrapper,
-.ant-layout-header input[type="search"],
-.ant-layout-header .ant-input {
+/* Hide the actual search bar container */
+.menu input[type="search"],
+.menu .ant-input,
+.menu .ant-input-affix-wrapper,
+.side-menu input[type="search"],
+.side-menu .ant-input,
+.side-menu .ant-input-affix-wrapper {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   height: 0 !important;
   overflow: hidden !important;
-}
-
-nav.ant-menu,
-.ant-menu-overflow {
-  background: transparent !important;
-  border: none !important;
-}
-
-div[class="Header"] {
-  background: transparent !important;
-  height: auto !important;
+  margin: 0 !important;
   padding: 0 !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  display: flex !important;
-  justify-content: flex-end !important;
-  align-items: center !important;
+}
+
+/* Keep layout height consistent so profile icons stay aligned */
+.menu,
+.side-menu {
+  min-height: auto !important;
+  padding: 0 !important;
 }
 
 /* Main Container */
