@@ -53,14 +53,17 @@ div.ant-select.ant-select-outlined.need-spacer.no-show-search.css-1v3fjfx.ant-se
   overflow: hidden !important;
 }
 
-/* FORCE HIDE QUESTION CIRCLE ICON */
-svg[data-icon="question-circle"] {
+/* FORCE HIDE QUESTION ICON MENU ITEM */
+li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-active.ant-menu-item-selected.ant-menu-item-only-child[aria-describedby=":rh:"][data-menu-id*="question-circle"],
+li.ant-menu-overflow-item.ant-menu-item:has(svg[data-icon="question-circle"]) {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   height: 0 !important;
   width: 0 !important;
   overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Main Container */
