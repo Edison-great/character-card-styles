@@ -44,18 +44,25 @@ body::before {
   filter: brightness(0.5) grayscale(0.3);
 }
 
-/* FORCE HIDE SPECIFIC ANT SELECT DROPDOWN */
-div.ant-select.ant-select-outlined.need-spacer.no-show-search.css-1v3fjfx.ant-select-multiple.ant-select-show-arrow.ant-select-show-search {
+/* Hide Ant Select search dropdown */
+div.ant-select.ant-select-outlined.need-spacer.no-show-search.css-1v3fjfx.ant-select-multiple.ant-select-show-arrow.ant-select-show-search,
+div.ant-select:has(input[aria-controls*="rc_select_"]) {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   height: 0 !important;
+  width: 0 !important;
   overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* FORCE HIDE QUESTION ICON MENU ITEM */
-li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-active.ant-menu-item-selected.ant-menu-item-only-child[aria-describedby=":rh:"][data-menu-id*="question-circle"],
-li.ant-menu-overflow-item.ant-menu-item:has(svg[data-icon="question-circle"]) {
+/* Hide question-circle icon, its button, and any container holding it */
+button.ant-btn:has(svg[data-icon="question-circle"]),
+li.ant-menu-item:has(svg[data-icon="question-circle"]),
+span.anticon.anticon-question-circle,
+div:has(svg[data-icon="question-circle"]),
+.ant-menu-overflow-item:has(svg[data-icon="question-circle"]) {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
