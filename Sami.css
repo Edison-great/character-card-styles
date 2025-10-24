@@ -44,6 +44,15 @@ body::before {
   filter: brightness(0.5) grayscale(0.3);
 }
 
+/* FORCE HIDE SPECIFIC ANT SELECT DROPDOWN */
+div.ant-select.ant-select-outlined.need-spacer.no-show-search.css-1v3fjfx.ant-select-multiple.ant-select-show-arrow.ant-select-show-search {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
 /* Main Container */
 .pw-sec {
   position: relative;
