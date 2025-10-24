@@ -200,10 +200,9 @@ div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
 }  
   
 span.ant-tag.mb-2,  
-button[aria-describedby]:not(.ant-btn-text),  
 .ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {  
     display: none !important;  
-}  
+}
   
 footer.ant-layout-footer,  
 .ant-col.text-center.my-2,  
