@@ -44,33 +44,6 @@ body::before {
   filter: brightness(0.5) grayscale(0.3);
 }
 
-/* Hide Ant Select search dropdown */
-div.ant-select.ant-select-outlined.need-spacer.no-show-search.css-1v3fjfx.ant-select-multiple.ant-select-show-arrow.ant-select-show-search {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  width: 0 !important;
-  overflow: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Hide question-circle button + parent menu item */
-li.ant-menu-item button.ant-btn svg[data-icon="question-circle"],
-li.ant-menu-item button.ant-btn.ant-btn-circle.ant-btn-text.ant-dropdown-trigger,
-li.ant-menu-item span.anticon.anticon-question-circle,
-li.ant-menu-item[data-menu-id*="question-circle"],
-li.ant-menu-item:has([aria-label="question-circle"]) {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  width: 0 !important;
-  overflow: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
 
 /* Main Container */
 .pw-sec {
