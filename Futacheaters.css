@@ -43,20 +43,70 @@ body::before {
   z-index: 0;
 }
 
-/* FORCE HIDE CHUB SEARCH BAR */
-header.ant-layout-header,
-.ant-layout-header,
-nav.ant-menu,
-.ant-menu-overflow,
-div[class*="Header"],
-header[class*="header"] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  overflow: hidden !important;
-}
+/* === HEADER TRANSPARENCY (Fix #3) === */  
+.ant-layout-header {  
+    background: transparent !important;  
+    backdrop-filter: none !important;  
+    padding: 0 !important;  
+}  
 
+.ant-menu-overflow.ant-menu {  
+    background-color: transparent !important;  
+}  
+
+/* Search bar transparency */  
+.no-arrow.no-vertical-anything {  
+    background: transparent !important;  
+}  
+
+.ant-select-selector {  
+    background: transparent !important;  
+    border: 1px solid rgba(0, 255, 255, 0.3) !important;  
+}  
+
+/* === LOGO REPLACEMENT (FINAL FIX — removes all background box/containers) === */  
+
+/* Remove backgrounds and boxes from all possible logo containers */  
+.ant-menu-item,  
+.ant-menu-item a,  
+.ant-menu-item a::before,  
+.ant-menu-item a::after,  
+.top-nav-logo,  
+.top-nav-logo::before,  
+.top-nav-logo::after {  
+    background: transparent !important;  
+    background-color: transparent !important;  
+    box-shadow: none !important;  
+    border: none !important;  
+    outline: none !important;  
+    padding: 0 !important;  
+    margin: 0 !important;  
+}  
+
+/* Replace the actual logo image cleanly */  
+.ant-menu-item a img[src="/logo_cataract.png"],  
+img[src="/logo_cataract.png"],  
+.top-nav-logo img,  
+.top-nav-logo {  
+    content: url('https://archive.org/download/background_GEN3RATED_R/Untitled61_20251014054044.png') !important;  
+    width: 50px !important;  
+    height: 50px !important;  
+    display: inline-block !important;  
+    background: transparent !important;  
+    background-color: transparent !important;  
+    border: none !important;  
+    box-shadow: none !important;  
+    object-fit: contain !important;  
+    image-rendering: auto !important;  
+    filter: none !important;  
+}  
+
+/* Extra measure: prevent menu hover highlight box from appearing */  
+.ant-menu-item-selected,  
+.ant-menu-item:hover {  
+    background: transparent !important;  
+    box-shadow: none !important;  
+}  
 /* Main Container */
 .fd-sec {
   position: relative;
@@ -449,4 +499,12 @@ button.ant-btn:hover {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* Hiding specific elements as requested */
+button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.ant-btn-lg.ant-dropdown-trigger,
+.ant-select-selection-overflow,
+.ant-select-selection-wrap,
+.ant-select-selector {
+  display: none !important;
 }
