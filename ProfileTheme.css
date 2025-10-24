@@ -1,657 +1,661 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');  
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex+Mono:wght@400;700&display=swap');  
+  
+/* === GLOBAL STYLES === */  
+body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {  
+    background: url('https://archive.org/download/background_GEN3RATED_R/Untitled9_20251014153739.png') no-repeat center center fixed !important;  
+    background-size: cover !important;  
+    font-family: 'IBM Plex Mono', monospace !important;  
+    color: #e0e0e0 !important;  
+}  
+  
+/* === HEADER TRANSPARENCY (Fix #3) === */  
+.ant-layout-header {  
+    background: transparent !important;  
+    backdrop-filter: none !important;  
+    padding: 0 !important;  
+}  
+  
+.ant-menu-overflow.ant-menu {  
+    background-color: transparent !important;  
+}  
+  
+/* Search bar transparency */  
+.no-arrow.no-vertical-anything {  
+    background: transparent !important;  
+}  
+  
+.ant-select-selector {  
+    background: transparent !important;  
+    border: 1px solid rgba(0, 255, 255, 0.3) !important;  
+}  
+  
+/* === LOGO REPLACEMENT (FINAL FIX — removes all background box/containers) === */  
+  
+/* Remove backgrounds and boxes from all possible logo containers */  
+.ant-menu-item,  
+.ant-menu-item a,  
+.ant-menu-item a::before,  
+.ant-menu-item a::after,  
+.top-nav-logo,  
+.top-nav-logo::before,  
+.top-nav-logo::after {  
+    background: transparent !important;  
+    background-color: transparent !important;  
+    box-shadow: none !important;  
+    border: none !important;  
+    outline: none !important;  
+    padding: 0 !important;  
+    margin: 0 !important;  
+}  
+  
+/* Replace the actual logo image cleanly */  
+.ant-menu-item a img[src="/logo_cataract.png"],  
+img[src="/logo_cataract.png"],  
+.top-nav-logo img,  
+.top-nav-logo {  
+    content: url('https://archive.org/download/background_GEN3RATED_R/Untitled61_20251014054044.png') !important;  
+    width: 50px !important;  
+    height: 50px !important;  
+    display: inline-block !important;  
+    background: transparent !important;  
+    background-color: transparent !important;  
+    border: none !important;  
+    box-shadow: none !important;  
+    object-fit: contain !important;  
+    image-rendering: auto !important;  
+    filter: none !important;  
+}  
+  
+/* Extra measure: prevent menu hover highlight box from appearing */  
+.ant-menu-item-selected,  
+.ant-menu-item:hover {  
+    background: transparent !important;  
+    box-shadow: none !important;  
+}  
+  
+.bio-section {  
+    background: rgba(10, 10, 10, 0.4) !important;  
+    padding: 25px !important;  
+    border-radius: 10px !important;  
+    margin-top: 550px !important; /* BIO DROPPED VERY MUCH */  
+    box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;  
+    border: 2px dashed rgba(255, 0, 0, 0.7) !important;  
+    width: 100% !important;  
+    max-width: 900px !important;  
+    text-align: left !important;  
+    box-sizing: border-box !important;  
+}  
+  
+p, span, h1, h2, h3, a, div {  
+    color: #e0e0e0 !important;  
+}  
+a {  
+    color: #00ffff !important;  
+    text-decoration: none !important;  
+}  
+a:hover {  
+    text-decoration: underline !important;  
+}  
+  
+.ant-avatar.ant-avatar-square.ant-avatar-image[style*="width: 100px;"],  
+img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],  
+.ant-typography.my-2,  
+.ant-typography.text-lg.font-bold.mb-2.break-words,  
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),  
+.ant-typography[class*="Followers"] {  
+    display: none !important;  
+}  
+  
+/* Specific targeting for the follower count and button block - FIXED POSITIONING AND INCREASED SIZE */  
+div.text-sm.mb-2, /* This targets the direct container that holds both the span and button */  
+.ant-row.ant-row-start.ant-row-middle {  
+    position: absolute !important;  
+    top: 850px !important; /* RETAINED POSITION */  
+    left: 50% !important;  
+    transform: translateX(-50%) !important;  
+    display: flex !important;  
+    flex-direction: column !important;  
+    align-items: center !important;  
+    width: 90% !important;  
+    max-width: 550px !important;  
+    z-index: 100 !important;  
+    pointer-events: auto !important;  
+    padding: 30px 40px !important;  
+    border-radius: 12px !important;  
+    /* REMOVED BACKGROUND AND BORDER FOR THE CONTAINER */  
+    background: transparent !important; /* Removed background */  
+    border: none !important; /* Removed border */  
+    box-shadow: none !important; /* Removed box-shadow */  
+}  
+  
+/* Ensure the span for followers is styled correctly within the new structure */  
+div.text-sm.mb-2 > span.mr-4 {  
+    font-family: 'IBM Plex Mono', monospace !important;  
+    color: #00ffff !important;  
+    font-size: 2em !important;  
+    text-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.8) !important;  
+    margin-bottom: 20px !important;  
+    white-space: nowrap !important;  
+    display: block !important;  
+    margin-right: 0 !important;  
+    letter-spacing: 2px !important;  
+}  
+  
+/* Button styling, now applying the neon effect to the correctly positioned button */  
+div.text-sm.mb-2 > button.ant-btn {  
+    font-family: 'Press Start 2P', cursive !important;  
+    font-size: 1.8em !important;  
+    padding: 18px 50px !important;  
+    border-radius: 10px !important;  
+    background-color: transparent !important;  
+    color: #00ffff !important;  
+    border: 5px solid #00ffff !important;  
+    box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff !important;  
+    transition: all 0.1s ease-in-out !important;  
+    margin-left: 0 !important;  
+    animation: neon-flicker 1.5s infinite alternate !important;  
+    width: 95% !important;  
+    max-width: 350px !important;  
+    display: inline-flex !important;  
+    align-items: center !important;  
+    justify-content: center !important;  
+}  
+  
+div.text-sm.mb-2 > button.ant-btn:hover {  
+    background-color: rgba(0, 255, 255, 0.3) !important;  
+    border-color: #fff !important;  
+    color: #fff !important;  
+    box-shadow: 0 0 25px #fff, 0 0 50px rgba(255, 255, 255, 0.9) !important;  
+}  
+  
+.ant-btn-icon {  
+    margin-right: 12px !important;  
+}  
+  
+.ant-btn-icon svg {  
+    fill: #00ffff !important;  
+    transition: fill 0.1s ease-in-out !important;  
+    width: 32px !important;  
+    height: 32px !important;  
+}  
+  
+div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {  
+    fill: #fff !important;  
+}  
+  
+@keyframes neon-flicker {  
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {  
+        opacity: 1;  
+        box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;  
+    }  
+    20%, 24%, 55% {  
+        opacity: 0.7;  
+        box-shadow: none;  
+    }  
+    22% {  
+        opacity: 0.9;  
+        box-shadow: 0 0 12px #00ffff;  
+    }  
+}  
+  
+/* FIXED: Removed the line that was hiding the block button */
+span.ant-tag.mb-2,  
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {  
+    display: none !important;  
+}  
 
-/* === GLOBAL STYLES === */
-body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
-    background: url('https://archive.org/download/background_GEN3RATED_R/Untitled9_20251014153739.png') no-repeat center center fixed !important;
-    background-size: cover !important;
+/* === BLOCK BUTTON STYLING === */
+button.ant-btn:has(.anticon-close-circle) {
     font-family: 'IBM Plex Mono', monospace !important;
-    color: #e0e0e0 !important;
-}
-
-/* === HEADER TRANSPARENCY (Fix #3) === */
-.ant-layout-header {
-    background: transparent !important;
-    backdrop-filter: none !important;
-    padding: 0 !important;
-}
-
-.ant-menu-overflow.ant-menu {
-    background-color: transparent !important;
-}
-
-/* Search bar transparency */
-.no-arrow.no-vertical-anything {
-    background: transparent !important;
-}
-
-.ant-select-selector {
-    background: transparent !important;
-    border: 1px solid rgba(0, 255, 255, 0.3) !important;
-}
-
-/* === LOGO REPLACEMENT (FINAL FIX — removes all background box/containers) === */
-
-/* Remove backgrounds and boxes from all possible logo containers */
-.ant-menu-item,
-.ant-menu-item a,
-.ant-menu-item a::before,
-.ant-menu-item a::after,
-.top-nav-logo,
-.top-nav-logo::before,
-.top-nav-logo::after {
-    background: transparent !important;
-    background-color: transparent !important;
-    box-shadow: none !important;
-    border: none !important;
-    outline: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-/* Replace the actual logo image cleanly */
-.ant-menu-item a img[src="/logo_cataract.png"],
-img[src="/logo_cataract.png"],
-.top-nav-logo img,
-.top-nav-logo {
-    content: url('https://archive.org/download/background_GEN3RATED_R/Untitled61_20251014054044.png') !important;
-    width: 50px !important;
-    height: 50px !important;
-    display: inline-block !important;
-    background: transparent !important;
-    background-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    object-fit: contain !important;
-    image-rendering: auto !important;
-    filter: none !important;
-}
-
-/* Extra measure: prevent menu hover highlight box from appearing */
-.ant-menu-item-selected,
-.ant-menu-item:hover {
-    background: transparent !important;
-    box-shadow: none !important;
-}
-
-.bio-section {
-    background: rgba(10, 10, 10, 0.4) !important;
-    padding: 25px !important;
-    border-radius: 10px !important;
-    margin-top: 550px !important; /* BIO DROPPED VERY MUCH */
-    box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;
-    border: 2px dashed rgba(255, 0, 0, 0.7) !important;
-    width: 100% !important;
-    max-width: 900px !important;
-    text-align: left !important;
-    box-sizing: border-box !important;
-}
-
-p, span, h1, h2, h3, a, div {
-    color: #e0e0e0 !important;
-}
-a {
-    color: #00ffff !important;
-    text-decoration: none !important;
-}
-a:hover {
-    text-decoration: underline !important;
-}
-
-.ant-avatar.ant-avatar-square.ant-avatar-image[style*="width: 100px;"],
-img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
-.ant-typography.my-2,
-.ant-typography.text-lg.font-bold.mb-2.break-words,
-.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),
-.ant-typography[class*="Followers"] {
-    display: none !important;
-}
-
-/* Specific targeting for the follower count and button block - FIXED POSITIONING AND INCREASED SIZE */
-div.text-sm.mb-2, /* This targets the direct container that holds both the span and button */
-.ant-row.ant-row-start.ant-row-middle {
-    position: absolute !important;
-    top: 850px !important; /* RETAINED POSITION */
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    font-size: 1.1em !important;
+    color: #ff0000 !important;
+    background: rgba(255, 0, 0, 0.1) !important;
+    border: 2px solid rgba(255, 0, 0, 0.6) !important;
+    border-radius: 8px !important;
+    padding: 12px 24px !important;
+    margin: 20px auto !important;
     display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 90% !important;
-    max-width: 550px !important;
-    z-index: 100 !important;
-    pointer-events: auto !important;
-    padding: 30px 40px !important;
-    border-radius: 12px !important;
-    /* REMOVED BACKGROUND AND BORDER FOR THE CONTAINER */
-    background: transparent !important; /* Removed background */
-    border: none !important; /* Removed border */
-    box-shadow: none !important; /* Removed box-shadow */
-}
-
-/* Ensure the span for followers is styled correctly within the new structure */
-div.text-sm.mb-2 > span.mr-4 {
-    font-family: 'IBM Plex Mono', monospace !important;
-    color: #00ffff !important;
-    font-size: 2em !important;
-    text-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.8) !important;
-    margin-bottom: 20px !important;
-    white-space: nowrap !important;
-    display: block !important;
-    margin-right: 0 !important;
-    letter-spacing: 2px !important;
-}
-
-/* Button styling, now applying the neon effect to the correctly positioned button */
-div.text-sm.mb-2 > button.ant-btn {
-    font-family: 'Press Start 2P', cursive !important;
-    font-size: 1.8em !important;
-    padding: 18px 50px !important;
-    border-radius: 10px !important;
-    background-color: transparent !important;
-    color: #00ffff !important;
-    border: 5px solid #00ffff !important;
-    box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff !important;
-    transition: all 0.1s ease-in-out !important;
-    margin-left: 0 !important;
-    animation: neon-flicker 1.5s infinite alternate !important;
-    width: 95% !important;
-    max-width: 350px !important;
-    display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.4) !important;
+    transition: all 0.3s ease !important;
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.5) !important;
 }
 
-div.text-sm.mb-2 > button.ant-btn:hover {
-    background-color: rgba(0, 255, 255, 0.3) !important;
-    border-color: #fff !important;
-    color: #fff !important;
-    box-shadow: 0 0 25px #fff, 0 0 50px rgba(255, 255, 255, 0.9) !important;
-}
-
-.ant-btn-icon {
-    margin-right: 12px !important;
-}
-
-.ant-btn-icon svg {
-    fill: #00ffff !important;
-    transition: fill 0.1s ease-in-out !important;
-    width: 32px !important;
-    height: 32px !important;
-}
-
-div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
-    fill: #fff !important;
-}
-
-@keyframes neon-flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
-        box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
-    }
-    20%, 24%, 55% {
-        opacity: 0.7;
-        box-shadow: none;
-    }
-    22% {
-        opacity: 0.9;
-        box-shadow: 0 0 12px #00ffff;
-    }
-}
-
-span.ant-tag.mb-2,
-button[aria-describedby]:not(.ant-btn-text),
-.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {
-    display: none !important;
-}
-
-footer.ant-layout-footer,
-.ant-col.text-center.my-2,
-.ant-spin-container > div:last-child > div:last-child:not(.sc-fmKFGs):not(.ant-tabs-content-holder) {
-    display: none !important;
-}
-
-.profile-container {
-    max-width: 900px;
-    margin: 300px auto 0 auto !important; /* RETAINED POSITION */
-    padding: 0px;
-    background: none !important;
-    border-radius: 0px !important;
-    box-shadow: none !important;
-    position: relative;
-    z-index: 2;
-    overflow: visible;
-    border: none !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.profile-header {
-    text-align: center;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    width: 100%;
-    background: none !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
-.profile-pic {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin-bottom: 25px;
-    object-fit: cover;
-    /* transition: transform 0.3s ease-in-out; REMOVED to enable always-on animation */
-    z-index: 10;
-    position: relative;
-    box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000 !important;
-    border: 3px solid rgba(255, 0, 0, 0.7) !important;
-    /* Always-on and faster spinning animation */
-    animation: spinning-animation 1s linear infinite !important; /* Faster: 1s instead of 2s */
-}
-
-/* Removed hover/active states for animation as it's now always on */
-/* .profile-pic:hover, .profile-pic:active {
-    animation: spinning-animation 2s linear infinite;
-    box-shadow: 0 0 25px #ff0000, 0 0 50px #ff0000, 0 0 70px rgba(255, 0, 0, 0.7) !important;
-} */
-
-@keyframes spinning-animation {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.username {
-    font-family: 'Rubik Mono One', monospace;
-    font-size: 4em;
-    color: #00ffff;
-    text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;
-    margin: 0;
-    padding: 0;
-    letter-spacing: 3px;
-    line-height: 1.1;
-    margin-top: 20px;
-}
-
-.username .flicker {
-    animation: flicker-animation 1.5s infinite alternate;
-    display: inline-block;
-}
-
-.username .rated-r {
-    color: #ff0000;
-    text-shadow: 0 0 12px #ff0000, 0 0 25px #ff0000, 0 0 50px #ff0000;
-}
-
-@keyframes flicker-animation {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
-        text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;
-    }
-    20%, 24%, 55% {
-        opacity: 0.4;
-        text-shadow: none;
-    }
-    22% {
-        opacity: 0.6;
-        text-shadow: 0 0 8px #00ffff;
-    }
-}
-
-.bio-section h2 {
-    font-family: 'Orbitron', sans-serif;
-    color: #ffcc00;
-    text-shadow: 0 0 10px #ffcc00;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-bottom: 2px solid rgba(255, 204, 0, 0.4);
-    padding-bottom: 8px;
-    font-size: 1.8em;
-    letter-spacing: 0.5px;
-}
-
-.bio-section p {
-    font-family: 'IBM Plex Mono', monospace !important;
-    color: #e0e0e0 !important;
-    margin-bottom: 18px;
-    font-size: 1.15em;
-    line-height: 1.7;
-    word-wrap: break-word;
-}
-
-.bio-section .image-wrapper {
-    text-align: center;
-    margin: 25px 0;
-}
-
-.bio-section .inline-image {
-    max-width: 90%;
-    height: auto;
-    border: 4px solid #00ffff;
-    box-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.6);
-    border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.bio-section .inline-image:hover {
-    transform: scale(1.03);
-}
-
-/* === FIX: Make Block Button Visible Again === */
-button.ant-btn.ant-btn-default.ant-btn-variant-outlined.ant-btn-block {
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    background: transparent !important;
-    border: 3px solid #ff0000 !important;
-    color: #ff0000 !important;
-    font-family: 'Press Start 2P', cursive !important;
-    font-size: 1.2em !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.05em !important;
-    padding: 14px 36px !important;
-    border-radius: 10px !important;
-    box-shadow: 0 0 20px #ff0000, 0 0 40px rgba(255, 0, 0, 0.6) !important;
-    transition: all 0.2s ease-in-out !important;
-    z-index: 500 !important;
-}
-
-button.ant-btn.ant-btn-default.ant-btn-variant-outlined.ant-btn-block:hover {
-    background: rgba(255, 0, 0, 0.25) !important;
-    color: #fff !important;
-    border-color: #fff !important;
-    box-shadow: 0 0 25px #fff, 0 0 45px rgba(255, 255, 255, 0.8) !important;
+button.ant-btn:has(.anticon-close-circle):hover {
+    background: rgba(255, 0, 0, 0.3) !important;
+    border-color: #ff0000 !important;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.5) !important;
     transform: translateY(-2px) !important;
+    color: #ff3333 !important;
 }
 
-/* === TABS (Fix #6 - Slider functionality) === */
-.ant-tabs-nav-wrap {
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: thin !important;
-    scrollbar-color: rgba(0, 255, 255, 0.5) transparent !important;
-}
-
-.ant-tabs-nav-wrap::-webkit-scrollbar {
-    height: 6px !important;
-}
-
-.ant-tabs-nav-wrap::-webkit-scrollbar-track {
-    background: transparent !important;
-}
-
-.ant-tabs-nav-wrap::-webkit-scrollbar-thumb {
-    background: rgba(0, 255, 255, 0.5) !important;
-    border-radius: 3px !important;
-}
-
-.ant-tabs-nav-list {
-    display: flex;
-    flex-wrap: nowrap !important;
-    justify-content: flex-start;
-    min-width: min-content !important;
-}
-
-.ant-tabs-nav {
-    background: rgba(10, 10, 10, 0.7) !important;
-    border-radius: 10px !important;
-    padding: 10px !important;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
-    width: 100% !important;
-    margin: 0 auto !important;
-}
-
-.ant-tabs-tab {
-    font-family: 'Bebas Neue', sans-serif !important;
-    font-size: 1.2em !important;
-    color: #00ffff !important;
-    text-shadow: 0 0 8px #00ffff !important;
-    background: transparent !important;
-    border: none !important;
-    transition: all 0.2s ease !important;
-    flex-shrink: 0 !important;
-}
-
-.ant-tabs-tab-active {
-    color: #ff0000 !important;
-    text-shadow: 0 0 10px #ff0000 !important;
-}
-
-.ant-tabs-ink-bar {
-    background: #ff0000 !important;
-}
-
-/* === BIO / PROFILE SECTION === */
-.bio-section {
-    background: rgba(10, 10, 10, 0.6) !important;
-    padding: 30px !important;
-    border-radius: 10px !important;
-    box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;
-    border: 2px dashed rgba(255, 0, 0, 0.7) !important;
-    width: 100% !important;
-    max-width: 900px !important;
-}
-
-.bio-section h2 {
-    font-family: 'Orbitron', sans-serif;
-    color: #ffcc00;
-    text-shadow: 0 0 10px #ffcc00;
-    border-bottom: 2px solid rgba(255, 204, 0, 0.4);
-    padding-bottom: 8px;
-    font-size: 1.8em;
-}
-
-.bio-section p {
-    font-size: 1.1em;
-    line-height: 1.7;
-}
-
-.bio-section .image-wrapper {
-    text-align: center;
-    margin: 25px 0;
-}
-
-.bio-section .inline-image {
-    max-width: 90%;
-    border: 4px solid #00ffff;
-    box-shadow: 0 0 15px #00ffff;
-    border-radius: 8px;
-}
-
-.cta {
-    font-family: 'Rubik Mono One', monospace !important;
-    font-size: 1.5em !important;
-    color: #ff0000 !important;
-    text-align: center !important;
-    margin-top: 40px !important;
-    padding: 18px !important;
-    background: rgba(255, 0, 0, 0.15) !important;
-    border: 2px solid #ff0000 !important;
-    border-radius: 8px !important;
-    animation: pulse-border 2s infinite alternate !important;
-}
-
-@keyframes pulse-border {
-    from { box-shadow: 0 0 12px #ff0000; }
-    to { box-shadow: 0 0 25px rgba(255, 0, 0, 0.8); }
-}
-
-/* === CHARACTER CARD GRID === */
-.character-list-container {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
-    gap: 25px !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-}
-
-/* === INDIVIDUAL CHARACTER CARD === */
-.char-card-class {
-    background: rgba(0, 0, 0, 0.8) !important;
-    border: 2px solid #ff0000 !important;
-    border-radius: 12px !important;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7) !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-    display: flex !important;
-    flex-direction: column !important;
-    overflow: hidden !important;
-}
-
-.char-card-class:hover {
-    transform: translateY(-5px) scale(1.02) !important;
-    box-shadow: 0 0 25px #ff0000, 0 0 45px rgba(255, 0, 0, 0.8) !important;
-}
-
-/* Fix #5: Smaller character profile pictures with rounded edges */
-.ant-card-cover img {
-    height: 140px !important;
-    object-fit: cover !important;
-    border-bottom: 2px solid rgba(255, 0, 0, 0.5) !important;
-    border-radius: 12px 12px 0 0 !important;
-}
-
-.ant-card-body {
-    padding: 15px !important;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-/* Fix #6: Smaller character card title */
-.card-title-row span:first-child span,
-.ant-card-meta-title {
-    font-family: 'Bebas Neue', sans-serif !important;
-    color: #00ffff !important;
-    font-size: 1.1em !important;
-    text-shadow: 0 0 8px #00ffff !important;
-}
-
-/* Fix #7: Solid green character description */
-.ant-card-meta-description {
-    color: #00ff00 !important;
-    font-size: 0.95em !important;
-    line-height: 1.5 !important;
-    margin-bottom: 15px;
-    flex-grow: 1;
-    text-shadow: none !important;
-}
-
-/* Card Tags */
-.custom-scroll {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-
-.ant-tag {
-    background-color: rgba(0, 255, 255, 0.15) !important;
-    color: #00ffff !important;
-    border: 1px solid rgba(0, 255, 255, 0.6) !important;
-    font-size: 0.85em !important;
-}
-
-.ant-tag-error {
-    background-color: rgba(255, 0, 0, 0.25) !important;
-    color: #ff0000 !important;
-    border-color: rgba(255, 0, 0, 0.8) !important;
-}
-
-/* Card Stats */
-.stats {
-    display: flex !important;
-    justify-content: space-between;
-    width: 100%;
-    padding-top: 10px;
-    border-top: 1px solid rgba(255, 0, 0, 0.3);
-}
-
-.stats > div {
-    color: #00ffff !important;
-    text-shadow: 0 0 6px rgba(0, 255, 255, 0.7) !important;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.stats svg {
+button.ant-btn:has(.anticon-close-circle) .ant-btn-icon svg {
     fill: #ff0000 !important;
-    width: 18px;
-    height: 18px;
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 8px !important;
+    filter: drop-shadow(0 0 6px rgba(255, 0, 0, 0.6)) !important;
 }
 
-/* === RESPONSIVE DESIGN === */
-@media (max-width: 768px) {
-    .profile-container {
-        margin: 20px auto !important;
-        gap: 20px;
-    }
-    .profile-pic {
-        width: 150px;
-        height: 150px;
-    }
-    .username {
-        font-size: 2.8em;
-    }
-    div.text-sm.mb-2 > span.mr-4 {
-        font-size: 1.4em !important;
-    }
-    div.text-sm.mb-2 > button.ant-btn {
-        font-size: 1.2em !important;
-        padding: 10px 25px !important;
-    }
-    .ant-btn-icon svg {
-        width: 20px !important;
-        height: 20px !important;
-    }
-    .character-list-container {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
-    }
-    .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
-        top: 280px !important;
-    }
+button.ant-btn:has(.anticon-close-circle):hover .ant-btn-icon svg {
+    fill: #ff3333 !important;
+    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.9)) !important;
 }
-
-@media (max-width: 480px) {
-    .username {
-        font-size: 2em;
-    }
-    .profile-pic {
-        width: 120px;
-        height: 120px;
-    }
-    div.text-sm.mb-2 > span.mr-4 {
-        font-size: 1.2em !important;
-    }
-    div.text-sm.mb-2 > button.ant-btn {
-        font-size: 1em !important;
-        padding: 8px 20px !important;
-    }
-    .ant-btn-icon svg {
-        width: 18px !important;
-        height: 18px !important;
-    }
-    .character-list-container {
-        grid-template-columns: 1fr !important;
-    }
-    .bio-section {
-        padding: 20px !important;
-    }
-    .bio-section h2 {
-        font-size: 1.5em;
-    }
-    .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
-        top: 240px !important;
-    }
-        }
+  
+footer.ant-layout-footer,  
+.ant-col.text-center.my-2,  
+.ant-spin-container > div:last-child > div:last-child:not(.sc-fmKFGs):not(.ant-tabs-content-holder) {  
+    display: none !important;  
+}  
+  
+.profile-container {  
+    max-width: 900px;  
+    margin: 300px auto 0 auto !important; /* RETAINED POSITION */  
+    padding: 0px;  
+    background: none !important;  
+    border-radius: 0px !important;  
+    box-shadow: none !important;  
+    position: relative;  
+    z-index: 2;  
+    overflow: visible;  
+    border: none !important;  
+    display: flex;  
+    flex-direction: column;  
+    align-items: center;  
+    text-align: center;  
+    box-sizing: border-box;  
+}  
+  
+.profile-header {  
+    text-align: center;  
+    margin-bottom: 0px;  
+    padding-bottom: 0px;  
+    width: 100%;  
+    background: none !important;  
+    display: flex;  
+    flex-direction: column;  
+    align-items: center;  
+    position: relative;  
+}  
+  
+.profile-pic {  
+    width: 200px;  
+    height: 200px;  
+    border-radius: 50%;  
+    margin-bottom: 25px;  
+    object-fit: cover;  
+    z-index: 10;  
+    position: relative;  
+    box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000 !important;  
+    border: 3px solid rgba(255, 0, 0, 0.7) !important;  
+    animation: spinning-animation 1s linear infinite !important;
+}  
+  
+@keyframes spinning-animation {  
+    from {  
+        transform: rotate(0deg);  
+    }  
+    to {  
+        transform: rotate(360deg);  
+    }  
+}  
+  
+.username {  
+    font-family: 'Rubik Mono One', monospace;  
+    font-size: 4em;  
+    color: #00ffff;  
+    text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;  
+    margin: 0;  
+    padding: 0;  
+    letter-spacing: 3px;  
+    line-height: 1.1;  
+    margin-top: 20px;  
+}  
+  
+.username .flicker {  
+    animation: flicker-animation 1.5s infinite alternate;  
+    display: inline-block;  
+}  
+  
+.username .rated-r {  
+    color: #ff0000;  
+    text-shadow: 0 0 12px #ff0000, 0 0 25px #ff0000, 0 0 50px #ff0000;  
+}  
+  
+@keyframes flicker-animation {  
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {  
+        opacity: 1;  
+        text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;  
+    }  
+    20%, 24%, 55% {  
+        opacity: 0.4;  
+        text-shadow: none;  
+    }  
+    22% {  
+        opacity: 0.6;  
+        text-shadow: 0 0 8px #00ffff;  
+    }  
+}  
+  
+.bio-section h2 {  
+    font-family: 'Orbitron', sans-serif;  
+    color: #ffcc00;  
+    text-shadow: 0 0 10px #ffcc00;  
+    margin-top: 30px;  
+    margin-bottom: 15px;  
+    border-bottom: 2px solid rgba(255, 204, 0, 0.4);  
+    padding-bottom: 8px;  
+    font-size: 1.8em;  
+    letter-spacing: 0.5px;  
+}  
+  
+.bio-section p {  
+    font-family: 'IBM Plex Mono', monospace !important;  
+    color: #e0e0e0 !important;  
+    margin-bottom: 18px;  
+    font-size: 1.15em;  
+    line-height: 1.7;  
+    word-wrap: break-word;  
+}  
+  
+.bio-section .image-wrapper {  
+    text-align: center;  
+    margin: 25px 0;  
+}  
+  
+.bio-section .inline-image {  
+    max-width: 90%;  
+    height: auto;  
+    border: 4px solid #00ffff;  
+    box-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.6);  
+    border-radius: 8px;  
+    transition: transform 0.3s ease-in-out;  
+}  
+  
+.bio-section .inline-image:hover {  
+    transform: scale(1.03);  
+}  
+  
+/* === TABS (Fix #6 - Slider functionality) === */  
+.ant-tabs-nav-wrap {  
+    overflow-x: auto !important;  
+    overflow-y: hidden !important;  
+    -webkit-overflow-scrolling: touch !important;  
+    scrollbar-width: thin !important;  
+    scrollbar-color: rgba(0, 255, 255, 0.5) transparent !important;  
+}  
+  
+.ant-tabs-nav-wrap::-webkit-scrollbar {  
+    height: 6px !important;  
+}  
+  
+.ant-tabs-nav-wrap::-webkit-scrollbar-track {  
+    background: transparent !important;  
+}  
+  
+.ant-tabs-nav-wrap::-webkit-scrollbar-thumb {  
+    background: rgba(0, 255, 255, 0.5) !important;  
+    border-radius: 3px !important;  
+}  
+  
+.ant-tabs-nav-list {  
+    display: flex;  
+    flex-wrap: nowrap !important;  
+    justify-content: flex-start;  
+    min-width: min-content !important;  
+}  
+  
+.ant-tabs-nav {  
+    background: rgba(10, 10, 10, 0.7) !important;  
+    border-radius: 10px !important;  
+    padding: 10px !important;  
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;  
+    width: 100% !important;  
+    margin: 0 auto !important;  
+}  
+  
+.ant-tabs-tab {  
+    font-family: 'Bebas Neue', sans-serif !important;  
+    font-size: 1.2em !important;  
+    color: #00ffff !important;  
+    text-shadow: 0 0 8px #00ffff !important;  
+    background: transparent !important;  
+    border: none !important;  
+    transition: all 0.2s ease !important;  
+    flex-shrink: 0 !important;  
+}  
+  
+.ant-tabs-tab-active {  
+    color: #ff0000 !important;  
+    text-shadow: 0 0 10px #ff0000 !important;  
+}  
+  
+.ant-tabs-ink-bar {  
+    background: #ff0000 !important;  
+}  
+  
+/* === BIO / PROFILE SECTION === */  
+.bio-section {  
+    background: rgba(10, 10, 10, 0.6) !important;  
+    padding: 30px !important;  
+    border-radius: 10px !important;  
+    box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;  
+    border: 2px dashed rgba(255, 0, 0, 0.7) !important;  
+    width: 100% !important;  
+    max-width: 900px !important;  
+}  
+  
+.bio-section h2 {  
+    font-family: 'Orbitron', sans-serif;  
+    color: #ffcc00;  
+    text-shadow: 0 0 10px #ffcc00;  
+    border-bottom: 2px solid rgba(255, 204, 0, 0.4);  
+    padding-bottom: 8px;  
+    font-size: 1.8em;  
+}  
+  
+.bio-section p {  
+    font-size: 1.1em;  
+    line-height: 1.7;  
+}  
+  
+.bio-section .image-wrapper {  
+    text-align: center;  
+    margin: 25px 0;  
+}  
+  
+.bio-section .inline-image {  
+    max-width: 90%;  
+    border: 4px solid #00ffff;  
+    box-shadow: 0 0 15px #00ffff;  
+    border-radius: 8px;  
+}  
+  
+.cta {  
+    font-family: 'Rubik Mono One', monospace !important;  
+    font-size: 1.5em !important;  
+    color: #ff0000 !important;  
+    text-align: center !important;  
+    margin-top: 40px !important;  
+    padding: 18px !important;  
+    background: rgba(255, 0, 0, 0.15) !important;  
+    border: 2px solid #ff0000 !important;  
+    border-radius: 8px !important;  
+    animation: pulse-border 2s infinite alternate !important;  
+}  
+  
+@keyframes pulse-border {  
+    from { box-shadow: 0 0 12px #ff0000; }  
+    to { box-shadow: 0 0 25px rgba(255, 0, 0, 0.8); }  
+}  
+  
+/* === CHARACTER CARD GRID === */  
+.character-list-container {  
+    display: grid !important;  
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;  
+    gap: 25px !important;  
+    width: 100% !important;  
+    max-width: 1200px !important;  
+}  
+  
+/* === INDIVIDUAL CHARACTER CARD === */  
+.char-card-class {  
+    background: rgba(0, 0, 0, 0.8) !important;  
+    border: 2px solid #ff0000 !important;  
+    border-radius: 12px !important;  
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7) !important;  
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;  
+    display: flex !important;  
+    flex-direction: column !important;  
+    overflow: hidden !important;  
+}  
+  
+.char-card-class:hover {  
+    transform: translateY(-5px) scale(1.02) !important;  
+    box-shadow: 0 0 25px #ff0000, 0 0 45px rgba(255, 0, 0, 0.8) !important;  
+}  
+  
+/* Fix #5: Smaller character profile pictures with rounded edges */  
+.ant-card-cover img {  
+    height: 140px !important;  
+    object-fit: cover !important;  
+    border-bottom: 2px solid rgba(255, 0, 0, 0.5) !important;  
+    border-radius: 12px 12px 0 0 !important;  
+}  
+  
+.ant-card-body {  
+    padding: 15px !important;  
+    display: flex;  
+    flex-direction: column;  
+    flex-grow: 1;  
+}  
+  
+/* Fix #6: Smaller character card title */  
+.card-title-row span:first-child span,  
+.ant-card-meta-title {  
+    font-family: 'Bebas Neue', sans-serif !important;  
+    color: #00ffff !important;  
+    font-size: 1.1em !important;  
+    text-shadow: 0 0 8px #00ffff !important;  
+}  
+  
+/* Fix #7: Solid green character description */  
+.ant-card-meta-description {  
+    color: #00ff00 !important;  
+    font-size: 0.95em !important;  
+    line-height: 1.5 !important;  
+    margin-bottom: 15px;  
+    flex-grow: 1;  
+    text-shadow: none !important;  
+}  
+  
+/* Card Tags */  
+.custom-scroll {  
+    display: flex;  
+    flex-wrap: wrap;  
+    gap: 8px;  
+    margin-bottom: 10px;  
+}  
+  
+.ant-tag {  
+    background-color: rgba(0, 255, 255, 0.15) !important;  
+    color: #00ffff !important;  
+    border: 1px solid rgba(0, 255, 255, 0.6) !important;  
+    font-size: 0.85em !important;  
+}  
+  
+.ant-tag-error {  
+    background-color: rgba(255, 0, 0, 0.25) !important;  
+    color: #ff0000 !important;  
+    border-color: rgba(255, 0, 0, 0.8) !important;  
+}  
+  
+/* Card Stats */  
+.stats {  
+    display: flex !important;  
+    justify-content: space-between;  
+    width: 100%;  
+    padding-top: 10px;  
+    border-top: 1px solid rgba(255, 0, 0, 0.3);  
+}  
+  
+.stats > div {  
+    color: #00ffff !important;  
+    text-shadow: 0 0 6px rgba(0, 255, 255, 0.7) !important;  
+    display: flex;  
+    align-items: center;  
+    gap: 5px;  
+}  
+  
+.stats svg {  
+    fill: #ff0000 !important;  
+    width: 18px;  
+    height: 18px;  
+}  
+  
+/* === RESPONSIVE DESIGN === */  
+@media (max-width: 768px) {  
+    .profile-container {  
+        margin: 20px auto !important;  
+        gap: 20px;  
+    }  
+    .profile-pic {  
+        width: 150px;  
+        height: 150px;  
+    }  
+    .username {  
+        font-size: 2.8em;  
+    }  
+    div.text-sm.mb-2 > span.mr-4 {  
+        font-size: 1.4em !important;  
+    }  
+    div.text-sm.mb-2 > button.ant-btn {  
+        font-size: 1.2em !important;  
+        padding: 10px 25px !important;  
+    }  
+    .ant-btn-icon svg {  
+        width: 20px !important;  
+        height: 20px !important;  
+    }  
+    .character-list-container {  
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;  
+    }  
+    .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {  
+        top: 280px !important;  
+    }  
+}  
+  
+@media (max-width: 480px) {  
+    .username {  
+        font-size: 2em;  
+    }  
+    .profile-pic {  
+        width: 120px;  
+        height: 120px;  
+    }  
+    div.text-sm.mb-2 > span.mr-4 {  
+        font-size: 1.2em !important;  
+    }  
+    div.text-sm.mb-2 > button.ant-btn {  
+        font-size: 1em !important;  
+        padding: 8px 20px !important;  
+    }  
+    .ant-btn-icon svg {  
+        width: 18px !important;  
+        height: 18px !important;  
+    }  
+    .character-list-container {  
+        grid-template-columns: 1fr !important;  
+    }  
+    .bio-section {  
+        padding: 20px !important;  
+    }  
+    .bio-section h2 {  
+        font-size: 1.5em;  
+    }  
+    .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {  
+        top: 240px !important;  
+    }  
+}
