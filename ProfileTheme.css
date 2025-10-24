@@ -631,7 +631,6 @@ footer.ant-layout-footer,
 /* Hiding specific elements as requested */
 button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.ant-btn-lg.ant-dropdown-trigger,
 .ant-select-selection-overflow,
-.ant-select-selection-wrap,
-.ant-select-selector {
+.ant-select-selection-wrap {
   display: none !important;
 }
