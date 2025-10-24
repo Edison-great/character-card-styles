@@ -43,20 +43,6 @@ body::before {
   filter: brightness(0.7);
 }
 
-/* FORCE HIDE CHUB SEARCH BAR - Multiple selectors */
-header.ant-layout-header,
-.ant-layout-header,
-nav.ant-menu,
-.ant-menu-overflow,
-div[class*="Header"],
-header[class*="header"] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  overflow: hidden !important;
-}
-
 /* Main Container */
 .tg-sec {
   position: relative;
@@ -449,3 +435,11 @@ button.ant-btn:hover {
     transition: none !important;
   }
 	  }
+
+/* Hiding specific elements as requested */
+button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.ant-btn-lg.ant-dropdown-trigger,
+.ant-select-selection-overflow,
+.ant-select-selection-wrap,
+.ant-select-selector {
+  display: none !important;
+}
