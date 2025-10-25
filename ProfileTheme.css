@@ -210,30 +210,6 @@ footer.ant-layout-footer,
     display: none !important;  
 }
 
-/* Change the text of the "Block this creator" button */
-div.text-sm.mb-2 > button.ant-btn > span:not(.ant-btn-icon) {
-    font-family: 'Press Start 2P', cursive !important; /* Retain button font */
-    content: "BLOCK BUTTON ✨, maybe in another life we were friends (⁠´⁠◡⁠‿⁠ゝ⁠◡⁠`⁠)" !important;
-    font-size: 0.9em !important; /* Adjust font size to fit */
-    white-space: normal !important; /* Allow text to wrap if necessary */
-    line-height: 1.2 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    height: 100% !important;
-}
-
-/* Hide the icon within the block button if you don't want it */
-div.text-sm.mb-2 > button.ant-btn > span.ant-btn-icon {
-    display: none !important;
-}
-
-/* Adjust button padding to accommodate the new text, if needed */
-div.text-sm.mb-2 > button.ant-btn {
-    padding: 10px 20px !important; /* Adjusted padding */
-    height: auto !important; /* Allow height to adjust to content */
-    align-items: center !important;
-}
 .profile-container {  
     max-width: 900px;  
     margin: 300px auto 0 auto !important; /* RETAINED POSITION */  
