@@ -634,16 +634,3 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
 .ant-select-selection-wrap {
   display: none !important;
 }
-
-/* Change the text of the "Block this creator" button */
-div.text-sm.mb-2 > button.ant-btn > span:not(.ant-btn-icon) {
-    font-family: 'Press Start 2P', cursive !important; /* Retain button font */
-    content: "BLOCK BUTTON ✨, maybe in another life we were friends (⁠´⁠◡⁠‿⁠ゝ⁠◡⁠`⁠)" !important;
-    font-size: 0.9em !important; /* Adjust font size to fit */
-    white-space: normal !important; /* Allow text to wrap if necessary */
-    line-height: 1.2 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    height: 100% !important;
-}
