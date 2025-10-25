@@ -208,7 +208,39 @@ footer.ant-layout-footer,
 .ant-col.text-center.my-2,  
 .ant-spin-container > div:last-child > div:last-child:not(.sc-fmKFGs):not(.ant-tabs-content-holder) {  
     display: none !important;  
-}  
+}
+
+/* ... (your existing CSS) ... */
+
+div.text-sm.mb-2 > button.ant-btn {
+    /* ... (your existing button styles) ... */
+    position: relative !important; /* Needed for absolute positioning of pseudo-element */
+    font-size: 0 !important; /* Hide original text */
+    text-indent: -9999px !important; /* Further hide original text */
+}
+
+div.text-sm.mb-2 > button.ant-btn:after {
+    content: "BLOCK BUTTON ✨, maybe in another life we were friends (⁠´⁠◡⁠‿⁠ゝ⁠◡⁠`⁠) " !important; /* Your new text */
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    font-family: 'Press Start 2P', cursive !important; /* Retain desired font */
+    font-size: 1.8em !important; /* Adjust size as needed */
+    color: #00ffff !important; /* Retain desired color */
+    text-indent: 0 !important; /* Make pseudo-element text visible */
+    white-space: nowrap !important; /* Prevent text wrapping */
+    overflow: hidden !important; /* Hide any overflow */
+    text-overflow: ellipsis !important; /* Add ellipsis if text is too long */
+    max-width: 90% !important; /* Ensure text stays within button width */
+}
+
+/* Adjust hover for the new text if needed */
+div.text-sm.mb-2 > button.ant-btn:hover:after {
+    color: #fff !important; /* Change color on hover */
+}
+
+/* ... (rest of your existing CSS) ... */
   
 .profile-container {  
     max-width: 900px;  
