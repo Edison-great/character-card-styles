@@ -78,7 +78,7 @@ img[src="/logo_cataract.png"],
     background: rgba(10, 10, 10, 0.4) !important;  
     padding: 25px !important;  
     border-radius: 10px !important;  
-    margin-top: 500px !important;  
+    margin-top: 700px !important;  
     box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;  
     border: 2px dashed rgba(255, 0, 0, 0.7) !important;  
     width: 100% !important;  
@@ -110,7 +110,7 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
 /* Specific targeting for the follower count and button block - POSITIONED BELOW CUSTOM USERNAME */  
 .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 div.text-sm.mb-2 {  
     position: absolute !important;  
-    top: 320px !important;  
+    top: 450px !important;  
     left: 50% !important;  
     transform: translateX(-50%) !important;  
     display: flex !important;  
@@ -531,7 +531,7 @@ footer.ant-layout-footer,
         font-size: 2.8em;  
     }  
     .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 div.text-sm.mb-2 {  
-        top: 280px !important;  
+        top: 380px !important;  
         padding: 15px 25px !important;  
     }  
     .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 div.text-sm.mb-2 > span.mr-4 {  
@@ -549,7 +549,7 @@ footer.ant-layout-footer,
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;  
     }  
     .bio-section {  
-        margin-top: 400px !important;  
+        margin-top: 600px !important;  
     }  
 }  
   
@@ -565,7 +565,7 @@ footer.ant-layout-footer,
         height: 120px;  
     }  
     .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 div.text-sm.mb-2 {  
-        top: 240px !important;  
+        top: 350px !important;  
         padding: 12px 20px !important;  
     }  
     .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 div.text-sm.mb-2 > span.mr-4 {  
@@ -584,7 +584,7 @@ footer.ant-layout-footer,
     }  
     .bio-section {  
         padding: 20px !important;  
-        margin-top: 350px !important;  
+        margin-top: 550px !important;  
     }  
     .bio-section h2 {  
         font-size: 1.5em;  
