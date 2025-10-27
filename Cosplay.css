@@ -1,14 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&family=Righteous&family=Fredoka:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Comic+Neue:wght@400;700&display=swap'); /* Added for playful fonts */
+
 
 /* === GLOBAL STYLES === */
 body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
-    background: url('https://archive.org/download/jayden-illustration-set_0/Jayden%20background.png') no-repeat center center fixed !important;
+    background: url('https://archive.org/download/jayden-illustration-set_0/Jayden%20background.png') no-repeat center center fixed !important; /* New background image */
     background-size: cover !important;
-    font-family: 'Poppins', sans-serif !important;
-    color: #2d2d2d !important;
+    font-family: 'Comic Neue', cursive !important; /* Playful general font */
+    color: #FFFACD !important; /* Soft cream for general text */
 }
 
-/* === HEADER TRANSPARENCY === */
+/* === HEADER TRANSPARENCY (Fix #3) === */
 .ant-layout-header {
     background: transparent !important;
     backdrop-filter: none !important;
@@ -19,16 +22,19 @@ body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
     background-color: transparent !important;
 }
 
+/* Search bar transparency */
 .no-arrow.no-vertical-anything {
     background: transparent !important;
 }
 
 .ant-select-selector {
     background: transparent !important;
-    border: 1px solid rgba(255, 105, 180, 0.3) !important;
+    border: 1px solid rgba(255, 105, 180, 0.5) !important; /* Pink border */
 }
 
-/* === LOGO REPLACEMENT === */
+/* === LOGO REPLACEMENT (FINAL FIX — removes all background box/containers) === */
+
+/* Remove backgrounds and boxes from all possible logo containers */
 .ant-menu-item,
 .ant-menu-item a,
 .ant-menu-item a::before,
@@ -45,28 +51,56 @@ body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
     margin: 0 !important;
 }
 
+/* Replace the actual logo image cleanly */
 .ant-menu-item a img[src="/logo_cataract.png"],
 img[src="/logo_cataract.png"],
 .top-nav-logo img,
 .top-nav-logo {
-    content: url('https://archive.org/download/background_GEN3RATED_R/Untitled61_20251014054044.png') !important;
-    width: 50px !important;
-    height: 50px !important;
+    content: url('https://archive.org/download/jayden-illustration-set_0/Chibi%20jayden.png') !important; /* Replaced with chibi Jayden for a playful touch */
+    width: 60px !important; /* Slightly larger */
+    height: 60px !important; /* Slightly larger */
     display: inline-block !important;
     background: transparent !important;
     background-color: transparent !important;
     border: none !important;
     box-shadow: none !important;
     object-fit: contain !important;
+    image-rendering: auto !important;
+    filter: drop-shadow(0 0 8px rgba(255, 192, 203, 0.8)); /* Soft pink shadow */
 }
 
+/* Extra measure: prevent menu hover highlight box from appearing */
 .ant-menu-item-selected,
 .ant-menu-item:hover {
     background: transparent !important;
     box-shadow: none !important;
 }
 
-/* === HIDE CHUB ELEMENTS === */
+.bio-section {
+    background: rgba(255, 192, 203, 0.3) !important; /* Soft pink translucent background */
+    padding: 25px !important;
+    border-radius: 15px !important; /* More rounded */
+    margin-top: 550px !important;
+    box-shadow: inset 0 0 18px rgba(255, 105, 180, 0.6) !important; /* Brighter pink inner shadow */
+    border: 3px dashed rgba(255, 105, 180, 0.8) !important; /* Brighter pink dashed border */
+    width: 100% !important;
+    max-width: 900px !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
+}
+
+p, span, h1, h2, h3, a, div {
+    color: #FFFACD !important; /* Soft cream for general text */
+}
+a {
+    color: #87CEEB !important; /* Sky blue for links */
+    text-decoration: none !important;
+}
+a:hover {
+    text-decoration: underline !important;
+    color: #FFD1DC !important; /* Light pink on hover */
+}
+
 .ant-avatar.ant-avatar-square.ant-avatar-image[style*="width: 100px;"],
 img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
 .ant-typography.my-2,
@@ -76,8 +110,8 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     display: none !important;
 }
 
-/* === FOLLOWER COUNT AND BUTTON POSITIONING === */
-div.text-sm.mb-2,
+/* Specific targeting for the follower count and button block - FIXED POSITIONING AND INCREASED SIZE */
+div.text-sm.mb-2, /* This targets the direct container that holds both the span and button */
 .ant-row.ant-row-start.ant-row-middle {
     position: absolute !important;
     top: 850px !important;
@@ -91,17 +125,18 @@ div.text-sm.mb-2,
     z-index: 100 !important;
     pointer-events: auto !important;
     padding: 30px 40px !important;
-    border-radius: 12px !important;
+    border-radius: 15px !important; /* More rounded */
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
 }
 
+/* Ensure the span for followers is styled correctly within the new structure */
 div.text-sm.mb-2 > span.mr-4 {
-    font-family: 'Fredoka', sans-serif !important;
-    color: #ff1493 !important;
-    font-size: 2em !important;
-    text-shadow: 0 0 15px rgba(255, 20, 147, 0.6), 0 0 30px rgba(255, 105, 180, 0.4) !important;
+    font-family: 'Comic Neue', cursive !important; /* Playful font */
+    color: #FFD1DC !important; /* Light pink */
+    font-size: 2.2em !important; /* Slightly larger */
+    text-shadow: 0 0 15px #FFD1DC, 0 0 30px rgba(255, 192, 203, 0.8) !important; /* Pink glow */
     margin-bottom: 20px !important;
     white-space: nowrap !important;
     display: block !important;
@@ -109,17 +144,19 @@ div.text-sm.mb-2 > span.mr-4 {
     letter-spacing: 2px !important;
 }
 
+/* Button styling, now applying the neon effect to the correctly positioned button */
 div.text-sm.mb-2 > button.ant-btn {
-    font-family: 'Righteous', cursive !important;
+    font-family: 'Press Start 2P', cursive !important;
     font-size: 1.8em !important;
     padding: 18px 50px !important;
-    border-radius: 25px !important;
-    background: linear-gradient(135deg, #ff69b4, #ff1493) !important;
-    color: #ffffff !important;
-    border: 4px solid #ffb6c1 !important;
-    box-shadow: 0 0 20px rgba(255, 105, 180, 0.8), 0 0 40px rgba(255, 20, 147, 0.5) !important;
-    transition: all 0.3s ease-in-out !important;
+    border-radius: 10px !important;
+    background-color: transparent !important;
+    color: #87CEEB !important; /* Sky blue text */
+    border: 5px solid #87CEEB !important; /* Sky blue border */
+    box-shadow: 0 0 20px #87CEEB, 0 0 40px #87CEEB, 0 0 60px #87CEEB !important; /* Sky blue glow */
+    transition: all 0.1s ease-in-out !important;
     margin-left: 0 !important;
+    animation: neon-flicker-blue 1.5s infinite alternate !important; /* Blue flicker animation */
     width: 95% !important;
     max-width: 350px !important;
     display: inline-flex !important;
@@ -128,10 +165,10 @@ div.text-sm.mb-2 > button.ant-btn {
 }
 
 div.text-sm.mb-2 > button.ant-btn:hover {
-    background: linear-gradient(135deg, #ff1493, #ff69b4) !important;
-    border-color: #ff69b4 !important;
-    box-shadow: 0 0 30px rgba(255, 105, 180, 1), 0 0 50px rgba(255, 20, 147, 0.8) !important;
-    transform: scale(1.05) !important;
+    background-color: rgba(135, 206, 235, 0.3) !important; /* Lighter blue on hover */
+    border-color: #fff !important;
+    color: #fff !important;
+    box-shadow: 0 0 25px #fff, 0 0 50px rgba(255, 255, 255, 0.9) !important;
 }
 
 .ant-btn-icon {
@@ -139,12 +176,31 @@ div.text-sm.mb-2 > button.ant-btn:hover {
 }
 
 .ant-btn-icon svg {
-    fill: #ffffff !important;
+    fill: #FF69B4 !important; /* Hot pink icon */
+    transition: fill 0.1s ease-in-out !important;
     width: 32px !important;
     height: 32px !important;
 }
 
-/* === HIDE MORE CHUB ELEMENTS === */
+div.text-sm.mb-2 > button.ant-btn:hover .ant-btn-icon svg {
+    fill: #fff !important;
+}
+
+@keyframes neon-flicker-blue { /* New flicker animation for blue */
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 20px #87CEEB, 0 0 40px #87CEEB, 0 0 60px #87CEEB;
+    }
+    20%, 24%, 55% {
+        opacity: 0.7;
+        box-shadow: none;
+    }
+    22% {
+        opacity: 0.9;
+        box-shadow: 0 0 12px #87CEEB;
+    }
+}
+
 span.ant-tag.mb-2,
 button[aria-describedby]:not(.ant-btn-text),
 .ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {
@@ -157,10 +213,9 @@ footer.ant-layout-footer,
     display: none !important;
 }
 
-/* === PROFILE CONTAINER === */
 .profile-container {
-    max-width: 1000px;
-    margin: 80px auto 0 auto !important;
+    max-width: 900px;
+    margin: 300px auto 0 auto !important;
     padding: 0px;
     background: none !important;
     border-radius: 0px !important;
@@ -176,276 +231,123 @@ footer.ant-layout-footer,
     box-sizing: border-box;
 }
 
-/* === COSPLAY THEME SECTIONS === */
-
-/* Name GIF Section */
-.cg-name-gif {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto 30px auto;
+.profile-header {
     text-align: center;
-}
-
-.cg-name-gif img {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
     width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(255, 105, 180, 0.6);
-}
-
-/* Description Section */
-.cg-description {
-    width: 100%;
-    max-width: 800px;
-    margin: 30px auto;
-    text-align: center;
-    padding: 0 20px;
-}
-
-.cg-description p {
-    font-family: 'Poppins', sans-serif !important;
-    font-size: 1.3em !important;
-    color: #2d2d2d !important;
-    line-height: 1.8 !important;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 182, 193, 0.6) !important;
-    font-weight: 500 !important;
-    margin: 0 !important;
-}
-
-/* Info Card */
-.cg-info-card {
-    width: 100%;
-    max-width: 850px;
-    margin: 40px auto;
-    background: linear-gradient(135deg, rgba(255, 182, 193, 0.95), rgba(255, 240, 245, 0.95));
-    border-radius: 25px;
-    padding: 30px;
-    box-shadow: 0 10px 40px rgba(255, 105, 180, 0.5);
-    border: 4px solid #ff69b4;
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    align-items: stretch;
-}
-
-.cg-info-image {
-    flex: 0 0 280px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cg-info-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-}
-
-.cg-info-details {
-    flex: 1;
+    background: none !important;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: left;
-}
-
-.cg-info-details h3 {
-    font-family: 'Righteous', cursive !important;
-    font-size: 2em !important;
-    color: #ff1493 !important;
-    margin: 0 0 20px 0 !important;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5) !important;
-}
-
-.cg-info-details p {
-    font-family: 'Poppins', sans-serif !important;
-    font-size: 1.1em !important;
-    color: #2d2d2d !important;
-    margin: 8px 0 !important;
-    line-height: 1.6 !important;
-}
-
-.cg-info-details strong {
-    color: #ff1493 !important;
-    font-weight: 700 !important;
-}
-
-/* Scenario Section */
-.cg-scenarios {
-    width: 100%;
-    max-width: 850px;
-    margin: 40px auto;
-}
-
-.cg-scenarios h2 {
-    font-family: 'Righteous', cursive !important;
-    font-size: 2.5em !important;
-    color: #ff1493 !important;
-    text-align: center !important;
-    margin-bottom: 25px !important;
-    text-shadow: 0 0 20px rgba(255, 105, 180, 0.6) !important;
-}
-
-.cg-scenario-item {
-    background: linear-gradient(135deg, rgba(255, 240, 245, 0.95), rgba(255, 182, 193, 0.9));
-    border-radius: 15px;
-    padding: 20px 25px;
-    margin-bottom: 12px;
-    border: 3px solid #ffb6c1;
-    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
-    transition: transform 0.2s ease;
-}
-
-.cg-scenario-item:hover {
-    transform: translateX(5px);
-    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.5);
-}
-
-.cg-scenario-item h4 {
-    font-family: 'Fredoka', sans-serif !important;
-    font-size: 1.4em !important;
-    color: #ff1493 !important;
-    margin: 0 0 10px 0 !important;
-    font-weight: 600 !important;
-}
-
-.cg-scenario-item p {
-    font-family: 'Poppins', sans-serif !important;
-    font-size: 1.05em !important;
-    color: #2d2d2d !important;
-    margin: 0 !important;
-    line-height: 1.6 !important;
-}
-
-/* Music Player */
-.cg-music-player {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    z-index: 1000;
-}
-
-.cg-play-button {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #ff69b4, #ff1493);
-    border: 4px solid #ffb6c1;
-    box-shadow: 0 5px 25px rgba(255, 105, 180, 0.7);
-    cursor: pointer;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
+    position: relative;
 }
 
-.cg-play-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 35px rgba(255, 105, 180, 0.9);
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    object-fit: cover;
+    z-index: 10;
+    position: relative;
+    box-shadow: 0 0 20px #FF69B4, 0 0 40px #FF69B4 !important; /* Hot pink shadow */
+    border: 3px solid rgba(255, 105, 180, 0.7) !important; /* Hot pink border */
+    animation: spinning-animation 1s linear infinite !important;
 }
 
-.cg-play-button svg {
-    width: 30px;
-    height: 30px;
-    fill: #ffffff;
+@keyframes spinning-animation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-/* Credits Section */
-.cg-credits {
-    width: 100%;
-    max-width: 850px;
-    margin: 40px auto;
-    background: linear-gradient(135deg, rgba(255, 240, 245, 0.95), rgba(255, 182, 193, 0.9));
-    border-radius: 20px;
-    padding: 30px;
-    border: 3px solid #ff69b4;
-    box-shadow: 0 8px 30px rgba(255, 105, 180, 0.4);
+.username {
+    font-family: 'Rubik Mono One', monospace;
+    font-size: 4em;
+    color: #FFD1DC !important; /* Light pink username */
+    text-shadow: 0 0 12px #FFD1DC, 0 0 25px #FFD1DC, 0 0 50px #FFD1DC !important;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 3px;
+    line-height: 1.1;
+    margin-top: 20px;
 }
 
-.cg-credits h3 {
-    font-family: 'Righteous', cursive !important;
-    font-size: 2em !important;
-    color: #ff1493 !important;
-    text-align: center !important;
-    margin: 0 0 20px 0 !important;
+.username .flicker {
+    animation: flicker-animation-pink 1.5s infinite alternate; /* Pink flicker animation */
+    display: inline-block;
 }
 
-.cg-credits p {
-    font-family: 'Poppins', sans-serif !important;
-    font-size: 1.1em !important;
-    color: #2d2d2d !important;
-    text-align: center !important;
-    line-height: 1.8 !important;
-    margin: 5px 0 !important;
+.username .rated-r {
+    color: #87CEEB !important; /* Sky blue for "rated-r" part */
+    text-shadow: 0 0 12px #87CEEB, 0 0 25px #87CEEB, 0 0 50px #87CEEB !important;
 }
 
-/* Author's Note */
-.cg-author-note {
-    width: 100%;
-    max-width: 850px;
-    margin: 40px auto;
-    background: linear-gradient(135deg, rgba(255, 182, 193, 0.95), rgba(255, 240, 245, 0.95));
-    border-radius: 20px;
-    padding: 30px;
-    border: 3px solid #ffb6c1;
-    box-shadow: 0 8px 30px rgba(255, 105, 180, 0.4);
+@keyframes flicker-animation-pink { /* New flicker animation for pink */
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 12px #FFD1DC, 0 0 25px #FFD1DC, 0 0 50px #FFD1DC;
+    }
+    20%, 24%, 55% {
+        opacity: 0.4;
+        text-shadow: none;
+    }
+    22% {
+        opacity: 0.6;
+        text-shadow: 0 0 8px #FFD1DC;
+    }
 }
 
-.cg-author-note h3 {
-    font-family: 'Righteous', cursive !important;
-    font-size: 2em !important;
-    color: #ff1493 !important;
-    text-align: center !important;
-    margin: 0 0 20px 0 !important;
+.bio-section h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #FFFF00 !important; /* Bright yellow for section titles */
+    text-shadow: 0 0 10px #FFFF00 !important;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 255, 0, 0.4); /* Yellow border */
+    padding-bottom: 8px;
+    font-size: 1.8em;
+    letter-spacing: 0.5px;
 }
 
-.cg-author-note p {
-    font-family: 'Poppins', sans-serif !important;
-    font-size: 1.1em !important;
-    color: #2d2d2d !important;
-    line-height: 1.8 !important;
-    margin: 15px 0 !important;
+.bio-section p {
+    font-family: 'Comic Neue', cursive !important; /* Playful font for bio text */
+    color: #FFFACD !important; /* Soft cream for bio text */
+    margin-bottom: 18px;
+    font-size: 1.15em;
+    line-height: 1.7;
+    word-wrap: break-word;
 }
 
-.cg-catchphrase {
-    font-family: 'Pacifico', cursive !important;
-    font-size: 1.8em !important;
-    color: #ff1493 !important;
-    text-align: center !important;
-    margin-top: 30px !important;
-    text-shadow: 0 0 15px rgba(255, 105, 180, 0.6) !important;
+.bio-section .image-wrapper {
+    text-align: center;
+    margin: 25px 0;
 }
 
-/* Chibi Image */
-.cg-chibi {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999;
-    width: 250px;
+.bio-section .inline-image {
+    max-width: 90%;
     height: auto;
+    border: 4px solid #87CEEB !important; /* Sky blue border */
+    box-shadow: 0 0 15px #87CEEB, 0 0 30px rgba(135, 206, 235, 0.6) !important; /* Sky blue glow */
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
 }
 
-.cg-chibi img {
-    width: 100%;
-    height: auto;
-    filter: drop-shadow(0 5px 20px rgba(255, 105, 180, 0.6));
-    animation: bounce 2s ease-in-out infinite;
+.bio-section .inline-image:hover {
+    transform: scale(1.03);
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* === TABS === */
+/* === TABS (Fix #6 - Slider functionality) === */
 .ant-tabs-nav-wrap {
     overflow-x: auto !important;
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch !important;
     scrollbar-width: thin !important;
-    scrollbar-color: rgba(255, 105, 180, 0.5) transparent !important;
+    scrollbar-color: rgba(255, 105, 180, 0.5) transparent !important; /* Pink scrollbar */
 }
 
 .ant-tabs-nav-wrap::-webkit-scrollbar {
@@ -457,7 +359,7 @@ footer.ant-layout-footer,
 }
 
 .ant-tabs-nav-wrap::-webkit-scrollbar-thumb {
-    background: rgba(255, 105, 180, 0.5) !important;
+    background: rgba(255, 105, 180, 0.5) !important; /* Pink scrollbar thumb */
     border-radius: 3px !important;
 }
 
@@ -469,17 +371,19 @@ footer.ant-layout-footer,
 }
 
 .ant-tabs-nav {
-    background: rgba(255, 240, 245, 0.9) !important;
-    border-radius: 15px !important;
+    background: rgba(255, 105, 180, 0.3) !important; /* Translucent pink background for tabs */
+    border-radius: 15px !important; /* More rounded */
     padding: 10px !important;
-    box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4) !important;
-    border: 2px solid #ffb6c1 !important;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5) !important; /* Pink shadow */
+    width: 100% !important;
+    margin: 0 auto !important;
 }
 
 .ant-tabs-tab {
-    font-family: 'Fredoka', sans-serif !important;
-    font-size: 1.2em !important;
-    color: #ff1493 !important;
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 1.3em !important; /* Slightly larger tabs */
+    color: #FFD1DC !important; /* Light pink tab text */
+    text-shadow: 0 0 8px #FFD1DC !important;
     background: transparent !important;
     border: none !important;
     transition: all 0.2s ease !important;
@@ -487,15 +391,70 @@ footer.ant-layout-footer,
 }
 
 .ant-tabs-tab-active {
-    color: #ff69b4 !important;
-    font-weight: 600 !important;
+    color: #87CEEB !important; /* Sky blue for active tab */
+    text-shadow: 0 0 10px #87CEEB !important;
 }
 
 .ant-tabs-ink-bar {
-    background: #ff1493 !important;
+    background: #FF69B4 !important; /* Hot pink ink bar */
 }
 
-/* === CHARACTER CARDS === */
+/* === BIO / PROFILE SECTION === */
+.bio-section { /* Redefining for general usage, keeping it similar to above */
+    background: rgba(255, 192, 203, 0.3) !important;
+    padding: 30px !important;
+    border-radius: 15px !important;
+    box-shadow: inset 0 0 18px rgba(255, 105, 180, 0.6) !important;
+    border: 3px dashed rgba(255, 105, 180, 0.8) !important;
+    width: 100% !important;
+    max-width: 900px !important;
+}
+
+.bio-section h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #FFFF00 !important;
+    text-shadow: 0 0 10px #FFFF00 !important;
+    border-bottom: 2px solid rgba(255, 255, 0, 0.4);
+    padding-bottom: 8px;
+    font-size: 1.8em;
+}
+
+.bio-section p {
+    font-size: 1.1em;
+    line-height: 1.7;
+}
+
+.bio-section .image-wrapper {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.bio-section .inline-image {
+    max-width: 90%;
+    border: 4px solid #87CEEB;
+    box-shadow: 0 0 15px #87CEEB;
+    border-radius: 8px;
+}
+
+.cta {
+    font-family: 'Rubik Mono One', monospace !important;
+    font-size: 1.5em !important;
+    color: #FF69B4 !important; /* Hot pink CTA text */
+    text-align: center !important;
+    margin-top: 40px !important;
+    padding: 18px !important;
+    background: rgba(255, 105, 180, 0.15) !important; /* Hot pink translucent background */
+    border: 2px solid #FF69B4 !important; /* Hot pink border */
+    border-radius: 8px !important;
+    animation: pulse-border-pink 2s infinite alternate !important; /* Pink pulse animation */
+}
+
+@keyframes pulse-border-pink { /* New pulse animation for pink */
+    from { box-shadow: 0 0 12px #FF69B4; }
+    to { box-shadow: 0 0 25px rgba(255, 105, 180, 0.8); }
+}
+
+/* === CHARACTER CARD GRID === */
 .character-list-container {
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
@@ -504,11 +463,12 @@ footer.ant-layout-footer,
     max-width: 1200px !important;
 }
 
+/* === INDIVIDUAL CHARACTER CARD === */
 .char-card-class {
-    background: linear-gradient(135deg, rgba(255, 240, 245, 0.95), rgba(255, 182, 193, 0.9)) !important;
-    border: 3px solid #ff69b4 !important;
-    border-radius: 20px !important;
-    box-shadow: 0 5px 20px rgba(255, 105, 180, 0.5) !important;
+    background: rgba(0, 0, 0, 0.7) !important; /* Slightly more transparent black */
+    border: 2px solid #FF69B4 !important; /* Hot pink border */
+    border-radius: 12px !important;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.7) !important; /* Hot pink shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
     display: flex !important;
     flex-direction: column !important;
@@ -517,14 +477,15 @@ footer.ant-layout-footer,
 
 .char-card-class:hover {
     transform: translateY(-5px) scale(1.02) !important;
-    box-shadow: 0 10px 35px rgba(255, 105, 180, 0.7) !important;
+    box-shadow: 0 0 25px #FF69B4, 0 0 45px rgba(255, 105, 180, 0.8) !important; /* Hot pink on hover */
 }
 
+/* Fix #5: Smaller character profile pictures with rounded edges */
 .ant-card-cover img {
     height: 140px !important;
     object-fit: cover !important;
-    border-bottom: 3px solid #ffb6c1 !important;
-    border-radius: 20px 20px 0 0 !important;
+    border-bottom: 2px solid rgba(255, 105, 180, 0.5) !important; /* Hot pink border */
+    border-radius: 12px 12px 0 0 !important;
 }
 
 .ant-card-body {
@@ -534,21 +495,26 @@ footer.ant-layout-footer,
     flex-grow: 1;
 }
 
+/* Fix #6: Smaller character card title */
 .card-title-row span:first-child span,
 .ant-card-meta-title {
-    font-family: 'Fredoka', sans-serif !important;
-    color: #ff1493 !important;
+    font-family: 'Bebas Neue', sans-serif !important;
+    color: #FFD1DC !important; /* Light pink title */
     font-size: 1.1em !important;
+    text-shadow: 0 0 8px #FFD1DC !important;
 }
 
+/* Fix #7: Solid green character description */
 .ant-card-meta-description {
-    color: #2d2d2d !important;
+    color: #98FB98 !important; /* Pale green for description */
     font-size: 0.95em !important;
     line-height: 1.5 !important;
     margin-bottom: 15px;
     flex-grow: 1;
+    text-shadow: none !important;
 }
 
+/* Card Tags */
 .custom-scroll {
     display: flex;
     flex-wrap: wrap;
@@ -557,86 +523,443 @@ footer.ant-layout-footer,
 }
 
 .ant-tag {
-    background-color: rgba(255, 182, 193, 0.4) !important;
-    color: #ff1493 !important;
-    border: 1px solid #ff69b4 !important;
+    background-color: rgba(135, 206, 235, 0.15) !important; /* Sky blue tag background */
+    color: #87CEEB !important; /* Sky blue tag text */
+    border: 1px solid rgba(135, 206, 235, 0.6) !important; /* Sky blue tag border */
     font-size: 0.85em !important;
 }
 
+.ant-tag-error {
+    background-color: rgba(255, 105, 180, 0.25) !important; /* Hot pink error tag background */
+    color: #FF69B4 !important; /* Hot pink error tag text */
+    border-color: rgba(255, 105, 180, 0.8) !important; /* Hot pink error tag border */
+}
+
+/* Card Stats */
 .stats {
     display: flex !important;
     justify-content: space-between;
     width: 100%;
     padding-top: 10px;
-    border-top: 2px solid rgba(255, 105, 180, 0.3);
+    border-top: 1px solid rgba(255, 105, 180, 0.3); /* Hot pink border */
 }
 
 .stats > div {
-    color: #ff1493 !important;
+    color: #FFD1DC !important; /* Light pink stats text */
+    text-shadow: 0 0 6px rgba(255, 192, 203, 0.7) !important; /* Light pink glow */
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
 .stats svg {
-    fill: #ff69b4 !important;
+    fill: #FF69B4 !important; /* Hot pink icons */
     width: 18px;
     height: 18px;
 }
 
+/* --- NEW SECTIONS --- */
+
+/* GIF Name Title */
+.gif-name-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.gif-name-title img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.8); /* Pink shadow */
+    animation: pulse-gif 3s infinite alternate; /* Gentle pulse animation */
+}
+
+@keyframes pulse-gif {
+    from { box-shadow: 0 0 15px rgba(255, 105, 180, 0.6); }
+    to { box-shadow: 0 0 30px rgba(255, 105, 180, 1); }
+}
+
+/* Floating Description */
+.floating-description {
+    font-family: 'Pacifico', cursive !important; /* More stylish, flowing font */
+    font-size: 1.5em !important; /* Larger font */
+    color: #FFFF00 !important; /* Bright yellow */
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    text-shadow: 0 0 10px rgba(255, 255, 0, 0.8); /* Yellow glow */
+    line-height: 1.6;
+    background: rgba(0,0,0,0.1); /* Very subtle background for readability on complex backgrounds */
+    border-radius: 10px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: text-float 4s ease-in-out infinite alternate; /* Gentle floating animation */
+}
+
+@keyframes text-float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Info Card */
+.info-card-container {
+    background: rgba(255, 192, 203, 0.4) !important; /* Soft pink translucent */
+    border: 3px solid #FF69B4 !important; /* Hot pink border */
+    border-radius: 20px !important; /* Very rounded */
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.8), inset 0 0 15px rgba(255, 105, 180, 0.6) !important;
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 900px;
+    display: flex;
+    flex-direction: row; /* Default for desktop */
+    align-items: center;
+    gap: 20px;
+}
+
+.info-card-image {
+    width: 40%; /* Image takes 40% width on desktop */
+    max-width: 300px;
+    border-radius: 15px; /* Rounded corners for the image itself */
+    box-shadow: 0 0 15px rgba(135, 206, 235, 0.7); /* Sky blue shadow for the image */
+    border: 2px solid #87CEEB; /* Sky blue border */
+    display: block; /* Ensure it behaves as a block element */
+    object-fit: contain; /* Ensure the image fits well */
+    height: auto;
+}
+
+.info-card-details {
+    width: 60%; /* Details take 60% width on desktop */
+    font-family: 'Comic Neue', cursive !important;
+    color: #FFFACD !important; /* Soft cream text */
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.info-card-details h3 {
+    font-family: 'Bebas Neue', sans-serif !important;
+    color: #87CEEB !important; /* Sky blue heading */
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px #87CEEB;
+}
+
+/* Scenario Section */
+.scenario-section {
+    background: rgba(135, 206, 235, 0.2) !important; /* Light blue translucent */
+    border: 2px solid #87CEEB !important; /* Sky blue border */
+    border-radius: 15px !important;
+    box-shadow: 0 0 15px rgba(135, 206, 235, 0.7), inset 0 0 10px rgba(135, 206, 235, 0.5) !important;
+    margin: 50px auto;
+    padding: 30px;
+    max-width: 900px;
+    text-align: center;
+}
+
+.scenario-section h2 {
+    font-family: 'Orbitron', sans-serif !important;
+    color: #FFFF00 !important; /* Bright yellow heading */
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-shadow: 0 0 12px #FFFF00;
+}
+
+.scenario-slot {
+    background: rgba(255, 105, 180, 0.1) !important; /* Very light pink translucent */
+    border: 1px dashed rgba(255, 105, 180, 0.6) !important; /* Pink dashed border */
+    border-radius: 8px !important;
+    padding: 15px 20px !important;
+    margin-bottom: 10px !important; /* Close spacing */
+    text-align: left;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+}
+
+.scenario-slot:last-child {
+    margin-bottom: 0 !important;
+}
+
+.scenario-slot h3 {
+    font-family: 'Bebas Neue', sans-serif !important;
+    color: #FFD1DC !important; /* Light pink heading */
+    font-size: 1.3em;
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px rgba(255, 192, 203, 0.7);
+}
+
+.scenario-slot p {
+    font-family: 'Comic Neue', cursive !important;
+    color: #FFFACD !important; /* Soft cream text */
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* Audio Player */
+.audio-player-container {
+    margin: 50px auto;
+    text-align: center;
+    max-width: 400px;
+    position: relative;
+    z-index: 10; /* Ensure it's above other elements if needed */
+}
+
+.audio-player-container audio {
+    display: none; /* Hide default audio player */
+}
+
+.audio-control-button {
+    background-color: #FF69B4 !important; /* Hot pink button */
+    color: #FFFACD !important; /* Soft cream text */
+    border: none !important;
+    padding: 15px 30px !important;
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 1.2em !important;
+    border-radius: 10px !important;
+    cursor: pointer !important;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.8), inset 0 0 8px rgba(255, 255, 255, 0.5) !important;
+    transition: all 0.2s ease-in-out !important;
+    animation: neon-pulse-pink 2s infinite alternate;
+    text-transform: uppercase;
+}
+
+.audio-control-button:hover {
+    background-color: #FF1493 !important; /* Deeper pink on hover */
+    box-shadow: 0 0 25px rgba(255, 20, 147, 1), inset 0 0 12px rgba(255, 255, 255, 0.7) !important;
+    transform: scale(1.05);
+}
+
+@keyframes neon-pulse-pink {
+    0% { box-shadow: 0 0 15px rgba(255, 105, 180, 0.8), inset 0 0 8px rgba(255, 255, 255, 0.5); }
+    100% { box-shadow: 0 0 25px rgba(255, 105, 180, 1), inset 0 0 12px rgba(255, 255, 255, 0.7); }
+}
+
+/* Credits Section */
+.credits-section {
+    background: rgba(255, 255, 0, 0.15) !important; /* Light yellow translucent */
+    border: 2px solid #FFFF00 !important; /* Bright yellow border */
+    border-radius: 15px !important;
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.7), inset 0 0 10px rgba(255, 255, 0, 0.5) !important;
+    margin: 50px auto;
+    padding: 30px;
+    max-width: 900px;
+    text-align: center;
+}
+
+.credits-section h2 {
+    font-family: 'Orbitron', sans-serif !important;
+    color: #FFD1DC !important; /* Light pink heading */
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #FFD1DC;
+}
+
+.credits-section p {
+    font-family: 'Comic Neue', cursive !important;
+    color: #FFFACD !important; /* Soft cream text */
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Author's Note Section */
+.authors-note-section {
+    background: rgba(135, 206, 235, 0.2) !important; /* Light blue translucent */
+    border: 2px solid #87CEEB !important; /* Sky blue border */
+    border-radius: 15px !important;
+    box-shadow: 0 0 15px rgba(135, 206, 235, 0.7), inset 0 0 10px rgba(135, 206, 235, 0.5) !important;
+    margin: 50px auto;
+    padding: 30px;
+    max-width: 900px;
+    text-align: center;
+}
+
+.authors-note-section h2 {
+    font-family: 'Orbitron', sans-serif !important;
+    color: #FFFF00 !important; /* Bright yellow heading */
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 12px #FFFF00;
+}
+
+.authors-note-section p {
+    font-family: 'Comic Neue', cursive !important;
+    color: #FFFACD !important; /* Soft cream text */
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.catch-phrases {
+    font-family: 'Pacifico', cursive !important; /* Special font for catchphrases */
+    color: #FF69B4 !important; /* Hot pink for catchphrases */
+    font-size: 1.8em;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(255, 105, 180, 0.5); /* Pink dashed separator */
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+    line-height: 1.4;
+}
+
+
+/* Chibi Jayden in bottom right corner */
+.chibi-jayden-corner {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 250px !important; /* Big and visible */
+    height: auto !important;
+    z-index: 9999 !important; /* Ensure it's on top */
+    pointer-events: none !important; /* Allow clicks to pass through */
+    filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.9)); /* Pink glow for visibility */
+    animation: chibi-bounce 3s ease-in-out infinite alternate; /* Gentle bounce animation */
+}
+
+@keyframes chibi-bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+
 /* === RESPONSIVE DESIGN === */
 @media (max-width: 768px) {
-    .cg-info-card {
-        flex-direction: column;
-        padding: 20px;
+    .profile-container {
+        margin: 20px auto !important;
+        gap: 20px;
     }
-    
-    .cg-info-image {
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 250px;
-        margin: 0 auto;
+    .profile-pic {
+        width: 150px;
+        height: 150px;
     }
-    
-    .cg-chibi {
-        width: 180px;
-        bottom: 10px;
-        right: 10px;
+    .username {
+        font-size: 2.8em;
     }
-    
-    .cg-music-player {
-        bottom: 20px;
-        left: 20px;
+    div.text-sm.mb-2 > span.mr-4 {
+        font-size: 1.4em !important;
     }
-    
-    .cg-play-button {
-        width: 60px;
-        height: 60px;
+    div.text-sm.mb-2 > button.ant-btn {
+        font-size: 1.2em !important;
+        padding: 10px 25px !important;
     }
-    
+    .ant-btn-icon svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
     .character-list-container {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+    }
+    .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
+        top: 280px !important;
+    }
+    /* Info card for mobile */
+    .info-card-container {
+        flex-direction: column !important; /* Stack image and details vertically */
+        text-align: center;
+    }
+    .info-card-image {
+        width: 80% !important; /* Image takes more width */
+        margin-bottom: 20px; /* Space between image and text */
+    }
+    .info-card-details {
+        width: 100% !important;
+    }
+    .gif-name-title img {
+        max-width: 95%; /* Make GIF slightly larger on mobile */
+    }
+    .floating-description {
+        font-size: 1.2em !important;
+        padding: 15px;
+    }
+    .chibi-jayden-corner {
+        width: 180px !important; /* Smaller chibi on mobile */
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+    .audio-control-button {
+        font-size: 1em !important;
+        padding: 12px 25px !important;
+    }
+    .scenario-section h2, .credits-section h2, .authors-note-section h2 {
+        font-size: 1.6em;
+    }
+    .scenario-slot h3 {
+        font-size: 1.1em;
+    }
+    .scenario-slot p, .credits-section p, .authors-note-section p {
+        font-size: 0.95em;
+    }
+    .catch-phrases {
+        font-size: 1.5em;
     }
 }
 
 @media (max-width: 480px) {
-    .cg-description p {
-        font-size: 1.1em !important;
+    .username {
+        font-size: 2em;
     }
-    
-    .cg-info-details h3 {
-        font-size: 1.6em !important;
+    .profile-pic {
+        width: 120px;
+        height: 120px;
     }
-    
-    .cg-scenario-item h4 {
+    div.text-sm.mb-2 > span.mr-4 {
         font-size: 1.2em !important;
     }
-    
-    .cg-chibi {
-        width: 140px;
+    div.text-sm.mb-2 > button.ant-btn {
+        font-size: 1em !important;
+        padding: 8px 20px !important;
     }
-    
+    .ant-btn-icon svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
     .character-list-container {
         grid-template-columns: 1fr !important;
+    }
+    .bio-section {
+        padding: 20px !important;
+    }
+    .bio-section h2 {
+        font-size: 1.5em;
+    }
+    .sc-eDLKkx.lkymne .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 .text-sm.mb-2 {
+        top: 240px !important;
+    }
+    .floating-description {
+        font-size: 1em !important;
+        padding: 10px;
+    }
+    .info-card-image {
+        width: 90% !important;
+    }
+    .info-card-details {
+        font-size: 1em;
+    }
+    .info-card-details h3 {
+        font-size: 1.5em;
+    }
+    .chibi-jayden-corner {
+        width: 150px !important; /* Even smaller chibi on very small screens */
+        bottom: 10px !important;
+        right: 10px !important;
+    }
+    .audio-control-button {
+        font-size: 0.9em !important;
+        padding: 10px 20px !important;
+    }
+    .scenario-section h2, .credits-section h2, .authors-note-section h2 {
+        font-size: 1.4em;
+    }
+    .scenario-slot h3 {
+        font-size: 1em;
+    }
+    .scenario-slot p, .credits-section p, .authors-note-section p {
+        font-size: 0.9em;
+    }
+    .catch-phrases {
+        font-size: 1.3em;
     }
 }
