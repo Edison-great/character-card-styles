@@ -1,419 +1,392 @@
-@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Bubblegum+Sans&family=Fredoka:wght@400;600&family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Fredoka:wght@400;600;700&family=Chewy&family=Patrick+Hand&display=swap');
 
-/* === GLOBAL STYLES === */
-body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
-    background: url('https://archive.org/download/jayden-illustration-set_0/Jayden%20background.png') no-repeat center center fixed !important;
-    background-size: cover !important;
-    font-family: 'Fredoka', sans-serif !important;
-    color: #2d1b3d !important;
-    position: relative !important;
-}
+/* === COSPLAY GIRLFRIEND THEME === */
 
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
+.cosplay-sec {
     width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-    z-index: 0;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background: url('https://archive.org/download/jayden-illustration-set_0/Jayden%20background.png') center/cover fixed;
+    position: relative;
+    box-sizing: border-box;
 }
 
-/* === COSPLAY GIRLFRIEND SECTION === */
-.cg-sec {
-    max-width: 1200px;
-    margin: 80px auto;
-    padding: 40px 20px;
-    position: relative;
-    z-index: 10;
+/* Decorative Elements */
+.cosplay-sparkle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, #ff69b4, #ffb3d9);
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: sparkle-float 3s ease-in-out infinite;
+}
+
+.cosplay-sparkle-1 { top: 10%; left: 5%; animation-delay: 0s; }
+.cosplay-sparkle-2 { top: 20%; right: 8%; animation-delay: 0.5s; }
+.cosplay-sparkle-3 { top: 60%; left: 10%; animation-delay: 1s; }
+.cosplay-sparkle-4 { bottom: 15%; right: 15%; animation-delay: 1.5s; }
+
+@keyframes sparkle-float {
+    0%, 100% { transform: translateY(0px) scale(1); opacity: 0.7; }
+    50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
 }
 
 /* === NAME GIF === */
-.cg-name-gif {
+.cosplay-name-gif {
     text-align: center;
     margin-bottom: 30px;
-    animation: float 3s ease-in-out infinite;
 }
 
-.cg-name-gif img {
+.cosplay-name-gif img {
     max-width: 600px;
     width: 90%;
     height: auto;
-    filter: drop-shadow(0 8px 20px rgba(255, 105, 180, 0.6));
+    filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.6));
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-}
-
-/* === DESCRIPTION === */
-.cg-description {
+/* === DESCRIPTION (Floating Text) === */
+.cosplay-desc {
     text-align: center;
-    font-family: 'Bubblegum Sans', cursive !important;
-    font-size: 1.8em !important;
-    color: #ff1493 !important;
-    text-shadow: 
-        3px 3px 0px #fff,
-        -3px -3px 0px #fff,
-        3px -3px 0px #fff,
-        -3px 3px 0px #fff,
-        5px 5px 15px rgba(255, 20, 147, 0.5) !important;
     margin: 40px auto;
     max-width: 900px;
-    line-height: 1.6;
-    font-weight: 400;
+    padding: 0 20px;
+}
+
+.cosplay-desc-text {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.3em;
+    line-height: 1.8;
+    color: #ff1493;
+    text-shadow: 
+        2px 2px 0px #ffb3d9,
+        -1px -1px 0px #ff69b4,
+        0 0 15px rgba(255, 20, 147, 0.5);
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 /* === INFO CARD === */
-.cg-info-card {
+.cosplay-info-card {
     display: flex;
-    background: linear-gradient(135deg, #ffb3d9 0%, #ffd9ec 100%);
-    border: 6px solid #ff69b4;
-    border-radius: 30px;
-    box-shadow: 
-        0 15px 40px rgba(255, 105, 180, 0.4),
-        inset 0 0 30px rgba(255, 255, 255, 0.3);
-    margin: 50px auto;
+    align-items: flex-start;
+    gap: 30px;
+    background: linear-gradient(135deg, rgba(255, 182, 193, 0.95), rgba(255, 218, 224, 0.95));
+    border: 5px solid #ff69b4;
+    border-radius: 25px;
+    padding: 30px;
+    margin: 40px auto;
     max-width: 900px;
-    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
     position: relative;
+    overflow: hidden;
 }
 
-.cg-info-card::before {
+.cosplay-info-card::before {
     content: '';
     position: absolute;
     top: -50%;
     left: -50%;
     width: 200%;
     height: 200%;
-    background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 10px,
-        rgba(255, 255, 255, 0.1) 10px,
-        rgba(255, 255, 255, 0.1) 20px
-    );
-    animation: shimmer 20s linear infinite;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    animation: shine 3s infinite;
 }
 
-@keyframes shimmer {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(50%, 50%); }
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
 }
 
-.cg-info-image {
-    flex: 0 0 45%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 20px;
+.cosplay-character-img {
+    flex-shrink: 0;
+    width: 300px;
     position: relative;
     z-index: 1;
 }
 
-.cg-info-image img {
-    max-width: 100%;
+.cosplay-character-img img {
+    width: 100%;
     height: auto;
-    max-height: 600px;
-    object-fit: contain;
-    filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
 }
 
-.cg-info-details {
+.cosplay-info-content {
     flex: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     position: relative;
     z-index: 1;
 }
 
-.cg-info-title {
-    font-family: 'Lilita One', cursive !important;
-    font-size: 2.5em !important;
-    color: #ff1493 !important;
-    text-shadow: 
-        2px 2px 0px #fff,
-        4px 4px 10px rgba(255, 20, 147, 0.5) !important;
-    margin-bottom: 25px;
+.cosplay-info-title {
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 2.5em;
+    color: #ff1493;
+    text-shadow: 3px 3px 0px #ffb3d9;
+    margin-bottom: 20px;
     text-align: center;
 }
 
-.cg-info-item {
-    font-family: 'Fredoka', sans-serif !important;
-    font-size: 1.3em !important;
-    color: #4a2c5e !important;
-    margin-bottom: 15px;
-    padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 15px;
-    border-left: 5px solid #ff69b4;
-}
-
-.cg-info-label {
+.cosplay-info-item {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.2em;
+    margin: 12px 0;
+    color: #d91b5c;
     font-weight: 600;
-    color: #ff1493 !important;
 }
 
-/* === SCENARIO SECTION === */
-.cg-scenarios {
-    max-width: 900px;
-    margin: 60px auto;
+.cosplay-info-label {
+    color: #ff1493;
+    font-weight: 700;
+    text-shadow: 1px 1px 0px #ffb3d9;
 }
 
-.cg-scenarios-title {
-    font-family: 'Lilita One', cursive !important;
-    font-size: 3em !important;
-    color: #ff1493 !important;
+/* === MUSIC PLAYER === */
+.cosplay-music-player {
     text-align: center;
-    text-shadow: 
-        3px 3px 0px #fff,
-        6px 6px 20px rgba(255, 20, 147, 0.6) !important;
-    margin-bottom: 40px;
+    margin: 30px auto;
+    position: relative;
+    z-index: 10;
 }
 
-.cg-scenario {
-    background: linear-gradient(135deg, #fff0f8 0%, #ffe6f2 100%);
-    border: 5px solid #ff69b4;
-    border-radius: 20px;
-    padding: 25px 30px;
-    margin-bottom: 25px;
-    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cg-scenario:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.5);
-}
-
-.cg-scenario-heading {
-    font-family: 'Chewy', cursive !important;
-    font-size: 1.8em !important;
-    color: #ff1493 !important;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
-}
-
-.cg-scenario-body {
-    font-family: 'Fredoka', sans-serif !important;
-    font-size: 1.2em !important;
-    color: #4a2c5e !important;
-    line-height: 1.6;
-}
-
-/* === AUDIO PLAYER === */
-.cg-audio-container {
-    text-align: center;
-    margin: 50px auto;
-    max-width: 300px;
-}
-
-.cg-audio-player {
-    display: none;
-}
-
-.cg-play-button {
-    width: 120px;
-    height: 120px;
-    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
-    border: 6px solid #fff;
+.cosplay-play-btn {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    border: 4px solid #ffb3d9;
     border-radius: 50%;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 
-        0 10px 30px rgba(255, 20, 147, 0.5),
-        inset 0 -5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 20px rgba(255, 20, 147, 0.5);
     transition: all 0.3s ease;
-    margin: 0 auto;
+    position: relative;
 }
 
-.cg-play-button:hover {
+.cosplay-play-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 15px 40px rgba(255, 20, 147, 0.7);
+    box-shadow: 0 8px 30px rgba(255, 20, 147, 0.7);
 }
 
-.cg-play-button:active {
+.cosplay-play-btn:active {
     transform: scale(0.95);
 }
 
-.cg-play-icon {
+.cosplay-play-icon,
+.cosplay-pause-icon {
     width: 0;
     height: 0;
-    border-left: 30px solid #fff;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    margin-left: 8px;
+    border-style: solid;
 }
 
-.cg-play-button.playing .cg-play-icon {
-    border-left: none;
-    width: 30px;
-    height: 40px;
-    margin-left: 0;
+.cosplay-play-icon {
+    border-width: 15px 0 15px 25px;
+    border-color: transparent transparent transparent #ffffff;
+    margin-left: 5px;
+}
+
+.cosplay-pause-icon {
+    width: 20px;
+    height: 30px;
     position: relative;
 }
 
-.cg-play-button.playing .cg-play-icon::before,
-.cg-play-button.playing .cg-play-icon::after {
+.cosplay-pause-icon::before,
+.cosplay-pause-icon::after {
     content: '';
     position: absolute;
-    width: 10px;
-    height: 40px;
-    background: #fff;
+    width: 6px;
+    height: 30px;
+    background: #ffffff;
+    border-radius: 2px;
 }
 
-.cg-play-button.playing .cg-play-icon::before {
+.cosplay-pause-icon::before {
     left: 0;
 }
 
-.cg-play-button.playing .cg-play-icon::after {
+.cosplay-pause-icon::after {
     right: 0;
 }
 
-/* === CREDITS & AUTHOR'S NOTE === */
-.cg-section {
-    background: linear-gradient(135deg, #fff5fa 0%, #ffeaf5 100%);
-    border: 5px solid #ff69b4;
-    border-radius: 25px;
-    padding: 35px;
+.cosplay-music-label {
+    font-family: 'Chewy', cursive;
+    font-size: 1.1em;
+    color: #ff69b4;
+    margin-top: 10px;
+    text-shadow: 1px 1px 0px #ffb3d9;
+}
+
+/* === SCENARIOS SECTION === */
+.cosplay-scenarios {
     margin: 50px auto;
     max-width: 900px;
-    box-shadow: 0 10px 35px rgba(255, 105, 180, 0.3);
 }
 
-.cg-section-title {
-    font-family: 'Lilita One', cursive !important;
-    font-size: 2.5em !important;
-    color: #ff1493 !important;
+.cosplay-section-title {
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 2.5em;
+    color: #ff1493;
+    text-shadow: 3px 3px 0px #ffb3d9;
     text-align: center;
-    text-shadow: 
-        2px 2px 0px #fff,
-        4px 4px 15px rgba(255, 20, 147, 0.5) !important;
-    margin-bottom: 25px;
-    border-bottom: 4px dotted #ff69b4;
-    padding-bottom: 15px;
+    margin-bottom: 30px;
 }
 
-.cg-section-content {
-    font-family: 'Fredoka', sans-serif !important;
-    font-size: 1.2em !important;
-    color: #4a2c5e !important;
-    line-height: 1.8;
-}
-
-/* === CATCHPHRASE === */
-.cg-catchphrase {
-    font-family: 'Chewy', cursive !important;
-    font-size: 2em !important;
-    color: #ff1493 !important;
-    text-align: center;
-    margin-top: 30px;
-    padding: 20px;
-    background: rgba(255, 105, 180, 0.1);
+.cosplay-scenario-item {
+    background: linear-gradient(135deg, rgba(255, 182, 193, 0.9), rgba(255, 218, 224, 0.9));
+    border: 4px solid #ff69b4;
     border-radius: 15px;
-    text-shadow: 
-        2px 2px 0px #fff,
-        4px 4px 10px rgba(255, 20, 147, 0.4) !important;
-    border: 3px dashed #ff69b4;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+}
+
+.cosplay-scenario-heading {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.5em;
+    color: #ff1493;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 0px #ffb3d9;
+}
+
+.cosplay-scenario-body {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1em;
+    color: #d91b5c;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* === CREDITS SECTION === */
+.cosplay-credits {
+    background: linear-gradient(135deg, rgba(255, 182, 193, 0.9), rgba(255, 218, 224, 0.9));
+    border: 4px solid #ff69b4;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 40px auto;
+    max-width: 900px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+}
+
+.cosplay-credits-title {
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 2em;
+    color: #ff1493;
+    text-shadow: 2px 2px 0px #ffb3d9;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.cosplay-credits-text {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1em;
+    color: #d91b5c;
+    line-height: 1.7;
+    font-weight: 500;
+}
+
+/* === AUTHOR'S NOTE === */
+.cosplay-author-note {
+    background: linear-gradient(135deg, rgba(255, 182, 193, 0.9), rgba(255, 218, 224, 0.9));
+    border: 4px solid #ff69b4;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 40px auto;
+    max-width: 900px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+}
+
+.cosplay-author-note-title {
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 2em;
+    color: #ff1493;
+    text-shadow: 2px 2px 0px #ffb3d9;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.cosplay-author-note-text {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1em;
+    color: #d91b5c;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.cosplay-catchphrase {
+    font-family: 'Chewy', cursive;
+    font-size: 1.5em;
+    color: #ff1493;
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 2px 2px 0px #ffb3d9;
+    font-weight: 700;
 }
 
 /* === CHIBI CHARACTER === */
-.cg-chibi {
+.cosplay-chibi {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 100;
-    animation: bounce 2s ease-in-out infinite;
-}
-
-.cg-chibi img {
     width: 250px;
-    height: auto;
-    filter: drop-shadow(5px 5px 15px rgba(255, 105, 180, 0.5));
+    z-index: 100;
+    animation: chibi-bounce 2s ease-in-out infinite;
 }
 
-@keyframes bounce {
+.cosplay-chibi img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 5px 15px rgba(255, 105, 180, 0.5));
+}
+
+@keyframes chibi-bounce {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+    50% { transform: translateY(-15px); }
 }
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
-    .cg-info-card {
+    .cosplay-info-card {
         flex-direction: column;
+        align-items: center;
     }
     
-    .cg-info-image {
-        flex: 0 0 auto;
+    .cosplay-character-img {
+        width: 250px;
     }
     
-    .cg-info-image img {
-        max-height: 400px;
+    .cosplay-section-title {
+        font-size: 2em;
     }
     
-    .cg-info-details {
-        padding: 30px 20px;
-    }
-    
-    .cg-description {
-        font-size: 1.4em !important;
-    }
-    
-    .cg-scenarios-title {
-        font-size: 2.2em !important;
-    }
-    
-    .cg-chibi img {
+    .cosplay-chibi {
         width: 150px;
-    }
-    
-    .cg-name-gif img {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .cg-sec {
-        padding: 20px 10px;
-    }
-    
-    .cg-description {
-        font-size: 1.2em !important;
-    }
-    
-    .cg-info-title {
-        font-size: 2em !important;
-    }
-    
-    .cg-info-item {
-        font-size: 1.1em !important;
-    }
-    
-    .cg-scenario-heading {
-        font-size: 1.5em !important;
-    }
-    
-    .cg-scenario-body {
-        font-size: 1.1em !important;
-    }
-    
-    .cg-section-title {
-        font-size: 2em !important;
-    }
-    
-    .cg-chibi {
         bottom: 10px;
         right: 10px;
     }
     
-    .cg-chibi img {
+    .cosplay-name-gif img {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cosplay-sec {
+        padding: 15px;
+    }
+    
+    .cosplay-character-img {
+        width: 200px;
+    }
+    
+    .cosplay-section-title {
+        font-size: 1.6em;
+    }
+    
+    .cosplay-chibi {
         width: 120px;
     }
 }
