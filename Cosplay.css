@@ -1,0 +1,352 @@
+/* === COSPLAY GIRLFRIEND THEME === */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Quicksand:wght@400;500;700&family=Dancing+Script:wght@700&display=swap');
+
+/* === GLOBAL STYLES === */
+body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
+    background: url('https://archive.org/download/jayden-illustration-set_0/Jayden%20background.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+    font-family: 'Quicksand', sans-serif !important;
+    color: #333 !important;
+    margin: 0;
+    padding: 0;
+}
+
+/* === MAIN CONTAINER === */
+.cosplay-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* === NAME GIF SECTION === */
+.name-gif {
+    text-align: center;
+    margin: 20px 0 30px 0;
+}
+
+.name-gif img {
+    max-width: 600px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
+}
+
+/* === DESCRIPTION SECTION === */
+.description {
+    text-align: center;
+    margin: 30px 0 40px 0;
+    padding: 0 20px;
+}
+
+.description-text {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1.4em;
+    color: #ff69b4;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* === INFO CARD === */
+.info-card {
+    display: flex;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
+    margin: 30px 0;
+    padding: 0;
+}
+
+.character-image {
+    flex: 0 0 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(255, 240, 245, 0.7);
+}
+
+.character-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.character-details {
+    flex: 1;
+    padding: 30px;
+    background: white;
+}
+
+.character-details h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #ff69b4;
+    font-size: 2em;
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px dashed #ffb6c1;
+    padding-bottom: 10px;
+}
+
+.detail-item {
+    display: flex;
+    margin-bottom: 15px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-label {
+    flex: 0 0 120px;
+    font-weight: 600;
+    color: #ff69b4;
+}
+
+.detail-value {
+    flex: 1;
+    color: #555;
+}
+
+/* === SCENARIO SECTION === */
+.scenario-section {
+    margin: 50px 0 30px 0;
+}
+
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    color: #ff69b4;
+    font-size: 2.2em;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.scenario-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.scenario-slot {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scenario-slot:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.5);
+}
+
+.scenario-heading {
+    font-family: 'Poppins', sans-serif;
+    color: #ff69b4;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ffb6c1;
+}
+
+.scenario-body {
+    color: #555;
+    line-height: 1.6;
+    min-height: 80px;
+}
+
+/* === CUSTOM AUDIO PLAYER === */
+.audio-player-container {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.custom-audio-player {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50px;
+    padding: 15px 25px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.play-pause-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ff69b4;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(255, 105, 180, 0.5);
+}
+
+.play-pause-btn:hover {
+    background: #ff1493;
+    transform: scale(1.05);
+}
+
+.song-title {
+    font-family: 'Poppins', sans-serif;
+    color: #ff69b4;
+    font-weight: 600;
+}
+
+/* Hide default audio controls */
+audio {
+    display: none;
+}
+
+/* === CREDIT SECTION === */
+.credit-section {
+    margin: 40px 0 30px 0;
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+}
+
+.credit-title {
+    font-family: 'Poppins', sans-serif;
+    color: #ff69b4;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.credit-content {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* === AUTHOR'S NOTE === */
+.authors-note {
+    margin: 40px 0 50px 0;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+}
+
+.authors-note-title {
+    font-family: 'Poppins', sans-serif;
+    color: #ff69b4;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.authors-note-content {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    min-height: 150px;
+}
+
+.catchphrase {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8em;
+    color: #ff69b4;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px dashed #ffb6c1;
+}
+
+/* === CHIBI CHARACTER === */
+.chibi-character {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.chibi-character img {
+    width: 180px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.chibi-character img:hover {
+    transform: scale(1.05);
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+    .cosplay-container {
+        padding: 15px;
+    }
+    
+    .info-card {
+        flex-direction: column;
+    }
+    
+    .character-image {
+        flex: 0 0 auto;
+        padding: 15px;
+    }
+    
+    .character-details {
+        padding: 20px;
+    }
+    
+    .name-gif img {
+        max-width: 100%;
+    }
+    
+    .chibi-character {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        text-align: center;
+        margin-top: 30px;
+    }
+    
+    .chibi-character img {
+        width: 150px;
+    }
+    
+    .custom-audio-player {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .description-text {
+        font-size: 1.1em;
+    }
+    
+    .character-details h2 {
+        font-size: 1.6em;
+    }
+    
+    .section-title {
+        font-size: 1.8em;
+    }
+    
+    .detail-item {
+        flex-direction: column;
+    }
+    
+    .detail-label {
+        margin-bottom: 5px;
+    }
+    
+    .chibi-character img {
+        width: 120px;
+    }
+}
