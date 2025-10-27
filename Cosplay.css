@@ -1,352 +1,419 @@
-/* === COSPLAY GIRLFRIEND THEME === */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Quicksand:wght@400;500;700&family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Bubblegum+Sans&family=Fredoka:wght@400;600&family=Lilita+One&display=swap');
 
 /* === GLOBAL STYLES === */
 body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
     background: url('https://archive.org/download/jayden-illustration-set_0/Jayden%20background.png') no-repeat center center fixed !important;
     background-size: cover !important;
-    font-family: 'Quicksand', sans-serif !important;
-    color: #333 !important;
-    margin: 0;
-    padding: 0;
+    font-family: 'Fredoka', sans-serif !important;
+    color: #2d1b3d !important;
+    position: relative !important;
 }
 
-/* === MAIN CONTAINER === */
-.cosplay-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    position: relative;
-    min-height: 100vh;
-}
-
-/* === NAME GIF SECTION === */
-.name-gif {
-    text-align: center;
-    margin: 20px 0 30px 0;
-}
-
-.name-gif img {
-    max-width: 600px;
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    z-index: 0;
 }
 
-/* === DESCRIPTION SECTION === */
-.description {
+/* === COSPLAY GIRLFRIEND SECTION === */
+.cg-sec {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* === NAME GIF === */
+.cg-name-gif {
     text-align: center;
-    margin: 30px 0 40px 0;
-    padding: 0 20px;
+    margin-bottom: 30px;
+    animation: float 3s ease-in-out infinite;
 }
 
-.description-text {
-    font-family: 'Poppins', sans-serif !important;
-    font-size: 1.4em;
-    color: #ff69b4;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+.cg-name-gif img {
+    max-width: 600px;
+    width: 90%;
+    height: auto;
+    filter: drop-shadow(0 8px 20px rgba(255, 105, 180, 0.6));
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+/* === DESCRIPTION === */
+.cg-description {
+    text-align: center;
+    font-family: 'Bubblegum Sans', cursive !important;
+    font-size: 1.8em !important;
+    color: #ff1493 !important;
+    text-shadow: 
+        3px 3px 0px #fff,
+        -3px -3px 0px #fff,
+        3px -3px 0px #fff,
+        -3px 3px 0px #fff,
+        5px 5px 15px rgba(255, 20, 147, 0.5) !important;
+    margin: 40px auto;
+    max-width: 900px;
     line-height: 1.6;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 /* === INFO CARD === */
-.info-card {
+.cg-info-card {
     display: flex;
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 20px;
+    background: linear-gradient(135deg, #ffb3d9 0%, #ffd9ec 100%);
+    border: 6px solid #ff69b4;
+    border-radius: 30px;
+    box-shadow: 
+        0 15px 40px rgba(255, 105, 180, 0.4),
+        inset 0 0 30px rgba(255, 255, 255, 0.3);
+    margin: 50px auto;
+    max-width: 900px;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
-    margin: 30px 0;
-    padding: 0;
+    position: relative;
 }
 
-.character-image {
-    flex: 0 0 40%;
+.cg-info-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.1) 10px,
+        rgba(255, 255, 255, 0.1) 20px
+    );
+    animation: shimmer 20s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50%, 50%); }
+}
+
+.cg-info-image {
+    flex: 0 0 45%;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     padding: 20px;
-    background: rgba(255, 240, 245, 0.7);
+    position: relative;
+    z-index: 1;
 }
 
-.character-image img {
+.cg-info-image img {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-height: 600px;
+    object-fit: contain;
+    filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.3));
 }
 
-.character-details {
+.cg-info-details {
     flex: 1;
-    padding: 30px;
-    background: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
 }
 
-.character-details h2 {
-    font-family: 'Poppins', sans-serif;
-    color: #ff69b4;
-    font-size: 2em;
+.cg-info-title {
+    font-family: 'Lilita One', cursive !important;
+    font-size: 2.5em !important;
+    color: #ff1493 !important;
+    text-shadow: 
+        2px 2px 0px #fff,
+        4px 4px 10px rgba(255, 20, 147, 0.5) !important;
     margin-bottom: 25px;
     text-align: center;
-    border-bottom: 2px dashed #ffb6c1;
-    padding-bottom: 10px;
 }
 
-.detail-item {
-    display: flex;
+.cg-info-item {
+    font-family: 'Fredoka', sans-serif !important;
+    font-size: 1.3em !important;
+    color: #4a2c5e !important;
     margin-bottom: 15px;
-    padding: 8px 0;
-    border-bottom: 1px solid #f0f0f0;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    border-left: 5px solid #ff69b4;
 }
 
-.detail-label {
-    flex: 0 0 120px;
+.cg-info-label {
     font-weight: 600;
-    color: #ff69b4;
-}
-
-.detail-value {
-    flex: 1;
-    color: #555;
+    color: #ff1493 !important;
 }
 
 /* === SCENARIO SECTION === */
-.scenario-section {
-    margin: 50px 0 30px 0;
+.cg-scenarios {
+    max-width: 900px;
+    margin: 60px auto;
 }
 
-.section-title {
-    font-family: 'Poppins', sans-serif;
-    color: #ff69b4;
-    font-size: 2.2em;
+.cg-scenarios-title {
+    font-family: 'Lilita One', cursive !important;
+    font-size: 3em !important;
+    color: #ff1493 !important;
     text-align: center;
-    margin-bottom: 30px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    text-shadow: 
+        3px 3px 0px #fff,
+        6px 6px 20px rgba(255, 20, 147, 0.6) !important;
+    margin-bottom: 40px;
 }
 
-.scenario-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-
-.scenario-slot {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+.cg-scenario {
+    background: linear-gradient(135deg, #fff0f8 0%, #ffe6f2 100%);
+    border: 5px solid #ff69b4;
+    border-radius: 20px;
+    padding: 25px 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.scenario-slot:hover {
+.cg-scenario:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.5);
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.5);
 }
 
-.scenario-heading {
-    font-family: 'Poppins', sans-serif;
-    color: #ff69b4;
-    font-size: 1.3em;
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #ffb6c1;
+.cg-scenario-heading {
+    font-family: 'Chewy', cursive !important;
+    font-size: 1.8em !important;
+    color: #ff1493 !important;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
 }
 
-.scenario-body {
-    color: #555;
+.cg-scenario-body {
+    font-family: 'Fredoka', sans-serif !important;
+    font-size: 1.2em !important;
+    color: #4a2c5e !important;
     line-height: 1.6;
-    min-height: 80px;
 }
 
-/* === CUSTOM AUDIO PLAYER === */
-.audio-player-container {
-    display: flex;
-    justify-content: center;
-    margin: 40px 0;
+/* === AUDIO PLAYER === */
+.cg-audio-container {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 300px;
 }
 
-.custom-audio-player {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50px;
-    padding: 15px 25px;
-    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.cg-audio-player {
+    display: none;
 }
 
-.play-pause-btn {
-    width: 50px;
-    height: 50px;
+.cg-play-button {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+    border: 6px solid #fff;
     border-radius: 50%;
-    background: #ff69b4;
-    border: none;
-    color: white;
-    font-size: 1.2em;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 
+        0 10px 30px rgba(255, 20, 147, 0.5),
+        inset 0 -5px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
-    box-shadow: 0 3px 10px rgba(255, 105, 180, 0.5);
+    margin: 0 auto;
 }
 
-.play-pause-btn:hover {
-    background: #ff1493;
-    transform: scale(1.05);
+.cg-play-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 40px rgba(255, 20, 147, 0.7);
 }
 
-.song-title {
-    font-family: 'Poppins', sans-serif;
-    color: #ff69b4;
-    font-weight: 600;
+.cg-play-button:active {
+    transform: scale(0.95);
 }
 
-/* Hide default audio controls */
-audio {
-    display: none;
+.cg-play-icon {
+    width: 0;
+    height: 0;
+    border-left: 30px solid #fff;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    margin-left: 8px;
 }
 
-/* === CREDIT SECTION === */
-.credit-section {
-    margin: 40px 0 30px 0;
+.cg-play-button.playing .cg-play-icon {
+    border-left: none;
+    width: 30px;
+    height: 40px;
+    margin-left: 0;
+    position: relative;
+}
+
+.cg-play-button.playing .cg-play-icon::before,
+.cg-play-button.playing .cg-play-icon::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 40px;
+    background: #fff;
+}
+
+.cg-play-button.playing .cg-play-icon::before {
+    left: 0;
+}
+
+.cg-play-button.playing .cg-play-icon::after {
+    right: 0;
+}
+
+/* === CREDITS & AUTHOR'S NOTE === */
+.cg-section {
+    background: linear-gradient(135deg, #fff5fa 0%, #ffeaf5 100%);
+    border: 5px solid #ff69b4;
+    border-radius: 25px;
+    padding: 35px;
+    margin: 50px auto;
+    max-width: 900px;
+    box-shadow: 0 10px 35px rgba(255, 105, 180, 0.3);
+}
+
+.cg-section-title {
+    font-family: 'Lilita One', cursive !important;
+    font-size: 2.5em !important;
+    color: #ff1493 !important;
     text-align: center;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
-}
-
-.credit-title {
-    font-family: 'Poppins', sans-serif;
-    color: #ff69b4;
-    font-size: 1.8em;
-    margin-bottom: 15px;
-}
-
-.credit-content {
-    color: #555;
-    line-height: 1.6;
-}
-
-/* === AUTHOR'S NOTE === */
-.authors-note {
-    margin: 40px 0 50px 0;
-    padding: 25px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
-}
-
-.authors-note-title {
-    font-family: 'Poppins', sans-serif;
-    color: #ff69b4;
-    font-size: 1.8em;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.authors-note-content {
-    color: #555;
-    line-height: 1.6;
+    text-shadow: 
+        2px 2px 0px #fff,
+        4px 4px 15px rgba(255, 20, 147, 0.5) !important;
     margin-bottom: 25px;
-    min-height: 150px;
+    border-bottom: 4px dotted #ff69b4;
+    padding-bottom: 15px;
 }
 
-.catchphrase {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.8em;
-    color: #ff69b4;
+.cg-section-content {
+    font-family: 'Fredoka', sans-serif !important;
+    font-size: 1.2em !important;
+    color: #4a2c5e !important;
+    line-height: 1.8;
+}
+
+/* === CATCHPHRASE === */
+.cg-catchphrase {
+    font-family: 'Chewy', cursive !important;
+    font-size: 2em !important;
+    color: #ff1493 !important;
     text-align: center;
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 2px dashed #ffb6c1;
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 105, 180, 0.1);
+    border-radius: 15px;
+    text-shadow: 
+        2px 2px 0px #fff,
+        4px 4px 10px rgba(255, 20, 147, 0.4) !important;
+    border: 3px dashed #ff69b4;
 }
 
 /* === CHIBI CHARACTER === */
-.chibi-character {
+.cg-chibi {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 10;
+    z-index: 100;
+    animation: bounce 2s ease-in-out infinite;
 }
 
-.chibi-character img {
-    width: 180px;
+.cg-chibi img {
+    width: 250px;
     height: auto;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
-    transition: transform 0.3s ease;
+    filter: drop-shadow(5px 5px 15px rgba(255, 105, 180, 0.5));
 }
 
-.chibi-character img:hover {
-    transform: scale(1.05);
+@keyframes bounce {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
 }
 
-/* === RESPONSIVE DESIGN === */
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
-    .cosplay-container {
-        padding: 15px;
-    }
-    
-    .info-card {
+    .cg-info-card {
         flex-direction: column;
     }
     
-    .character-image {
+    .cg-info-image {
         flex: 0 0 auto;
-        padding: 15px;
     }
     
-    .character-details {
-        padding: 20px;
+    .cg-info-image img {
+        max-height: 400px;
     }
     
-    .name-gif img {
-        max-width: 100%;
+    .cg-info-details {
+        padding: 30px 20px;
     }
     
-    .chibi-character {
-        position: relative;
-        bottom: auto;
-        right: auto;
-        text-align: center;
-        margin-top: 30px;
+    .cg-description {
+        font-size: 1.4em !important;
     }
     
-    .chibi-character img {
+    .cg-scenarios-title {
+        font-size: 2.2em !important;
+    }
+    
+    .cg-chibi img {
         width: 150px;
     }
     
-    .custom-audio-player {
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px;
+    .cg-name-gif img {
+        max-width: 100%;
     }
 }
 
 @media (max-width: 480px) {
-    .description-text {
-        font-size: 1.1em;
+    .cg-sec {
+        padding: 20px 10px;
     }
     
-    .character-details h2 {
-        font-size: 1.6em;
+    .cg-description {
+        font-size: 1.2em !important;
     }
     
-    .section-title {
-        font-size: 1.8em;
+    .cg-info-title {
+        font-size: 2em !important;
     }
     
-    .detail-item {
-        flex-direction: column;
+    .cg-info-item {
+        font-size: 1.1em !important;
     }
     
-    .detail-label {
-        margin-bottom: 5px;
+    .cg-scenario-heading {
+        font-size: 1.5em !important;
     }
     
-    .chibi-character img {
+    .cg-scenario-body {
+        font-size: 1.1em !important;
+    }
+    
+    .cg-section-title {
+        font-size: 2em !important;
+    }
+    
+    .cg-chibi {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .cg-chibi img {
         width: 120px;
     }
 }
