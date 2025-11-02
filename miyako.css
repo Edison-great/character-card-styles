@@ -412,3 +412,31 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
 .ant-select-selector {
   display: none !important;
 }
+
+/* Custom CSS for the Favorite Button */
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2 {
+  position: fixed; /* Make the button float */
+  bottom: 20px;    /* Distance from the bottom of the viewport */
+  right: 20px;     /* Distance from the right of the viewport */
+  z-index: 1000;   /* Ensure it's above other elements */
+  width: 60px;     /* Increase width for a larger button */
+  height: 60px;    /* Increase height for a larger button */
+  border-radius: 50%; /* Make it circular if you like */
+  display: flex;       /* Use flexbox for centering content */
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  font-size: 30px; /* Adjust icon size */
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.5); /* Add a prominent shadow */
+  transition: all 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.7); /* Enhance shadow on hover */
+}
+
+/* To ensure the star icon scales with the button */
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2 .anticon.anticon-star svg {
+  width: 1em; /* Make sure the SVG scales with the font-size */
+  height: 1em; /* Make sure the SVG scales with the font-size */
+}
