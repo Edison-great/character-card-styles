@@ -67,7 +67,7 @@ body::before {
     border: 1px solid rgba(220, 38, 38, 0.3) !important;  
 }  
   
-/* === BANNER REPLACEMENT === */  
+/* === ANIMATED REC BANNER === */  
 .ant-menu-item,  
 .ant-menu-item a,  
 .ant-menu-item a::before,  
@@ -88,14 +88,35 @@ body::before {
 img[src="/logo_cataract.png"],  
 .top-nav-logo img,  
 .top-nav-logo {  
-    content: url('https://archive.org/download/miyako-illustration-1/Miyako%20banner.png') !important;  
-    width: 300px !important;  
-    height: 100px !important;  
-    display: inline-block !important;  
+    content: "" !important;  
+    width: 120px !important;  
+    height: 40px !important;  
+    display: flex !important;  
+    align-items: center !important;  
+    justify-content: center !important;  
     background: transparent !important;  
     border: none !important;  
     box-shadow: none !important;  
-    object-fit: contain !important;  
+    font-family: var(--font-heading) !important;  
+    font-size: 24px !important;  
+    font-weight: 700 !important;  
+    color: var(--text-light) !important;  
+    letter-spacing: 0.1em !important;  
+}  
+  
+/* Create the animated REC text */  
+.top-nav-logo::after {  
+    content: "🔴 REC" !important;  
+    display: flex !important;  
+    align-items: center !important;  
+    gap: 8px !important;  
+}  
+  
+/* Animate the red circle */  
+.top-nav-logo::before {  
+    content: "🔴" !important;  
+    animation: pulse-rec 2s ease-in-out infinite !important;  
+    display: inline-block !important;  
 }  
   
 .ant-menu-item-selected,  
@@ -354,6 +375,17 @@ img[src="/logo_cataract.png"],
   }
 }
 
+@keyframes pulse-rec {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px rgba(220, 38, 38, 0.8));
+  }
+  50% {
+    opacity: 0.4;
+    filter: drop-shadow(0 0 2px rgba(220, 38, 38, 0.4));
+  }
+}
+
 @keyframes pulse-gold {
   0%, 100% {
     text-shadow: 0 0 10px rgba(217, 119, 6, 0.4);
@@ -386,6 +418,10 @@ img[src="/logo_cataract.png"],
   
   .mk-desc {
     padding: 20px !important;
+  }
+  
+  .top-nav-logo::after {
+    font-size: 20px !important;
   }
 }
 
