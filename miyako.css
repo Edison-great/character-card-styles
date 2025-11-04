@@ -440,3 +440,37 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
   width: 1em; /* Make sure the SVG scales with the font-size */
   height: 1em; /* Make sure the SVG scales with the font-size */
 }
+
+/* Custom Tag for @GEN3RATED_R */
+
+/* For the "Created by" section */
+.mt-2 i a[href="/users/GEN3RATED_R"]::after {
+  content: " Founding Titan 🏗️"; /* Your tag content */
+  display: inline-block;
+  background-color: var(--accent-gold); /* Or choose a color that fits your theme */
+  color: var(--dark-bg); /* Text color for the tag */
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em; /* Smaller font size for the tag */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  /* You can adjust these styles to match the 'Creator' tag more closely if desired */
+}
+
+/* For comments */
+.ant-comment-content-author-name a[href="/users/GEN3RATED_R"]::after {
+  content: " Founding Titan 🏗️"; /* Your tag content */
+  display: inline-block;
+  background-color: var(--accent-gold); /* Or choose a color that fits your theme */
+  color: var(--dark-bg); /* Text color for the tag */
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em; /* Smaller font size for the tag */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  /* Adjust these styles to match the 'Creator' tag more closely if desired */
+}
