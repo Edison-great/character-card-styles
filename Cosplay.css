@@ -516,3 +516,151 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
 .ant-select-selector {
   display: none !important;
 }
+
+/* Custom CSS for the Favorite Button */
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2 {
+  position: fixed; /* Make the button float */
+  bottom: 20px;    /* Distance from the bottom of the viewport */
+  right: 20px;     /* Distance from the right of the viewport */
+  z-index: 1000;   /* Ensure it's above other elements */
+  width: 60px;     /* Increase width for a larger button */
+  height: 60px;    /* Increase height for a larger button */
+  border-radius: 50%; /* Make it circular if you like */
+  display: flex;       /* Use flexbox for centering content */
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  font-size: 30px; /* Adjust icon size */
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.5); /* Add a prominent shadow */
+  transition: all 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.7); /* Enhance shadow on hover */
+}
+
+/* To ensure the star icon scales with the button */
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2 .anticon.anticon-star svg {
+  width: 1em; /* Make sure the SVG scales with the font-size */
+  height: 1em; /* Make sure the SVG scales with the font-size */
+}
+
+/* Custom Tag for @GEN3RATED_R - Updated with Cyan Background and Flickering Glow */
+
+/* Keyframe animation for the flickering glow */
+@keyframes flicker-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--cyan-glow-color-light), 0 0 10px var(--cyan-glow-color-medium), 0 0 15px var(--cyan-glow-color-strong);
+    opacity: 1;
+  }
+  20%, 80% {
+    box-shadow: 0 0 4px var(--cyan-glow-color-light), 0 0 8px var(--cyan-glow-color-medium), 0 0 12px var(--cyan-glow-color-strong);
+    opacity: 0.95;
+  }
+  40%, 60% {
+    box-shadow: 0 0 6px var(--cyan-glow-color-light), 0 0 12px var(--cyan-glow-color-medium), 0 0 18px var(--cyan-glow-color-strong);
+    opacity: 1;
+  }
+}
+
+/* Define custom properties for cyan glow colors (can be added to your :root) */
+:root {
+  --cyan-tag-bg: #00bcd4; /* A nice bright cyan */
+  --cyan-tag-text: #1a0f0f; /* Use your dark-bg for contrast */
+  --cyan-glow-color-light: rgba(0, 188, 212, 0.4); /* Lighter cyan for glow */
+  --cyan-glow-color-medium: rgba(0, 188, 212, 0.6);
+  --cyan-glow-color-strong: rgba(0, 188, 212, 0.8);
+}
+
+/* For the "Created by" section */
+.mt-2 i a[href="/users/GEN3RATED_R"]::after {
+  content: " Founding Titan 🏗️";
+  display: inline-block;
+  background-color: var(--cyan-tag-bg); /* Changed to cyan */
+  color: var(--cyan-tag-text);       /* Changed text to dark for contrast */
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: flicker-glow 3s infinite alternate; /* Apply flickering glow */
+  border: 1px solid var(--cyan-glow-color-medium); /* Subtle border for definition */
+}
+
+/* For comments */
+.ant-comment-content-author-name a[href="/users/GEN3RATED_R"]::after {
+  content: " Founding Titan 🏗️";
+  display: inline-block;
+  background-color: var(--cyan-tag-bg); /* Changed to cyan */
+  color: var(--cyan-tag-text);       /* Changed text to dark for contrast */
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: flicker-glow 3s infinite alternate; /* Apply flickering glow */
+  border: 1px solid var(--cyan-glow-color-medium); /* Subtle border for definition */
+}
+
+/* Ensure "Forked From" banner is always visible and on top */
+.mt-4.text-center.mb-4 {
+  display: flex !important; /* Force display as flex */
+  opacity: 1 !important;    /* Ensure it's not transparent */
+  visibility: visible !important; /* Ensure it's visible */
+  z-index: 9999 !important; /* Extremely high z-index to bring it to the front */
+
+  /* Theming and positioning adjustments */
+  background-color: rgba(26, 15, 15, 0.8) !important; /* Use a slightly transparent dark background from your theme */
+  border: 1px solid var(--primary-crimson) !important; /* Use a prominent border */
+  border-radius: 12px !important; /* More rounded corners */
+  padding: 12px 20px !important; /* Generous padding */
+  margin-top: 25px !important; /* More space from the top */
+  box-shadow: 0 0 25px rgba(220, 38, 38, 0.6) !important; /* Stronger glow/shadow */
+  backdrop-filter: blur(8px) !important; /* Add blur for a sleek effect */
+  -webkit-backdrop-filter: blur(8px) !important; /* For WebKit browsers */
+
+  justify-content: center; /* Center its content */
+  align-items: center; /* Vertically align its content */
+  text-align: center;
+  position: relative; /* Ensure z-index works relative to its containing block */
+}
+
+/* Style the link inside the forked from banner */
+.mt-4.text-center.mb-4 a {
+  color: var(--text-light) !important; /* Ensure the link text is bright */
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  font-family: var(--font-body) !important;
+  font-size: 15px !important;
+  display: flex !important; /* Ensure the anchor itself is a flex container for its content */
+  align-items: center !important;
+}
+
+/* Style the 'FORKED FROM' badge part */
+.mt-4.text-center.mb-4 a span.flex.rounded-full.bg-indigo-500 {
+  background-color: var(--primary-crimson) !important; /* Use your primary crimson */
+  color: var(--text-light) !important; /* Light text for the badge */
+  padding: 4px 10px !important;
+  border-radius: 20px !important; /* Pill shape */
+  font-size: 0.7em !important;
+  letter-spacing: 0.08em !important;
+  margin-right: 10px !important; /* Space between badge and link text */
+  text-shadow: none !important; /* Remove any conflicting text shadows */
+}
+
+/* Style the fork icon inside the badge */
+.mt-4.text-center.mb-4 a span.anticon-fork svg {
+  fill: var(--text-light) !important; /* Ensure the fork icon is light */
+}
+
+/* Style the actual bot name/path */
+.mt-4.text-center.mb-4 a span.font-semibold {
+  color: var(--accent-gold) !important; /* Highlight the bot name */
+  font-family: var(--font-desc) !important;
+  font-size: 1.1em !important;
+  letter-spacing: 0.02em !important;
+}
