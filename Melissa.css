@@ -1,0 +1,661 @@
+/* CSS for GitHub */
+/*
+=================================================================
+  CHEATING WIFE THEME
+  Dark sensual theme for complicated marriages
+=================================================================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@600;700&family=Barlow+Condensed:wght@700;800&family=Russo+One&family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+  --primary-crimson: #dc2626;
+  --accent-gold: #d97706;
+  --dark-bg: #1a0f0f;
+  --card-bg: rgba(220, 38, 38, 0.12);
+  --text-light: #f8f8f8;
+  --text-muted: #fca5a5;
+  --danger-glow: 0 0 20px rgba(220, 38, 38, 0.4);
+  --seductive-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-desc: 'Barlow Condensed', sans-serif;
+  --font-note: 'Russo One', sans-serif;
+  --font-elegant: 'Playfair Display', serif;
+}
+
+/* Base Layout */
+body,
+.ant-layout,
+.ant-layout-content {
+  background: var(--dark-bg) !important;
+}
+
+/* Animated Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(26, 15, 15, 0.9) 0%, rgba(26, 15, 15, 0.95) 100%), 
+              url('https://archive.org/download/melissa-meta-data/Melissa%20set%20Background.png') center center/cover no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* === HEADER TRANSPARENCY === */  
+.ant-layout-header {  
+    background: transparent !important;  
+    backdrop-filter: none !important;  
+    padding: 0 !important;  
+}  
+  
+.ant-menu-overflow.ant-menu {  
+    background-color: transparent !important;  
+}  
+  
+/* Search bar transparency */  
+.no-arrow.no-vertical-anything {  
+    background: transparent !important;  
+}  
+  
+.ant-select-selector {  
+    background: transparent !important;  
+    border: 1px solid rgba(220, 38, 38, 0.3) !important;  
+}  
+  
+/* === BANNER REPLACEMENT === */  
+.ant-menu-item,  
+.ant-menu-item a,  
+.ant-menu-item a::before,  
+.ant-menu-item a::after,  
+.top-nav-logo,  
+.top-nav-logo::before,  
+.top-nav-logo::after {  
+    background: transparent !important;  
+    background-color: transparent !important;  
+    box-shadow: none !important;  
+    border: none !important;  
+    outline: none !important;  
+    padding: 0 !important;  
+    margin: 0 !important;  
+}  
+  
+.ant-menu-item a img[src="/logo_cataract.png"],  
+img[src="/logo_cataract.png"],  
+.top-nav-logo img,  
+.top-nav-logo {  
+    content: url('https://archive.org/download/melissa-meta-data/Untitled101_20251110165726.png') !important;  
+    width: 300px !important;  
+    height: 100px !important;  
+    display: inline-block !important;  
+    background: transparent !important;  
+    border: none !important;  
+    box-shadow: none !important;  
+    object-fit: contain !important;  
+}  
+  
+.ant-menu-item-selected,  
+.ant-menu-item:hover {  
+    background: transparent !important;  
+    box-shadow: none !important;  
+}
+
+/* Main Container */
+.mk-sec {
+  position: relative;
+  font-family: var(--font-body);
+  color: var(--text-light);
+  overflow: visible !important;
+  min-height: 100vh;
+}
+
+.mk-sec * {
+  box-sizing: border-box;
+}
+
+.mk-wrap {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 25px 20px;
+  overflow: visible !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* Video Section */
+.mk-video-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--seductive-shadow);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.mk-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.mk-sound-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(220, 38, 38, 0.8);
+  color: var(--text-light);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 3;
+}
+
+.mk-sound-toggle:hover {
+  background: var(--primary-crimson);
+  transform: scale(1.1);
+}
+
+/* Description Section */
+.mk-desc {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(220, 38, 38, 0.3) !important;
+  border-radius: 12px !important;
+  padding: 25px !important;
+  margin-bottom: 30px !important;
+  box-shadow: var(--seductive-shadow) !important;
+  animation: fadeInUp 0.8s ease-out 0.1s both;
+}
+
+.mk-description {
+  font-family: var(--font-body) !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  font-weight: 400 !important;
+  color: var(--text-light) !important;
+  margin: 0 !important;
+  text-align: justify;
+}
+
+/* Character Info Section */
+.mk-character-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 35px;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.mk-character-details {
+  flex: 1;
+}
+
+.mk-character-title {
+  font-family: var(--font-heading) !important;
+  font-size: clamp(24px, 3vw, 32px) !important;
+  font-weight: 400 !important;
+  color: var(--primary-crimson) !important;
+  margin: 0 0 20px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  text-shadow: 0 0 10px rgba(220, 38, 38, 0.4);
+}
+
+.mk-character-details p {
+  font-family: var(--font-body) !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: var(--text-light) !important;
+  margin: 0 0 12px !important;
+}
+
+.mk-character-details strong {
+  color: var(--accent-gold) !important;
+  font-weight: 600 !important;
+}
+
+.mk-character-image {
+  flex-shrink: 0;
+  margin-left: 30px;
+  display: flex;
+  align-items: stretch;
+}
+
+.mk-character-image img {
+  height: 100%;
+  object-fit: contain;
+  max-width: none;
+  border-radius: 8px;
+  box-shadow: var(--seductive-shadow);
+}
+
+/* Scenarios Section */
+.mk-scenarios {
+  margin-bottom: 35px !important;
+  animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.mk-scenarios-title {
+  font-family: var(--font-heading) !important;
+  font-size: clamp(28px, 3.5vw, 36px) !important;
+  font-weight: 400 !important;
+  color: var(--primary-crimson) !important;
+  margin: 0 0 20px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(220, 38, 38, 0.4);
+}
+
+.mk-scenarios-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mk-scenario-item {
+  background: rgba(220, 38, 38, 0.08) !important;
+  border: 1px solid rgba(220, 38, 38, 0.2) !important;
+  border-radius: 10px !important;
+  padding: 18px 20px !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  list-style: none !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.mk-scenario-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--primary-crimson);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mk-scenario-item:hover {
+  background: rgba(220, 38, 38, 0.15) !important;
+  border-color: var(--primary-crimson) !important;
+  transform: translateX(8px);
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.mk-scenario-item:hover::before {
+  opacity: 1;
+}
+
+.mk-scenario-heading {
+  font-family: var(--font-body) !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: var(--accent-gold) !important;
+  margin: 0 0 8px !important;
+}
+
+.mk-scenario-text {
+  font-family: var(--font-body) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: var(--text-light) !important;
+  margin: 0 !important;
+}
+
+/* Credits Section */
+.mk-credits {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(217, 119, 6, 0.3) !important;
+  border-radius: 12px !important;
+  padding: 25px !important;
+  margin-bottom: 30px !important;
+  box-shadow: var(--seductive-shadow) !important;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.mk-credits-title {
+  font-family: var(--font-note) !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  color: var(--accent-gold) !important;
+  margin: 0 0 15px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+
+.mk-credits-text {
+  font-family: var(--font-body) !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  color: var(--text-light) !important;
+  margin: 0 !important;
+}
+
+/* Author Note */
+.mk-note {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid var(--primary-crimson) !important;
+  border-radius: 15px !important;
+  padding: 25px !important;
+  box-shadow: var(--danger-glow) !important;
+  animation: fadeInUp 0.8s ease-out 0.5s both;
+  position: relative;
+}
+
+.mk-note-title {
+  font-family: var(--font-note) !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  color: var(--primary-crimson) !important;
+  margin: 0 0 15px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+
+.mk-note-text {
+  font-family: var(--font-body) !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  color: var(--text-light) !important;
+  margin: 0 0 20px !important;
+}
+
+/* Catchphrase */
+.mk-catchphrase {
+  margin-top: 20px !important;
+  padding-top: 18px !important;
+  border-top: 2px solid rgba(220, 38, 38, 0.4) !important;
+  text-align: center !important;
+}
+
+.mk-catchphrase-text {
+  font-family: var(--font-elegant) !important;
+  font-size: clamp(20px, 2.5vw, 26px) !important;
+  font-weight: 700 !important;
+  color: var(--accent-gold) !important;
+  margin: 0 !important;
+  letter-spacing: 0.05em !important;
+  font-style: italic !important;
+  text-shadow: 0 0 10px rgba(217, 119, 6, 0.4);
+  animation: pulse-gold 3s ease-in-out infinite !important;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-gold {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(217, 119, 6, 0.4);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(217, 119, 6, 0.7), 0 0 20px rgba(217, 119, 6, 0.4);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mk-wrap {
+    padding: 20px 15px;
+  }
+  
+  .mk-character-info {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .mk-character-image {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .mk-character-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .mk-scenario-item {
+    padding: 15px 18px !important;
+  }
+  
+  .mk-desc,
+  .mk-credits,
+  .mk-note {
+    padding: 20px !important;
+  }
+}
+
+/* Chub.ai Overrides */
+h3.ant-typography,
+h5.ant-typography,
+div.msg-mkdn-container:not(:has(.mk-sec)),
+h4.ant-typography.mt-8,
+h4.ant-typography.mt-8+div {
+  display: none !important;
+}
+
+.ant-layout-footer {
+  display: none !important;
+}
+
+button.ant-btn {
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  background: rgba(220, 38, 38, 0.2) !important;
+  border: 1px solid var(--primary-crimson) !important;
+  color: var(--text-light) !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+button.ant-btn:hover {
+  background: var(--primary-crimson) !important;
+  color: var(--text-light) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
+}
+
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag {
+  background: rgba(220, 38, 38, 0.15) !important;
+  color: var(--primary-crimson) !important;
+  border: 1px solid rgba(220, 38, 38, 0.3) !important;
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  transition: all 0.2s ease !important;
+}
+
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover {
+  background: var(--primary-crimson) !important;
+  color: var(--text-light) !important;
+  transform: scale(1.05) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Hiding specific elements as requested */
+button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.ant-btn-lg.ant-dropdown-trigger,
+.ant-select-selection-overflow,
+.ant-select-selection-wrap,
+.ant-select-selector {
+  display: none !important;
+}
+
+/* Custom CSS for the Favorite Button */
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2 {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.5);
+  transition: all 0.3s ease;
+}
+
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.7);
+}
+
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2 .anticon.anticon-star svg {
+  width: 1em;
+  height: 1em;
+}
+
+/* Custom Tag for @GEN3RATED_R - Updated with Cyan Background and Flickering Glow */
+@keyframes flicker-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--cyan-glow-color-light), 0 0 10px var(--cyan-glow-color-medium), 0 0 15px var(--cyan-glow-color-strong);
+    opacity: 1;
+  }
+  20%, 80% {
+    box-shadow: 0 0 4px var(--cyan-glow-color-light), 0 0 8px var(--cyan-glow-color-medium), 0 0 12px var(--cyan-glow-color-strong);
+    opacity: 0.95;
+  }
+  40%, 60% {
+    box-shadow: 0 0 6px var(--cyan-glow-color-light), 0 0 12px var(--cyan-glow-color-medium), 0 0 18px var(--cyan-glow-color-strong);
+    opacity: 1;
+  }
+}
+
+:root {
+  --cyan-tag-bg: #00bcd4;
+  --cyan-tag-text: #1a0f0f;
+  --cyan-glow-color-light: rgba(0, 188, 212, 0.4);
+  --cyan-glow-color-medium: rgba(0, 188, 212, 0.6);
+  --cyan-glow-color-strong: rgba(0, 188, 212, 0.8);
+}
+
+.mt-2 i a[href="/users/GEN3RATED_R"]::after {
+  content: " Founding Titan 🏗️";
+  display: inline-block;
+  background-color: var(--cyan-tag-bg);
+  color: var(--cyan-tag-text);
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: flicker-glow 3s infinite alternate;
+  border: 1px solid var(--cyan-glow-color-medium);
+}
+
+.ant-comment-content-author-name a[href="/users/GEN3RATED_R"]::after {
+  content: " Founding Titan 🏗️";
+  display: inline-block;
+  background-color: var(--cyan-tag-bg);
+  color: var(--cyan-tag-text);
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: flicker-glow 3s infinite alternate;
+  border: 1px solid var(--cyan-glow-color-medium);
+}
+
+/* Ensure "Forked From" banner is always visible and on top */
+.mt-4.text-center.mb-4 {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 9999 !important;
+  background-color: rgba(26, 15, 15, 0.8) !important;
+  border: 1px solid var(--primary-crimson) !important;
+  border-radius: 12px !important;
+  padding: 12px 20px !important;
+  margin-top: 25px !important;
+  box-shadow: 0 0 25px rgba(220, 38, 38, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.mt-4.text-center.mb-4 a {
+  color: var(--text-light) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  font-family: var(--font-body) !important;
+  font-size: 15px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.mt-4.text-center.mb-4 a span.flex.rounded-full.bg-indigo-500 {
+  background-color: var(--primary-crimson) !important;
+  color: var(--text-light) !important;
+  padding: 4px 10px !important;
+  border-radius: 20px !important;
+  font-size: 0.7em !important;
+  letter-spacing: 0.08em !important;
+  margin-right: 10px !important;
+  text-shadow: none !important;
+}
+
+.mt-4.text-center.mb-4 a span.anticon-fork svg {
+  fill: var(--text-light) !important;
+}
+
+.mt-4.text-center.mb-4 a span.font-semibold {
+  color: var(--accent-gold) !important;
+  font-family: var(--font-desc) !important;
+  font-size: 1.1em !important;
+  letter-spacing: 0.02em !important;
+}
