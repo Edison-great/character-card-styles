@@ -434,7 +434,7 @@ img[src="/logo_cataract.png"],
 }
 
 .ml-catchphrase-text {
-  font-family: var(--font-script) !important;
+  font-family: 'Arial', sans-serif !important; /* Changed font here */
   font-size: clamp(22px, 3vw, 32px) !important;
   font-weight: 400 !important;
   color: var(--accent-pink) !important;
