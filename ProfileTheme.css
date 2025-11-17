@@ -598,40 +598,9 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
   display: none !important;
 }
 
-/* === MOVE BIO SECTION TO TOP === */
-.bio-section {
-    margin-top: 50px !important; /* Changed from 700px */
-    order: -1 !important; /* This ensures it appears first */
-}
-
-/* Adjust follower count and button positioning since bio is now on top */
-.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 div.text-sm.mb-2 {
-    position: relative !important; /* Changed from absolute */
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-    margin-top: 30px !important;
-    margin-bottom: 30px !important;
-}
-
-/* Ensure proper stacking order */
-.profile-container {
-    display: flex !important;
-    flex-direction: column !important;
-}
-
-.profile-header {
-    order: 1;
-}
-
-.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 {
-    order: 2;
-}
-
-.bio-section {
-    order: 3;
-}
-
+/* === PREVENT SIDE-BY-SIDE LAYOUT ON DESKTOP === */
+.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6,
 .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 {
-    order: 4;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
 }
