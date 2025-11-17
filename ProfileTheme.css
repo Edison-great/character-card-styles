@@ -335,6 +335,30 @@ footer.ant-layout-footer,
 .bio-section .inline-image:hover {  
     transform: scale(1.03);  
 }  
+
+/* === FORCE DESCRIPTION ON TOP (ALL SCREEN SIZES) === */
+.ant-row.ant-row-start {
+    flex-direction: column !important;
+}
+
+.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6,
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+}
+
+/* Ensure left column (with follower count/button) stays centered */
+.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 {
+    order: 1;
+    position: relative !important;
+}
+
+/* Ensure right column (with tabs/characters) comes second */
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 {
+    order: 2;
+    margin-top: 20px !important;
+}
   
 /* === TABS (Fix #6 - Slider functionality) === */  
 .ant-tabs-nav-wrap {  
