@@ -598,26 +598,40 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
   display: none !important;
 }
 
-/* === FORCE DESCRIPTION ON TOP (ALL SCREEN SIZES) === */
-.ant-row.ant-row-start {
+/* === MOVE BIO SECTION TO TOP === */
+.bio-section {
+    margin-top: 50px !important; /* Changed from 700px */
+    order: -1 !important; /* This ensures it appears first */
+}
+
+/* Adjust follower count and button positioning since bio is now on top */
+.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 div.text-sm.mb-2 {
+    position: relative !important; /* Changed from absolute */
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+}
+
+/* Ensure proper stacking order */
+.profile-container {
+    display: flex !important;
     flex-direction: column !important;
 }
 
-.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6,
-.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 {
-    max-width: 100% !important;
-    flex: 0 0 100% !important;
-    width: 100% !important;
-}
-
-/* Ensure left column (with follower count/button) stays centered */
-.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 {
+.profile-header {
     order: 1;
-    position: relative !important;
 }
 
-/* Ensure right column (with tabs/characters) comes second */
-.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 {
+.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 {
     order: 2;
-    margin-top: 20px !important;
+}
+
+.bio-section {
+    order: 3;
+}
+
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 {
+    order: 4;
 }
