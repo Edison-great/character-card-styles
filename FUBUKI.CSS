@@ -90,16 +90,10 @@ img[src="/logo_cataract.png"],
 .top-nav-logo img,  
 .top-nav-logo {  
     content: url('https://ella.janitorai.com/media-approved/ruA7mMBIwRvlLBgzNK2uo.webp') !important;  
-    width: 180px !important;  
-    height: 60px !important;  
-    display: inline-block !important;  
     background: transparent !important;  
     border: none !important;  
     box-shadow: none !important;  
-    object-fit: cover !important;
     object-position: left center !important;
-    margin: 0 !important;
-    padding: 0 !important;
 }  
   
 .ant-menu-item-selected,  
