@@ -90,13 +90,16 @@ img[src="/logo_cataract.png"],
 .top-nav-logo img,  
 .top-nav-logo {  
     content: url('https://archive.org/download/fubuki-illustrations/Untitled222_20251211010442.png') !important;  
-    width: 320px !important;  
-    height: 110px !important;  
+    width: 180px !important;  
+    height: 60px !important;  
     display: inline-block !important;  
     background: transparent !important;  
     border: none !important;  
     box-shadow: none !important;  
-    object-fit: contain !important;  
+    object-fit: cover !important;
+    object-position: left center !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }  
   
 .ant-menu-item-selected,  
