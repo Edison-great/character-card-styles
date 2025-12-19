@@ -426,21 +426,22 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
 
 /* Custom CSS for the Favorite Button */
 .ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2 {
-  position: static !important;
-  width: 100% !important;
-  height: auto !important;
-  min-height: 40px !important;
-  border-radius: 6px !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
   font-size: 16px !important;
   background: rgba(0, 255, 136, 0.25) !important;
   border: 1px solid var(--primary-green) !important;
   box-shadow: none !important;
   transition: all 0.3s ease !important;
-  margin-top: 8px !important;
-  padding: 10px 16px !important;
 }
 
 .ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2:hover {
