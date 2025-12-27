@@ -89,7 +89,7 @@ body::before {
 img[src="/logo_cataract.png"],  
 .top-nav-logo img,  
 .top-nav-logo {  
-    content: url('https://archive.org/download/yui-bot/Untitled61_20251014054044.png') !important;  
+    content: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/27a4537d-f1ca-4d8f-a898-6321b57faa8d/3207282f-7399-4504-9ae3-f38bbce84987.png') !important;  
     width: 180px !important;  
     height: 60px !important;  
     display: inline-block !important;  
@@ -426,21 +426,22 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
 
 /* Custom CSS for the Favorite Button */
 .ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2 {
-  position: static !important;
-  width: 100% !important;
-  height: auto !important;
-  min-height: 40px !important;
-  border-radius: 6px !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
   font-size: 16px !important;
   background: rgba(168, 85, 247, 0.25) !important;
   border: 1px solid var(--primary-purple) !important;
   box-shadow: none !important;
   transition: all 0.3s ease !important;
-  margin-top: 8px !important;
-  padding: 10px 16px !important;
 }
 
 .ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2:hover {
