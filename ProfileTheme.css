@@ -248,7 +248,7 @@ footer.ant-layout-footer,
     position: relative;  
     box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000 !important;  
     border: 3px solid rgba(255, 0, 0, 0.7) !important;  
-    animation: spinning-animation 1s linear infinite !important;  
+    animation: spinning-animation 0.7s linear infinite !important;  
 }  
   
 @keyframes spinning-animation {  
