@@ -372,7 +372,9 @@ h4.ant-typography.mt-8+div {
 }
 
 .ant-layout-footer {
-  display: none !important;
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 button.ant-btn {
