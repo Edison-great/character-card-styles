@@ -631,6 +631,62 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
   border: 1px solid var(--pink-glow-color-medium);
 }
 
+/* Custom Tag for @Yariami */
+@keyframes purple-flicker-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(168, 85, 247, 0.4), 0 0 10px rgba(168, 85, 247, 0.6), 0 0 15px rgba(168, 85, 247, 0.8);
+    opacity: 1;
+  }
+  20%, 80% {
+    box-shadow: 0 0 4px rgba(168, 85, 247, 0.4), 0 0 8px rgba(168, 85, 247, 0.6), 0 0 12px rgba(168, 85, 247, 0.8);
+    opacity: 0.95;
+  }
+  40%, 60% {
+    box-shadow: 0 0 6px rgba(168, 85, 247, 0.4), 0 0 12px rgba(168, 85, 247, 0.6), 0 0 18px rgba(168, 85, 247, 0.8);
+    opacity: 1;
+  }
+}
+
+:root {
+  --purple-tag-bg: #a855f7;
+  --purple-tag-text: #1a0a2e;
+  --purple-glow-color-light: rgba(168, 85, 247, 0.4);
+  --purple-glow-color-medium: rgba(168, 85, 247, 0.6);
+  --purple-glow-color-strong: rgba(168, 85, 247, 0.8);
+}
+
+.mt-2 i a[href="/users/Yariami"]::after {
+  content: " Twin 👥";
+  display: inline-block;
+  background-color: var(--purple-tag-bg);
+  color: var(--purple-tag-text);
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: purple-flicker-glow 3s infinite alternate;
+  border: 1px solid var(--purple-glow-color-medium);
+}
+
+.ant-comment-content-author-name a[href="/users/Yariami"]::after {
+  content: " Twin 👥";
+  display: inline-block;
+  background-color: var(--purple-tag-bg);
+  color: var(--purple-tag-text);
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: purple-flicker-glow 3s infinite alternate;
+  border: 1px solid var(--purple-glow-color-medium);
+}
+
 /* Ensure "Forked From" banner is always visible and on top */
 .mt-4.text-center.mb-4 {
   display: flex !important;
