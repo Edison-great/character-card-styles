@@ -575,6 +575,62 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
   border: 1px solid var(--green-glow-color-medium);
 }
 
+/* Custom Tag for @Ps1cho */
+@keyframes pink-flicker-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(236, 72, 153, 0.4), 0 0 10px rgba(236, 72, 153, 0.6), 0 0 15px rgba(236, 72, 153, 0.8);
+    opacity: 1;
+  }
+  20%, 80% {
+    box-shadow: 0 0 4px rgba(236, 72, 153, 0.4), 0 0 8px rgba(236, 72, 153, 0.6), 0 0 12px rgba(236, 72, 153, 0.8);
+    opacity: 0.95;
+  }
+  40%, 60% {
+    box-shadow: 0 0 6px rgba(236, 72, 153, 0.4), 0 0 12px rgba(236, 72, 153, 0.6), 0 0 18px rgba(236, 72, 153, 0.8);
+    opacity: 1;
+  }
+}
+
+:root {
+  --pink-tag-bg: #ec4899;
+  --pink-tag-text: #1a0a14;
+  --pink-glow-color-light: rgba(236, 72, 153, 0.4);
+  --pink-glow-color-medium: rgba(236, 72, 153, 0.6);
+  --pink-glow-color-strong: rgba(236, 72, 153, 0.8);
+}
+
+.mt-2 i a[href="/users/Ps1cho"]::after {
+  content: " Rival ✨(secret lover)";
+  display: inline-block;
+  background-color: var(--pink-tag-bg);
+  color: var(--pink-tag-text);
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: pink-flicker-glow 3s infinite alternate;
+  border: 1px solid var(--pink-glow-color-medium);
+}
+
+.ant-comment-content-author-name a[href="/users/Ps1cho"]::after {
+  content: " Rival ✨(secret lover)";
+  display: inline-block;
+  background-color: var(--pink-tag-bg);
+  color: var(--pink-tag-text);
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: pink-flicker-glow 3s infinite alternate;
+  border: 1px solid var(--pink-glow-color-medium);
+}
+
 /* Ensure "Forked From" banner is always visible and on top */
 .mt-4.text-center.mb-4 {
   display: flex !important;
