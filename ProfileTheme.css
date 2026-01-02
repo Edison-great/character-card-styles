@@ -266,6 +266,8 @@ footer.ant-layout-footer,
     color: #00ffff;  
     text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;  
     margin: 0;  
+    white-space: nowrap;
+    overflow: visible;
     padding: 0;  
     letter-spacing: 3px;  
     line-height: 1.1;  
@@ -417,8 +419,7 @@ footer.ant-layout-footer,
     display: grid !important;  
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;  
     gap: 25px !important;  
-    width: 100% !important;  
-    max-width: 1200px !important;  
+    max-width: 90% !important;  
 }  
   
 /* === INDIVIDUAL CHARACTER CARD === */  
