@@ -42,7 +42,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(26, 10, 20, 0.88) 0%, rgba(26, 10, 20, 0.95) 100%), 
+  background: linear-gradient(180deg, rgba(26, 10, 20, 0.88) 0%, rgba(26, 10, 20, 0.60) 100%), 
              url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/53b0cb5c-414d-4733-aa50-d0cc830d7c7d/14d82b6d-daef-4cda-bcb5-daf22b53932a.jpeg') center center/cover no-repeat;
   pointer-events: none;
   z-index: 0;
@@ -90,7 +90,7 @@ body::before {
 img[src="/logo_cataract.png"],  
 .top-nav-logo img,  
 .top-nav-logo {  
-    content: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/6c65f913-30b0-4e2c-95e5-c7f05af5a0aa/5946cbec-9dc2-4768-aa14-8f8ef4f0ff0f.png') !important;  
+    content: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/00bd48cc-db09-419f-9dd1-271e99661501/b4626341-3efb-4a0c-83bd-218ced46fde1.png') !important;  
     width: 180px !important;  
     height: 60px !important;  
     display: inline-block !important;  
