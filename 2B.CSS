@@ -301,8 +301,7 @@ body::before {
   font-weight: 400;
   color: var(--primary-white);
   margin: 0;
-  letter-spacing: 0.02em;
-  text-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
+  letter-spacing: 0.02e;
   animation: pulse-white 3s ease-in-out infinite;
 }
 
