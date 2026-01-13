@@ -1,8 +1,8 @@
 /* CSS for GitHub */
 /*
 =================================================================
-  2B THEME
-  Black & White - Android Elegance
+  2B PURE WHITE THEME
+  Clean & Elegant Design
 =================================================================
 */
 
@@ -10,15 +10,14 @@
 
 :root {
   --primary-white: #ffffff;
-  --accent-silver: #c0c0c0;
-  --accent-gray: #808080;
-  --dark-bg: #0a0a0a;
-  --card-bg: rgba(255, 255, 255, 0.08);
-  --text-cream: #ffffff;
-  --text-muted: #e5e5e5;
+  --accent-light: #f5f5f5;
+  --accent-silver: #e0e0e0;
+  --dark-text: #1a1a1a;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --text-dark: #2d2d2d;
+  --text-muted: #666666;
   --white-glow: 0 0 25px rgba(255, 255, 255, 0.3);
-  --silver-glow: 0 0 20px rgba(192, 192, 192, 0.4);
-  --elegant-shadow: 0 6px 25px rgba(0, 0, 0, 0.8);
+  --elegant-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
   
   --font-heading: 'Cinzel', serif;
   --font-body: 'Raleway', sans-serif;
@@ -31,7 +30,7 @@
 body,
 .ant-layout,
 .ant-layout-content {
-  background: var(--dark-bg);
+  background: #f8f8f8;
 }
 
 /* Animated Background */
@@ -42,7 +41,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(10, 10, 10, 0.70) 0%, rgba(10, 10, 10, 0.80) 100%), 
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(248, 248, 248, 0.8) 100%), 
              url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/06a540f4-e817-4275-8ffa-8fd9e97494fb/2e923ce1-8645-47af-898c-29a9e1ea7df3.jpeg') center center/cover no-repeat;
   pointer-events: none;
   z-index: 0;
@@ -65,39 +64,15 @@ body::before {
 }  
   
 .ant-select-selector {  
-    background: transparent;  
-    border: 1px solid rgba(255, 255, 255, 0.3);  
+    background: transparent;
+    border: 1px solid rgba(224, 224, 224, 0.5);  
 }  
-  
-/* === BANNER REPLACEMENT === */  
-.ant-menu-item,  
-.ant-menu-item a,  
-.ant-menu-item a::before,  
-.ant-menu-item a::after,  
-.top-nav-logo,  
-.top-nav-logo::before,  
-.top-nav-logo::after {  
-    background: transparent;  
-    background-color: transparent;  
-    box-shadow: none;  
-    border: none;  
-    outline: none;  
-    padding: 0;  
-    margin: 0;  
-}  
-  
-  
-.ant-menu-item-selected,  
-.ant-menu-item:hover {  
-    background: transparent;  
-    box-shadow: none;  
-}
 
 /* Main Container */
 .ml-sec {
   position: relative;
   font-family: var(--font-body);
-  color: var(--primary-white);
+  color: var(--dark-text);
   overflow: visible;
   min-height: 100vh;
 }
@@ -124,7 +99,7 @@ body::before {
   border-radius: 15px;
   overflow: hidden;
   box-shadow: var(--elegant-shadow);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(224, 224, 224, 0.6);
   position: relative;
   animation: fadeInUp 0.8s ease-out;
 }
@@ -135,12 +110,12 @@ body::before {
   display: block;
 }
 
-/* Description Section */
-.ml-desc {
+/* Lore Section */
+.ml-lore {
   background: var(--card-bg);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(224, 224, 224, 0.6);
   border-radius: 15px;
   padding: 28px;
   margin-bottom: 35px;
@@ -148,35 +123,48 @@ body::before {
   animation: fadeInUp 0.8s ease-out 0.1s both;
 }
 
+.ml-lore-title {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3.5vw, 36px);
+  font-weight: 700;
+  color: var(--dark-text);
+  margin: 0 0 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.ml-lore-text {
+  font-family: var(--font-desc);
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin: 0;
+  text-align: justify;
+}
+
+/* Description Section */
+.ml-desc {
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(224, 224, 224, 0.6);
+  border-radius: 15px;
+  padding: 28px;
+  margin-bottom: 35px;
+  box-shadow: var(--elegant-shadow);
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
 .ml-description {
   font-family: var(--font-desc);
   font-size: 16px;
   line-height: 1.8;
   font-weight: 400;
-  color: var(--primary-white);
+  color: var(--text-dark);
   margin: 0;
   text-align: justify;
-}
-
-/* Character Info Section - Full Width Image */
-.ml-info-container {
-  width: 100%;
-  margin-bottom: 35px;
-  animation: fadeInUp 0.8s ease-out 0.2s both;
-}
-
-.ml-info-image-full {
-  width: 100%;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: var(--white-glow);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.ml-info-image-full img {
-  width: 100%;
-  height: auto;
-  display: block;
 }
 
 /* Scenarios Section */
@@ -189,12 +177,11 @@ body::before {
   font-family: var(--font-heading);
   font-size: clamp(28px, 3.5vw, 36px);
   font-weight: 700;
-  color: var(--primary-white);
+  color: var(--dark-text);
   margin: 0 0 25px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   text-align: center;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
 .ml-scenarios-list {
@@ -207,8 +194,8 @@ body::before {
 }
 
 .ml-scenario-item {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(224, 224, 224, 0.6);
   border-radius: 12px;
   padding: 20px 22px;
   transition: all 0.3s ease;
@@ -225,16 +212,16 @@ body::before {
   top: 0;
   bottom: 0;
   width: 4px;
-  background: linear-gradient(180deg, var(--primary-white) 0%, var(--primary-white) 100%);
+  background: linear-gradient(180deg, var(--dark-text) 0%, var(--text-muted) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .ml-scenario-item:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.95);
   border-color: var(--accent-silver);
   transform: translateX(10px);
-  box-shadow: 0 6px 20px rgba(192, 192, 192, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .ml-scenario-item:hover::before {
@@ -245,7 +232,7 @@ body::before {
   font-family: var(--font-elegant);
   font-size: 19px;
   font-weight: 700;
-  color: var(--primary-white);
+  color: var(--dark-text);
   margin: 0 0 10px;
 }
 
@@ -254,8 +241,29 @@ body::before {
   font-size: 15px;
   font-weight: 400;
   line-height: 1.6;
-  color: var(--primary-white);
+  color: var(--text-dark);
   margin: 0;
+}
+
+/* Character Info Section - Full Width Image */
+.ml-info-container {
+  width: 100%;
+  margin-bottom: 35px;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.ml-info-image-full {
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--elegant-shadow);
+  border: 2px solid rgba(224, 224, 224, 0.6);
+}
+
+.ml-info-image-full img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Author Note */
@@ -263,11 +271,11 @@ body::before {
   background: var(--card-bg);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 2px solid var(--primary-white);
+  border: 2px solid var(--accent-silver);
   border-radius: 15px;
   padding: 28px;
-  box-shadow: var(--white-glow);
-  animation: fadeInUp 0.8s ease-out 0.4s both;
+  box-shadow: var(--elegant-shadow);
+  animation: fadeInUp 0.8s ease-out 0.5s both;
   position: relative;
 }
 
@@ -275,11 +283,10 @@ body::before {
   font-family: var(--font-heading);
   font-size: 24px;
   font-weight: 700;
-  color: var(--primary-white);
+  color: var(--dark-text);
   margin: 0 0 18px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
 }
 
 .ml-note-text {
@@ -287,7 +294,7 @@ body::before {
   font-size: 15px;
   font-weight: 400;
   line-height: 1.7;
-  color: var(--primary-white);
+  color: var(--text-dark);
   margin: 0 0 25px;
 }
 
@@ -295,7 +302,7 @@ body::before {
 .ml-catchphrase {
   margin-top: 25px;
   padding-top: 20px;
-  border-top: 2px solid rgba(192, 192, 192, 0.4);
+  border-top: 2px solid rgba(224, 224, 224, 0.6);
   text-align: center;
 }
 
@@ -303,10 +310,9 @@ body::before {
   font-family: 'Arial', sans-serif;
   font-size: clamp(22px, 3vw, 32px);
   font-weight: 400;
-  color: var(--primary-white);
+  color: var(--text-muted);
   margin: 0;
   letter-spacing: 0.02em;
-  text-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
   animation: pulse-white 3s ease-in-out infinite;
 }
 
@@ -324,10 +330,10 @@ body::before {
 
 @keyframes pulse-white {
   0%, 100% {
-    text-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
+    opacity: 0.8;
   }
   50% {
-    text-shadow: 0 0 20px rgba(192, 192, 192, 0.8), 0 0 25px rgba(192, 192, 192, 0.5);
+    opacity: 1;
   }
 }
 
@@ -342,6 +348,7 @@ body::before {
   }
   
   .ml-desc,
+  .ml-lore,
   .ml-note {
     padding: 22px;
   }
@@ -363,25 +370,25 @@ h4.ant-typography.mt-8+div {
 button.ant-btn {
   font-family: var(--font-body);
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid var(--primary-white);
-  color: var(--primary-white:);
+  background: rgba(224, 224, 224, 0.5);
+  border: 1px solid var(--accent-silver);
+  color: var(--dark-text);
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 button.ant-btn:hover {
-  background: var(--accent-silver);
-  color: var(--dark-bg);
+  background: var(--primary-white);
+  color: var(--dark-text);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(192, 192, 192, 0.5);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-tag {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--primary-white);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(224, 224, 224, 0.4);
+  color: var(--dark-text);
+  border: 1px solid rgba(224, 224, 224, 0.6);
   font-family: var(--font-body);
   font-weight: 600;
   text-transform: uppercase;
@@ -389,8 +396,8 @@ button.ant-btn:hover {
 }
 
 .ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover {
-  background: var(--accent-silver);
-  color: var(--dark-bg);
+  background: var(--primary-white);
+  color: var(--dark-text);
   transform: scale(1.05);
 }
 
@@ -401,7 +408,7 @@ button.ant-btn:hover {
   }
 }
 
-/* Hiding specific elements as requested */
+/* Hiding specific elements */
 button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.ant-btn-lg.ant-dropdown-trigger,
 .ant-select-selection-overflow,
 .ant-select-selection-wrap,
@@ -422,17 +429,17 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
   justify-content: center;
   align-items: center;
   font-size: 32px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid var(--primary-white);
+  background: rgba(224, 224, 224, 0.5);
+  border: 1px solid var(--accent-silver);
   box-shadow: none;
   transition: all 0.3s ease;
 }
 
 .ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(192, 192, 192, 0.5);
-  background: var(--accent-silver);
-  color: var(--dark-bg);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background: var(--primary-white);
+  color: var(--dark-text);
 }
 
 .ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2 .anticon.anticon-star svg {
@@ -471,7 +478,7 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
 }
 
 .mt-2 i a[href="/users/GEN3RATED_R"]::after {
-  content: " Founding Titan 🏗️";
+  content: " Founding Titan ️";
   display: inline-block;
   background-color: var(--cyan-tag-bg);
   color: var(--cyan-tag-text);
@@ -487,7 +494,7 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
 }
 
 .ant-comment-content-author-name a[href="/users/GEN3RATED_R"]::after {
-  content: " Founding Titan 🏗️";
+  content: " Founding Titan ️";
   display: inline-block;
   background-color: var(--cyan-tag-bg);
   color: var(--cyan-tag-text);
@@ -527,7 +534,7 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
 }
 
 .mt-2 i a[href="/users/Xert"]::after {
-  content: " Who him? He's GOATED 🫵🏾";
+  content: " Who him? He's GOATED ";
   display: inline-block;
   background-color: var(--green-tag-bg);
   color: var(--green-tag-text);
@@ -543,7 +550,7 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
 }
 
 .ant-comment-content-author-name a[href="/users/Xert"]::after {
-  content: " Who him? He's GOATED 🫵🏾";
+  content: " Who him? He's GOATED ";
   display: inline-block;
   background-color: var(--green-tag-bg);
   color: var(--green-tag-text);
@@ -639,7 +646,7 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
 }
 
 .mt-2 i a[href="/users/Yariami"]::after {
-  content: " Twin 👥";
+  content: " Twin ";
   display: inline-block;
   background-color: var(--purple-tag-bg);
   color: var(--purple-tag-text);
@@ -655,7 +662,7 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
 }
 
 .ant-comment-content-author-name a[href="/users/Yariami"]::after {
-  content: " Twin 👥";
+  content: " Twin ";
   display: inline-block;
   background-color: var(--purple-tag-bg);
   color: var(--purple-tag-text);
@@ -672,16 +679,16 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
 
 /* Ensure "Forked From" banner is always visible and on top */
 .mt-4.text-center.mb-4 {
-  display: flex;
+  display: flex ;
   opacity: 1;
   visibility: visible;
   z-index: 9999;
-  background-color: rgba(10, 10, 10, 0.85);
-  border: 1px solid var(--primary-white);
+  background-color: rgba(26, 10, 20, 0.85) !important;
+  border: 1px solid var(--primary-pink) ;
   border-radius: 12px;
   padding: 12px 20px;
   margin-top: 25px;
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 25px rgba(236, 72, 153, 0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   justify-content: center;
@@ -690,6 +697,16 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
   position: relative;
 }
 
+.mt-4.text-center.mb-4 a span.anticon-fork svg {
+  fill: var(--text-cream);
+}
+
+.mt-4.text-center.mb-4 a span.font-semibold {
+  color: var(--accent-rose);
+  font-family: var(--font-desc);
+  font-size: 1.1em;
+  letter-spacing: 0.02em;
+}
 .mt-4.text-center.mb-4 a {
   color: var(--text-cream);
   font-weight: 600;
@@ -701,23 +718,12 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
 }
 
 .mt-4.text-center.mb-4 a span.flex.rounded-full.bg-indigo-500 {
-  background-color: var(--primary-white);
-  color: var(--dark-bg);
+  background-color: var(--primary-red);
+  color: var(--text-cream);
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 0.7em;
   letter-spacing: 0.08em;
   margin-right: 10px;
   text-shadow: none;
-}
-
-.mt-4.text-center.mb-4 a span.anticon-fork svg {
-  fill: var(--text-cream);
-}
-
-.mt-4.text-center.mb-4 a span.font-semibold {
-  color: var(--accent-silver);
-  font-family: var(--font-desc);
-  font-size: 1.1em;
-  letter-spacing: 0.02em;
 }
