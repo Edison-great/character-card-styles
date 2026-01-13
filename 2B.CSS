@@ -1,0 +1,729 @@
+/* CSS for GitHub */
+/*
+=================================================================
+  2B THEME
+  Black & White - Android Elegance
+=================================================================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&family=Great+Vibes&display=swap');
+
+:root {
+  --primary-white: #ffffff;
+  --accent-silver: #c0c0c0;
+  --accent-gray: #808080;
+  --dark-bg: #0a0a0a;
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --text-cream: #fef3c7;
+  --text-muted: #e5e5e5;
+  --white-glow: 0 0 25px rgba(255, 255, 255, 0.3);
+  --silver-glow: 0 0 20px rgba(192, 192, 192, 0.4);
+  --elegant-shadow: 0 6px 25px rgba(0, 0, 0, 0.8);
+  
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Raleway', sans-serif;
+  --font-desc: 'Montserrat', sans-serif;
+  --font-elegant: 'Cormorant Garamond', serif;
+  --font-script: 'Great Vibes', cursive;
+}
+
+/* Base Layout */
+body,
+.ant-layout,
+.ant-layout-content {
+  background: var(--dark-bg);
+}
+
+/* Animated Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.70) 0%, rgba(10, 10, 10, 0.80) 100%), 
+             url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/06a540f4-e817-4275-8ffa-8fd9e97494fb/2e923ce1-8645-47af-898c-29a9e1ea7df3.jpeg') center center/cover no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* === HEADER TRANSPARENCY === */  
+.ant-layout-header {  
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+}  
+  
+.ant-menu-overflow.ant-menu {  
+    background-color: transparent;  
+}  
+  
+/* Search bar transparency */  
+.no-arrow.no-vertical-anything {  
+    background: transparent;  
+}  
+  
+.ant-select-selector {  
+    background: transparent;  
+    border: 1px solid rgba(255, 255, 255, 0.3);  
+}  
+  
+/* === BANNER REPLACEMENT === */  
+.ant-menu-item,  
+.ant-menu-item a,  
+.ant-menu-item a::before,  
+.ant-menu-item a::after,  
+.top-nav-logo,  
+.top-nav-logo::before,  
+.top-nav-logo::after {  
+    background: transparent;  
+    background-color: transparent;  
+    box-shadow: none;  
+    border: none;  
+    outline: none;  
+    padding: 0;  
+    margin: 0;  
+}  
+  
+.ant-menu-item a img[src="/logo_cataract.png"],  
+img[src="/logo_cataract.png"],  
+.top-nav-logo img,  
+.top-nav-logo {  
+    display: none;
+}  
+  
+.ant-menu-item-selected,  
+.ant-menu-item:hover {  
+    background: transparent;  
+    box-shadow: none;  
+}
+
+/* Main Container */
+.ml-sec {
+  position: relative;
+  font-family: var(--font-body);
+  color: var(--text-cream);
+  overflow: visible;
+  min-height: 100vh;
+}
+
+.ml-sec * {
+  box-sizing: border-box;
+}
+
+.ml-wrap {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 25px 20px;
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+}
+
+/* GIF Section */
+.ml-gif-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 30px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--elegant-shadow);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.ml-gif-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Description Section */
+.ml-desc {
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 28px;
+  margin-bottom: 35px;
+  box-shadow: var(--elegant-shadow);
+  animation: fadeInUp 0.8s ease-out 0.1s both;
+}
+
+.ml-description {
+  font-family: var(--font-desc);
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 400;
+  color: var(--text-cream);
+  margin: 0;
+  text-align: justify;
+}
+
+/* Character Info Section - Full Width Image */
+.ml-info-container {
+  width: 100%;
+  margin-bottom: 35px;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.ml-info-image-full {
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--white-glow);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.ml-info-image-full img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Scenarios Section */
+.ml-scenarios {
+  margin-bottom: 35px;
+  animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.ml-scenarios-title {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3.5vw, 36px);
+  font-weight: 700;
+  color: var(--primary-white);
+  margin: 0 0 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.ml-scenarios-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ml-scenario-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 20px 22px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.ml-scenario-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--primary-white) 0%, var(--accent-silver) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ml-scenario-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--accent-silver);
+  transform: translateX(10px);
+  box-shadow: 0 6px 20px rgba(192, 192, 192, 0.4);
+}
+
+.ml-scenario-item:hover::before {
+  opacity: 1;
+}
+
+.ml-scenario-heading {
+  font-family: var(--font-elegant);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--accent-silver);
+  margin: 0 0 10px;
+}
+
+.ml-scenario-text {
+  font-family: var(--font-desc);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-cream);
+  margin: 0;
+}
+
+/* Author Note */
+.ml-note {
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 2px solid var(--primary-white);
+  border-radius: 15px;
+  padding: 28px;
+  box-shadow: var(--white-glow);
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+  position: relative;
+}
+
+.ml-note-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-white);
+  margin: 0 0 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.ml-note-text {
+  font-family: var(--font-desc);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-cream);
+  margin: 0 0 25px;
+}
+
+/* Catchphrase */
+.ml-catchphrase {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 2px solid rgba(192, 192, 192, 0.4);
+  text-align: center;
+}
+
+.ml-catchphrase-text {
+  font-family: 'Arial', sans-serif;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 400;
+  color: var(--accent-silver);
+  margin: 0;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
+  animation: pulse-white 3s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-white {
+  0%, 100% {
+    text-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(192, 192, 192, 0.8), 0 0 25px rgba(192, 192, 192, 0.5);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ml-wrap {
+    padding: 20px 15px;
+  }
+  
+  .ml-scenario-item {
+    padding: 18px 20px;
+  }
+  
+  .ml-desc,
+  .ml-note {
+    padding: 22px;
+  }
+}
+
+/* Chub.ai Overrides */
+h3.ant-typography,
+h5.ant-typography,
+div.msg-mkdn-container:not(:has(.ml-sec)),
+h4.ant-typography.mt-8,
+h4.ant-typography.mt-8+div {
+  display: none;
+}
+
+.ant-layout-footer {
+  display: none;
+}
+
+button.ant-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--primary-white);
+  color: var(--text-cream);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+button.ant-btn:hover {
+  background: var(--accent-silver);
+  color: var(--dark-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(192, 192, 192, 0.5);
+}
+
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--primary-white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover {
+  background: var(--accent-silver);
+  color: var(--dark-bg);
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Hiding specific elements as requested */
+button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.ant-btn-lg.ant-dropdown-trigger,
+.ant-select-selection-overflow,
+.ant-select-selection-wrap,
+.ant-select-selector {
+  display: none;
+}
+
+/* Custom CSS for the Favorite Button */
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2 {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--primary-white);
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(192, 192, 192, 0.5);
+  background: var(--accent-silver);
+  color: var(--dark-bg);
+}
+
+.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2 .anticon.anticon-star svg {
+  width: 1em;
+  height: 1em;
+}
+
+/* Ensure the button container flows naturally */
+.ant-col.text-left .mt-4 {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom Tag for @GEN3RATED_R */
+@keyframes flicker-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--cyan-glow-color-light), 0 0 10px var(--cyan-glow-color-medium), 0 0 15px var(--cyan-glow-color-strong);
+    opacity: 1;
+  }
+  20%, 80% {
+    box-shadow: 0 0 4px var(--cyan-glow-color-light), 0 0 8px var(--cyan-glow-color-medium), 0 0 12px var(--cyan-glow-color-strong);
+    opacity: 0.95;
+  }
+  40%, 60% {
+    box-shadow: 0 0 6px var(--cyan-glow-color-light), 0 0 12px var(--cyan-glow-color-medium), 0 0 18px var(--cyan-glow-color-strong);
+    opacity: 1;
+  }
+}
+
+:root {
+  --cyan-tag-bg: #00bcd4;
+  --cyan-tag-text: #0f0a1a;
+  --cyan-glow-color-light: rgba(0, 188, 212, 0.4);
+  --cyan-glow-color-medium: rgba(0, 188, 212, 0.6);
+  --cyan-glow-color-strong: rgba(0, 188, 212, 0.8);
+}
+
+.mt-2 i a[href="/users/GEN3RATED_R"]::after {
+  content: " Founding Titan 🏗️";
+  display: inline-block;
+  background-color: var(--cyan-tag-bg);
+  color: var(--cyan-tag-text);
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: flicker-glow 3s infinite alternate;
+  border: 1px solid var(--cyan-glow-color-medium);
+}
+
+.ant-comment-content-author-name a[href="/users/GEN3RATED_R"]::after {
+  content: " Founding Titan 🏗️";
+  display: inline-block;
+  background-color: var(--cyan-tag-bg);
+  color: var(--cyan-tag-text);
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: flicker-glow 3s infinite alternate;
+  border: 1px solid var(--cyan-glow-color-medium);
+}
+
+/* Custom Tag for @Xert */
+@keyframes green-flicker-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(34, 197, 94, 0.4), 0 0 10px rgba(34, 197, 94, 0.6), 0 0 15px rgba(34, 197, 94, 0.8);
+    opacity: 1;
+  }
+  20%, 80% {
+    box-shadow: 0 0 4px rgba(34, 197, 94, 0.4), 0 0 8px rgba(34, 197, 94, 0.6), 0 0 12px rgba(34, 197, 94, 0.8);
+    opacity: 0.95;
+  }
+  40%, 60% {
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.4), 0 0 12px rgba(34, 197, 94, 0.6), 0 0 18px rgba(34, 197, 94, 0.8);
+    opacity: 1;
+  }
+}
+
+:root {
+  --green-tag-bg: #22c55e;
+  --green-tag-text: #0a1a0f;
+  --green-glow-color-light: rgba(34, 197, 94, 0.4);
+  --green-glow-color-medium: rgba(34, 197, 94, 0.6);
+  --green-glow-color-strong: rgba(34, 197, 94, 0.8);
+}
+
+.mt-2 i a[href="/users/Xert"]::after {
+  content: " Who him? He's GOATED 🫵🏾";
+  display: inline-block;
+  background-color: var(--green-tag-bg);
+  color: var(--green-tag-text);
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: green-flicker-glow 3s infinite alternate;
+  border: 1px solid var(--green-glow-color-medium);
+}
+
+.ant-comment-content-author-name a[href="/users/Xert"]::after {
+  content: " Who him? He's GOATED 🫵🏾";
+  display: inline-block;
+  background-color: var(--green-tag-bg);
+  color: var(--green-tag-text);
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: green-flicker-glow 3s infinite alternate;
+  border: 1px solid var(--green-glow-color-medium);
+}
+
+/* Custom Tag for @Ps1cho */
+@keyframes pink-flicker-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(236, 72, 153, 0.4), 0 0 10px rgba(236, 72, 153, 0.6), 0 0 15px rgba(236, 72, 153, 0.8);
+    opacity: 1;
+  }
+  20%, 80% {
+    box-shadow: 0 0 4px rgba(236, 72, 153, 0.4), 0 0 8px rgba(236, 72, 153, 0.6), 0 0 12px rgba(236, 72, 153, 0.8);
+    opacity: 0.95;
+  }
+  40%, 60% {
+    box-shadow: 0 0 6px rgba(236, 72, 153, 0.4), 0 0 12px rgba(236, 72, 153, 0.6), 0 0 18px rgba(236, 72, 153, 0.8);
+    opacity: 1;
+  }
+}
+
+:root {
+  --pink-tag-bg: #ec4899;
+  --pink-tag-text: #1a0a14;
+  --pink-glow-color-light: rgba(236, 72, 153, 0.4);
+  --pink-glow-color-medium: rgba(236, 72, 153, 0.6);
+  --pink-glow-color-strong: rgba(236, 72, 153, 0.8);
+}
+
+.mt-2 i a[href="/users/Ps1cho"]::after {
+  content: " Rival ✨(secret lover)";
+  display: inline-block;
+  background-color: var(--pink-tag-bg);
+  color: var(--pink-tag-text);
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: pink-flicker-glow 3s infinite alternate;
+  border: 1px solid var(--pink-glow-color-medium);
+}
+
+.ant-comment-content-author-name a[href="/users/Ps1cho"]::after {
+  content: " Rival ✨(secret lover)";
+  display: inline-block;
+  background-color: var(--pink-tag-bg);
+  color: var(--pink-tag-text);
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: pink-flicker-glow 3s infinite alternate;
+  border: 1px solid var(--pink-glow-color-medium);
+}
+
+/* Custom Tag for @Yariami */
+@keyframes purple-flicker-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(168, 85, 247, 0.4), 0 0 10px rgba(168, 85, 247, 0.6), 0 0 15px rgba(168, 85, 247, 0.8);
+    opacity: 1;
+  }
+  20%, 80% {
+    box-shadow: 0 0 4px rgba(168, 85, 247, 0.4), 0 0 8px rgba(168, 85, 247, 0.6), 0 0 12px rgba(168, 85, 247, 0.8);
+    opacity: 0.95;
+  }
+  40%, 60% {
+    box-shadow: 0 0 6px rgba(168, 85, 247, 0.4), 0 0 12px rgba(168, 85, 247, 0.6), 0 0 18px rgba(168, 85, 247, 0.8);
+    opacity: 1;
+  }
+}
+
+:root {
+  --purple-tag-bg: #a855f7;
+  --purple-tag-text: #1a0a2e;
+  --purple-glow-color-light: rgba(168, 85, 247, 0.4);
+  --purple-glow-color-medium: rgba(168, 85, 247, 0.6);
+  --purple-glow-color-strong: rgba(168, 85, 247, 0.8);
+}
+
+.mt-2 i a[href="/users/Yariami"]::after {
+  content: " Twin 👥";
+  display: inline-block;
+  background-color: var(--purple-tag-bg);
+  color: var(--purple-tag-text);
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: purple-flicker-glow 3s infinite alternate;
+  border: 1px solid var(--purple-glow-color-medium);
+}
+
+.ant-comment-content-author-name a[href="/users/Yariami"]::after {
+  content: " Twin 👥";
+  display: inline-block;
+  background-color: var(--purple-tag-bg);
+  color: var(--purple-tag-text);
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: purple-flicker-glow 3s infinite alternate;
+  border: 1px solid var(--purple-glow-color-medium);
+}
+
+/* Ensure "Forked From" banner is always visible and on top */
+.mt-4.text-center.mb-4 {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  z-index: 9999;
+  background-color: rgba(10, 10, 10, 0.85);
+  border: 1px solid var(--primary-white);
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin-top: 25px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.mt-4.text-center.mb-4 a {
+  color: var(--text-cream);
+  font-weight: 600;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.mt-4.text-center.mb-4 a span.flex.rounded-full.bg-indigo-500 {
+  background-color: var(--primary-white);
+  color: var(--dark-bg);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7em;
+  letter-spacing: 0.08em;
+  margin-right: 10px;
+  text-shadow: none;
+}
+
+.mt-4.text-center.mb-4 a span.anticon-fork svg {
+  fill: var(--text-cream);
+}
+
+.mt-4.text-center.mb-4 a span.font-semibold {
+  color: var(--accent-silver);
+  font-family: var(--font-desc);
+  font-size: 1.1em;
+  letter-spacing: 0.02em;
+}
