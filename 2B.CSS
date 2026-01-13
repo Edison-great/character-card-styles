@@ -236,8 +236,8 @@ body::before {
 }
 
 .ml-scenario-heading {
-  font-family: var(--font-elegant);
-  font-size: 19px;
+  font-family: var(--font-heading);
+  font-size: 23px;
   font-weight: 700;
   color: var(--primary-white);
   margin: 0 0 10px;
@@ -261,7 +261,6 @@ body::before {
   border-radius: 15px;
   padding: 28px;
   box-shadow: var(--white-glow);
-  animation: fadeInUp 0.8s ease-out 0.4s both;
   position: relative;
 }
 
@@ -299,7 +298,6 @@ body::before {
   color: var(--primary-white);
   margin: 0;
   letter-spacing: 0.02e;
-  animation: pulse-white 3s ease-in-out infinite;
 }
 
 /* Animations */
