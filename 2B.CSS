@@ -97,7 +97,7 @@ body::before {
 .ml-sec {
   position: relative;
   font-family: var(--font-body);
-  color: var(--text-cream);
+  color: var(--primary-white);
   overflow: visible;
   min-height: 100vh;
 }
@@ -153,7 +153,7 @@ body::before {
   font-size: 16px;
   line-height: 1.8;
   font-weight: 400;
-  color: var(--text-cream);
+  color: var(--primary-white);
   margin: 0;
   text-align: justify;
 }
@@ -225,7 +225,7 @@ body::before {
   top: 0;
   bottom: 0;
   width: 4px;
-  background: linear-gradient(180deg, var(--primary-white) 0%, var(--accent-silver) 100%);
+  background: linear-gradient(180deg, var(--primary-white) 0%, var(--primary-white) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -245,7 +245,7 @@ body::before {
   font-family: var(--font-elegant);
   font-size: 19px;
   font-weight: 700;
-  color: var(--accent-silver);
+  color: var(--primary-white);
   margin: 0 0 10px;
 }
 
@@ -254,7 +254,7 @@ body::before {
   font-size: 15px;
   font-weight: 400;
   line-height: 1.6;
-  color: var(--text-cream);
+  color: var(--primary-white);
   margin: 0;
 }
 
@@ -287,7 +287,7 @@ body::before {
   font-size: 15px;
   font-weight: 400;
   line-height: 1.7;
-  color: var(--text-cream);
+  color: var(--primary-white);
   margin: 0 0 25px;
 }
 
@@ -303,7 +303,7 @@ body::before {
   font-family: 'Arial', sans-serif;
   font-size: clamp(22px, 3vw, 32px);
   font-weight: 400;
-  color: var(--accent-silver);
+  color: var(--primary-white);
   margin: 0;
   letter-spacing: 0.02em;
   text-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
@@ -365,7 +365,7 @@ button.ant-btn {
   font-weight: 600;
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid var(--primary-white);
-  color: var(--text-cream);
+  color: var(--primary-white:);
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.05em;
