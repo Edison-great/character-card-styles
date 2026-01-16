@@ -7,7 +7,32 @@ body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
     background-size: cover !important;  
     font-family: 'IBM Plex Mono', monospace !important;  
     color: #e0e0e0 !important;  
-}  
+}     
+  .image-gallery {
+    display: flex;
+    gap: 15px;
+    max-width: 100%;
+    margin: 20px 0;
+    flex-wrap: nowrap;
+}
+
+.image-gallery-item {
+    flex: 1;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.image-gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.image-gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
   
 /* === HEADER TRANSPARENCY (Fix #3) === */  
 .ant-layout-header {  
