@@ -27,13 +27,6 @@
   --font-script: 'Great Vibes', cursive;
 }
 
-/* Base Layout */
-body,
-.ant-layout,
-.ant-layout-content {
-  background: var(--dark-bg) !important;
-}
-
 /* Animated Background */
 body::before {
   content: "";
@@ -47,27 +40,7 @@ body::before {
   pointer-events: none;
   z-index: 0;
 }
-
-/* === HEADER TRANSPARENCY === */  
-.ant-layout-header {  
-    background: transparent !important;  
-    backdrop-filter: none !important;  
-    padding: 0 !important;  
-}  
   
-.ant-menu-overflow.ant-menu {  
-    background-color: transparent !important;  
-}  
-  
-/* Search bar transparency */  
-.no-arrow.no-vertical-anything {  
-    background: transparent !important;  
-}  
-  
-.ant-select-selector {  
-    background: transparent !important;  
-    border: 1px solid rgba(255, 140, 66, 0.3) !important;  
-}  
   
 /* === BANNER REPLACEMENT === */  
 .ant-menu-item,  
@@ -103,11 +76,6 @@ img[src="/logo_cataract.png"],
     padding: 0 !important;
 }  
   
-.ant-menu-item-selected,  
-.ant-menu-item:hover {  
-    background: transparent !important;  
-    box-shadow: none !important;  
-}
 
 /* Main Container */
 .ml-sec {
@@ -373,100 +341,12 @@ img[src="/logo_cataract.png"],
   }
 }
 
-/* Chub.ai Overrides */
-h3.ant-typography,
-h5.ant-typography,
-div.msg-mkdn-container:not(:has(.ml-sec)),
-h4.ant-typography.mt-8,
-h4.ant-typography.mt-8+div {
-  display: none !important;
-}
-
-.ant-layout-footer {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-button.ant-btn {
-  font-family: var(--font-body) !important;
-  font-weight: 600 !important;
-  background: rgba(255, 140, 66, 0.25) !important;
-  border: 1px solid var(--primary-orange) !important;
-  color: var(--text-cream) !important;
-  transition: all 0.3s ease !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-}
-
-button.ant-btn:hover {
-  background: linear-gradient(135deg, var(--primary-orange) 0%, var(--accent-cream) 100%) !important;
-  color: var(--dark-bg) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(255, 179, 128, 0.5) !important;
-}
-
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag {
-  background: rgba(255, 140, 66, 0.2) !important;
-  color: var(--primary-orange) !important;
-  border: 1px solid rgba(255, 140, 66, 0.4) !important;
-  font-family: var(--font-body) !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  transition: all 0.2s ease !important;
-}
-
-.ant-space.ant-space-horizontal.ant-space-align-center .ant-tag:hover {
-  background: linear-gradient(135deg, var(--primary-orange) 0%, var(--accent-cream) 100%) !important;
-  color: var(--dark-bg) !important;
-  transform: scale(1.05) !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
 /* Hiding specific elements as requested */
 button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.ant-btn-lg.ant-dropdown-trigger,
 .ant-select-selection-overflow,
 .ant-select-selection-wrap,
 .ant-select-selector {
   display: none !important;
-}
-
-/* Custom CSS for the Favorite Button */
-.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2 {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 32px;
-  font-size: 16px !important;
-  background: rgba(255, 140, 66, 0.25) !important;
-  border: 1px solid var(--primary-orange) !important;
-  box-shadow: none !important;
-  transition: all 0.3s ease !important;
-}
-
-.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(255, 179, 128, 0.5) !important;
-  background: linear-gradient(135deg, var(--primary-orange) 0%, var(--accent-cream) 100%) !important;
-  color: var(--dark-bg) !important;
-}
-
-.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-sm.ant-btn-icon-only.ml-2 .anticon.anticon-star svg {
-  width: 1em;
-  height: 1em;
 }
 
 /* Ensure the button container flows naturally */
