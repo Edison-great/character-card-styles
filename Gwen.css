@@ -349,12 +349,6 @@ button.ant-btn-circle.ant-btn-text.ant-btn-color-default.ant-btn-variant-text.an
   display: none !important;
 }
 
-/* Ensure the button container flows naturally */
-.ant-col.text-left .mt-4 {
-  display: flex;
-  flex-direction: column;
-}
-
 /* Ensure "Forked From" banner is always visible and on top */
 .mt-4.text-center.mb-4 {
   display: flex !important;
