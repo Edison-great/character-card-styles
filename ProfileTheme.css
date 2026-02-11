@@ -316,4 +316,13 @@ span.ant-tag.mb-2,
 .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 {
     flex: 0 0 100% !important;
     max-width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+/* Center the content inside these columns */
+.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 > *,
+.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > * {
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
