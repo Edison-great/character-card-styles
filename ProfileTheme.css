@@ -59,8 +59,6 @@ img[src="/logo_cataract.png"],
     margin-top: 700px !important;  
     box-shadow: inset 0 0 18px rgba(255, 0, 0, 0.5) !important;  
     border: 2px dashed rgba(255, 0, 0, 0.7) !important;  
-    width: 100% !important;  
-    max-width: 500px !important;  
     text-align: left !important;  
     box-sizing: border-box !important;  
 }  
@@ -95,7 +93,7 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     flex-direction: column !important;  
     align-items: center !important;  
     width: 90% !important;  
-    max-width: 550px !important;  
+    max-width: 150px !important;  
     z-index: 100 !important;  
     pointer-events: auto !important;  
     padding: 20px 30px !important;  
