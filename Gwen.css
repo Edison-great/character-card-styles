@@ -41,39 +41,22 @@ body::before {
   z-index: 0;
 }
   
-  
-/* === BANNER REPLACEMENT === */  
-.ant-menu-item,  
-.ant-menu-item a,  
-.ant-menu-item a::before,  
-.ant-menu-item a::after,  
-.top-nav-logo,  
-.top-nav-logo::before,  
-.top-nav-logo::after {  
-    background: transparent !important;  
-    background-color: transparent !important;  
-    box-shadow: none !important;  
-    border: none !important;  
-    outline: none !important;  
-    padding: 0 !important;  
-    margin: 0 !important;  
-}  
-  
+/* Replace the actual logo image cleanly */  
 .ant-menu-item a img[src="/logo_cataract.png"],  
 img[src="/logo_cataract.png"],  
 .top-nav-logo img,  
 .top-nav-logo {  
-    content: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/27a4537d-f1ca-4d8f-a898-6321b57faa8d/3207282f-7399-4504-9ae3-f38bbce84987.png') !important;  
-    width: 180px !important;  
-    height: 60px !important;  
+    content: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/0b592ec4-f363-416c-813d-4f13873369d4/0c8a7868-0d48-4c5d-9e89-f03224fbb76d.png') !important;  
+    width: 50px !important;  
+    height: 50px !important;  
     display: inline-block !important;  
     background: transparent !important;  
+    background-color: transparent !important;  
     border: none !important;  
     box-shadow: none !important;  
-    object-fit: cover !important;
-    object-position: left center !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    object-fit: contain !important;  
+    image-rendering: auto !important;  
+    filter: none !important;  
 }  
   
 
