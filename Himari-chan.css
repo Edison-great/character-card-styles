@@ -321,6 +321,12 @@ img[src="/logo_cataract.png"],
   opacity: 1 !important;
 }
 
+.ant-row.css-8q9eaf * {
+  color: var(--text-cream) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  }
+
 /* Custom Tag for @GEN3RATED_R */
 @keyframes flicker-glow {
   0%, 100% {
