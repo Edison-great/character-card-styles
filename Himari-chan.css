@@ -19,46 +19,6 @@
   display: block;
 }
 
-/* Description Section */
-.ml-desc {
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  border-radius: 15px !important;
-  padding: 28px !important;
-  margin-bottom: 35px !important;
-}
-
-.ml-description {
-  font-size: 16px !important;
-  line-height: 1.8 !important;
-  font-weight: 400 !important;
-  color: var(--text-white) !important;
-  margin: 0 !important;
-  text-align: justify;
-}
-
-/* Character Info Section - Full Width Image */
-.ml-info-container {
-  width: 100%;
-  margin-bottom: 35px !important;
-}
-
-.ml-info-image-full {
-  width: 100%;
-  border-radius: 15px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  margin-bottom: 25px;
-}
-
-.ml-info-image-full img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
 /* Scenarios Section */
 .ml-scenarios {
   margin-bottom: 35px !important;
@@ -159,13 +119,6 @@
   margin: 0 !important;
   letter-spacing: 0.02em !important;
 }
-
-/* forked banner */
-.mt-4.text-center.mb-4 {
-  display: flex !important; 
-  opacity: 1 !important;   
-  visibility: visible !important;
-  z-index: 9999 !important; 
 
 /* Custom Tag for @GEN3RATED_R */
 @keyframes flicker-glow {
