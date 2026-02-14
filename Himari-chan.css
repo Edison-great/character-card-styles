@@ -21,8 +21,8 @@ body::before {
   height: 100%;
   background: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/29dc5a71-c0e5-4dd8-9cbe-e02cf05d95a1/e4e6fead-2abb-417d-a1b8-11c9ab78f7db.jpeg') center center/cover no-repeat;
   pointer-events: none;
-  z-index: -1;
-  opacity: 0.3;
+  z-index: 0;
+  opacity: 1;
 }
   
 /* Replace the actual logo image cleanly */  
