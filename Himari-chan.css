@@ -314,6 +314,13 @@ img[src="/logo_cataract.png"],
   }
 }
 
+/* Ensure ant-row elements are visible */
+.ant-row.css-8q9eaf {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 /* Custom Tag for @GEN3RATED_R */
 @keyframes flicker-glow {
   0%, 100% {
