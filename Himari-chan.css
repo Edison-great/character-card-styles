@@ -11,28 +11,6 @@
   --dark-bg: #000000;
 }
 
-/* Main Container */
-.ml-sec {
-  position: relative;
-  color: var(--text-white);
-  overflow: visible !important;
-  min-height: 100vh;
-}
-
-.ml-sec * {
-  box-sizing: border-box;
-}
-
-.ml-wrap {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 25px 20px;
-  overflow: visible !important;
-  position: relative;
-  z-index: 2;
-}
-
 /* GIF Section */
 .ml-gif-container {
   width: 100%;
