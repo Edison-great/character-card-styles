@@ -10,24 +10,6 @@
   --text-white: #ffffff;
   --dark-bg: #000000;
 }
-  
-/* Replace the actual logo image cleanly */  
-.ant-menu-item a img[src="/logo_cataract.png"],  
-img[src="/logo_cataract.png"],  
-.top-nav-logo img,  
-.top-nav-logo {  
-    content: url('https://avatars.charhub.io/avatars/uploads/images/gallery/file/0b592ec4-f363-416c-813d-4f13873369d4/0c8a7868-0d48-4c5d-9e89-f03224fbb76d.png') !important;  
-    width: 50px !important;  
-    height: 50px !important;  
-    display: inline-block !important;  
-    background: transparent !important;  
-    background-color: transparent !important;  
-    border: none !important;  
-    box-shadow: none !important;  
-    object-fit: contain !important;  
-    image-rendering: auto !important;  
-    filter: none !important;  
-}  
 
 /* Main Container */
 .ml-sec {
