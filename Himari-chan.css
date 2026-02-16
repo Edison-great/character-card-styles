@@ -343,3 +343,67 @@
   animation: purple-flicker-glow 3s infinite alternate;
   border: 1px solid var(--purple-glow-color-medium);
 }
+
+/* Ensure "Forked From" banner is always visible and on top */
+.mt-4.text-center.mb-4 {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  z-index: 9999;
+  background-color: rgba(10, 10, 10, 0.85);
+  border: 1px solid var(--primary-white);
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin-top: 25px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.mt-4.text-center.mb-4 a {
+  color: var(--text-cream);
+  font-weight: 600;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.mt-4.text-center.mb-4 a span.flex.rounded-full.bg-indigo-500 {
+  background-color: var(--primary-white);
+  color: var(--dark-bg);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7em;
+  letter-spacing: 0.08em;
+  margin-right: 10px;
+  text-shadow: none;
+}
+
+.mt-4.text-center.mb-4 a span.anticon-fork svg {
+  fill: var(--text-cream);
+}
+
+.mt-4.text-center.mb-4 a span.font-semibold {
+  color: var(--accent-silver);
+  font-family: var(--font-desc);
+  font-size: 1.1em;
+  letter-spacing: 0.02em;
+} var(--cyan-glow-color-strong);
+    opacity: 1;
+  }
+  20%, 80% {
+    box-shadow: 0 0 4px var(--cyan-glow-color-light), 0 0 8px var(--cyan-glow-color-medium), 0 0 12px var(--cyan-glow-color-strong);
+    opacity: 0.95;
+  }
+  40%, 60% {
+    box-shadow: 0 0 6px var(--cyan-glow-color-light), 0 0 12px var(--cyan-glow-color-medium), 0 0 18px var(--cyan-glow-color-strong);
+    opacity: 1;
+  }
+}
+
