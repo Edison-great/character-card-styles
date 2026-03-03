@@ -47,7 +47,7 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
 .ant-typography.text-lg.font-bold.mb-2.break-words,  
 .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > div:first-child:not(.ant-row),  
 .ant-typography[class*="Followers"] {  
-    display: none !important;  
+    display: none !important;  c
 }  
   
 /* Specific targeting for the follower count and button block - POSITIONED BELOW CUSTOM USERNAME */  
@@ -74,7 +74,7 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
 .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 div.text-sm.mb-2 > span.mr-4 {  
     font-family: 'IBM Plex Mono', monospace !important;  
     color: #00ffff !important;  
-    font-size: 1em !important;  
+    font-size: 1.5em !important;  
     text-shadow: 0 0 15px #00ffff, 0 0 30px rgba(0, 255, 255, 0.8) !important;  
     margin-bottom: 20px !important;  
     white-space: nowrap !important;  
