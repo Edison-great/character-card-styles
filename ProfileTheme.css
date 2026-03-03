@@ -59,8 +59,8 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     display: flex !important;  
     flex-direction: column !important;  
     align-items: center !important;  
-    width: 50% !important;  
-    max-width: 100px !important;  
+    width: 90% !important;  
+    max-width: 350px !important;  
     z-index: 1;  
     pointer-events: auto !important;  
     padding: 20px 30px !important;  
@@ -100,13 +100,6 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     display: inline-flex !important;  
     align-items: center !important;  
     justify-content: center !important;  
-}  
-  
-.ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 div.text-sm.mb-2 > button.ant-btn:hover {  
-    background-color: rgba(0, 255, 255, 0.3) !important;  
-    border-color: #fff !important;  
-    color: #fff !important;  
-    box-shadow: 0 0 25px #fff, 0 0 50px rgba(255, 255, 255, 0.9) !important;  
 }  
   
 .ant-btn-icon {  
