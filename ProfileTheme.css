@@ -85,7 +85,7 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
   
 /* Button styling */  
 .ant-col.text-left.pt-4.ant-col-xs-24.ant-col-lg-6 div.text-sm.mb-2 > button.ant-btn {  
-    font-size: 1.2em !important;  
+    font-size: 1.4em !important;  
     padding: 18px 50px !important;  
     border-radius: 10px !important;  
     background-color: transparent !important;  
