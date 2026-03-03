@@ -189,8 +189,8 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
     font-size: 2.5em;  
 font-weight: 900 !important;
 color: #ffffff;  
-text-shadow: 0 0 12px #ff0000, 0 0 25px #ff0000, 0 0 50px #ff0000;
--webkit-text-stroke: 2px #ff0000;  
+text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;
+-webkit-text-stroke: 1px #00ffff; 
 white-space: nowrap;  
 display: inline-block;
     padding: 0;  
@@ -205,8 +205,9 @@ display: inline-block;
 }  
   
 .username .rated-r {  
-    color: #ff0000;  
-    text-shadow: 0 0 12px #ff0000, 0 0 25px #ff0000, 0 0 50px #ff0000;  
+    color: #ffffff;  
+text-shadow: 0 0 12px #ff0000, 0 0 25px #ff0000, 0 0 50px #ff0000;
+-webkit-text-stroke: 2px #ff0000;  
 }  
   
 @keyframes flicker-animation {  
