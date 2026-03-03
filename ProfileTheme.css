@@ -1,11 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');  
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=IBM+Plex+Mono:wght@400;700&display=swap');  
   
-/* === GLOBAL STYLES === */  
-body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {   
-    font-family: 'IBM Plex Mono', monospace !important;  
-    color: #e0e0e0 !important;  
-}     
   .image-gallery {
     display: flex;
     gap: 15px;
@@ -44,17 +39,6 @@ body, html, #root, .layout-content, .ant-layout, main.ant-layout-content {
     max-width: 500px !important;  
     text-align: left !important;  
     box-sizing: border-box !important;  
-}  
-  
-p, span, h1, h2, h3, a, div {  
-    color: #e0e0e0 !important;  
-}  
-a {  
-    color: #00ffff !important;  
-    text-decoration: none !important;  
-}  
-a:hover {  
-    text-decoration: underline !important;  
 }  
   
 .ant-avatar.ant-avatar-square.ant-avatar-image[style*="width: 100px;"],  
@@ -155,11 +139,6 @@ img[src*="avatars/users/avatars/plain/GEN3RATED_R.png"],
         box-shadow: 0 0 12px #00ffff;  
     }  
 }  
-  
-span.ant-tag.mb-2,  
-.ant-btn.ant-btn-default.ant-btn-color-default.ant-btn-variant-outlined.ant-btn-block.mt-2.galaxy-bg {  
-    display: none !important;  
-}
 
 .profile-container {  
     max-width: 500px;  
@@ -215,7 +194,7 @@ span.ant-tag.mb-2,
   
 .username {  
     font-family: 'Rubik Mono One', monospace;  
-    font-size: 3em;  
+    font-size: 2em;  
     color: #00ffff;  
     text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;  
     margin: 0;  
@@ -258,15 +237,4 @@ span.ant-tag.mb-2,
 .ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 {
     flex: 0 0 100% !important;
     max-width: 100% !important;
-}
-
-/* Center the tabs section when stacked */
-.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 {
-    display: flex !important;
-    justify-content: center !important;
-}
-
-.ant-col.pt-4.ant-col-xs-24.ant-col-lg-18 > .ant-tabs {
-    width: 100% !important;
-    max-width: 1200px !important; /* Adjust this value as needed */
 }
